@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+			#row1{
+				background-color:#F7FFFF;
+				height: 55px;
+				width: 1536px;
+			}
+			#row1 div:nth-of-type(1){
+				padding-left: 75px;
+				padding-top: 10px;
+			}
+			#row1 div:nth-of-type(2){
+				padding-top: 10px;
+				padding-left: 50px;
+			}
+			#row1 div:nth-of-type(3){
+				padding-top: 10px;
+				padding-left: 50px;
+			}
+			#row1 div:nth-of-type(4){
+				padding-top: 10px;
+				padding-left: 0px;
+			}
+			.row1{
+				background-color:#F7F7F7;
+				height: 695px;
+			}
+			.row1 div:nth-of-type(1){
+				padding-top: 10px;
+			}
+			.row1 div div:nth-of-type(1){
+				padding-top: 2px;
+				margin-left: 45px;
+			}
+			.row1 div div:nth-of-type(2){
+				margin-left: 55px;
+			}
+			.show1{
+				margin-top: 25px;
+				width: 1400px;
+				height: 600px;
+				background-color: white;
+				margin-left: 60px;
+			}
+			.show1 table tr td{
+				text-align:center;
+			}
+			#sys{
+				width: 900px;
+				height: 600px;
+				background-color: #F7F7F7;
+				position: absolute;
+				top:100px;
+				left: 300px;
+				border: 2px solid;
+				border-radius: 15px;
+				 -moz-box-shadow:2px 2px 10px #CCC;
+			     -webkit-box-shadow:2px 2px 10px #CCC;
+			     box-shadow:2px 2px 10px #CCC;
+			     display: none;
+			}
+			.men{
+				height: 60px;
+				padding-top: 12px;
+				background-color: #848484;
+				border-top-left-radius: 15px;
+				border-top-right-radius: 15px;
+			}
+			.men1{
+				padding-top: 20px;
+			}
+			.men1 div:nth-of-type(1){
+				padding-left: 50px;
+			}
+			.men1 div:nth-of-type(2){
+				padding-left: 30px;
+			}
+			.shows{
+				border-bottom-left-radius: 15px;
+				border-bottom-right-radius: 15px;
+			}
+			#yuan{
+				width: 900px;
+				height: 600px;
+				background-color: #F7F7F7;
+				position: absolute;
+				top:100px;
+				left: 300px;
+				border: 2px solid;
+				border-radius: 15px;
+				 -moz-box-shadow:2px 2px 10px #CCC;
+			     -webkit-box-shadow:2px 2px 10px #CCC;
+			     box-shadow:2px 2px 10px #CCC;
+			     display: none;
+			}
+			.mens{
+				margin-top: 25px;
+				margin-left: 25px;
+				background-color: white;
+				width: 850px;
+				height: 550px;
+			}
+			.mens div:nth-of-type(1){
+				margin-top: 20px;
+			}
+			.mens div:nth-of-type(2){
+				margin-top: 25px;
+			}
+			.mens div:nth-of-type(3){
+				margin-top: 25px;
+			}
+			.wo1{
+				
+			}
+			label{
+				color: #4AC6CD;
+				font-size: 15px;
+				font-weight: 500;
+			}
+			form div{
+				margin-top: 19px;
+				margin-left: 10px;
+			}
+			#myModal3,#myModal33{
+			    margin-top:80px;
+			   }
+			#model2{
+			    width:600px;
+			    height:500px;
+			   }
+			   #mm1 table tr td{
+			    color:#000;
+			    display: inline-block;
+			    height:34px;
+			    line-height: 34px;
+			    border: 1px solid #E8E8E8;
+			    margin-left: -4px;
+			    text-align: center;
+			    width:150px;
+			   }
+			   #mm1 table tr td:nth-of-type(1){
+			    background-color:#f7f7f7;
+			    width:60px;
+			   }
+			   #mm1 table tr td:nth-of-type(2){
+			    width:90px;
+			   }
+			   #mm1 table tr td:nth-of-type(3){
+			    width:268px;
+			   }
+			   #mm1 table tr:nth-of-type(1){
+			    background-color:darkturquoise;
+			   }
+			   #mm1{
+			    height: 330px;
+			    margin-left: 4px;
+			   }
+			   #lizhi{
+				width: 900px;
+				height: 600px;
+				background-color: white;
+				position: absolute;
+				top:100px;
+				left: 300px;
+				border: 2px solid;
+				border-radius: 15px;
+				 -moz-box-shadow:2px 2px 10px #CCC;
+			     -webkit-box-shadow:2px 2px 10px #CCC;
+			     box-shadow:2px 2px 10px #CCC;
+			     display: none;
+				}
+				#row{
+					border-top-left-radius: 15px;
+					border-top-right-radius: 15px;
+					margin-top: 20px;
+				}
+				#row div:nth-of-type(1){
+					margin-left: 10px;
+					padding-left: 45px;
+				}
+				.row1s{
+					background-color: #F7F7F7;
+					width: 800px;
+					height: 500px;
+					margin-top: 20px;
+					margin-left: 40px;
+				}
+		</style>
+	</head>
+	<body>
+		<div id="ctn">
+			<div class="row" id="row1">
+			  <div class="col-md-6" style="font-size: 25px;color: #1A2846;">离职登记</div>
+			  <div class="col-md-4">
+				  <input type="text" class="form-control" placeholder="员工编号/姓名">
+			  </div>
+			  <div class="col-md-1"><button class="btn btn-danger">搜索</button></div>
+			  <div class="col-md-1"><button class="btn">关闭</button></div>
+			</div>
+			<div class="row1">
+				<div style="color: #686868;font-size:18px;">
+					<div class="col-md-5" @click="show"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png"/><span id="yes">门店选择</span></div>
+					<div class="col-md-1" @click="show"><img src="img/26d502752909327e0126dd1795f6cba.png"/><span id="yes2">离职</span></div>
+					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/><span data-target="#myModal2" data-toggle="modal">回滚</span></div>
+					<div class="col-md-1"><img src="img/bf85271b165061da46d9b136dc0a4d2.png"/>打开</div>
+					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png"/><span data-target="#myModal1" data-toggle="modal">删除</span></div>
+					<div class="col-md-1" @click="show"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png"/><span id="yes1">查询</span></div>
+					<div class="col-md-1"><img src="img/bf85271b165061da46d9b136dc0a4d2.png"/>导出</div>
+				</div>
+				<div class="show1">
+					<table class="table table-bordered">
+					  <tr style="background-color:#39CEDE;">
+					  	<td width="70px"></td>
+					  	<td>所在门店</td>
+					  	<td>部门</td>
+					  	<td>员工编号</td>
+					  	<td>姓名</td>
+					  	<td>性别</td>
+					  	<td>职位</td>
+					  	<td>离职日期</td>
+					  	<td>离职原因</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td>总厂</td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  	<td>1</td>
+					  	<td>2</td>
+					  	<td>3</td>
+					  	<td>@qq.com</td>
+					  </tr>
+					</table>
+				</div>
+			</div>
+			<div id="sys">
+			<div class="men">
+			  <div class="col-md-6" style="font-size: 25px;color: #1A2846;">门店选择</div>
+			  <div class="col-md-4">
+				  <input type="text" class="form-control" placeholder="匹配门店编码/门店姓名">
+			  </div>
+			  <div class="col-md-1"><button class="btn btn-danger">搜索</button></div>
+			  <div class="col-md-1"><button class="btn" id="no">关闭</button></div>
+			</div>
+			<div class="men1" style="background-color:#F7F7F7;height: 60px;">
+				<button class="btn btn-success col-md-2" style="width: 70px;">
+					<span style="font-size: 16px;">确定</span>
+				</button>
+				<div style="color: #686868;font-size:18px;" class="col-md-10">
+					<div class="col-md-6"></div>
+					<div class="col-md-3" @click="quan"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>全部选择</div>
+					<div class="col-md-3" @click="qu"><img src="img/cec08826e6c65a5c150f9ea106feb36.png"/>全部取消</div>
+				</div>
+			</div>
+			<div class="shows" style="height: 480px;">
+					<table class="table table-bordered">
+					  <tr style="background-color:#39CEDE;">
+					  	<td width="70px"></td>
+					  	<td>选择</td>
+					  	<td>门店代码</td>
+					  	<td>门店名称</td>
+					  	<td>所在城市</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					  <tr>
+					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td>总经办</td>
+					  	<td>001</td>
+					  	<td>张三</td>
+					  </tr>
+					</table>
+			</div>
+		</div>
+		<div id="yuan">
+			<div class="mens">
+			  <div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
+			  <div class="col-md-1"><button class="btn btn-success">确定</button></div>
+			  <div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
+			  <div class="wo1">
+				<form class="form-inline">
+					  <div class="form-group">
+					    <label for="exampleInputName1">员工编号</label>
+					    <input type="text" class="form-control" id="exampleInputName1">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputName2">员工姓名</label>
+					    <input type="text" class="form-control" id="exampleInputName2">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputName3">员工性别</label>
+					    <input type="text" class="form-control" id="exampleInputName3">
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName4">岗位</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option></option>
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputName5">所在部门</label>
+					    <a href="#myModal3" data-toggle="modal">
+					    <input type="text" class="form-control" id="exampleInputName5" style="width: 200px;height: 30px">
+					    </a>
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputName6">身体状况</label>
+					    <input type="text" class="form-control" id="exampleInputName6">
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName7">籍贯</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>北京</option>
+					    	<option>上海</option>
+					    	<option>广州</option>
+					    	<option>深圳</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName8">民族</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>汉</option>
+					    	<option>满</option>
+					    	<option>蒙</option>
+					    	<option>苗</option>
+					    	<option>壮</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName9">婚姻</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>已婚</option>
+					    	<option>未婚</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName10">学历</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>本科</option>
+					    	<option>博士</option>
+					    	<option>大专</option>
+					    	<option>硕士</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName11">学校</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>清华大学</option>
+					    	<option>北京大学</option>
+					    	<option>浙江大学</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 39px;">
+					    <label for="exampleInputName12">专业</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>计算机科学与技术</option>
+					    	<option>网络工程</option>
+					    	<option>生命起源</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName13">专业资格</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>初级工程师</option>
+					    	<option>中级工程师</option>
+					    	<option>高级工程师</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 38px;">
+					    <label for="exampleInputName14">生日</label>
+					    <input type="date" class="form-control" id="exampleInputName14" style="width: 200px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 38px;">
+					    <label for="exampleInputName15">学位</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>博士</option>
+					    	<option>硕士</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 38px;">
+					    <label for="exampleInputName16">编制</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>员工</option>
+					    	<option>管理</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName17">入职日期从</label>
+					    <input type="date" class="form-control" id="exampleInputName17" style="width: 215px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName18">至</label>
+					    <input type="date" class="form-control" id="exampleInputName18" style="width: 215px;">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputName19">身份证号</label>
+					    <input type="text" class="form-control" id="exampleInputName19">
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName20">试用到期从</label>
+					    <input type="date" class="form-control" id="exampleInputName20" style="width: 215px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName21">至</label>
+					    <input type="date" class="form-control" id="exampleInputName21" style="width: 215px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 38px;">
+					    <label for="exampleInputName22">属性</label>
+					    <select style="width: 200px;height: 30px;">
+					    	<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+					    	<option>记考勤不计薪</option>
+					    	<option>不计考勤计薪</option>
+					    	<option>不计薪记考勤</option>
+					    </select>
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName23">合同开始从</label>
+					    <input type="date" class="form-control" id="exampleInputName23" style="width: 215px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 10px;">
+					    <label for="exampleInputName24">至</label>
+					    <input type="date" class="form-control" id="exampleInputName24" style="width: 215px;">
+					  </div>
+					  <div class="form-group" style="margin-left: 38px;">
+					    <label for="exampleInputName25">身高</label>
+					    <input type="text" class="form-control" id="exampleInputName25">
+					  </div>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="myModal3" data-backdrop>
+		    <div class="modal-dialog">
+		     <div class="modal-content" id="model2">
+		      <span class="close" data-dismiss="modal">&times;</span>
+		      <div class="modal-header">
+		       <div class="col-md-10"><h4>部门选择</h4></div>
+		       <div class="col-md-2">
+		        <button class="btn btn-default" type="submit">选择</button>
+		       </div>
+		      </div>
+		      <div class="modal-body">
+		       <form class="form-horizontal">
+		        <div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
+		         <select class="aa8" style="height: 25px;width: 300px;">
+		          <option>1</option>
+		          <option>2</option>
+		          <option>3</option>
+		         </select>
+		        </div>
+		        <div id="mm1">
+		         <table>
+		          <tr>
+		           <td style="background-color:darkturquoise;">选择</td>
+		           <td>部门编码</td>
+		           <td>部门名称</td>
+		           <td>部门分类</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>1</td>
+		           <td>人事经理</td>
+		           <td>管理部</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>2</td>
+		           <td>装饰部</td>
+		           <td>管理部</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>3</td>
+		           <td>备件组</td>
+		           <td>管理部</td>
+		          </tr>
+		         </table>
+		        </div>
+		       </form>
+		      </div>
+		      <div class="modal-footer" style="padding: 0px;">
+		       <div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 505px;">
+		        合计:3条记录
+		       </div>
+		      </div>
+		     </div>
+		    </div>
+		   </div>
+		   <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">删除确认</h4>
+			      </div>
+			      <div class="modal-body">
+			             是否确认将该员工所有资料清除？
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+			        <button type="button" class="btn btn-danger">是(Y)</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">卡修智慧系统</h4>
+			      </div>
+			      <div class="modal-body">
+			             是否确认将该员工恢复入职？
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+			        <button type="button" class="btn btn-danger">是(Y)</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div id="lizhi">
+			<div class="row" id="row">
+			  <div class="col-md-8" style="font-size: 25px;color: #1A2846;">离职登记</div>
+			  <div class="col-md-2"><button class="btn btn-success">确定</button></div>
+			  <div class="col-md-1"><button class="btn" id="no2">关闭</button></div>
+			</div>
+			<div class="row1s">
+				<form class="form-inline" style="height: 110px;padding-top: 10px;">
+				  <div class="form-group" style="margin-left: 20px;">
+				    <label>员工姓名</label>
+				    <a href="#myModal33" data-toggle="modal"><input type="text" class="form-control" style="border-right: 0px;"></a><input type="text" class="form-control" style="border-left: 0px;">
+				  </div>
+				  <div class="form-group" style="margin-left: 20px;">
+				    <label>离职日期</label>
+				    <input type="date" class="form-control" style="width: 200px;">
+				  </div>
+				  <div class="form-group" style="margin-left: 20px;margin-top: 10px;">
+				    <label>离职原因</label>
+				    <input type="text" class="form-control" style="width: 682px;">
+				  </div>
+				</form>
+				<table class="table table-bordered" style="width: 740px;margin-left:20px;height: 300px;">
+					<tr>
+						<td style="width: 100px;background-color: grey;height: 30px;"></td>
+						<td style="height: 30px;">选择</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;background-color: grey;height: 30px;"></td>
+						<td style="height: 30px;">选择</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;background-color: grey;height: 30px;"></td>
+						<td style="30px">选择</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="modal" id="myModal33" data-backdrop>
+		    <div class="modal-dialog">
+		     <div class="modal-content" id="model2">
+		      <span class="close" data-dismiss="modal">&times;</span>
+		      <div class="modal-header">
+		       <div class="col-md-10"><h4>选择员工</h4></div>
+		       <div class="col-md-2">
+		        <button class="btn btn-success" type="submit">确认</button>
+		       </div>
+		      </div>
+		      <div class="modal-body">
+		       <form class="form-horizontal">
+		        <div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
+		         <select class="aa8" style="height: 25px;width: 400px;">
+		          <option>00000-总厂</option>
+		          <option>00001-ddm</option>
+		          <option>00002-11</option>
+		         </select>
+		        </div>
+		        <div id="mm1">
+		         <table>
+		          <tr>
+		           <td style="background-color:darkturquoise;"></td>
+		           <td>部门名称</td>
+		           <td>部门编号</td>
+		           <td>部门姓名</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>前台</td>
+		           <td>0EX0001</td>
+		           <td>张三</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>销售部</td>
+		           <td>0EM0004</td>
+		           <td>耶律</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>售后服务部</td>
+		           <td>101</td>
+		           <td>成千</td>
+		          </tr>
+		         </table>
+		        </div>
+		       </form>
+		      </div>
+		     </div>
+		    </div>
+		   </div>
+		   
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue-2.6.js" ></script>
+		<script type="text/javascript">
+			function my(id){
+				return document.getElementById(id);
+			}
+			my("no").onclick=function(){
+				my("sys").style.display="none";
+			}
+			my("yes").onclick=function(){
+				my("sys").style.display="block";
+			}
+			my("no1").onclick=function(){
+				my("yuan").style.display="none";
+			}
+			my("yes1").onclick=function(){
+				my("yuan").style.display="block";
+			}
+			my("no2").onclick=function(){
+				my("lizhi").style.display="none";
+			}
+			my("yes2").onclick=function(){
+				my("lizhi").style.display="block";
+			}
+			new Vue({
+				el:"#ctn",
+				data(){
+					return {
+						bool:false
+					}
+				},
+				methods:{
+					quan(){
+						this.bool=true;
+					},
+					qu(){
+						this.bool=false;
+					},
+					show(){
+						my("no").onclick=function(){
+						my("sys").style.display="none";
+						}
+						my("yes").onclick=function(){
+							my("sys").style.display="block";
+						}
+						my("no1").onclick=function(){
+							my("yuan").style.display="none";
+						}
+						my("yes1").onclick=function(){
+							my("yuan").style.display="block";
+						}
+						my("no2").onclick=function(){
+							my("lizhi").style.display="none";
+						}
+						my("yes2").onclick=function(){
+							my("lizhi").style.display="block";
+						}
+					}
+				},
+				created(){
+					
+				}
+			});
+		</script>
+	</body>
+</html>

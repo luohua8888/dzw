@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CompletedMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Completed">
+        <id column="id" property="id" />
+        <result column="yesOrno" property="yesOrno" />
+        <result column="predicttime" property="predicttime" />
+        <result column="nowtime" property="nowtime" />
+        <result column="reason" property="reason" />
+        <result column="workid" property="workid" />
+        <result column="dutyid" property="dutyid" />
+        <result column="price" property="price" />
+        <result column="count" property="count" />
+        <result column="fgreason" property="fgreason" />
+        <result column="wjid" property="wjid" />
+        <result column="otherone" property="otherone" />
+        <result column="othertwo" property="othertwo" />
+        <result column="otherthree" property="otherthree" />
+        <result column="otherfour" property="otherfour" />
+        <result column="otherfive" property="otherfive" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, yesOrno, predicttime, nowtime, reason, workid, dutyid, price, count, fgreason, wjid, otherone, othertwo, otherthree, otherfour, otherfive
+    </sql>
+
+</mapper>

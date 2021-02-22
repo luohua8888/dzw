@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.GoodgradeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Goodgrade">
+        <id column="goodgradeid" property="goodgradeid" />
+        <result column="goodgrade" property="goodgrade" />
+        <result column="good1" property="good1" />
+        <result column="good2" property="good2" />
+        <result column="good3" property="good3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        goodgradeid, goodgrade, good1, good2, good3
+    </sql>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.BiyexuexiaobiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Biyexuexiaobiao">
+        <id column="schoolid" property="schoolid" />
+        <result column="name" property="name" />
+        <result column="school1" property="school1" />
+        <result column="school2" property="school2" />
+        <result column="school3" property="school3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        schoolid, name, school1, school2, school3
+    </sql>
+
+</mapper>

@@ -1,0 +1,1240 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<style>
+			body{
+				width: 100%;
+			}
+			#a1{
+				width:70px;
+				background-color: orange;
+				border:0px;
+			}
+			.aa2{
+				width:1535px;
+			}
+			.a5{
+				height:50px;
+				line-height: 50px;
+			}
+			.container-fluid{
+				width: 100%;
+				margin:0px;
+				padding: 0px;
+				padding-left:15px;
+			}
+			#b1{
+				border:0px;
+				background-color: #E3E3E3;
+			}
+			.row:nth-of-type(1){
+				 background-color: #f7ffff;
+			}
+			.row:nth-of-type(2){
+				height:705px;
+				background-color: #f7f7f7;
+			}
+			#h3{
+				margin-top:14px;
+				margin-bottom:10px;
+			}
+			.z1{
+				height: 50px;
+				line-height:50px;
+			}
+			.z2{
+				width:1535px;
+				height:615px;
+				background-color: #fff;
+			}
+			.z3{
+				height: 31px;
+				line-height:31px;
+				margin-left:10px;
+				margin-top:7px;
+			}
+			.c1{
+				width:20px;
+				height:15px;
+				margin-top:-2px;
+				margin-right: 4px;
+			}
+			.d1{
+				width:100px;
+				height:30px;
+				line-height:30px;
+				border: 1px solid #262626;
+				padding-left: 10px;
+				color:#fff;
+				background-color:darkturquoise;
+			}
+			#table1 tr td{
+				padding-left: 10px;
+				border: 1px solid #e3e3e3;
+				width:100px;
+				height:30px;
+				line-height:30px;
+			}
+			#model1{
+				width:1100px;
+				height:650px;
+			}
+			#model3{
+				width:1100px;
+			}
+			#model2{
+				width:600px;
+				height:500px;
+			}
+			#myModal2,#myModal8,#myModal9{
+				margin-left: -500px;
+			}
+			#myModal7,#myModal10,#myModal11{
+				margin-left: -200px;
+				margin-top: 125px;
+			}
+			#myModal1,#myModal4,#myModal3,#myModal5,#myModal,#myModal8,#myModal9{
+				margin-top:80px;
+			}
+			#aa1{
+				width:1068px;
+				height:470px;
+				background-color: #e3e3e3;
+			}
+			#aa3{
+				height:50px;
+				line-height: 50px;
+				background-color: #fff;
+			}
+			#aa4{
+				width: 1068px;
+				height:465px;
+				border: 1px solid #fff;
+			}
+			#kkk1{
+				width: 1068px;
+				height:450px;
+				border: 1px solid #fff;
+			}
+			.aa5{
+				height: 30px;
+				width: 150px;
+				border: 0px;
+				margin-left:10px;
+			}
+			.aa6{
+				height: 30px;
+				border: 0px;
+				width:402px;
+				margin-left:10px;
+			}
+			ul li{
+				list-style-type: none;
+			}
+			.ul1{
+				padding: 0px;
+				margin-left: 30px;
+				border-left: 1px dotted #444444;
+			}
+			#j1{
+				width:10px;
+				height:10px;
+				display: inline-block;
+				border-bottom:1px dotted #000;
+			}
+			#aa4 table tr td{
+				color:#337AB7;
+				padding-left:30px;
+				display: inline-block;
+				height:34px;
+			}
+			.aa8{
+				width:130px;
+				height:30px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left:7px;
+				border: 0px;
+			}
+			.aa19{
+				width:149px;
+				height:30px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left:7px;
+				border: 0px;
+			}
+			.aa18{
+				width:150px;
+				height:30px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left:7px;
+				border: 0px;
+			}
+			.aa9{
+				width:20px;
+				height:30px;
+				line-height: 30px;
+				display:inline-block;
+				background-color: #fff;
+				position: relative;
+				top:0;
+				left:-4px;
+				text-align: center;
+			}
+			#img1{
+				width:15px;
+				height:10px;
+			}
+			.ming{
+				margin-left:-6px;
+			}
+			#tab1{
+				display:flex;
+			}
+			#zhao{
+				width: 15px;
+				height: 500px;
+				line-height: 70px;
+				border: 1px solid #000;
+				display: inline-block;
+				text-align: center;
+				margin-left: 255px;
+			}
+			.biao1{
+				width: 280px;
+				height: 200px;
+			}
+			#kkk1 div{
+				width:900px;
+				height:300px;
+				margin-left: 65px;
+				margin-top: 15px;
+			}
+			.form-control{
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			#mm1 table tr td{
+				color:#000;
+				display: inline-block;
+				height:34px;
+				line-height: 34px;
+				border: 1px solid #E8E8E8;
+				text-align: center;
+				width:150px;
+			}
+			#mm1 table tr td:nth-of-type(1){
+				background-color:#f7f7f7;
+				width:60px;
+			}
+			#mm1 table tr td:nth-of-type(2){
+				width:90px;
+			}
+			#mm1 table tr td:nth-of-type(3){
+				width:268px;
+			}
+			#mm1 table tr:nth-of-type(1){
+				background-color:darkturquoise;
+			}
+			#mm1{
+				height: 330px;
+			}
+			#mm2 table tr td{
+				color:#000;
+				display: inline-block;
+				height:34px;
+				line-height: 34px;
+				border: 1px solid #E8E8E8;
+				text-align: center;
+				width:113px;
+			}
+			#mm2 table tr td:nth-of-type(1){
+				background-color:#f7f7f7;
+			}
+			#mm2 table tr td:nth-of-type(3){
+				width: 116px;
+			}
+			#mm2 table tr:nth-of-type(1){
+				background-color:darkturquoise;
+			}
+			#mm2{
+				height: 330px;
+			}
+			a{
+				color:#000000;
+			}
+			.ko1{
+				height: 30px;
+				border: 5px solid #fff;
+				width: 303px;
+			}
+			.div {
+				position: relative;
+				left:240px;
+				width: 30px;
+				height: 100px;
+			  }
+
+			  .searImageThreeBtn {
+				position: absolute;
+				top: 0;
+				left:1px;
+				bottom: 0;
+				letter-spacing: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+			  }
+			  .layui-upload-file {
+				width: 100%;
+				height: 100%;
+			  }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid" id="ctn">
+			<div class="row aa2">
+				<div class="col-md-7">
+					<h3 id="h3">组织机构定义</h3>
+				</div>
+				<div class="col-md-3 " id="l1">
+					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机">
+				</div>
+				<div class="col-md-2 a5">
+					<button type="submit" class="btn btn-default" id="a1">搜索</button>
+					<button type="submit" class="btn btn-default" id="b1">关闭</button>
+				</div>
+			</div>
+			<div class="row aa2">
+				<div class="z1">
+					<div class="col-md-1"><a href="#myModal8" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">使用门店</a></div>
+					<div class="col-md-1"><a href="#myModal9" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">门店编辑</a></div>
+					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">增加员工</a></div>
+					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改员工</a></div>
+					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">删除</div>
+					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">查询</a></div>
+					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">置空密码</div>
+					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导出</div>
+					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导入</a></div>
+					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">员工角色</a></div>
+					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">字段设置</a></div>
+				</div>
+				<div class="z2">
+					<div class="col-xs-2">
+						<div class="ddiv2">
+							<ul class="">
+								<li>
+									<a @click="xianshi()" href="#"><span>+</span>_株洲总店</a>
+									<ul class="ul1" v-if="this.xs">
+										<li><span></span>人事部</li>
+										<li><span></span>人事部</li>
+										<li><span></span>人事部</li>
+										<li><span></span>人事部</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xs-10 a" style="width:1279px;overflow-x:scroll;height:615px;">
+						<table id="table1" style="width: 1900px;">
+							<tr>
+								<td v-for="s in stafflist" v-if="s.bool==0" class="d1">{{s.fieldname}}</td>
+							</tr>
+							<tr>
+								<td>成高</td>
+								<td>11</td>
+								<td>管钱部</td>
+								<td>HGO121312</td>
+								<td>张毅丰</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="z3">
+					合计:1条记录
+				</div>
+			</div>
+			<div class="modal" id="myModal2" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model1">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>员工卡片</h3></div>
+								<div class="col-md-5">
+									<button class="btn btn-default" type="submit">保存</button>
+									<span><a href="#myModal11" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">打印</a></span>
+									<span><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">实名认证</span>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1">
+									<div><span @click="ying2()">基本资料</span><span @click="ying()">其他信息</span></div>
+									<div id="aa4" style="padding-top:2px;">
+										<table id="tab1">
+											<tr>
+												<td>人员编号:<input type="text" class="aa5"></td>
+												<td>员工姓名:<input type="text" class="aa5"></td>
+												<td class="dd1">
+													性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></a></span>
+												</td>
+												<td>
+													 <div class="div">
+														<button type="button" class="searImageThreeBtn" id="upload_input">
+														  <span>照片</span>
+														</button>
+														<input class="layui-upload-file" type="file" name="file" >
+													  </div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">所在门店:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;"><input type="text" class="ko1" disabled="disabled"></td>
+												<td colspan="2">所在部门:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" disabled="disabled"><input type="text" class="ko1" disabled="disabled" style="width:280px;"><span class="aa9"><a href="#myModal3" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span></td>
+											</tr>
+											<tr>
+												<td>登录账号:<input type="text" class="aa5"></td>
+												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:<input type="text" class="aa5"></td>
+												<td>身体状况:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5"></td>
+												<td>
+													籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td class="ming">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+											</tr>
+											<tr>
+												<td>婚姻状况:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td class="ming">毕业学校:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+											</tr>
+											<tr>
+												<td>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td  class="ming">专业资格:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td  >属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
+													<select class="aa18">
+														<option></option>
+													</select>
+												</td>
+												<td class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+											</tr>
+											<tr>
+												<td>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td  class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5"></td>
+												<td colspan="2">户口地址:<input type="text" class="aa6"></td>
+											</tr>
+											<tr>
+												<td colspan="2">现住地址:<input type="text" class="aa6"></td>
+												<td>联系电话:<input type="text" class="aa5"></td>
+												<td>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>E&nbsp;M&nbsp;a&nbsp;i&nbsp;l&nbsp;:<input type="text" class="aa5"></td>
+												<td>开户银行:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td class="ming">银行账号:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>紧急联系:<input type="text" class="aa5"></td>
+												<td>联系电话:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>入职日期:<input type="date" class="aa5"></td>
+												<td>试用到期:<input type="date" class="aa5"></td>
+												<td>出生日期:<input type="date" class="aa5"></td>
+												<td>合同开始:<input type="date" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>合同结束:<input type="date" class="aa5"></td>
+												<td>卡自编号:<input type="text" class="aa5"></td>
+												<td>卡内编号:<input type="text" class="aa5"></td>
+												<td>推&nbsp;&nbsp;荐&nbsp;&nbsp;人:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>整单折扣:<input type="text" class="aa5"></td>
+												<td>工时折扣:<input type="text" class="aa5"></td>
+												<td>商品折扣:<input type="text" class="aa5"></td>
+												<td>减&nbsp;&nbsp;免&nbsp;&nbsp;权:<input type="text" class="aa5"></td>
+											</tr>
+										</table>
+									</div>
+									<div id="kkk1">
+										<div>
+											工作简历
+											<textarea class="form-control " rows="3" style="width:400px;height: 100px;"></textarea>
+											教育经验
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+											聘用意见
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+										</div>
+										<div>
+											家庭成员
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+											奖惩记录
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a  class="btn btn-default" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-default">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal" id="myModal3" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="col-md-10"><h4>部门选择</h4></div>
+							<div class="col-md-2">
+								<button class="btn btn-default" type="submit">选择</button>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
+									<select class="aa8" style="height: 25px;width: 300px;">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>
+								<div id="mm1">
+									<table>
+										<tr>
+											<td style="background-color:darkturquoise;">选择</td>
+											<td>部门编码</td>
+											<td>部门名称</td>
+											<td>部门分类</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>1</td>
+											<td>人事经理</td>
+											<td>管理部</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>2</td>
+											<td>装饰部</td>
+											<td>管理部</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>3</td>
+											<td>备件组</td>
+											<td>管理部</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer" style="padding: 0px;">
+							<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 505px;">
+								合计:3条记录
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal4" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-10"><h3>员工角色</h3></div>
+								<div class="col-md-2">
+									<button class="btn btn-default" type="submit">保存</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部选则
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部取消
+								</div>
+								<div id="mm1">
+									<table>
+										<tr>
+											<td style="background-color:darkturquoise;"></td>
+											<td style="width: 200px;">权限</td>
+											<td style="width: 100px;">包含</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td style="width: 200px;">删除</td>
+											<td style="width: 100px;"><input type="checkbox"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td style="width: 200px;">修改</td>
+											<td style="width: 100px;"><input type="checkbox"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td style="width: 200px;">新增</td>
+											<td style="width: 100px;"><input type="checkbox"></td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal5" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header"><h4>字段设置</h4></div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div style="background-color: lightgoldenrodyellow;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
+									<button style="height: 40px;width: 70px;border: 0px;background-color: #008000;color: #fff;margin-right: 290px;">确定</button>
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部选择
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部取消
+								</div>
+								<div id="mm2">
+									<table>
+										<tr>
+											<td style="background-color: darkturquoise;">显示</td>
+											<td>字段</td>
+											<td>字段名称</td>
+											<td>序号</td>
+											<td>显示宽度</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>AA1</td>
+											<td>机构</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>1</td>
+											<td>清华大学</td>
+											<td>1</td>
+											<td>清华大学</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>1</td>
+											<td>清华大学</td>
+											<td>1</td>
+											<td>清华大学</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal6" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<form action="http://127.0.0.1:8080/file/upload" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
+							<div class="modal-header">
+								<span> <a href="http://127.0.0.1:8080/file/download?templateName=StudentTemplate.xlsx">标准格式</a></span>
+								<span>
+									<button type="submit" class="btn btn-primary" style="border: 0px;background-color:#fff;color: #000;">确认转入</button>
+								</span>
+								<span>退出</span>
+							</div>
+							<div class="modal-body">
+								<form class="form-horizontal">
+									<div style="background-color: lightgoldenrodyellow;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
+										<span> 
+											<div class="form-group">
+												<div style="margin-top: -7px;margin-left: 26px;">
+													<input style="width: 300px;" type="file" name="file" id="input" class="form-control" value="" required="required" pattern="" title="">
+												</div>
+											</div>
+										</span>
+										<div style="position: absolute;top:15px;left: 360px;">
+											导入方式
+											<select style="height: 25px;width: 150px;">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+										</div>
+									</div>
+									<div id="mm2" style="width: 563px;margin:0px;overflow-x: scroll;">
+										<table style="width:1200px;">
+											<tr>
+												<td style="background-color: darkturquoise;">显示</td>
+												<td>部门代码</td>
+												<td>部门名称</td>
+												<td>工号</td>
+												<td>姓名</td>
+												<td>性别</td>
+												<td>岗位</td>
+											</tr>
+										</table>
+									</div>
+									<div style="height: 50px;line-height: 50px;">
+										共0条记录
+									</div>
+								</form>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal7" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model1" style="width: 820px;height:450px;">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>员工查询</h3></div>
+								<div class="col-md-5" style="text-align: right;"><button class="btn btn-default" type="submit" style="background-color:#67B168;">确定</button></div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height:315px;width:780px;background-color:lightgoldenrodyellow;border: 1px solid #C1E2B3;">
+									<div id="aa4" style="padding-top:5px;border:0px;width:790px;height:500px;">
+										<table id="tab1">
+											<tr>
+												<td>员工编号:<input type="text" class="aa5"></td>
+												<td>员工姓名:<input type="text" class="aa5"></td>
+												<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input type="text" class="aa5"></td></tr>
+											<tr>
+												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
+												<select class="aa19">
+													<option></option>
+												</select>
+												</td>
+												<td>所在部门:
+													<select class="aa19" style="width:400px;">
+														<option></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5"></td>
+												<td>籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:<input type="text" class="aa5"></td>
+												<td>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													婚姻状况:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+												<td>
+													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+												<td>
+													毕业学校:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+												<td>
+													专业资格:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+												<td>
+													属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日:<input type="date" class="aa5"></td>
+												<td>
+													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+												<td>
+													编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
+													<select class="aa19">
+														<option></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>身份证号:<input type="text" class="aa5"></td>
+												<td>入职日期:<input type="date" class="aa5"><span style="margin:0px 33px 0px 43px;">至</span><input type="date" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>试用到期:<input type="date" class="aa5"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
+												<td class="ming">&nbsp;银行账号:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>合同开始:<input type="date" class="aa5"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal8" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model3">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>门店编辑</h3></div>
+								<div class="col-md-5" style="text-align: right;">
+									<button class="btn btn-default" type="submit">保存</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height: 255px;">
+									<div id="aa4" style="padding-top:2px;height: 240px;">
+										<table id="tab1">
+											<tr>
+												<td>门店编码:<input type="text" class="aa5"></td>
+												<td>门店名称:<input type="text" class="aa5"></td>
+												<td>上级门店:<input type="text" class="aa5"></td>
+												<td>售价权重:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>
+													门店分类
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+												<td>最大许可数<input type="text" class="aa5"></td>
+												<td>
+													调拨价类
+													<select class="aa19">
+													<option></option>
+												</select>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													省
+													<select class="aa19">
+													<option></option>
+												</td>
+												<td>
+													市
+													<select class="aa19">
+													<option></option>
+												</td>
+												<td>
+													区
+													<select class="aa19">
+													<option></option>
+												</td>
+											</tr>
+											<tr>
+												<td>开票单位<input type="text" class="ko1"></td>
+												<td>地址<input type="text" class="ko1"></td>
+											</tr>
+											<tr>
+												<td>纳税人识别号<input type="text" class="ko1"></td>
+												<td>电话<input type="text" class="aa5"></td>
+												<td>联系人<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>开户银行<input type="text" class="aa5"></td>
+												<td>银行账号<input type="text" class="aa5"></td>
+												<td>
+													装修门店
+													<input type="text" class="ko1" style="margin-left: 10px;width: 100px;">
+													<input type="text" class="ko1" disabled="disabled" style="margin-left: -10px;">
+													<span class="aa9"><a href="#myModal10" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox">入库开单/审核分开</td>
+												<td><input type="checkbox">停用</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal9" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model3">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>用户公司定义</h3></div>
+								<div class="col-md-5" style="text-align: right;">
+									<button class="btn btn-default" type="submit">保存</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height: 311px;">
+									<div id="aa4" style="padding-top:2px;height: 311px;">
+										<table id="tab1">
+											<tr>
+												<td>单位名称<input type="text" class="aa5"></td>
+												<td>单位地址<input type="text" class="aa5"></td>
+												<td>单位简称<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>业务电话<input type="text" class="aa5"></td>
+												<td>投诉电话<input type="text" class="aa5"></td>
+												<td>网址<input type="text" class="aa5"></td>
+												<td>Email<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>开户银行<input type="text" class="aa5"></td>
+												<td>银行账号<input type="text" class="aa5"></td>
+												<td>短信账号<input type="text" class="aa5"></td>
+												<td>短信密码<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>商品编码价位<input type="text" class="aa5"></td>
+												<td>初始加价率<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>商品税率<input type="text" class="aa5"></td>
+												<td>销售金额<input type="text" class="aa5"></td>
+												<td>折合积分<input type="text" class="aa5"></td>
+												<td>积分/元<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>维修看板行数<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>三包申请超期（天）<input type="text" class="aa5"></td>
+												<td>车辆年审提醒（天）<input type="text" class="aa5"></td>
+												<td>账期超期提醒（天）<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>班组备建库超期（天）<input type="text" class="aa5"></td>
+												<td>配件库超龄提醒（天）<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>工时费比例</td>
+												<td>站内晚上系数<input type="text" class="aa5"></td>
+												<td>站外白天系数<input type="text" class="aa5"></td>
+												<td>站外晚上系数<input type="text" class="aa5"></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal10" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model1" style="width: 820px;height:450px;">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>选择门店</h3></div>
+								<div class="col-md-5" style="text-align: right;">
+									<input type="text" style="height: 35px;">
+									<button class="btn btn-default" type="submit" style="background-color:#67B168;">搜索</button>
+									<button class="btn btn-default" type="submit" style="background-color:#67B168;">取消</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height:315px;width:780px;background-color:lightgoldenrodyellow;border: 1px solid #C1E2B3;">
+									<div style="border:0px;width:790px;height:500px;">
+										<div id="mm2">
+											<table>
+												<tr>
+													<td style="background-color:darkturquoise;"></td>
+													<td>门店代码</td>
+													<td>门店名称</td>
+													<td>上级门店</td>
+													<td>所在城市</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>AA1</td>
+													<td>机构</td>
+													<td>1</td>
+													<td>150</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>1</td>
+													<td>清华大学</td>
+													<td>1</td>
+													<td>清华大学</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>1</td>
+													<td>清华大学</td>
+													<td>1</td>
+													<td>清华大学</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal11" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model1" style="width: 820px;height:250px;">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>报表打印</h3></div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height:50px;width:780px;background-color:lightgoldenrodyellow;border: 1px solid #C1E2B3;">
+									<div id="aa4" style="padding-top:5px;border:0px;width:790px;height:50px;text-align: center;">
+										<button><a href="dayin.html">打印</a></button><button>预览</button><button>设计</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal1" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header"><h4>选择内容设置</h4></div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改
+									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">保存
+								</div>
+								<div id="mm1">
+									<table>
+										<tr>
+											<td style="background-color:darkturquoise;">选择</td>
+											<td>序号</td>
+											<td>毕业大学</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>1</td>
+											<td>清华大学</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>2</td>
+											<td>北京大学</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>3</td>
+											<td>科技大学</td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer" style="padding: 0px;">
+							<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 20px;">
+								<a  class="btn btn-default" data-dismiss="modal">选择</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/region.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var stafflist=[
+			{
+				id:"1",
+				bool:0,
+				field:"aaa",
+				fieldname:"机构",
+				width:"100"},
+			{
+				id:"2",
+				bool:0,
+				field:"aaa",
+				fieldname:"部门代码",
+				width:"100"
+			},
+			{
+				id:"3",
+				bool:0,
+				field:"aaa",
+				fieldname:"部门名称",
+				width:"100"
+			},
+			{
+				id:"4",
+				bool:0,
+				field:"aaa",
+				fieldname:"工号",
+				width:"100"
+			},
+			{
+				id:"5",
+				bool:0,
+				field:"aaa",
+				fieldname:"姓名",
+				width:"100"
+			},
+		];
+		$("#kkk1").css("display","none");
+		new Vue({
+			el:"#ctn",
+			data(){
+				return{
+					stafflist:stafflist,
+					xs:true
+				}
+			},
+			methods:{
+				xianshi(){
+					if(this.xs){
+						this.xs=false;
+					}else{
+						this.xs=true;
+					}
+					
+				},
+				createTab(item){
+					if(item.children && item.children.length>0){
+						return;
+					}
+					this.tabs.forEach(item=>{item.active=false;});
+					this.$set(item,"active",true);
+					var bool = this.tabs.some(sitem=>sitem.ename==item.ename);
+					if(!bool){
+						this.tabs.push(item);
+					}
+				},
+				removeTab(index){
+					if(index==this.tabs.length-1){
+						this.tabs[index-1].active=true;
+					}
+					this.tabs.splice(index,1);
+				},
+				ying(){
+					$("#aa4").css("display","none");
+					$("#kkk1").css("display","flex");
+				},
+				ying2(){
+					$("#aa4").css("display","flex");
+					$("#kkk1").css("display","none");
+				}
+			}
+		});
+	</script>
+	</body>
+</html>

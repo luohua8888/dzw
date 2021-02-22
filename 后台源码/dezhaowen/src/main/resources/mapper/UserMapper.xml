@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.User">
+        <id column="user" property="user" />
+        <result column="pwd" property="pwd" />
+        <result column="miaoshu" property="miaoshu" />
+        <result column="u1" property="u1" />
+        <result column="u2" property="u2" />
+        <result column="u3" property="u3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user, pwd, miaoshu, u1, u2, u3
+    </sql>
+
+</mapper>

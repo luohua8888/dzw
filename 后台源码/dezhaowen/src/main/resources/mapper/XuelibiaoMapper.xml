@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.XuelibiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Xuelibiao">
+        <id column="educationid" property="educationid" />
+        <result column="name" property="name" />
+        <result column="ed1" property="ed1" />
+        <result column="ed2" property="ed2" />
+        <result column="ed3" property="ed3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        educationid, name, ed1, ed2, ed3
+    </sql>
+
+</mapper>

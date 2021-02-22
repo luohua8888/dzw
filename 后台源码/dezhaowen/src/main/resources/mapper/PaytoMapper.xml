@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.PaytoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Payto">
+        <id column="paytoid" property="paytoid" />
+        <result column="payto" property="payto" />
+        <result column="pay1" property="pay1" />
+        <result column="pay2" property="pay2" />
+        <result column="pay3" property="pay3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        paytoid, payto, pay1, pay2, pay3
+    </sql>
+
+</mapper>

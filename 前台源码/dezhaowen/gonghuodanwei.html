@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			ul li{
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn" style="width: 1533px;margin-left:-14px;" class="container-fluid">
+			<div style="width: 1533px;line-height: 40px; background:#F7FFFF ; float: left;">
+				<span style="font-size: 22px;margin-left: 10px;">供货单位</span>
+				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;"/>
+				<button class="btn btn-default" style="background: #F8A621;color: white;width: 80px;">搜索</button>
+				<button class="btn btn-default" style="background: #C6C6C6;color: white;">关闭</button>
+			</div>
+			<div style="float: left;width: 1533px;background: #F7F7F7;line-height: 30px;">
+				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span>
+				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span>
+				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span>删除</span>
+				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span>
+				<img  src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span>导出</span>
+				<img  src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span>
+				<img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span>
+				<img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span>
+			</div>
+			<div class="modal" id="mymodal" data-backdrop="static">
+					<div style="width: 900px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h3 class="col-xs-10">供货单位编辑</h3>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;margin-top: 15px;">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;"></td>
+									</tr>
+
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><img @click="mo" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;"><option>A</option><option>B</option><option>C</option></select><img @click="mo1" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">经营品牌</label>
+											<input style="width: 120px;margin-left: 9px;margin-right: 10px;" />
+											<label style="margin-left: 11px;">厂商类别</label><input disabled="disabled" style="width: 100px; margin-left: 10px;margin-right: 10px;"><input disabled="disabled" style="width: 220px;">
+											<img @click="mo2" src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;"><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">账期(天)</label>
+											<input type="number" style="width: 60px;margin-left: 10px;">
+											<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;">
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal1" data-backdrop="static">
+					<div style="width: 900px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h3 class="col-xs-10">供货单位编辑</h3>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;margin-top: 15px;">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;"></td>
+									</tr>
+
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><img src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;"><option>A</option><option>B</option><option>C</option></select><img src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">经营品牌</label>
+											<input style="width: 120px;margin-left: 9px;margin-right: 10px;" />
+											<label style="margin-left: 11px;">厂商类别</label><input style="width: 100px; margin-left: 10px;margin-right: 10px;"><input style="width: 220px;">
+											<img src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;"><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">账期(天)</label>
+											<input type="number" style="width: 60px;margin-left: 10px;">
+											<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;">
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal2" data-backdrop="static">
+					<div style="width: 600px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<span style="font-size: 22px;">供货单位查询</span>
+								<input type="checkbox"  style="margin-top: 28px;margin-left: 290px;"/>
+								<label  style="margin-top: 23px;">停用</label>
+								<button class="btn btn-default " style="background-color:#82D921 ;margin-top: 0px;margin-left: 20px;">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td><label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"></td>
+									</tr>
+
+									<tr>
+										<td>
+											<label style="margin-left: 10px;">地址</label><input style="width: 120px;margin-left: 34px;margin-right: 10px;" /><label style="margin-left: 10px;">付款方式</label><select style="margin-left: 12px;width: 120px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select>
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">厂商等级</label><select style="margin-left: 12px;width: 113px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><label style="margin-left: 11px;">经营品牌</label><input style="width: 120px;margin-left: 20px;margin-right: 10px;" /></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">经营品牌</label>
+											<input style="width: 90px;margin-left: 9px;margin-right: 10px;" />
+											<img src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -13px;" />
+											<label style="margin-left: 11px;">联系人</label><input style="width: 120px; margin-left: 35px;margin-right: 10px;">
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 10px;">电话</label><input style="width: 120px;margin-left:33px;margin-right: 10px;" /><label style="margin-left: 10px;">手机</label><input style="width: 120px; margin-left: 38px;margin-right: 10px;"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 10px;">经营情况</label><input style="width: 120px;margin-left: 6px;margin-right: 10px;" /><label style="margin-left: 10px;">备注</label><input style="width: 120px; margin-left: 38px;margin-right: 10px;"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal3" data-backdrop="static">
+					<div style="width: 1510px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;height: 600px;">
+								
+								<div style="float: left; background-color:#D6D7CE;width: 1509px;line-height:40px;margin-left: -15px;">
+									<div @click="ba" style="float: left;"><img src="img/20210126110220.png" >增加照片</div>
+									<div style="float: left;"><img src="img/20210126110229.png">删除照片</div>
+									<div style="float: left;"><img src="img/20210126110259.jpg">退出</div>
+								</div>
+								<div style="float: left;width: 200px;height: 500px;background-color: #ADAEAD;margin-left: -15px;">
+									<div style="float: left;width:180px;line-height: 25px;background-color: #D6D7CE;margin-top: 1px;">
+										<span style="margin-left: 100px;">照片名称</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal4" data-backdrop="static">
+					<div style="width: 800px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header" style="">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">客户资料编辑</h5>
+								
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;height: 380px;">
+								<div style="background: #F7FFDE;width: 760PX;line-height: 37px;">
+									<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;">确定</button>
+									<img src="img/20210126141619.png" style="margin-left: 520px;">全部选择
+									<img src="img/20210126141636.png">全部取消
+								</div>
+								<div style="width: 760px;height: 300px;overflow-y:scroll;">
+									<table class="table table-bordered" style="width: 760px;">
+										<tr>
+											<td style="width:100px;">显示</td>
+											<td style="width:170px;">字段</td>
+											<td style="width:190px;">字段名称</td>
+											<td style="width:90px;">序号</td>
+											<td>显示宽度</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox" ></td>
+											<td>CustCode</td>
+											<td>客户编码</td>
+											<td>1</td>
+											<td>150</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal5" data-backdrop="static">
+					<div style="width: 800px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<span style="font-size: 22px;">河南众鑫汽车服务有限公司的联系人</span>
+								<button class="btn btn-default " style="background-color:#C6C6C6;margin-top: 0px;margin-left:330px;">关闭</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<div style="width: 800px;">
+									<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 600px;"><span @click="en()">增加</span>
+									<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span>删除</span>
+									<img src="img/20210125191943.png" width="14" style="margin-left:11px;"><span>保存</span>
+								</div>
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 12px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 10px;">手机</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 10px;">职位</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"></td>
+									</tr>
+
+									<tr>
+										<td><label style="margin-left: 12px;">电话</label><input style="width: 120px;margin-left: 27px;margin-right: 10px;" /><label style="margin-left: 3px;">email</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">
+									</tr>
+									
+								</table>
+								<table class="table table-bordered" style="width: 600px;">
+									<tr style="background: #39CEDE;">
+										<td style="width: 90px;">联系人</td>
+										<td style="width: 90px;">职位</td>
+										<td style="width: 140px;">手机</td>
+										<td style="width: 140px;">电话</td>
+										<td style="width: 140px;">Email</td>
+									</tr>
+									<tr>
+										<td>123</td>
+										<td>123</td>
+										<td>123萨达萨达</td>
+										<td>123</td>
+										<td>123</td>
+									</tr>
+									<tr>
+										<td>阿x</td>
+										<td>码农</td>
+										<td>13873335490</td>
+										<td>13873335490</td>
+										<td>123@163.com</td>
+									</tr>
+								</table>
+							</div>
+							<div style="line-height: 30px; margin-left: 10px;">合计2条</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal6" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h4>选择内容设置</h4></div>
+							<div class="modal-body" style="margin-top: -14px;margin-left: -16px;height: 400px;">
+								<div style="width: 600px;background-color: #D6D6CE;line-height: 30px;">
+									<img style="margin-left: 500px;" src="img/QQ图片20210121164522.png" width="14">修改
+									<img src="img/20210125191943.png" width="14">保存
+								</div>
+								<div style="width:400px;height: 300px;">
+									<table class="table table-bordered">
+										<tr style="background-color: #39CEDE;">
+											<td>序号</td>
+											<td>订购单付款方式</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>按月结算</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>货到付款</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>分期付款</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="modal-footer" style="background-color:#F7F7F7;">
+								<button class="btn btn-default" style="background-color:#82DA23;width: 90px;line-height: 24px;">选择</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal7" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h4>选择内容设置</h4></div>
+							<div class="modal-body" style="margin-top: -14px;margin-left: -16px;height: 400px;">
+								<div style="width: 600px;background-color: #D6D6CE;line-height: 30px;">
+									<img style="margin-left: 500px;" src="img/QQ图片20210121164522.png" width="14">修改
+									<img src="img/20210125191943.png" width="14">保存
+								</div>
+								<div style="width:400px;height: 300px;">
+									<table class="table table-bordered">
+										<tr style="background-color: #39CEDE;">
+											<td>序号</td>
+											<td>厂商等级</td>
+										</tr>
+										<tr>
+											<td>1</td>
+											<td>A</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>B</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>C</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="modal-footer" style="background-color:#F7F7F7;">
+								<button class="btn btn-default" style="background-color:#82DA23;width: 90px;line-height: 24px;">选择</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal8" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<span style="font-size: 24px;">厂商分类选择</span>
+								<button class="btn btn-default" style="width: 100px;background: #81D722;margin-left: 300px;">选择</button>
+							</div>
+							<div class="modal-body" style="margin-top: -14px;margin-left: -16px;height: 400px;">
+								<div style="width:400px;height: 300px;">
+									<ul class="ul1" style="margin-left: 20px;">
+										<li v-for="item in sp1">
+											<span @click="xd1">+</span><span style="font-size: 16px;">{{item.name}}</span>
+											<ul v-if="xsa1">
+												<li  v-for="items in item.children">
+												<span style="margin-left: 10px;">+</span><span style="font-size: 16px;">{{items.name}}</span>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="modal-footer" style="background-color:#F7F7F7;">
+								<button class="btn btn-default" style="background-color:#82DA23;width: 90px;line-height: 24px;">选择</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="ddiv2" style="float: left;background: white;width: 230px;height: 658px;">
+						<ul class="ul1" style="margin-left: 20px;">
+							<li v-for="item in sp">
+								<span @click="xd">+</span><span style="font-size: 16px;">{{item.name}}</span>
+								<ul v-if="xsa">
+									<li  v-for="items in item.children">
+										<span style="margin-left: 10px;">+</span><span style="font-size: 16px;">{{items.name}}</span>
+									</li>
+								</ul>
+							</li>
+						</ul>
+			</div>
+			<div style="float: left;width: 1273px;height:400px; overflow-x:scroll;">
+				<table class="table table-bordered" style="width: 1800px;max-width: 1803px;">
+					<tr style="background: #39CEDE;">
+						<td>厂商代码</td>
+						<td>厂商名称</td>
+						<td>地址</td>
+						<td>经营状况</td>
+						<td>网址</td>
+						<td>开户行</td>
+						<td>银行账号</td>
+						<td>付款方式</td>
+						<td>厂商等级</td>
+						<td>经营品牌</td>
+						<td>厂商类别</td>
+						<td>联系人</td>
+						<td>电话</td>
+						<td>手机</td>
+						<td>Email</td>
+						<td>账期(天)</td>
+						<td>备注</td>
+					</tr>
+					<tr>
+						<td>00000PO210100</td>
+						<td>的的</td>
+						<td>的</td>
+						<td>1</td>
+						<td>的</td>
+						<td>1</td>
+						<td>1</td>
+						<td>货到付款3</td>
+						<td>A</td>
+						<td>1</td>
+						<td>北京</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+						<td>1</td>
+					</tr>
+				</table>
+			</div>
+			<div style="float: left;width: 1273px;height:259px; ">
+				<div style="float: left;width: 1273px;line-height: 30px;background: #F7F7F7;">
+					<div style="float: left; width: 80px;line-height: 30px; border-top: solid 3px #39CEDE;text-align: center;">联系人</div>
+				</div>
+				<table class="table table-bordered" style="width: 700px;">
+					<tr style="background: #39CEDE;">
+						<td>联系人</td>
+						<td>职位</td>
+						<td>手机</td>
+						<td>电话</td>
+						<td>Email</td>
+					</tr>
+					<tr>
+						<td>123</td>
+						<td>123</td>
+						<td>123萨达萨达</td>
+						<td>123</td>
+						<td>123</td>
+					</tr>
+					<tr>
+						<td>阿x</td>
+						<td>码农</td>
+						<td>13873335490</td>
+						<td>13873335490</td>
+						<td>123@163.com</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript">
+	var sp=[{
+				id:1,
+				name:"10-北京",
+				ename:'sys',
+				children:[
+					{
+						id:4,
+						name:"1001-s",
+						ename:"sys",
+					}
+				]
+				},{
+						id:2,
+						name:"20-上海",
+						ename:"sys",
+						
+				},{
+						id:3,
+						name:"30-湖南",
+						ename:"sys",
+						
+				}
+			];
+			var sp1=[{
+				id:1,
+				name:"10-北京",
+				ename:'sys',
+				children:[
+					{
+						id:4,
+						name:"1001-s",
+						ename:"sys",
+					}
+				]
+				},{
+						id:2,
+						name:"20-上海",
+						ename:"sys",
+						
+				},{
+						id:3,
+						name:"30-湖南",
+						ename:"sys",
+						
+				}
+			];
+	new Vue({
+		el:"#ctn",
+		data(){
+			return {
+				sp:sp,
+				xsa:false,
+				xsa1:false,
+				sp1:sp1
+			}
+		},
+		methods:{
+			
+			xd(){
+					if(this.xsa){
+						this.xsa=false;
+					}else{
+						this.xsa=true;
+					}
+			},
+			xd1(){
+					if(this.xsa1){
+						this.xsa1=false;
+					}else{
+						this.xsa1=true;
+					}
+			},
+			en(){
+				$("#mymodal").modal("show");
+			},
+			en1(){
+				$("#mymodal1").modal("show");
+			},
+			en2(){
+				$("#mymodal2").modal("show");
+			},
+			en3(){
+				$("#mymodal3").modal("show");
+			},
+			ba(){
+						window.location.href="file.html";
+				},
+			en4(){
+				$("#mymodal4").modal("show");
+			},
+			en5(){
+				$("#mymodal5").modal("show");
+			},
+			mo(){
+				$("#mymodal6").modal("show");
+			},
+			mo1(){
+				$("#mymodal7").modal("show");
+			},
+			mo2(){
+				$("#mymodal8").modal("show");
+			}
+		},
+		created(){
+			
+		}
+	});
+	</script>
+	
+	</body>
+</html>

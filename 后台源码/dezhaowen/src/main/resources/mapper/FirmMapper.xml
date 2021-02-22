@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.FirmMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Firm">
+        <id column="firmid" property="firmid" />
+        <result column="firmnum" property="firmnum" />
+        <result column="firmname" property="firmname" />
+        <result column="address" property="address" />
+        <result column="business" property="business" />
+        <result column="url" property="url" />
+        <result column="openbank" property="openbank" />
+        <result column="bankaccount" property="bankaccount" />
+        <result column="paymentid" property="paymentid" />
+        <result column="firmgradeid" property="firmgradeid" />
+        <result column="managebrand" property="managebrand" />
+        <result column="firmtypeid" property="firmtypeid" />
+        <result column="linkmanid" property="linkmanid" />
+        <result column="debttime" property="debttime" />
+        <result column="remark" property="remark" />
+        <result column="photo" property="photo" />
+        <result column="fir1" property="fir1" />
+        <result column="fir2" property="fir2" />
+        <result column="fir3" property="fir3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        firmid, firmnum, firmname, address, business, url, openbank, bankaccount, paymentid, firmgradeid, managebrand, firmtypeid, linkmanid, debttime, remark, photo, fir1, fir2, fir3
+    </sql>
+
+</mapper>

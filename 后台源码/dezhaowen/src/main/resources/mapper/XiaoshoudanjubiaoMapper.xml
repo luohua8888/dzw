@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.XiaoshoudanjubiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Xiaoshoudanjubiao">
+        <id column="xiaoshouno" property="xiaoshouno" />
+        <result column="xiaoshoudjlx" property="xiaoshoudjlx" />
+        <result column="xiaoshoujsfs" property="xiaoshoujsfs" />
+        <result column="xiaoshouzt" property="xiaoshouzt" />
+        <result column="xiaoshoujszt" property="xiaoshoujszt" />
+        <result column="xiaoshoujssj" property="xiaoshoujssj" />
+        <result column="xiaoshoujsr" property="xiaoshoujsr" />
+        <result column="xiaoshoujsje" property="xiaoshoujsje" />
+        <result column="xiaoshouywlx" property="xiaoshouywlx" />
+        <result column="xiaoshoukhname" property="xiaoshoukhname" />
+        <result column="xiaoshoucph" property="xiaoshoucph" />
+        <result column="xiaoshoucx" property="xiaoshoucx" />
+        <result column="xiaoshoucjh" property="xiaoshoucjh" />
+        <result column="xiaoshoulxdh" property="xiaoshoulxdh" />
+        <result column="xiaoshoubxgs" property="xiaoshoubxgs" />
+        <result column="xiaoshoupkgs" property="xiaoshoupkgs" />
+        <result column="xiaoshoudfcp" property="xiaoshoudfcp" />
+        <result column="xiaoshoufwgw" property="xiaoshoufwgw" />
+        <result column="xiaoshouwgsj" property="xiaoshouwgsj" />
+        <result column="xiaoshoubz" property="xiaoshoubz" />
+        <result column="xiao1" property="xiao1" />
+        <result column="xiao2" property="xiao2" />
+        <result column="xiao3" property="xiao3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        xiaoshouno, xiaoshoudjlx, xiaoshoujsfs, xiaoshouzt, xiaoshoujszt, xiaoshoujssj, xiaoshoujsr, xiaoshoujsje, xiaoshouywlx, xiaoshoukhname, xiaoshoucph, xiaoshoucx, xiaoshoucjh, xiaoshoulxdh, xiaoshoubxgs, xiaoshoupkgs, xiaoshoudfcp, xiaoshoufwgw, xiaoshouwgsj, xiaoshoubz, xiao1, xiao2, xiao3
+    </sql>
+
+</mapper>

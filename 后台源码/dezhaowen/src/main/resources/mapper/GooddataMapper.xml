@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.GooddataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Gooddata">
+        <id column="gooddataid" property="gooddataid" />
+        <result column="registershop" property="registershop" />
+        <result column="photoname" property="photoname" />
+        <result column="goodnum" property="goodnum" />
+        <result column="goodname" property="goodname" />
+        <result column="goodbrandid" property="goodbrandid" />
+        <result column="fitcartype" property="fitcartype" />
+        <result column="numunitid" property="numunitid" />
+        <result column="goodbigkindid" property="goodbigkindid" />
+        <result column="earningid" property="earningid" />
+        <result column="ycfcid" property="ycfcid" />
+        <result column="goodgradeid" property="goodgradeid" />
+        <result column="goodaddressid" property="goodaddressid" />
+        <result column="firmid" property="firmid" />
+        <result column="ycnum" property="ycnum" />
+        <result column="txnum" property="txnum" />
+        <result column="packing" property="packing" />
+        <result column="volume" property="volume" />
+        <result column="roughweight" property="roughweight" />
+        <result column="suttle" property="suttle" />
+        <result column="raprate" property="raprate" />
+        <result column="exchange" property="exchange" />
+        <result column="paytoid" property="paytoid" />
+        <result column="standardprice" property="standardprice" />
+        <result column="memberprice" property="memberprice" />
+        <result column="vipprice" property="vipprice" />
+        <result column="protocol" property="protocol" />
+        <result column="claimprice" property="claimprice" />
+        <result column="insuranceprice" property="insuranceprice" />
+        <result column="good1" property="good1" />
+        <result column="good2" property="good2" />
+        <result column="good3" property="good3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        gooddataid, registershop, photoname, goodnum, goodname, goodbrandid, fitcartype, numunitid, goodbigkindid, earningid, ycfcid, goodgradeid, goodaddressid, firmid, ycnum, txnum, packing, volume, roughweight, suttle, raprate, exchange, paytoid, standardprice, memberprice, vipprice, protocol, claimprice, insuranceprice, good1, good2, good3
+    </sql>
+
+</mapper>

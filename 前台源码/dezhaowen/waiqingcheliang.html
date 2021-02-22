@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/table.css" type="text/css" rel="stylesheet" />
+		<style>
+			.down span{
+				padding: 2px;
+				background-color: #dadada;
+			}
+			.down span:last-of-type{
+				background-color: unset;
+				color: #b9b9b9;
+			}
+			.down{
+				cursor: pointer;
+			}
+			.caozuo button>span{
+				display: inline-block;
+				height: 24px;
+				width: 20px;
+				background-position-x: -10px;
+				vertical-align: text-bottom;
+				background-image: url(img/image1.png);
+			}
+			.caozuo button:nth-of-type(2)>span{
+				background-position-x: -90px;
+			}
+			.caozuo button:nth-of-type(3)>span{
+				background-position-x: -162px;
+			}
+			.sroll{
+				max-width: 100%;
+				max-height: 94%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="head">
+				<span>外勤车辆</span>
+				<button style="background-color: lightgray;" class="btn btn-default pull-right">关闭</button>
+			</div>
+			<div class="caozuo">
+				<div class="clearfix">
+					<div class="pull-right">
+						<button @click="toadd" class="btn btn-default"><span></span>增加</button>
+						<button @click="del" class="btn btn-default"><span></span>删除</button>
+						<button @click="save" class="btn btn-default"><span></span>保存</button>
+					</div>
+				</div>
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="id" class="control-label">车牌号</label>
+						<input id="id" v-model="car.carnumber" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="brand" class="control-label">品牌</label>
+						<input id="brand" v-model="car.brand" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="type" class="control-label">车型</label>
+						<input id="type" v-model="car.model" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="licheng" class="control-label">当前公里</label>
+						<input id="licheng" v-model="car.currentmileage" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="group" class="control-label">班组</label>
+						<div class="form-control down" data-toggle="modal" data-target="#groupModal">
+							<span>{{car.maintenanceTeam.teamid}}</span>
+							<span>{{car.maintenanceTeam.teamname}}</span>
+							<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="body sroll">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td></td>
+							<td>车牌号</td>
+							<td>品牌</td>
+							<td>车型</td>
+							<td>当前里程</td>
+							<td>归属班组</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in cars">
+							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'carnumber')" :class="{orange:i.orange&&i.orange=='carnumber'}">{{i.carnumber}}</td>
+							<td @click="addorange(i,'brand')" :class="{orange:i.orange&&i.orange=='brand'}">{{i.brand}}</td>
+							<td @click="addorange(i,'model')" :class="{orange:i.orange&&i.orange=='model'}">{{i.model}}</td>
+							<td @click="addorange(i,'currentmileage')" :class="{orange:i.orange&&i.orange=='currentmileage'}">{{i.currentmileage}}</td>
+							<td @click="addorange(i,'gn')" :class="{orange:i.orange&&i.orange=='gn'}">{{i.maintenanceTeam.teamname}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal" id="groupModal">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+							<h3>维修班组<button @click="btn" class="pull-right btn btn-success" style="margin-right: 20px;"><img src="img/save.png" />选择</button></h3>
+						</div>
+						<div class="modal-body">
+							<tree @change="change" :group="group"></tree>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script>
+			Vue.component("tree", {
+				template: `
+					<ul class="group">
+						<li v-for="i in group"><button v-if="i.list.length>0" @click="tog(i)">{{i.visable?"-":"+"}}</button><span @click="select(i)" style="display:block"><span :class="{select:i.cs}">{{i.classificationid}}-{{i.classificationname}}</span></span><i class="line"></i><i class="line-x"></i>
+							<ul v-if="i.visable">
+								<li v-for="j in i.list" @click="select(j)"><span :class="{select:j.cs}">{{j.teamid}}-{{j.teamname}}</span><i class="line"></i><i class="line-x"></i></li>
+							</ul>					
+						</li>
+					</ul>
+				`,
+				props: {
+					group: {
+						type: Array,
+						required: false
+					}
+				},
+				methods: {
+					tog(i) {
+						this.$set(i, "visable", !i.visable);
+					},
+					select(i) {
+						this.group.forEach(i => {
+							this.$set(i, "cs", false);
+							i.list.forEach(g => this.$set(g, "cs", false))
+						})
+						this.$set(i, "cs", !i.cs);
+						this.$emit("change", i);
+					}
+				}
+			})
+			new Vue({
+				el: ".container-fluid",
+				data() {
+					return {
+						cars: [],
+						car: {
+							group: {},
+							maintenanceTeam: {}
+						},
+						group: [],
+						temp: {}
+					}
+				},
+				methods: {
+					show(i) {
+						this.car = JSON.parse(JSON.stringify(i));
+						this.car.recarnumber = this.car.carnumber;
+					},
+					toadd() {
+						this.car = {
+							group: {},
+							maintenanceTeam: {}
+						};
+					},
+					addorange(i, col) {
+						this.cars.forEach(c => this.$set(c, "orange", false));
+						this.$set(i, "orange", col);
+					},
+					change(i) {
+						this.temp = i;
+					},
+					btn() {
+						if (this.temp.list) {
+							alert("请选中分类中的组!");
+						} else {
+							this.$set(this.car, "maintenanceTeam", this.temp);
+							this.car.teamid = this.temp.teamid;
+							$("#groupModal").modal("hide");
+						}
+					},
+					find() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/maintenanceTeamClassification/find",
+							dataType: "json",
+							success(data) {
+								v.group = data;
+							}
+						})
+					},
+					findcar() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/fieldVehicles/find",
+							dataType: "json",
+							success(data) {
+								v.cars = data;
+							}
+						})
+					},
+					save() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/fieldVehicles/save",
+							dataType: "json",
+							data: JSON.stringify(v.car),
+							type: "post",
+							contentType: "application/json;charset=utf-8",
+							success(data) {
+								v.cars = data;
+								v.car.recarnumber = v.car.carnumber;
+								v.findcar();
+								if (data == -1) {
+									alert("车牌号已存在，不能重复");
+								}
+							}
+						})
+					},
+					del() {
+						if (confirm("确定要删除该记录？")) {
+							let v = this;
+							$.ajax({
+								url: "http://localhost:8080/fieldVehicles/del",
+								data: v.car,
+								type: "post",
+								success(data) {
+									v.findcar();
+									v.car = {
+										group: {},
+										maintenanceTeam: {}
+									};
+								}
+							})
+						}
+					}
+				},
+				created() {
+					this.find();
+					this.findcar();
+				}
+			})
+		</script>
+	</body>
+</html>

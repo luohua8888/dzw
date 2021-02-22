@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.YuangongziliaobiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Yuangongziliaobiao">
+        <id column="yid" property="yid" />
+        <result column="yname" property="yname" />
+        <result column="ysex" property="ysex" />
+        <result column="yposition" property="yposition" />
+        <result column="yhealth" property="yhealth" />
+        <result column="yloginemp" property="yloginemp" />
+        <result column="yheigth" property="yheigth" />
+        <result column="ynativplaceid" property="ynativplaceid" />
+        <result column="ynationid" property="ynationid" />
+        <result column="yschoolid" property="yschoolid" />
+        <result column="yspecialtyid" property="yspecialtyid" />
+        <result column="yspecialtynid" property="yspecialtynid" />
+        <result column="yattribute" property="yattribute" />
+        <result column="ycollegeid" property="ycollegeid" />
+        <result column="yorganizationid" property="yorganizationid" />
+        <result column="ynumber" property="ynumber" />
+        <result column="yaddressh" property="yaddressh" />
+        <result column="yaddressx" property="yaddressx" />
+        <result column="yphonenumber" property="yphonenumber" />
+        <result column="yphone" property="yphone" />
+        <result column="email" property="email" />
+        <result column="ybankid" property="ybankid" />
+        <result column="ybankphone" property="ybankphone" />
+        <result column="yjname" property="yjname" />
+        <result column="yjphone" property="yjphone" />
+        <result column="ystarttime" property="ystarttime" />
+        <result column="yendtime" property="yendtime" />
+        <result column="ydatetime" property="ydatetime" />
+        <result column="ystarttimeh" property="ystarttimeh" />
+        <result column="yendtimeh" property="yendtimeh" />
+        <result column="ytname" property="ytname" />
+        <result column="yratez" property="yratez" />
+        <result column="yrateg" property="yrateg" />
+        <result column="yrates" property="yrates" />
+        <result column="yratej" property="yratej" />
+        <result column="ygong" property="ygong" />
+        <result column="yjiao" property="yjiao" />
+        <result column="yhome" property="yhome" />
+        <result column="yjiang" property="yjiang" />
+        <result column="yping" property="yping" />
+        <result column="gid" property="gid" />
+        <result column="bid" property="bid" />
+        <result column="zhaopian" property="zhaopian" />
+        <result column="y1" property="y1" />
+        <result column="y2" property="y2" />
+        <result column="y3" property="y3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, zhaopian, y1, y2, y3
+    </sql>
+
+</mapper>

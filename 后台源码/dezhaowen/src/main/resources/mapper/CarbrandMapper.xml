@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CarbrandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Carbrand">
+        <id column="carcoding" property="carcoding" />
+        <result column="brandname" property="brandname" />
+        <result column="initial" property="initial" />
+        <result column="brand1" property="brand1" />
+        <result column="brand2" property="brand2" />
+        <result column="brand3" property="brand3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        carcoding, brandname, initial, brand1, brand2, brand3
+    </sql>
+
+</mapper>

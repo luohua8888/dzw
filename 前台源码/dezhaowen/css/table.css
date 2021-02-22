@@ -1,0 +1,150 @@
+			.container-fluid{
+				padding: 0;
+				height: 100%;
+			}
+			*{
+				user-select: none;
+			}
+			body,html{
+				height:94%;
+			}
+			.head>span{
+				font-size: 25px;
+				color: #474747;
+				margin-left: 10px;
+			}
+			.head{
+				padding: 10px 0;
+				background-color: #f9ffff;
+			}
+			.head button,.head button:hover{
+				color: white;
+			}
+			.caozuo{
+				white-space: nowrap;
+				border-top: 1px solid #ebebeb;
+				background-color: #fefcfb;
+			}
+			.caozuo>.form-inline{
+				margin-top: 20px;
+				padding-bottom: 10px;
+				margin-left: 10px;
+			}
+			.caozuo button{
+				border: 0;
+				float: left;
+				font-size: 16px;
+				background-color: rgba(0,0,0,0);
+			}
+			.caozuo label{
+				color: #00d9d9;
+				font-size: 16px;
+				font-weight: normal;
+			}
+			.table{
+				margin: 0;
+				margin-left: 10px;
+				width: 400px;
+				white-space: nowrap;
+			}
+			thead{
+				background-color: #38d1df;
+				color: white;
+			}
+			.table-bordered>thead>tr>td{
+				border-color: #a1a1a1;
+				box-shadow: 1px 1px 0 0 inset;
+			}
+			.table>thead:first-child>tr:first-child>td{
+				border-top:1px solid #a1a1a1;
+			}
+			td{
+				min-width: 40px;
+			}
+			tbody td:first-child{
+				background-color: #cbcbcb;
+			}
+			.orange{
+				background-color: #ffc514;
+			}
+			ul {
+				padding-left: 10px;
+				margin-left: 10px;
+			}
+			ul>li {
+				list-style: none;
+				background-repeat: no-repeat;
+				text-indent: 1em;
+			}
+			.group>li {
+				background-image: url(../img/groupstate.png);
+				position: relative;
+			}
+			.group ul>li {
+				background-image: url(../img/group.png);
+				background-position-y: 2px;
+				text-indent: 18px;
+				position: relative;
+			}
+			.group ul{
+				margin-left: 6px;
+			}
+			.group ul>li>.line{
+				top: 0;
+				height: 97%;
+			}
+			.group>li:last-of-type>.line{
+				height: 0;
+			}
+			.group>li>.line-x{
+				top:10px;
+			}
+			.line{
+				border-left: 1px dotted #8b8b8b;
+				height: 97%;
+				position: absolute;
+				left: -10px;
+				top: 11px;
+			}
+			.group ul>li:last-of-type>.line{
+				height: 50%;
+			}
+			.line-x{
+				border-top: 1px dotted #8b8b8b;
+				width: 10px;
+				position: absolute;
+				left: -10px;
+				top: 50%;
+			}
+			.group>li>button{
+				position: absolute;
+				left: -15px;
+				top:5px;
+				padding: 0;
+				color: #414141;
+				width: 10px;
+				background-color: white;
+				overflow: hidden;
+				border: 1px solid lightgray;
+				line-height: 8px;
+				font-size: 1px;
+				outline: none;
+				z-index: 1;
+			}
+			.select{
+				background-color:#125fd1;
+				color:white
+			}
+			.sroll {
+				overflow: auto;
+				height: 100%;
+			}
+			.body {
+				height: 100%;
+			}
+			body{
+				min-width: 1100px;
+			}
+			.form-group{
+				padding-bottom: 10px;
+			}

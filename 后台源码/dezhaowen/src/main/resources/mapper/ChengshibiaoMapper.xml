@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.ChengshibiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Chengshibiao">
+        <id column="qcityid" property="qcityid" />
+        <result column="qcityname" property="qcityname" />
+        <result column="q1" property="q1" />
+        <result column="q2" property="q2" />
+        <result column="q3" property="q3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        qcityid, qcityname, q1, q2, q3
+    </sql>
+
+</mapper>

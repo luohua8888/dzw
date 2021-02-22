@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.FieldVehiclesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.FieldVehicles">
+        <id column="carnumber" property="carnumber" />
+        <result column="brand" property="brand" />
+        <result column="model" property="model" />
+        <result column="currentmileage" property="currentmileage" />
+        <result column="teamid" property="teamid" />
+        <result column="car1" property="car1" />
+        <result column="car2" property="car2" />
+        <result column="car3" property="car3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        carnumber, brand, model, currentmileage, teamid, car1, car2, car3
+    </sql>
+
+</mapper>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css" >
+			ul,li{
+				margin: 0px;
+				padding: 0px;
+			}
+			body,html{
+				margin: 0px;
+				padding: 0px;
+				height: 100%;
+			}
+			#ctn{
+				height: 100%;
+				width: 100%;
+			}
+			.header{
+				padding-top: 20px;
+				padding-left: 200px;
+				margin-left: -20px;
+				height: 12%;
+				background-color: #18416b;	
+				width: 102.3%;		
+			}
+			.container{
+				margin: 0px;
+				padding: 0px;
+			}
+			.dropdown span{
+				color: white;
+			}
+			.row>div,.tab-content,.tab-content>div{
+				height: 95%;
+			}
+			.row>div:nth-child(1) ul{
+				
+			}
+			.row>div:nth-child(1){
+				border-right: 2px solid gray ;
+				height: 100%;
+				padding-top: 15px;
+				background-color: #18416b;
+			}
+			.row>div:nth-child(1) a{
+				color: white;
+			}
+			.row{
+				height: 88%;
+			}
+			iframe{
+				border: 0px;
+				height: 100%;
+				width: 100%;
+			}
+			.tabclose{
+				position: absolute;
+				top: 0px;
+				right: 0px;
+			}
+			.dropdown{
+				text-align: center;
+			}
+			nav ul {
+			    float:left;
+			    list-style: none;
+			}
+			nav ul li {
+			    display: inline;
+			}
+			nav ul li span {
+			    float: left;
+			    padding: 11px 20px; 
+			    font-size: 14px;
+			    color: #ddd;
+			    text-align: center;    
+			}
+			.img{
+				position: absolute;
+				top: 20px;
+				left: 40px;
+			}
+			.submenu >ul{
+            	display: none;
+	        }
+	        .open>ul{
+	            display: block;
+	        }
+	        #sidebar ul{
+	        	list-style: none;
+	        }
+	        #sidebar ul li a,ul{
+	        	text-align: center;
+	        }
+	        .header div span{
+	        	color: white;
+				position: relative;
+				top: 0px;
+				left: 250px;
+	        	margin-left: 40px;
+	        }
+			.dropdown li{
+				color: white;
+				list-style: none;
+			}
+			.header-div{
+				position: absolute;
+				top: 15px;
+				left: 940px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	</head>
+	<body>
+		<div id="ctn" class="container-fluid">
+			<div class="header">
+				<nav>
+					<div class="img"><img src="img/dzwlog.png" width="150px" height="40px" /></div>
+				    <ul>
+				      <li v-for="item in menu" @click="selectedMenu=item"><span :title="item.name">{{item.name}}</span></li>
+				    </ul>
+				 </nav>
+				 <div class="header-div">
+				 	<span><img src="img/jsee1.PNG" />设置</span>
+				 	<span>注释</span>
+				 	<span><img src="img/jsee2.PNG" />退出</span>
+				 </div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1">
+					<div class="dropdown">
+					  	<div>
+						    
+						    <ul>
+						    	<li @click="createTab(item)" v-for="item in selectedMenu.children">
+						    		{{item.name}}
+						    		<ul style="margin-left:20px" v-if="item.children">
+								    	<li  @click="createTab(c)" v-for="c in item.children">
+								    		{{c.name}}
+								    	</li>
+								    </ul>	
+						    	</li>
+
+						    </ul>	
+					 	 </div>
+					</div>
+				</div>
+				<div class="col-sm-11">
+					<ul class="nav nav-tabs">
+						<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.ename"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.name}}</a></li>
+					</ul>
+					<div class="tab-content">
+						<div v-for="item in tabs" :id="item.ename" :class="['tab-pane',item.active?'active':'false']">
+							<iframe :src="item.path"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
+		<script type="text/javascript">
+			var menu=[{
+				id:1,
+				name:"服务接待",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+						name:"服务接待",
+						ename:"sys",
+						children:[
+							{
+								id:2,
+								name:"维修接车",
+								ename:"role",
+								path:"wxjc/kehuziliao.html"
+							},
+							{
+								id:3,
+								name:"竣工检验",
+								ename:"jgjyw",
+								path:"jgjy/jungongjianyan.html"
+							}
+						]
+					}		
+				]		
+			},
+			{
+				id:2,
+				name:"备品管理",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"商品入库",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"入库开单",
+									ename:"role",
+									path:"pages/sys/role.html"
+								},{
+									id:3,
+									name:"入库退货",
+									ename:"user",
+									path:"pages/sys/user.html"
+								},{
+									id:4,
+									name:"入库审核",
+									ename:"dd",
+									path:"pages/sys/user.html"
+								}
+						]	
+					}
+				]
+			},
+			{
+				id:3,
+				name:"前台结算",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"前台结算",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"结算中心",
+									ename:"role",
+									path:"jszxym/jszx.html"
+								}
+						]
+					}
+				]
+			},{
+				id:4,
+				name:"客户档案",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"客户档案",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"客户资料",
+									ename:"role",
+									path:"kehudangan.html"
+								},
+								{
+									id:3,
+									name:"车辆资料",
+									ename:"czl",
+									path:"cheliang.html"
+								}
+						]
+					}
+				]
+			},{
+				id:5,
+				name:"基础数据",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"基础数据",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"发动机品牌",
+									ename:"fdj",
+									path:"fdj.html"
+								},
+								{
+									id:3,
+									name:"车型档案",
+									ename:"cxda",
+									path:"cxda.html"
+								},
+								{
+									id:4,
+									name:"维修项目",
+									ename:"wxxm",
+									path:"wxxm.html"
+								},{
+									id:5,
+									name:"商品资料",
+									ename:"sp",
+									path:"sp.html"
+								},{
+									id:6,
+									name:"供货单位",
+									ename:"ghdw",
+									path:"gonghuodanwei.html"
+								}
+						]
+					}
+				]
+			},{
+				id:6,
+				name:"财务管理",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"财务管理",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"结算中心",
+									ename:"role",
+									path:"pages/sys/role.html"
+								},
+								{
+									id:3,
+									name:"结算中心",
+									ename:"role",
+									path:"pages/sys/role.html"
+								},
+								{
+									id:4,
+									name:"结算中心",
+									ename:"role",
+									path:"pages/sys/role.html"
+								}
+						]
+					}
+				]
+			},{
+				id:7,
+				name:"行政人事",
+				ename:"sys",
+				children:[
+					{
+						id:9,
+						name:"员工资料",
+						ename:"sys",
+						children:[
+							{
+								id:2,
+								name:"组织机构",
+								ename:"zzjg",
+								path:"zuzhi.html"
+							},
+							{
+								id:3,
+								name:"岗位定义",
+								ename:"gw",
+								path:"gang.html"
+							},
+							{
+								id:4,
+								name:"离职登记",
+								ename:"lz",
+								path:"lizhi.html"
+							},
+							{
+								id:5,
+								name:"通讯名录",
+								ename:"tx",
+								path:"phone.html"
+							}
+						]
+					},{
+						id:10,
+						name:"技工管理",
+						ename:"sys",
+						children:[
+							{
+								id:2,
+								name:"技工星级",
+								ename:"jgxj",
+								path:"jigongxingji.html"
+							},
+							{
+								id:3,
+								name:"班组技工",
+								ename:"bzjg",
+								path:"banzujigong.html"
+							},
+							{
+								id:4,
+								name:"外勤车辆",
+								ename:"wqcl",
+								path:"waiqingcheliang.html"
+							}
+						]
+					}
+				]
+			},{
+				id:8,
+				name:"系统设置",
+				ename:"sys",
+				children:[
+					{
+						id:1,
+							name:"初始数据",
+							ename:"sys",
+							children:[
+								{
+									id:2,
+									name:"系统参数定义",
+									ename:"role",
+									path:"pages/sys/role.html"
+								},
+								{
+									id:3,
+									name:"结算中心",
+									ename:"role",
+									path:"pages/sys/role.html"
+								},
+								{
+									id:4,
+									name:"结算中心",
+									ename:"role",
+									path:"pages/sys/role.html"
+								}
+						]
+					}
+				]
+			},
+			
+			];
+			
+			var tabs=[
+			{
+				id:0,
+				name:"首页",
+				ename:"index",
+				active:true,
+				path:"jszxsy/dzwindex.html"
+			}
+			];
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						menu:menu,
+						selectedMenu:null,
+						tabs:tabs
+					}
+				},
+				methods:{
+					createTab(item){
+						if(item.children && item.children.length>0){
+							return;
+						}
+						this.tabs.forEach(item=>item.active=false);
+						this.$set(item,"active",true);
+						var flag = this.tabs.some(sitem=>sitem.ename==item.ename)
+						if(!flag){
+							this.tabs.push(item);
+						}
+					},
+					removetab(index){
+						this.tabs.splice(index,1);
+						if(index==this.tabs.length-1){
+							this.tabs[index-1].active= true;
+						}
+					}
+				},
+				created(){
+					this.selectedMenu = this.menu[0];
+				}
+			});
+		</script>
+	</body>
+</html>

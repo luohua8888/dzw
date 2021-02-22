@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CaraffiliationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Caraffiliation">
+        <id column="caraffiliationid" property="caraffiliationid" />
+        <result column="caraffiliation" property="caraffiliation" />
+        <result column="cf1" property="cf1" />
+        <result column="cf2" property="cf2" />
+        <result column="cf3" property="cf3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        caraffiliationid, caraffiliation, cf1, cf2, cf3
+    </sql>
+
+</mapper>

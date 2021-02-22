@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#ctn{
+				width: 99%;w
+				height: 100%;
+			}
+			span{
+				color: #31B0D5;
+				font-size: 15px;
+			}
+			#find{
+				width: 100%;
+				margin-right: 20px;
+				background: #f7f7f7;
+			}
+			input[type="text"]{
+				color: #000000;	
+				height: 20px;
+				width: 150px;
+			}
+			
+			tr{
+				font-size: 12px;
+			}
+			
+			#table{
+				margin-left: 30px;
+				width: 300px;
+			}
+			a{
+				color: #000000;
+			}
+			img{
+				vertical-align: middle;
+			}
+			
+			
+		</style>
+	<body>
+		<div id="ctn">
+			<div class="row">
+				<div class="col-sm-2">
+					<h3>&nbsp;&nbsp;&nbsp;发动机品牌</h3>
+				</div>
+				<div class="col-sm-9"></div>
+				<div class="col-sm-1">
+					<br>
+					<button class="btn btn-sm">关闭</button>
+				</div>
+			</div>
+				
+			<div id="find">
+				<hr />
+				<div>
+					<div style="margin-left: 80%;">
+						<span @click="toadd"><img src="img/未标题-1.jpg" width="6%"><a href="javascript:void(0)">增加</a></span>
+						<span><img src="img/未标题-2.jpg" width="6%"><a href="javascript:void(0)" @click="remove()">删除</a> </span>
+						<span><img src="img/未标题-3.jpg" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
+						<span><img src="img/未标题-4.jpg" width="6%"><a href="javascript:void(0)">导出</a> </span>
+					</div>
+					<br />
+					<span style="margin-left: 50px;" v-if="addtext">
+						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.fid" />
+						&nbsp;&nbsp;&nbsp;
+						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.fname"/>
+					</span>
+					<span style="margin-left: 50px;" v-if="updatetext">
+						分类代码&nbsp;&nbsp;<input type="text" v-model="application1.fid" />
+						&nbsp;&nbsp;&nbsp;
+						分类名称&nbsp;&nbsp;<input type="text" v-model="application1.fname"/>
+					</span>
+				</div>
+				<br />
+			</div>
+			<div id="table">
+				<table class="table table-bordered table-striped table-hover">
+					<tr style="background: #39cede;">
+						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌编码</td>
+						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌名称</td>
+					</tr>
+					<tr class="pintr" v-for="item in list" @click="findbyengin(item)">
+						<td>{{item.fid}}</td>
+						<td>{{item.fname}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="js/bootstrap.min.js"></script>	
+		<script type="text/javascript">
+			var BaseUrl="http://127.0.0.1:8080";
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						list:[],
+						engine:{
+							fid:"",
+							fname:""
+						},
+						application1:{},
+						addtext:true,
+						updatetext:false,
+					}
+				},
+				methods:{
+					//显示所有
+					find(){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"/fadongjipinpaibiao/findall",
+							success:function(result){
+								console.log("11111")
+								that.list=result;
+								console.log(that.list)
+							}
+						})
+					},
+					
+					toadd(){
+						console.log("88888")
+						this.updatetext=false;
+						this.addtext=true;
+					},
+					add(){
+						let that=this;
+						console.log(JSON.stringify(that.engine))
+						$.ajax({
+							url:BaseUrl+"/fadongjipinpaibiao/add",
+							data:JSON.stringify(that.engine),
+							dataType:"json",
+							type:"post",	
+							xhrFields: {
+								withCredentials: true
+							},
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								console.log("进入了")
+								that.find();
+							}
+						})
+					},
+			
+						//修改
+				update(){
+					let that=this;
+					$.ajax({
+						url:BaseUrl+"/fadongjipinpaibiao/update",
+						data:JSON.stringify(that.application1),
+						dataType:"json",
+						type:"post",
+						xhrFields: {
+							withCredentials: true
+						},
+						contentType:"application/json;charset=utf-8",
+						success:function(result){
+							console.log("修改进入")
+							that.find();
+						}
+					})
+				},
+				remove(){
+					let that=this;
+					$.ajax({
+						url:BaseUrl+"/fadongjipinpaibiao/remove/"+that.application1.fid,
+						type:"get",
+						success:function(result){
+							that.application1={},
+							that.find()
+						}
+					})
+			},
+					
+				 	//查询出选择qwe
+					findbyengin(item){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"/fadongjipinpaibiao/findbyid/"+item.fid,
+							type:"get",
+							success:function(result){
+								console.log(result)
+								that.application1=result
+								that.addtext=false;
+								that.updatetext=true;
+							}
+						})
+					},
+					//执行新增修改
+					carry(){
+						if(this.addtext){
+							alert("enen")
+							this.add();
+						};
+						if(this.updatetext){
+							this.update();
+						}
+					},
+				},
+				created() {
+					this.find();
+				},
+				watch:{
+					
+				}
+				
+			})
+			
+			$(document).on('click','.pintr',function(){
+				$(".pintr").css("background","#ffffff")
+				$(this).css("background","sandybrown")
+			})
+			
+			
+			
+			
+		</script>
+			</body>
+		</html>

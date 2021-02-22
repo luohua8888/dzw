@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.KaihuyinhangbiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Kaihuyinhangbiao">
+        <id column="bankid" property="bankid" />
+        <result column="name" property="name" />
+        <result column="bank1" property="bank1" />
+        <result column="bank2" property="bank2" />
+        <result column="bank3" property="bank3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        bankid, name, bank1, bank2, bank3
+    </sql>
+
+</mapper>

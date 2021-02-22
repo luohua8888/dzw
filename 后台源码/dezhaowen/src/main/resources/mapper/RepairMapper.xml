@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.RepairMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Repair">
+        <id column="number" property="number" />
+        <result column="carinfoId" property="carinfoId" />
+        <result column="staffno" property="staffno" />
+        <result column="oil" property="oil" />
+        <result column="type" property="type" />
+        <result column="worktime" property="worktime" />
+        <result column="getman" property="getman" />
+        <result column="overworkdate" property="overworkdate" />
+        <result column="nowworkDate" property="nowworkDate" />
+        <result column="setter" property="setter" />
+        <result column="company" property="company" />
+        <result column="befor" property="befor" />
+        <result column="price" property="price" />
+        <result column="remark" property="remark" />
+        <result column="state" property="state" />
+        <result column="fault" property="fault" />
+        <result column="faultreasult" property="faultreasult" />
+        <result column="status" property="status" />
+        <result column="orderTime" property="orderTime" />
+        <result column="stockDater" property="stockDater" />
+        <result column="otherone" property="otherone" />
+        <result column="othertwo" property="othertwo" />
+        <result column="otherthree" property="otherthree" />
+        <result column="otherfour" property="otherfour" />
+        <result column="otherfive" property="otherfive" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
+    </sql>
+
+</mapper>

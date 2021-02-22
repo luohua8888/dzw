@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.TeamWeightMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.TeamWeight">
+        <id column="teamid" property="teamid" />
+        <result column="inam" property="inam" />
+        <result column="inevening" property="inevening" />
+        <result column="outam" property="outam" />
+        <result column="outevening" property="outevening" />
+        <result column="intransitam" property="intransitam" />
+        <result column="intransitevening" property="intransitevening" />
+        <result column="fuelcost" property="fuelcost" />
+        <result column="tea1" property="tea1" />
+        <result column="tea2" property="tea2" />
+        <result column="tea3" property="tea3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        teamid, inam, inevening, outam, outevening, intransitam, intransitevening, fuelcost, tea1, tea2, tea3
+    </sql>
+
+</mapper>

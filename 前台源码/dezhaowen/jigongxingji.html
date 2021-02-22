@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/table.css" type="text/css" rel="stylesheet" />
+		<style>
+			.caozuo button>span{
+				display: inline-block;
+				height: 24px;
+				width: 20px;
+				background-position-x: -10px;
+				vertical-align: text-bottom;
+				background-image: url(img/image1.png);
+			}
+			.caozuo button:nth-of-type(2)>span{
+				background-position-x: -90px;
+			}
+			.caozuo button:nth-of-type(3)>span{
+				background-position-x: -162px;
+			}
+			.sroll{
+				max-width: 100%;
+				max-height: 94%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="head">
+				<span>技工星级</span>
+				<button style="background-color: lightgray;" class="btn btn-default pull-right">关闭</button>
+			</div>
+			<div class="caozuo">
+				<div class="clearfix">
+					<div class="pull-right">
+						<button @click="toadd" class="btn btn-default"><span></span>增加</button>
+						<button @click="del" class="btn btn-default"><span></span>删除</button>
+						<button @click="save" class="btn btn-default"><span></span>保存</button>
+					</div>
+				</div>
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="id" class="control-label">等级编码</label>
+						<input id="id" v-model="level.levelid" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="name" class="control-label">等级名称</label>
+						<input id="name" v-model="level.levelname" class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<label for="tc" class="control-label">提成权重</label>
+						<input id="tc" v-model="level.commissionweight" class="form-control" type="text" />
+					</div>
+				</div>
+			</div>
+			<div class="body sroll">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td></td>
+							<td>等级编码</td>
+							<td>等级名称</td>
+							<td>提成权重</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in levels">
+							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'levelid')" :class="{orange:i.orange&&i.orange=='levelid'}">{{i.levelid}}</td>
+							<td @click="addorange(i,'levelname')" :class="{orange:i.orange&&i.orange=='levelname'}">{{i.levelname}}</td>
+							<td @click="addorange(i,'commissionweight')" :class="{orange:i.orange&&i.orange=='commissionweight'}">{{i.commissionweight}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: ".container-fluid",
+				data() {
+					return {
+						levels: [],
+						level: {}
+					}
+				},
+				methods: {
+					show(i) {
+						this.level = JSON.parse(JSON.stringify(i));
+						this.level.relevelid = this.level.levelid;
+					},
+					toadd() {
+						this.level = {};
+					},
+					addorange(i, col) {
+						this.levels.forEach(c => this.$set(c, "orange", false));
+						this.$set(i, "orange", col);
+					},
+					find() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/technicianLevel/find",
+							dataType: "json",
+							success(data) {
+								v.levels = data;
+							}
+						})
+					},
+					save() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/technicianLevel/save",
+							data: v.level,
+							type: "post",
+							success(data) {
+								v.find();
+								v.level.relevelid = v.level.levelid;
+								if (data == -1) {
+									alert("等級编码已存在，不能重复");
+								}
+							}
+						})
+					},
+					del() {
+						if (confirm("确定要删除该记录？")) {
+							let v = this;
+							$.ajax({
+								url: "http://localhost:8080/technicianLevel/del",
+								data: v.level,
+								type: "post",
+								success(data) {
+									v.find();
+									v.level = {};
+								}
+							})
+						}
+					}
+				},
+				created() {
+					this.find();
+				}
+			})
+		</script>
+	</body>
+</html>

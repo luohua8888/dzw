@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>竣工检验</title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+	<style type="text/css">
+			select{
+				height: 30px;
+				width: 100px;
+				margin-right: 10px;
+			}
+			
+			input{
+				height: 30px;
+				margin-right: 10px;
+				
+			}
+			#top1 {
+				background-color: rgb(249, 249, 249);
+			}
+			
+			#top1 h3 {
+				display: inline-block;
+				margin: 10px 1080px 10px 30px;
+				vertical-align: middle;
+			}
+			#search {
+				width: 70px;
+				color: white;
+				background-color: orange;
+				margin-right: 10px;
+			}
+			#close {
+				color: white;
+				background-color: #999999;
+				margin-right: 10px;
+			}
+			#tabs{width: 98%; margin: auto;}
+			#tabs thead td{color: white; background-color: #31B0D5;}
+			#wang{
+				background-color: lightgray;
+			}
+	</style>
+	
+	<body>
+		<div class="container-fluid">
+				<div id="top1" class="row">
+					<h3>竣工检验</h3>
+					<button id="search" class="btn btn-default">查询</button><button id="close" class="btn btn-default">关闭</button>
+				</div>
+			 	<div id="wang">
+			 		
+			 	<div class="row" style="padding: 20px;padding-top: 80px;">
+				 		<div style="margin-bottom: 20px;">
+				 			开单日期 <input type="date" /><input type="date" />
+				 			维修单号 <input type="text" />
+				 			单据状态 <select>
+				 						<option>待竣工车</option>
+				 						<option>已竣工车</option>
+				 					</select>
+				 			车牌号 <input type="text" />
+				 			车架号 <input type="text" />
+				 		</div>
+				</div>
+				<div>
+					<div style="float:right;">				 	
+				 		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#openMmodal">打开单据</button>
+				 	</div>
+				</div>
+				<div id="tabs" class="row">
+				<table border="1px" class="table">
+					<thead>
+						<tr>
+							<td>单据状态</td>
+							<td>业务类型</td>
+							<td>客户名称</td>
+							<td>车牌号</td>
+							<td>手机</td>
+							<td>会员卡</td>
+							<td>维修单</td>
+							<td>单据类型</td>
+							<td>开单时间</td>
+							<td>预计完工</td>
+							<td>完工时间</td>
+							<td>结算时间</td>
+							<td>预估金额</td>
+							<td>服务顾问</td>
+							<td>接车人</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+							<td>123</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+				</div>
+		</div>
+		
+		
+		
+		<!--
+            	作者：a1265390597@163.com
+            	时间：2021-01-26
+            	描述：维修接车
+            -->
+            <div id="openMmodal" class="modal fade" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content" style="width: 1000px;position: relative;left: -200px;">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">维修</h4>
+			        <div class="form-inline" style="float: right;">
+				        <button class="btn btn-success" v-if="如果id=0">接车</button>
+				        <button class="btn btn-warning" v-else-if="如果=1">作业中</button>
+				        <button class="btn btn-danger"  v-else>竣工检验</button>
+			        </div>
+			      </div>
+			      <div class="modal-body">
+			        	<table class="table">
+			        		<tr>
+			        			<td>单号</td>
+			        			<td><input type="text" v-model="bills.bid" readonly="readonly"/></td>
+			        			<td>车牌号码</td>
+			        			<td><input type="text" readonly="readonly"/></td>
+			        			<td>车辆型号</td>
+			        			<td><input type="text" readonly="readonly"/></td>
+			        		</tr>
+			        		<tr>
+			        			<td>车辆品牌</td>
+			        			<td><input type="text" readonly="readonly"/></td>
+			        			<td>车主姓名</td>
+			        			<td><input type="text" readonly="readonly"/></td>
+			        			<td>服务顾问</td>
+			        			<td><input type="text" /><button class="btn btn-success"data-toggle="modal" data-target="#myModal33">选择</button></td>
+			        		</tr>
+			        		<tr>
+			        			<td>驾驶员</td>
+			        			<td><input type="text" /></td>
+			        			<td>进驶里程</td>
+			        			<td><input type="text"></td>
+			        			<td>联系电话</td>
+			        			<td><input type="text"></td>
+			        		</tr>
+			        		<tr>
+			        			<td>进厂油量</td>
+			        			<td><select>
+			        					<option>1/4</option>
+			        					<option>1/6</option>
+			        					<option>1/8</option>
+			        				</select>
+			        			</td>
+			        			<td>上次里程</td>
+			        			<td><input type="text" readonly="readonly"></td>
+			        			<td>进厂时间</td>
+			        			<td><input type="text" readonly="readonly"></td>
+			        		</tr>
+			        		<tr>
+			        			<td>业务类别</td>
+			        			<td><select>
+			        					
+			        				</select>
+			        			</td>
+			        			<td>施工班次</td>
+			        			<td><select>
+			        					
+			        				</select>
+			        			</td>
+			        			<td>接车人</td>
+			        			<td><input type="text" readonly="readonly"></td>
+			        		</tr>
+			        		<tr>
+			        			<td>预计完工</td>
+			        			<td><input type="text"></td>
+			        			<td>结算方式</td>
+			        			<td><select>
+			        					
+			        				</select>
+			        			</td>
+			        			<td>赔款公司</td>
+			        			<td><select>
+			        					
+			        				</select>
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td>完工时间</td>
+			        			<td><input type="text"></td>
+			        			<td>上次进厂</td>
+			        			<td><input type="text" readonly="readonly"></td>
+			        			<td>预估金额</td>
+			        			<td><input type="text" readonly="readonly"></td>
+			        		</tr>
+			        		<tr>
+			        			<td>接待备注</td>
+			        			<td><input type="text"></td>
+			        			<td>报修陈述</td>
+			        			<td colspan="3"><textarea name="" rows="" cols=""></textarea>
+			        			</td>
+			        		</tr>
+			        	</table>
+			        	<ul class="nav nav-tabs" >
+							<li role="presentation" class="active"><a href="#wxls" data-toggle="tab">维修项目</a></li>
+							<li role="presentation"><a href="#llqk" data-toggle="tab">领料情况</a></li>
+							<li role="presentation"><a href="#fjxm" data-toggle="tab">附加项目</a></li>
+							<li role="presentation"><a href="#lshf" data-toggle="tab">历史回访</a></li>
+						</ul>
+						<div class="tab-content" style="padding: 5px;;">
+							<div id="wxls" class="active tab-pane bg-warning">
+								<nav class="navbar navbar-default">
+								  <div class="container-fluid">
+								    <div class="navbar-header">
+								      <a class="navbar-brand" href="#">
+									         维修项目
+								      </a>
+									</div>
+									    <ul class="nav navbar-nav">
+									       	<li><a href="#">单项项目</a></li>
+									       	<li><a href="#">多项项目</a></li>
+									        <li><a href="#">修改项目</a></li>
+									        <li><a href="#">删除项目</a></li>
+									        <li><a href="#">修改班组</a></li>
+									        <li><a href="#">重置价格</a></li>
+								        </ul>
+								  </div>
+								</nav>
+								<table class="table">
+									<tr>
+										<td>选择</td>
+										<td>项目编码</td>
+										<td>项目名称</td>
+										<td>数量</td>
+										<td>价类</td>
+										<td>优惠前单价</td>
+										<td>优惠后单价</td>
+										<td>优惠后金额</td>
+										<td>故障描述</td>
+										<td>故障原因</td>
+										<td>维修班组</td>
+										<td>作业人员</td>
+										<td>服务顾问</td>
+										<td>免单原因</td>
+									</tr>
+									<tr>
+										<td>选择</td>
+										<td>项目编码</td>
+										<td>项目名称</td>
+										<td>数量</td>
+										<td>价类</td>
+										<td>优惠前单价</td>
+										<td>优惠后单价</td>
+										<td>优惠后金额</td>
+										<td>故障描述</td>
+										<td>故障原因</td>
+										<td>维修班组</td>
+										<td>作业人员</td>
+										<td>服务顾问</td>
+										<td>免单原因</td>
+									</tr>
+								</table>
+							</div>
+							<div id="llqk" class="tab-pane bg-warning">
+								<nav class="navbar navbar-default">
+								  <div class="container-fluid">
+								    <div class="navbar-header">
+								      <a class="navbar-brand" href="#">
+									         领料情况
+								      </a>
+								    </div>
+								    <ul class="nav navbar-nav">
+									       	<li><a href="#">物料需求</a></li>
+									        <li><a href="#">领料</a></li>
+									        <li><a href="#">重置价格</a></li>
+								        </ul>
+								  </div>
+								</nav>
+								<table class="table">
+									<tr>
+										<td>类别</td>
+										<td>领料日期</td>
+										<td>领料人</td>
+										<td>物料编码</td>
+										<td>物料名称</td>
+										<td>单位</td>
+										<td>价类</td>
+										<td>数量</td>
+										<td>优惠前单价</td>
+										<td>优惠后单价</td>
+										<td>优惠后金额</td>
+										<td>服务顾问</td>
+										<td>免单原因</td>
+									</tr>
+									<tr>
+										<td>类别</td>
+										<td>领料日期</td>
+										<td>领料人</td>
+										<td>物料编码</td>
+										<td>物料名称</td>
+										<td>单位</td>
+										<td>价类</td>
+										<td>数量</td>
+										<td>优惠前单价</td>
+										<td>优惠后单价</td>
+										<td>优惠后金额</td>
+										<td>服务顾问</td>
+										<td>免单原因</td>
+									</tr>
+								</table>
+							</div>
+							<div id="fjxm" class="tab-pane bg-warning">
+								<nav class="navbar navbar-default">
+								  <div class="container-fluid">
+								    <div class="navbar-header">
+								      <a class="navbar-brand" href="#">
+									           附加项目
+								      </a>
+								    </div>
+								    <ul class="nav navbar-nav">
+									       	<li><a href="#">添加项目</a></li>
+									        <li><a href="#">修改项目</a></li>
+									        <li><a href="#">删除项目</a></li>
+								        </ul>
+								  </div>
+								</nav>
+								<table>
+									<tr>
+										<td>附加项目</td>
+										<td>价类</td>
+										<td>金额</td>
+										<td>备注</td>
+									</tr>
+								</table>
+							</div>
+							<div id="lshf" class="tab-pane bg-warning">
+								<nav class="navbar navbar-default">
+								  <div class="container-fluid">
+								    <div class="navbar-header">
+								      <a class="navbar-brand" href="#">
+									         结算信息
+								      </a>
+								    </div>
+								  </div>
+								</nav>
+								<table>
+									<tr>
+										<td>结算状态</td>
+										<td>优惠前金额</td>
+										<td>合计金额</td>
+										<td>材料费</td>
+										<td>工时费</td>
+										<td>附加费</td>
+										<td>结算时间</td>
+										<td>结算人</td>
+										<td>现金</td>
+										<td>银行卡</td>
+										<td>票据</td>
+										<td>挂账金额</td>
+										<td>冲储值卡</td>
+										<td>冲订金</td>
+										<td>收税金</td>
+										<td>抵用券</td>
+										<td>抹尾数</td>
+										<td>内部账</td>
+										<td>积分抵扣</td>
+										<td>到账盈亏</td>
+										<td>发票种类</td>
+										<td>发票号</td>
+										<td>发票金额</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			      	<button type="button" class="btn btn-default">保存</button>
+			      </div>
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+			
+			
+			<!--
+            	作者：a1265390597@163.com
+            	时间：2021-01-26
+            	描述：服务顾问
+          -->
+			<div class="modal" id="myModal33" data-backdrop>
+		    <div class="modal-dialog">
+		     <div class="modal-content" id="model2">
+		      <span class="close" data-dismiss="modal">&times;</span>
+		      <div class="modal-header">
+		       <div class="col-md-10"><h4>选择员工</h4></div>
+		       <div class="col-md-2">
+		        <button class="btn btn-success" type="submit">确认</button>
+		       </div>
+		      </div>
+		      <div class="modal-body">
+		       <form class="form-horizontal">
+		        <div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
+		         <select class="aa8" style="height: 25px;width: 400px;">
+		          <option>00000-总厂</option>
+		          <option>00001-ddm</option>
+		          <option>00002-11</option>
+		         </select>
+		        </div>
+		        <div id="mm1">
+		         <table>
+		          <tr>
+		           <td style="background-color:darkturquoise;"></td>
+		           <td>部门名称</td>
+		           <td>部门编号</td>
+		           <td>部门姓名</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>前台</td>
+		           <td>0EX0001</td>
+		           <td>张三</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>销售部</td>
+		           <td>0EM0004</td>
+		           <td>耶律</td>
+		          </tr>
+		          <tr>
+		           <td><input type="checkbox"></td>
+		           <td>售后服务部</td>
+		           <td>101</td>
+		           <td>成千</td>
+		          </tr>
+		         </table>
+		        </div>
+		       </form>
+		      </div>
+		      <div class="modal-footer" style="padding: 0px;">
+		       <div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 505px;">
+		       </div>
+		      </div>
+		     </div>
+			 </div>
+			</div>
+			 </div>
+			 
+			 
+		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../js/vue-2.6.js" ></script>
+	</body>
+</html>

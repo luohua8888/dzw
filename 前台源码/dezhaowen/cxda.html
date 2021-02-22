@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/cxda.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="ctx">
+			<div>
+				<h2>品牌车型</h2>
+				<button type="button" id="guan" class="btn btn-group" data-toggle="button" aria-pressed="false" autocomplete="off">
+					关闭
+				</button>
+				<div class="bj_1">
+					<p class="fd"><img src="img/未标题-1.jpg" class="tp_01" /><span @click="zjpp">增加品牌</span></p>
+					<p class="fd"><img src="img/未标题-5.jpg" /><span @click="xgpp">修改</span></p>
+					<p class="fd"><img src="img/未标题-2.jpg" /><span>删除</span></p>
+					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="zjcx">增加车型</span></p>
+					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="xgcx">修改</span></p>
+					<p class="fd1"><img src="img/未标题-2.jpg" /><span>删除</span></p>
+					<p class="fd1"><img src="img/未标题-6.jpg" /><span>照片</span></p>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="匹配 品牌编码/品牌名称/	首字母">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputEmail4" placeholder="匹配 车型编码/车型名称">
+						</div>
+					</div>
+				</div>
+				<button type="button" id="al1" class="btn btn-warning">搜索</button>
+				<button type="button" id="al2" class="btn btn-warning">搜索</button>
+				<div class="bj_03">
+					<table class="table table-bordered">
+						<tr>
+							<td>编码</td>
+							<td>品牌名称</td>
+							<td>首字母</td>
+						</tr>
+						<tr v-for="item in list">
+							<td class="pintr" @click="chefind(item)">{{item.pid}}</td>
+							<td class="pintr" @click="chefind(item)">{{item.pname}}</td>
+							<td>{{item.shouzimu}}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="bj_04">
+					<table class="table table-bordered">
+						<tr>
+							<td>APP展示</td>
+							<td>车型ID</td>
+							<td>车型名称</td>
+							<td>发动机品牌</td>
+							<td>参考价格</td>
+							<td>车辆年款</td>
+							<td>功率</td>
+							<td>进口国产</td>
+							<td>载重</td>
+							<td>燃油编号</td>
+						</tr>
+						<tr v-if="pingpd">
+							<td>
+								<label class="checkbox-inline">
+									<input type="checkbox" id="inlineCheckbox1" value="option1">
+								</label>
+							</td>
+							<td>{{car.cheid}}</td>
+							<td>{{car.jingkoumingchang}}</td>
+							<td>{{car.chankaojiage}}</td>
+							<td>{{car.cheliangniankuan}}</td>
+							<td>{{car.gonglv}}</td>
+							<td>{{car.ranyoubianhao}}</td>
+							<td>{{car.zaizhong}}</td>
+							<td>{{car.fadingjipingpai}}</td>
+							<td>{{car.zhaopian}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<p class="w">记录条数：</p>
+
+			<div class="modal" id="myModal1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">品牌定义</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">品牌编码</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pinginsert.pid">
+									</div>
+								</div>
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">品牌名称</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pinginsert.pname">
+									</div>
+								</div>
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">首字母</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pinginsert.shouzimu">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="add">添加</button>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal" id="myModal4">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">品牌定义</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">品牌编码</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pid">
+									</div>
+								</div>
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">品牌名称</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pname">
+									</div>
+								</div>
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" class="col-sm-2 control-label">首字母</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.shouzimu">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a @click="pupdate()" class="btn btn-success" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal" id="myModal2">
+				<div class="modal-dialog" id="hd">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">车型定义</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_01" class="col-sm-1 control-label">*车辆品牌</label>
+									<div class="col-sm-3" id="div1">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+									<div class="col-sm-7" id="div2">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*品牌名称</label>
+									<div class="col-sm-10" id="div3">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">*车型名称</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
+									<div class="col-sm-10" id="div5">
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">参考价格</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">车辆年款</label>
+									<div class="col-sm-10" id="div5">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">功率</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">燃油编号</label>
+									<div class="col-sm-10" id="div5">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">载重</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">*索赔产商</label>
+									<div class="col-sm-10" id="div8">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_07" class="col-sm-2 control-label">*发动机品牌</label>
+									<div class="col-sm-10" id="div6">
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</div>
+								</div>
+
+								<div align="center" id="div9">
+									<span class="btn btn-success fileinput-button" id="div7">
+										<span class="span1">照</span>
+										<span class="span2">片</span>
+										<input type="file">
+									</span>
+								</div>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a @click="update" class="btn btn-success" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal" id="myModal3">
+				<div class="modal-dialog" id="hd">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">车型定义</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_01" class="col-sm-1 control-label">*车辆品牌</label>
+									<div class="col-sm-3" id="div1">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+									<div class="col-sm-7" id="div2">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*品牌名称</label>
+									<div class="col-sm-10" id="div3">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">*车型名称</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
+									<div class="col-sm-10" id="div5">
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</div>
+									<img src="img/111未标题-1.jpg" class="abcd" @ />
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">参考价格</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">车辆年款</label>
+									<div class="col-sm-10" id="div5">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">功率</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">燃油编号</label>
+									<div class="col-sm-10" id="div5">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">载重</label>
+									<div class="col-sm-10" id="div4">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">燃油编号</label>
+									<div class="col-sm-10" id="div8">
+										<input type="text" class="form-control" id="inputEmail3">
+									</div>
+								</div>
+
+								<div class="form-group" id="ppbd">
+									<label for="inputEmail3" id="wz_07" class="col-sm-2 control-label">*发动机品牌</label>
+									<div class="col-sm-10" id="div6">
+										<select class="form-control">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>
+									</div>
+								</div>
+								<div align="center" id="div9">
+									<span class="btn btn-success fileinput-button" id="div7">
+										<span class="span1">照</span>
+										<span class="span2">片</span>
+										<input type="file">
+									</span>
+								</div>
+							</form>
+						</div>			
+						<div class="modal-footer">
+							<a @click="update" class="btn btn-success" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			var BaseUrl = "http://127.0.0.1:8080";
+			new Vue({
+				el: "#ctx",
+				data() {
+					return {
+						list: [],
+						car: {
+							ping:{}
+						},
+						pinginsert: {
+							pid:"",
+							pname:"",
+							shouzimu:""
+						},
+						pingpd:false
+					}
+				},
+				methods: {
+					update() {
+
+					},
+					update1() {
+
+					},
+					zjpp() {
+						$("#myModal1").modal("show");
+					},
+					zjcx() {
+						$("#myModal2").modal("show");
+					},
+					xgcx() {
+						$("#myModal3").modal("show");
+					},
+					xgpp() {
+						$("#myModal4").modal("show");
+					},
+					find() {
+						let that = this;
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/find",
+							success: function(result) {
+								console.log(result)
+								that.list = result;
+								that.chefind(that.list[0])
+							}
+						})
+					},
+					chefind(item) {
+						let that = this;
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/carfind/" + item.pid,
+							type: "get",
+							dataType: "json",
+							success: function(result) {
+								that.pingpd=true;
+								that.car = result
+								console.log("查询进入")
+								console.log(that.car)
+							}
+						})
+					},
+					add() {
+						let that = this;
+						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
+						$.ajax({
+							url:BaseUrl+"/chexingdingyibiao/padd",
+							data:that.pinginsert,
+							dataType: "json",
+							type: "post",	
+							success: function(result) {
+								console.log("进入了")
+								that.find();
+							}
+						})
+					},
+					
+					pupdate(){
+						let that = this;
+						console.log("aaaaa")
+						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
+						$.ajax({
+							url:BaseUrl+"/chexingdingyibiao/pupdate",
+							data:that.car,
+							dataType: "json",
+							type: "post",	
+							success: function(result) {
+								console.log("修改成功")
+								that.find();
+							}
+						})
+					}
+				},
+				created() {
+					this.find()
+				}
+			})
+			$(document).on('click', '.pintr', function() {
+				$(".pintr").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			})
+		</script>
+	</body>
+</html>

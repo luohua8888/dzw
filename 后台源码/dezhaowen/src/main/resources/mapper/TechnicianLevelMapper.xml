@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.TechnicianLevelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.TechnicianLevel">
+        <id column="levelid" property="levelid" />
+        <result column="levelname" property="levelname" />
+        <result column="commissionweight" property="commissionweight" />
+        <result column="leve1" property="leve1" />
+        <result column="leve2" property="leve2" />
+        <result column="leve3" property="leve3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        levelid, levelname, commissionweight, leve1, leve2, leve3
+    </sql>
+
+</mapper>

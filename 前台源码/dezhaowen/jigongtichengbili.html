@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>		
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/table.css" type="text/css" rel="stylesheet" />
+		<style>
+			.caozuo button>span{
+				display: inline-block;
+				height: 24px;
+				width: 20px;
+				background-position-x: -10px;
+				vertical-align: text-bottom;
+				background-image: url(img/image1.png);
+			}
+			.caozuo button:nth-of-type(2)>span{
+				background-position-x: -90px;
+			}
+			.caozuo button:nth-of-type(3)>span{
+				background-position-x: -162px;
+			}
+			.sroll{
+				max-width: 100%;
+				max-height: 94%;
+			}
+		</style>
+	</head>
+	<body>	
+		<div class="container-fluid">
+			<div class="head">
+				<span>技工提成比例</span>
+				<button style="background-color: lightgray;" class="btn btn-default pull-right">关闭</button>
+			</div>
+			<div class="caozuo">
+				<div class="clearfix">
+					<div class="pull-right">
+						<button @click="toadd" class="btn btn-default"><span></span>增加</button>
+						<button @click="del" class="btn btn-default"><span></span>删除</button>
+						<button @click="save" class="btn btn-default"><span></span>保存</button>
+					</div>
+				</div>
+				<div class="form-inline">
+					<div class="form-group">
+						<label for="id" class="control-label">分类编号</label>
+						<input id="id" v-model="tc.teamid" class="form-control" type="text"/>
+					</div>
+					<div class="form-group">
+						<label for="name" class="control-label">分类名称</label>
+						<input id="name" v-model="tc.tea1" class="form-control" type="text"/>
+					</div><br>
+					<div class="form-group">
+						<label for="inam" class="control-label">站内白天</label>
+						<input id="inam" v-model="tc.inam" class="form-control" type="text"/>
+					</div>
+					<div class="form-group">
+						<label for="inevening" class="control-label">站内晚上</label>
+						<input id="inevening" v-model="tc.inevening" class="form-control" type="text"/>
+					</div>
+					<div class="form-group">
+						<label for="outam" class="control-label">站外白天</label>
+						<input id="outam" v-model="tc.outam" class="form-control" type="text"/>
+					</div>
+					<div class="form-group">
+						<label for="outevening" class="control-label">站外晚上</label>
+						<input id="outevening" v-model="tc.outevening" class="form-control" type="text"/>
+					</div>
+				</div>
+			</div>
+			<div class="body sroll">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td></td>
+							<td>分类编码</td>
+							<td>分类名称</td>
+							<td>站内白天</td>
+							<td>站内晚上</td>
+							<td>站外白天</td>
+							<td>站外晚上</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in tcs">
+							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'id')" :class="{orange:i.orange&&i.orange=='id'}">{{i.teamid}}</td>
+							<td @click="addorange(i,'tea1')" :class="{orange:i.orange&&i.orange=='tea1'}">{{i.tea1}}</td>
+							<td @click="addorange(i,'inam')" :class="{orange:i.orange&&i.orange=='inam'}">{{i.inam}}</td>
+							<td @click="addorange(i,'inevening')" :class="{orange:i.orange&&i.orange=='inevening'}">{{i.inevening}}</td>
+							<td @click="addorange(i,'outam')" :class="{orange:i.orange&&i.orange=='outam'}">{{i.outam}}</td>
+							<td @click="addorange(i,'outevening')" :class="{orange:i.orange&&i.orange=='outevening'}">{{i.outevening}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:".container-fluid",
+				data(){
+					return{
+						tcs:[],
+						tc:{}
+					}
+				},
+				methods:{
+					show(i){
+						this.tc=JSON.parse(JSON.stringify(i));
+						this.tc.relevelid = this.tc.levelid;
+					},
+					toadd(){
+						this.tc={};
+					},
+					addorange(i, col) {
+						this.tcs.forEach(c => this.$set(c, "orange", false));
+						this.$set(i, "orange", col);
+					},
+					find() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/teamWeight/find",
+							dataType: "json",
+							success(data) {
+								v.tcs = data;
+							}
+						})
+					},
+					save() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/teamWeight/save",
+							data: v.tc,
+							type: "post",
+							success(data) {
+								v.find();
+								v.tc.reteamid = v.tc.teamid;
+								if (data == -1) {
+									alert("等級编码已存在，不能重复");
+								}
+							}
+						})
+					},
+					del() {
+						if (confirm("确定要删除该记录？")) {
+							let v = this;
+							$.ajax({
+								url: "http://localhost:8080/teamWeight/del",
+								data: v.tc,
+								type: "post",
+								success(data) {
+									v.find();
+									v.tc = {};
+								}
+							})
+						}
+					}
+				},
+				created() {
+					this.find();
+				}
+			})
+		</script>
+	</body>
+</html>

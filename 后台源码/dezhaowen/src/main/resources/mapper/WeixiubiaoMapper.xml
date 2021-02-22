@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.WeixiubiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Weixiubiao">
+        <id column="wid" property="wid" />
+        <result column="wname" property="wname" />
+        <result column="shourujizhong" property="shourujizhong" />
+        <result column="xiangmuleibie" property="xiangmuleibie" />
+        <result column="beizhu" property="beizhu" />
+        <result column="bzj" property="bzj" />
+        <result column="hyj" property="hyj" />
+        <result column="vipj" property="vipj" />
+        <result column="xyj" property="xyj" />
+        <result column="spj" property="spj" />
+        <result column="pxj" property="pxj" />
+        <result column="w1" property="w1" />
+        <result column="w2" property="w2" />
+        <result column="w3" property="w3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        wid, wname, shourujizhong, xiangmuleibie, beizhu, bzj, hyj, vipj, xyj, spj, pxj, w1, w2, w3
+    </sql>
+
+</mapper>

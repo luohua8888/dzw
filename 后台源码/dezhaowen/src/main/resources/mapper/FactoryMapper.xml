@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.FactoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Factory">
+        <id column="factoryid" property="factoryid" />
+        <result column="factoryname" property="factoryname" />
+        <result column="f1" property="f1" />
+        <result column="f2" property="f2" />
+        <result column="f3" property="f3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        factoryid, factoryname, f1, f2, f3
+    </sql>
+
+</mapper>

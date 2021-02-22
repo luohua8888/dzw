@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CustomertypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Customertype">
+        <id column="customerid" property="customerid" />
+        <result column="customertype" property="customertype" />
+        <result column="cus1" property="cus1" />
+        <result column="cus2" property="cus2" />
+        <result column="cus3" property="cus3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        customerid, customertype, cus1, cus2, cus3
+    </sql>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.GongsidingyibiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Gongsidingyibiao">
+        <id column="did" property="did" />
+        <result column="dname" property="dname" />
+        <result column="daddress" property="daddress" />
+        <result column="djian" property="djian" />
+        <result column="dphoney" property="dphoney" />
+        <result column="dphonej" property="dphonej" />
+        <result column="dwaddress" property="dwaddress" />
+        <result column="email" property="email" />
+        <result column="dhang" property="dhang" />
+        <result column="dhangz" property="dhangz" />
+        <result column="dhangd" property="dhangd" />
+        <result column="dmi" property="dmi" />
+        <result column="dshangs" property="dshangs" />
+        <result column="dchu" property="dchu" />
+        <result column="dslv" property="dslv" />
+        <result column="dxiao" property="dxiao" />
+        <result column="dzhe" property="dzhe" />
+        <result column="djifen" property="djifen" />
+        <result column="dwei" property="dwei" />
+        <result column="dsan" property="dsan" />
+        <result column="dche" property="dche" />
+        <result column="dzhang" property="dzhang" />
+        <result column="dban" property="dban" />
+        <result column="dpei" property="dpei" />
+        <result column="dneiw" property="dneiw" />
+        <result column="dwaib" property="dwaib" />
+        <result column="dwaiw" property="dwaiw" />
+        <result column="d1" property="d1" />
+        <result column="d2" property="d2" />
+        <result column="d3" property="d3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        did, dname, daddress, djian, dphoney, dphonej, dwaddress, email, dhang, dhangz, dhangd, dmi, dshangs, dchu, dslv, dxiao, dzhe, djifen, dwei, dsan, dche, dzhang, dban, dpei, dneiw, dwaib, dwaiw, d1, d2, d3
+    </sql>
+
+</mapper>

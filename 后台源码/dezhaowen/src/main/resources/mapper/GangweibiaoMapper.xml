@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.GangweibiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Gangweibiao">
+        <id column="gid" property="gid" />
+        <result column="gname" property="gname" />
+        <result column="g1" property="g1" />
+        <result column="g2" property="g2" />
+        <result column="g3" property="g3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        gid, gname, g1, g2, g3
+    </sql>
+
+</mapper>

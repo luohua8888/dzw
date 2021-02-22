@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#ctn{
+				width: 99%;
+				height: 100%;
+				
+			}
+				
+			#find{
+				width: 100%;
+				margin-right: 20px;
+				
+			}
+			input[type="text"]{
+				height: 25px;
+				width: 150px;
+			}
+			#table{
+				width: 200px;
+			}
+			tr{
+				font-size: 12px;
+			}
+			#theme{
+				height: 88%;
+				background: #f7f7f7;
+			}
+			
+			.til{
+				display: inline-block;
+				padding-left: 10px;
+				height: 25px;
+				border-left: 4px solid sandybrown;
+			}
+			
+			.must{
+				display: inline-block;
+				width: 5px;
+				color: red;
+			}
+			
+			.va{
+				display: inline-block;
+				color: #39cede;
+				width: 70px;
+			}
+			
+			.price input[type="text"]{
+				width: 80px;
+			}
+			
+			.item{
+				width: 40px;
+				background: #666;
+			}
+			.item td{
+				border: 1px solid #666;
+			}
+			li{
+				list-style: none;
+			}
+			
+			
+			
+			
+		</style>
+	<body>
+		<div id="ctn">
+			<div class="row">
+				<div class="col-sm-2">
+					<h3>&nbsp;&nbsp;&nbsp;维修项目</h3>
+				</div>
+				<div class="col-sm-6"></div>
+				<div class="col-sm-3">
+					<br />
+					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" />
+					<button class="btn btn-warning btn-xs">搜索</button>
+				</div>
+				<div class="col-sm-1">
+					<br>
+					<button class="btn btn-xs" >关闭</button>
+				</div>
+			</div>
+			<div id="theme">
+				<div id="find">
+					<hr />
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-8">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class="btn btn-warning btn-xs" @click="addson">增加分类</button>
+						<button class="btn btn-warning btn-xs" @click="updatesame">修改分类</button>
+						<button class="btn btn-warning btn-xs">删除</button>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
+						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
+						<button class="btn btn-warning btn-xs">删除</button>
+						<button class="btn btn-warning btn-xs" @click="pricechange">调价</button>
+						<button class="btn btn-warning btn-xs">导出</button>
+					</div>
+				</div>
+				<br />
+				
+				<div style="width: 200px;height: 85%;margin-left: 0px; background: #ffffff;">
+					<br />
+					<div id="table" style="background: #ffffff;">
+						<div id="d1">
+						    <div id="d1_body">
+						        <ul>
+						            <li>
+						                <img onclick="doAction2(1);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
+										<span onclick="doAction(1);"><span><a href="javascript:void(0)">车型</a></span></span>
+						            </li>
+						            <ul style="display:none;" id="u1">
+						                <li>
+											<a href="#">
+												<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+												<span>中国重汽</span>
+											</a>
+										</li>
+						                 <li>
+						                	<a href="#">
+						                		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+						                		<span>陕汽重卡</span>
+						                	</a>
+						                </li>
+										 <li>
+											<a href="#">
+												<img onclick2="doAction(1);" src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+												<span>中国红旗</span>
+											</a>
+										</li>
+						            </ul>
+						            <li>
+										<img onclick="doAction2(2);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
+						                <span onclick="doAction(2);"><span><a href="javascript:void(0)">发动机</a></span></span>
+						            </li>
+						            <ul style="display:none;" id="u2">
+						                <li>
+						               	<a href="#">
+						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+						               		<span>一号发动机</span>
+						               	</a>
+						               </li>
+						                <li>
+						               	<a href="#">
+						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+						               		<span>二号发动机</span>
+						               	</a>
+						               </li>
+						                <li>
+						               	<a href="#">
+						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+						               		<span>三号发动机</span>
+						               	</a>
+						               </li>
+						            </ul>
+						        </ul>
+						    </div>
+						</div>
+					</div>
+				</div>
+				
+				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
+					<table class="table table-bordered table-striped table-hover">
+						<tr style="background: #39cede;">
+							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">项目类别</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">项目编码</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">项目名称</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">售价按</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">收入种类</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">标准价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">会员价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">VIP价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">协议价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">索赔价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>中国重汽</td>
+							<td>1003</td>
+							<td>更换后钢板销或衬套</td>
+							<td>车型</td>
+							<td>工时费</td>
+							<td>6666666</td>
+							<td>156222</td>
+							<td>136566</td>
+							<td>156656</td>
+							<td>187888</td>
+							<td>198556</td>
+							<td>没有备注</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>中国重汽</td>
+							<td>1053</td>
+							<td>更换前置轮胎</td>
+							<td>车型</td>
+							<td>工时费</td>
+							<td>522</td>
+							<td>253</td>
+							<td>524</td>
+							<td>244</td>
+							<td>534</td>
+							<td>242</td>
+							<td>好好修</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>中国重汽</td>
+							<td>1123</td>
+							<td>检查后桥轴间间隙</td>
+							<td>车型</td>
+							<td>工时费</td>
+							<td>342</td>
+							<td>342</td>
+							<td>435</td>
+							<td>344</td>
+							<td>243</td>
+							<td>546</td>
+							<td>没有备注</td>
+						</tr>
+					</table>
+				</div>
+				
+			</div>
+			
+			
+			
+			
+			<!-- 模态框 -->
+			
+			<div id="modal">
+				
+				<!-- 新增服务项目 -->
+				<div class="modal fade" id="addservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">服务项目定义</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7 ;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">项目编码</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must">*</span>
+									<span class="va">项目名称</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">收入种类</span>
+									<select style="width: 150px;height: 25px;">
+										<option>工时费</option>
+									</select>
+									<span class="must">*</span>
+									<span class="va">项目类别</span>
+									<select style="width: 150px;height: 25px;">
+										<option>中国重汽</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">备注</span>
+									<input type="text" name="" id="" value="" style="width: 388px;"/>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">标准价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">会员价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">VIP价</span>
+										<input type="text" name="" id="" value="" />
+									</div>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">协议价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">索赔价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">保险价</span>
+										<input type="text" name="" id="" value="" />
+									</div>
+								</p>
+								<br />
+							</div>
+				      </div>
+				     
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				
+				<!-- 修改服务项目 -->
+				<div class="modal fade" id="updateservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">服务项目定义</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7 ;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">项目编码</span>
+									<input type="text" name="" id="" value="1003" />
+									<span class="must">*</span>
+									<span class="va">项目名称</span>
+									<input type="text" name="" id="" value="车型" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">收入种类</span>
+									<select style="width: 150px;height: 25px;">
+										<option>工时费</option>
+									</select>
+									<span class="must">*</span>
+									<span class="va">项目类别</span>
+									<select style="width: 150px;height: 25px;">
+										<option>中国重汽</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">备注</span>
+									<input type="text" name="" id="" value="没有备注" style="width: 388px;"/>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">标准价</span>
+										<input type="text" name="" id="" value="66666" />
+										
+										<span class="va">会员价</span>
+										<input type="text" name="" id="" value="55555" />
+										
+										<span class="va">VIP价</span>
+										<input type="text" name="" id="" value="44444" />
+									</div>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">协议价</span>
+										<input type="text" name="" id="" value="33333" />
+										
+										<span class="va">索赔价</span>
+										<input type="text" name="" id="" value="22222" />
+										
+										<span class="va">保险价</span>
+										<input type="text" name="" id="" value="11111" />
+									</div>
+								</p>
+								<br />
+							</div>
+				      </div>
+				     
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				
+				<!-- 添加子类 -->
+				<div class="modal fade" id="addsonmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">添加分类</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7;text-align: center;">
+								<br />
+								<p>
+									<span class="must"></span>
+									<span class="va">类别编码</span>
+									<select style="width: 150px;height: 25px;">
+										<option>中国重汽</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">类别名称</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				<!-- 修改子类 -->
+				<div class="modal fade" id="updatesamemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">修改分类</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7;text-align: center;">
+								<br />
+								<p>
+									<span class="must"></span>
+									<span class="va">类别编码</span>
+									<input type="text" name="" id="" value="113" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">类别名称</span>
+									<input type="text" name="" id="" value="中国重汽" />
+								</p>
+								<br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				<!-- 调价 -->
+				<div class="modal fade" id="pricechangemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">调价</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7;">
+								<br />
+								<p>
+									<p>
+										<span class="must"></span>
+										<span class="va"></span>
+										<select style="width: 150px;height: 25px;">
+											<option>自费</option>
+											<option>促销</option>
+											<option>三包</option>
+											<option>标准价</option>
+											<option>会员价</option>
+											<option>VIP价</option>
+											<option>协议价</option>
+											<option>索赔价</option>
+										</select>
+										<span class="must"></span>
+										<span class="va">=  标准价 *</span>
+										<input type="text" name="" id="" value="" />
+									</p>
+								</p>
+								<br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+			</div>
+			
+			
+			
+			
+		</div>
+		
+<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>		
+<script>
+	
+// 	 function doAction(index){
+// 	    var obj = document.getElementById('u' + index);
+// 	    if(obj.style.display == 'none'){
+// 	            obj.style.display = 'block';
+// 	    }else{
+// 	            obj.style.display = 'none';
+// 	    }
+// 	}
+	
+	 function doAction(index){
+	    var obj = document.getElementById('u' + index);
+	    if(obj.style.display == 'none'){
+	            obj.style.display = 'block';
+	    }
+	}
+	
+	function doAction2(index){
+	    var obj = document.getElementById('u' + index);
+			if(obj.style.display == 'none'){
+ 	            obj.style.display = 'block';
+			}else{
+				obj.style.display = 'none';
+			}
+	}
+			
+	function test(){
+	    var obj = document.getElementById('d1');
+	    alert(obj.innerHTML);
+	}
+	
+	
+	new Vue({
+		el:"#ctn",
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			addservice(){
+				$("#addservicemodal").modal("show");
+			},
+			updateservice(){
+				$("#updateservicemodal").modal("show");
+			},
+			addson(){
+				$("#addsonmodal").modal("show");
+			},
+			updatesame(){
+				$("#updatesamemodal").modal("show");
+			},
+			pricechange(){
+				$("#pricechangemodal").modal("show");
+			}
+			
+		},
+		created(){
+			
+		}
+	});
+	$(".pintr").click(function(){
+		$(".pintr").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
+	$(".pintr2").click(function(){
+		$(".pintr2").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
+	
+	
+	$(".file1").mouseover(function(){
+		$(this).css("background","#e7e7e7")
+	}).mouseout(function(){
+		$(this).css("background","")
+	})
+	
+	$("#d1_body span").click(function(){
+		$("#d1_body span").css("color","")
+		$("#d1_body span").css("background","")
+		$(this).css("background","#666")
+		$(this).css("color","#ffffff")
+	})
+	
+</script>
+	</body>
+</html>

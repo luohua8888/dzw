@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.OiltypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Oiltype">
+        <id column="oiltypeid" property="oiltypeid" />
+        <result column="oiltype" property="oiltype" />
+        <result column="o1" property="o1" />
+        <result column="o2" property="o2" />
+        <result column="o3" property="o3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        oiltypeid, oiltype, o1, o2, o3
+    </sql>
+
+</mapper>

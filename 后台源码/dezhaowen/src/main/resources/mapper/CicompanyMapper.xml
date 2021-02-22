@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CicompanyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Cicompany">
+        <id column="cicompanyid" property="cicompanyid" />
+        <result column="cicompany" property="cicompany" />
+        <result column="cm1" property="cm1" />
+        <result column="cm2" property="cm2" />
+        <result column="cm3" property="cm3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        cicompanyid, cicompany, cm1, cm2, cm3
+    </sql>
+
+</mapper>

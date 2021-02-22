@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.ZuzhijiegoubiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Zuzhijiegoubiao">
+        <id column="zid" property="zid" />
+        <result column="zname" property="zname" />
+        <result column="msname" property="msname" />
+        <result column="mshou" property="mshou" />
+        <result column="mdianid" property="mdianid" />
+        <result column="mzuishu" property="mzuishu" />
+        <result column="mtiao" property="mtiao" />
+        <result column="mcityid" property="mcityid" />
+        <result column="mkai" property="mkai" />
+        <result column="maddress" property="maddress" />
+        <result column="mshui" property="mshui" />
+        <result column="mphone" property="mphone" />
+        <result column="mlname" property="mlname" />
+        <result column="mhang" property="mhang" />
+        <result column="mzhang" property="mzhang" />
+        <result column="mgouid" property="mgouid" />
+        <result column="mru" property="mru" />
+        <result column="mting" property="mting" />
+        <result column="zids" property="zids" />
+        <result column="zyid" property="zyid" />
+        <result column="z1" property="z1" />
+        <result column="z2" property="z2" />
+        <result column="z3" property="z3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        zid, zname, msname, mshou, mdianid, mzuishu, mtiao, mcityid, mkai, maddress, mshui, mphone, mlname, mhang, mzhang, mgouid, mru, mting, zids, zyid, z1, z2, z3
+    </sql>
+
+</mapper>

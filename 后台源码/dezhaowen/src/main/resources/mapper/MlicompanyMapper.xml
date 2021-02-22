@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MlicompanyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Mlicompany">
+        <id column="mlicompanyid" property="mlicompanyid" />
+        <result column="mlicompany" property="mlicompany" />
+        <result column="mli1" property="mli1" />
+        <result column="mli2" property="mli2" />
+        <result column="mli3" property="mli3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        mlicompanyid, mlicompany, mli1, mli2, mli3
+    </sql>
+
+</mapper>

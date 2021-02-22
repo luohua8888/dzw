@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MaintenanceTeamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.MaintenanceTeam">
+        <id column="teamid" property="teamid" />
+        <result column="teamname" property="teamname" />
+        <result column="teamweight" property="teamweight" />
+        <result column="classificationid" property="classificationid" />
+        <result column="tem1" property="tem1" />
+        <result column="tem2" property="tem2" />
+        <result column="tem3" property="tem3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        teamid, teamname, teamweight, classificationid, tem1, tem2, tem3
+    </sql>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MaintenanceTeamClassificationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.MaintenanceTeamClassification">
+        <id column="classificationid" property="classificationid" />
+        <result column="classificationname" property="classificationname" />
+        <result column="class1" property="class1" />
+        <result column="class2" property="class2" />
+        <result column="class3" property="class3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        classificationid, classificationname, class1, class2, class3
+    </sql>
+
+</mapper>

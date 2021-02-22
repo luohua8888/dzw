@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.RescueMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Rescue">
+        <id column="number" property="number" />
+        <result column="carinfoid" property="carinfoid" />
+        <result column="staffno" property="staffno" />
+        <result column="rescueTeamid" property="rescueTeamid" />
+        <result column="type" property="type" />
+        <result column="worktimes" property="worktimes" />
+        <result column="getman" property="getman" />
+        <result column="workdate" property="workdate" />
+        <result column="nowdate" property="nowdate" />
+        <result column="address" property="address" />
+        <result column="car" property="car" />
+        <result column="liche" property="liche" />
+        <result column="worktime" property="worktime" />
+        <result column="overtime" property="overtime" />
+        <result column="rescueaddress" property="rescueaddress" />
+        <result column="setter" property="setter" />
+        <result column="company" property="company" />
+        <result column="price" property="price" />
+        <result column="remark" property="remark" />
+        <result column="state" property="state" />
+        <result column="fault" property="fault" />
+        <result column="faultreasult" property="faultreasult" />
+        <result column="status" property="status" />
+        <result column="orderTime" property="orderTime" />
+        <result column="stockDater" property="stockDater" />
+        <result column="otherone" property="otherone" />
+        <result column="othertwo" property="othertwo" />
+        <result column="otherthree" property="otherthree" />
+        <result column="otherfour" property="otherfour" />
+        <result column="otherfive" property="otherfive" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        number, carinfoid, staffno, rescueTeamid, type, worktimes, getman, workdate, nowdate, address, car, liche, worktime, overtime, rescueaddress, setter, company, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
+    </sql>
+
+</mapper>

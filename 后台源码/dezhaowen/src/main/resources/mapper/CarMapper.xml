@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.CarMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Car">
+        <id column="carnum" property="carnum" />
+        <result column="platename" property="platename" />
+        <result column="carbrandid" property="carbrandid" />
+        <result column="driver" property="driver" />
+        <result column="driverphone" property="driverphone" />
+        <result column="birthday" property="birthday" />
+        <result column="caraffiliationid" property="caraffiliationid" />
+        <result column="driveraddress" property="driveraddress" />
+        <result column="drivingouttime" property="drivingouttime" />
+        <result column="framnum" property="framnum" />
+        <result column="enginenum" property="enginenum" />
+        <result column="engineid" property="engineid" />
+        <result column="carnyear" property="carnyear" />
+        <result column="mileage" property="mileage" />
+        <result column="load" property="load" />
+        <result column="carseries" property="carseries" />
+        <result column="buytime" property="buytime" />
+        <result column="uptime" property="uptime" />
+        <result column="carouttime" property="carouttime" />
+        <result column="mlicompanyid" property="mlicompanyid" />
+        <result column="mliouttime" property="mliouttime" />
+        <result column="cicompanyid" property="cicompanyid" />
+        <result column="ciouttime" property="ciouttime" />
+        <result column="mytoucar" property="mytoucar" />
+        <result column="twotime" property="twotime" />
+        <result column="oiltypeid" property="oiltypeid" />
+        <result column="nextmileage" property="nextmileage" />
+        <result column="nextupkeeptime" property="nextupkeeptime" />
+        <result column="membernum" property="membernum" />
+        <result column="customernum" property="customernum" />
+        <result column="car1" property="car1" />
+        <result column="car2" property="car2" />
+        <result column="car3" property="car3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        carnum, platename, carbrandid, driver, driverphone, birthday, caraffiliationid, driveraddress, drivingouttime, framnum, enginenum, engineid, carnyear, mileage, load, carseries, buytime, uptime, carouttime, mlicompanyid, mliouttime, cicompanyid, ciouttime, mytoucar, twotime, oiltypeid, nextmileage, nextupkeeptime, membernum, customernum, car1, car2, car3
+    </sql>
+
+</mapper>

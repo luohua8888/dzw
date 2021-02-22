@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MendianbiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Mendianbiao">
+        <id column="mdid" property="mdid" />
+        <result column="mddm" property="mddm" />
+        <result column="mdname" property="mdname" />
+        <result column="szcs" property="szcs" />
+        <result column="md1" property="md1" />
+        <result column="md2" property="md2" />
+        <result column="md3" property="md3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        mdid, mddm, mdname, szcs, md1, md2, md3
+    </sql>
+
+</mapper>

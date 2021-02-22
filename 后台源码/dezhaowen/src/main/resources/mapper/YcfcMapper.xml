@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.YcfcMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Ycfc">
+        <id column="ycfcid" property="ycfcid" />
+        <result column="ycfc" property="ycfc" />
+        <result column="yc1" property="yc1" />
+        <result column="yc2" property="yc2" />
+        <result column="yc3" property="yc3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ycfcid, ycfc, yc1, yc2, yc3
+    </sql>
+
+</mapper>

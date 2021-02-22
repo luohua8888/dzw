@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.ChexingdingyibiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Chexingdingyibiao">
+        <id column="cid" property="cid" />
+        <result column="cname" property="cname" />
+        <result column="jingkoumingchang" property="jingkoumingchang" />
+        <result column="chankaojiage" property="chankaojiage" />
+        <result column="cheliangniankuan" property="cheliangniankuan" />
+        <result column="gonglv" property="gonglv" />
+        <result column="ranyoubianhao" property="ranyoubianhao" />
+        <result column="zaizhong" property="zaizhong" />
+        <result column="fadingjipingpai" property="fadingjipingpai" />
+        <result column="c1" property="c1" />
+        <result column="c2" property="c2" />
+        <result column="c3" property="c3" />
+        <result column="zhaopian" property="zhaopian" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        cid, cname, jingkoumingchang, chankaojiage, cheliangniankuan, gonglv, ranyoubianhao, zaizhong, fadingjipingpai, c1, c2, c3, zhaopian
+    </sql>
+
+</mapper>

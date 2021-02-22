@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.PinpaichexingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Pinpaichexing">
+        <id column="pid" property="pid" />
+        <result column="pname" property="pname" />
+        <result column="shouzimu" property="shouzimu" />
+        <result column="p1" property="p1" />
+        <result column="p2" property="p2" />
+        <result column="p3" property="p3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        pid, pname, shouzimu, p1, p2, p3
+    </sql>
+
+</mapper>

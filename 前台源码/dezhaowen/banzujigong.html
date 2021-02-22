@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+		<link href="css/table.css" type="text/css" rel="stylesheet" />
+		<style>
+			.head>.pull-right>* {
+				margin: 0 10px;
+			}
+
+			.caozuo button>span {
+				display: inline-block;
+				height: 24px;
+				width: 20px;
+				background-position-x: -8px;
+				vertical-align: text-bottom;
+				background-image: url(img/image2.png);
+			}
+
+			.caozuo button:nth-of-type(2)>span {
+				background-position-x: -124px;
+			}
+
+			.caozuo button:nth-of-type(3)>span {
+				background-position-x: -198px;
+			}
+
+			.caozuo button:nth-of-type(4)>span {
+				background-position-x: -268px;
+			}
+
+			.caozuo button:nth-of-type(5)>span {
+				background-position-x: -338px;
+			}
+
+			.caozuo button:nth-of-type(6)>span {
+				background-position-x: -438px;
+			}
+
+			.caozuo button:nth-of-type(7)>span {
+				background-position-x: -538px;
+			}
+
+			.search {
+				background-color: #f19c09;
+			}
+
+			.search:hover,.search:active:focus,.search:focus {
+				background-color: #d88c07;
+			}
+			.red{
+				color: red;
+			}
+			.groupcaozuo>button{
+				border: 0;
+				float: left;
+				font-size: 16px;
+				background-color: rgba(0,0,0,0);
+			}
+			.groupcaozuo{
+				border-bottom:1px #c3c3c3 dashed;
+				margin-bottom: 10px;
+			}
+			.down span{
+				text-align: left;
+				display: inline-block;
+				padding: 2px;
+				background-color: #dadada;
+			}
+			.down span:first-of-type{
+				width: 4em;
+			}
+			.down span:nth-of-type(2){
+				width: 6em;
+			}
+			.down span:last-of-type{
+				background-color: unset;
+				color: #b9b9b9;
+			}
+			.form-group{
+				margin: 15px 0;
+			}
+			label{
+				width: 5em;
+				text-align: right;
+				color: #03b7d6;
+				font-weight: normal;
+			}
+			.body>div>.sroll{
+				height: calc(100% - 44px);
+			}
+			
+			.table {
+				min-width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="head">
+				<span>班组技工</span>
+				<div class="pull-right">
+					<div class="pull-left">
+						<input class="form-control" v-model="where" placeholder="匹配工号/姓名/手机"/>
+					</div>
+					<button class="btn search btn-default pull-left" @click="findjigong(id)">搜索</button>
+					<button style="background-color: lightgray;" class="btn btn-default pull-left">关闭</button>
+				</div>
+			</div>
+			<div class="caozuo">
+				<div class="clearfix">
+					<div class="pull-left">
+						<button @click="toadd" class="btn btn-default"><span></span>增加员工</button>
+						<button :disabled="JSON.stringify(jigong)=='{}'" @click="toup" class="btn btn-default"><span></span>修改</button>
+						<button :disabled="JSON.stringify(jigong)=='{}'" @click="del" class="btn btn-default"><span></span>删除</button>
+						<button class="btn btn-default"><span></span>查询</button>
+						<button class="btn btn-default"><span></span>置空密码</button>
+						<button class="btn btn-default"><span></span>班组权重</button>
+						<form action="http://localhost:8080/technicianInformation/downloadExcel" method="post" style="display: inline-block;">
+							<input type="hidden" name="teamid" v-model="id"/>
+							<input type="hidden" name="where" v-model="where"/>
+							<button :disabled="jigongs.length==0" class="btn btn-default"><span></span>导出</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="body clearfix">
+				<div class="col-xs-4" style="height: 100%;">
+					<div class="groupcaozuo clearfix">
+						<button @click="toaddteam" class="btn btn-default" :class="{disabled:!g.isinsert}">增加班组</button>
+						<button @click="toupteam" class="btn btn-default" :class="{disabled:g.isinsert}">修改班组</button>
+						<button @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
+					</div>
+					<div class="sroll">
+						<tree @changejigong="changejigong" :group="group"@changeg="changeg" @findjigong="findjigong"></tree>
+					</div>
+				</div>
+				<div class="col-xs-8 sroll">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<td></td>
+								<td>班组编号</td>
+								<td>班组名称</td>
+								<td>技工编号</td>
+								<td>技工姓名</td>
+								<td>性别</td>
+								<td>手机</td>
+								<td>地址</td>
+								<td>出生日期</td>
+								<td>组长</td>
+								<td>登录名</td>
+								<td>身份证号</td>
+								<td>户口地址</td>
+								<td>开户银行</td>
+								<td>银行账号</td>
+								<td>星级</td>
+								<td>维修工种</td>
+								<td>维修品牌</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr @click="changejigong(i)" :class="{orange:i.orange&&i.orange=='all'}"  v-for="i in jigongs">
+								<td @click="addorange(i,'all')"></td>
+								<td @click="addorange(i,'teamid')" :class="{orange:i.orange&&i.orange=='teamid'}">{{i.maintenanceTeam.teamid}}</td>
+								<td @click="addorange(i,'teamname')" :class="{orange:i.orange&&i.orange=='teamname'}">{{i.maintenanceTeam.teamname}}</td>
+								<td @click="addorange(i,'technicianid')" :class="{orange:i.orange&&i.orange=='technicianid'}">{{i.technicianid}}</td>
+								<td @click="addorange(i,'technicianname')" :class="{orange:i.orange&&i.orange=='technicianname'}">{{i.technicianname}}</td>
+								<td @click="addorange(i,'sex')" :class="{orange:i.orange&&i.orange=='sex'}">{{i.sex}}</td>
+								<td @click="addorange(i,'phone')" :class="{orange:i.orange&&i.orange=='phone'}">{{i.phone}}</td>
+								<td @click="addorange(i,'address')" :class="{orange:i.orange&&i.orange=='address'}">{{i.address}}</td>
+								<td @click="addorange(i,'borndate')" :class="{orange:i.orange&&i.orange=='borndate'}">{{i.borndate}}</td>
+								<td @click="addorange(i,'isteamleader')" :class="{orange:i.orange&&i.orange=='isteamleader'}">{{i.isteamleader?"组长":""}}</td>
+								<td @click="addorange(i,'loginphone')" :class="{orange:i.orange&&i.orange=='loginphone'}">{{i.loginphone}}</td>
+								<td @click="addorange(i,'idcard')" :class="{orange:i.orange&&i.orange=='idcard'}">{{i.idcard}}</td>
+								<td @click="addorange(i,'residenceaddress')" :class="{orange:i.orange&&i.orange=='residenceaddress'}">{{i.residenceaddress}}</td>
+								<td @click="addorange(i,'residencebank')" :class="{orange:i.orange&&i.orange=='residencebank'}">{{i.residencebank}}</td>
+								<td @click="addorange(i,'bankaccount')" :class="{orange:i.orange&&i.orange=='bankaccount'}">{{i.bankaccount}}</td>
+								<td @click="addorange(i,'levelname')" :class="{orange:i.orange&&i.orange=='levelname'}">{{i.technicianLevel.levelname}}</td>
+								<td @click="addorange(i,'maintenancetype')" :class="{orange:i.orange&&i.orange=='maintenancetype'}">{{i.maintenancetype}}</td>
+								<td @click="addorange(i,'maintenancetype')" :class="{orange:i.orange&&i.orange=='maintenancetype'}">{{i.maintenancebrand}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal" id="groupModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+								<h3>维修班组<button @click="saveteam" class="pull-right btn btn-success" style="margin-right: 20px;"><img src="img/save.png" />保存</button></h3>
+							</div>
+							<div class="modal-body">
+								<div class="form-horizontal col-xs-offset-1">
+									<div class="form-group">
+										<label class="control-label col-xs-2">班组编号</label>
+										<div class="col-xs-4">
+											<input v-model="team.teamid" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-xs-2">班组名称</label>
+										<div class="col-xs-6">
+											<input v-model="team.teamname" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-xs-2">班组权重</label>
+										<div class="col-xs-2">
+											<input v-model="team.teamweight" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="jigongModal">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+								<h3>技工资料<button @click="save" class="pull-right btn btn-success" style="margin-right: 20px;"><img src="img/save.png" />保存</button></h3>
+							</div>
+							<div class="modal-body">
+								<div class="form-inline">
+									<div class="form-group">
+										<label class="control-label">
+											<span class="red">*</span>技工编号</label>
+										<input v-model="showjigong.technicianid" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label"><span class="red">*</span>技工姓名</label>
+										<input v-model="showjigong.technicianname" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label"><span class="red">*</span>性别</label>
+										<select v-model="showjigong.sex" class="form-control">
+											<option>男</option>
+											<option>女</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="checkbox-inline">
+											<input v-model="showjigong.isteamleader" type="checkbox" />组长
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="control-label">
+											<span class="red">*</span>所在班组
+										</label>
+										<button @click="showg" class="form-control down">
+											<span>{{showjigong.maintenanceTeam?showjigong.maintenanceTeam.teamid:""}}</span>
+											<span>{{showjigong.maintenanceTeam?showjigong.maintenanceTeam.teamname:""}}</span>
+											<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+										</button>
+									</div>
+									<div class="form-group">
+										<label class="control-label"><span class="red">*</span>手机</label>
+										<input v-model="showjigong.phone" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">登录账号</label>
+										<input v-model="showjigong.loginphone" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">地址</label>
+										<input v-model="showjigong.address" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">出生日期</label>
+										<input type="date" v-model="showjigong.borndate" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">微信号</label>
+										<input v-model="showjigong.wechatnumber" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">身份证号</label>
+										<input v-model="showjigong.idcard" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">户口地址</label>
+										<input v-model="showjigong.residenceaddress" class="form-control" style="width: 450px;">
+									</div>
+									<div class="form-group">
+										<label class="control-label">开户银行</label>
+										<input v-model="showjigong.residencebank" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label">银行账号</label>
+										<input v-model="showjigong.bankaccount" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="control-label"><span class="red">*</span>星级</label>
+										<select v-model="showjigong.levelid" class="form-control">
+											<option :value="l.levelid" v-for="l in levels">{{l.levelname}}</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="control-label">维修工种</label>
+										<input v-model="showjigong.maintenancetype" class="form-control" style="width: 400px;">
+									</div>
+									<div class="form-group">
+										<label class="control-label">维修品牌</label>
+										<input v-model="showjigong.maintenancebrand" class="form-control" style="width: 400px;">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="gModal">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+								<h3>维修班组<button @click="btn" class="pull-right btn btn-success" style="margin-right: 20px;"><img src="img/save.png" />选择</button></h3>
+							</div>
+							<div class="modal-body">
+								<tree1 @change="changetemp" :group="group1"></tree1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script>
+			Vue.component("tree", {
+				template: `
+					<ul class="group">
+						<li v-for="i in group"><button v-if="i.list.length>0" @click="tog(i)">{{i.visable?"-":"+"}}</button><span @click="select(i)" style="display:block"><span :class="{select:i.cs}">{{i.classificationid}}-{{i.classificationname}}</span></span><i class="line"></i><i class="line-x"></i>
+							<ul v-if="i.visable">
+								<li v-for="j in i.list" @click="select(j)"><span :class="{select:j.cs}">{{j.teamid}}-{{j.teamname}}</span><i class="line"></i><i class="line-x"></i></li>
+							</ul>					
+						</li>
+					</ul>
+				`,
+				props: {
+					group: {
+						type: Array,
+						required: false
+					}
+				},
+				methods: {
+					tog(i) {
+						this.$set(i, "visable", !i.visable);
+					},
+					select(i) {
+						if(i.cs){
+							return;
+						}
+						this.$emit("changejigong",{});
+						this.group.forEach(i => {
+							this.$set(i, "cs", false);
+							i.list.forEach(g => this.$set(g, "cs", false))
+						})
+						this.$set(i, "cs", !i.cs);
+						id = [];
+						if (i.list) {
+							id = i.list.map(j => j.teamid);
+							g1=JSON.parse(JSON.stringify(i));
+							g1.isinsert=true;
+							this.$emit("changeg",g1);
+						} else {
+							id.push(i.teamid);
+							g1=JSON.parse(JSON.stringify(i));
+							g1.reteamid=g1.teamid;
+							g1.isinsert=false;
+							this.$emit("changeg",g1);
+						}
+						this.$emit("findjigong",id);
+					}
+				}
+			})
+			Vue.component("tree1", {
+				template: `
+					<ul class="group">
+						<li v-for="i in group"><button v-if="i.list.length>0" @click="tog(i)">{{i.visable?"-":"+"}}</button><span @click="select(i)" style="display:block"><span :class="{select:i.cs}">{{i.classificationid}}-{{i.classificationname}}</span></span><i class="line"></i><i class="line-x"></i>
+							<ul v-if="i.visable">
+								<li v-for="j in i.list" @click="select(j)"><span :class="{select:j.cs}">{{j.teamid}}-{{j.teamname}}</span><i class="line"></i><i class="line-x"></i></li>
+							</ul>					
+						</li>
+					</ul>
+				`,
+				props: {
+					group: {
+						type: Array,
+						required: false
+					}
+				},
+				methods: {
+					tog(i) {
+						this.$set(i, "visable", !i.visable);
+					},
+					select(i) {
+						this.group.forEach(i => {
+							this.$set(i, "cs", false);
+							i.list.forEach(g => this.$set(g, "cs", false))
+						})
+						this.$set(i, "cs", !i.cs);
+						this.$emit("change", i);
+					}
+				}
+			})
+			new Vue({
+				el: ".container-fluid",
+				data() {
+					return {
+						group: {},
+						group1:{},
+						jigongs: [],
+						g:{isinsert:true},
+						where:"",
+						id:[],
+						jigong:{},
+						showjigong:{},
+						levels:[],
+						team:{},
+						temp:{}
+					}
+				},
+				methods: {
+					addorange(i, col) {
+						this.jigongs.forEach(c => this.$set(c, "orange", false));
+						this.$set(i, "orange", col);
+					},
+					find() {
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/maintenanceTeamClassification/find",
+							dataType: "json",
+							success(data) {
+								v.group = data;
+								v.group1=JSON.parse(JSON.stringify(data));
+							}
+						})
+					},
+					findlevel(){
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/technicianLevel/find",
+							dataType: "json",
+							success(data) {
+								v.levels = data;
+							}
+						})
+					},
+					findalljigon(){
+						let v = this;
+						$.ajax({
+							url: "http://localhost:8080/technicianInformation/find",
+							dataType: "json",
+							traditional: true,
+							type: "post",
+							success(data) {
+								v.jigongs = data;
+							}
+						})
+					},
+					findjigong(id) {
+						let v = this;
+						this.id=id;
+						$.ajax({
+							url: "http://localhost:8080/technicianInformation/findbyteamid",
+							dataType: "json",
+							traditional: true,
+							type: "post",
+							data: {
+								teamid: id,
+								where:v.where
+							},
+							success(data) {
+								v.jigongs = data;
+							}
+						})
+					},
+					changeg(i){
+						this.g=i;
+					},
+					changejigong(i){
+						this.jigong=JSON.parse(JSON.stringify(i));
+						this.jigong.technicianLevel=undefined;
+					},
+					toadd(){
+						if(this.g.list||JSON.stringify(this.g)==JSON.stringify({isinsert:true})){
+							alert("请选择要增加员工的班组!");
+							return;
+						}
+						this.findlevel();
+						this.showjigong={};
+						this.showjigong.teamid=this.id;
+						this.$set(this.showjigong,"maintenanceTeam",this.g);
+						$("#jigongModal").modal("show");
+					},
+					toup(){
+						if(JSON.stringify(this.jigong)=="{}"){
+							alert("请选中一条技工信息!");
+							return;
+						}
+						this.findlevel();
+						this.showjigong=this.jigong;
+						this.showjigong.retechnicianid=this.showjigong.technicianid;
+						$("#jigongModal").modal("show");
+					},
+					del(){
+						if(!this.jigong.technicianid){
+							return;
+						}
+						if(!confirm("确定要删除选中的技工信息吗?")){
+							return;
+						}
+						let v=this;
+						$.ajax({
+							url: "http://localhost:8080/technicianInformation/del",
+							data:{retechnicianid:v.jigong.technicianid},
+							type: "post",
+							success(data) {
+								if(data>0){
+									if(v.id.length>0||v.where.trim()!=""){
+										v.findjigong(v.id);
+									}else{
+										v.findalljigon();
+									}
+									alert("删除成功!");
+								}else{
+									alert("删除失败")
+								}
+							}
+						})
+					},
+					save(){
+						this.showjigong.maintenanceTeam=undefined;
+						this.showjigong.isteamleader=this.showjigong.isteamleader?1:0;
+						let v=this;
+						$.ajax({
+							url: "http://localhost:8080/technicianInformation/save",
+							data:v.showjigong,
+							type: "post",
+							success(data) {
+								if(data>0){
+									if(v.id.length>0||v.where.trim()!=""){
+										v.findjigong(v.id);
+									}else{
+										v.findalljigon();
+									}
+									alert("保存成功!");
+									$("#jigongModal").modal("hide");
+								}
+								if(data==-1){
+									alert("技工编号已存在,不能重复!");
+								}
+							}
+						})
+					},
+					toaddteam(){
+						if(!this.g.isinsert){
+							return;
+						}
+						if(!this.g.list){
+							alert("请选中一个分组!");
+							return;
+						}
+						this.team={classificationid:this.g.classificationid},
+						$("#groupModal").modal("show");
+					},
+					toupteam(){
+						if(this.g.isinsert){
+							return;
+						}
+						if(this.g.list){
+							alert("请选中一个班组!");
+							return;
+						}
+						this.team=JSON.parse(JSON.stringify(this.g)),
+						this.team.reteamid=this.team.teamid;
+						$("#groupModal").modal("show");
+					},
+					saveteam(){
+						let v=this;
+						$.ajax({
+							url: "http://localhost:8080/maintenanceTeam/save",
+							data:v.team,
+							type: "post",
+							success(data) {
+								if(data>0){
+									v.find();
+									alert("保存成功!");
+									$("#groupModal").modal("hide");
+								}
+								if(data==-1){
+									alert("班组编号已存在,不能重复!");
+								}
+							}
+						})
+					},
+					delteam(){
+						if(this.g.list||JSON.stringify(this.g)==JSON.stringify({isinsert:true})){
+							return;
+						}
+						if(!confirm("确定要删除选中的班组信息吗?")){
+							return;
+						}
+						let v=this;
+						$.ajax({
+							url: "http://localhost:8080/maintenanceTeam/del",
+							data:{reteamid:v.g.teamid},
+							type: "post",
+							success(data) {
+								if(data>0){
+									v.find();
+									alert("删除成功!");
+								}else{
+									alert("删除失败")
+								}
+							}
+						})
+					},
+					btn() {
+						if (this.temp.list) {
+							alert("请选中分类中的组!");
+						} else {
+							this.$set(this.showjigong, "maintenanceTeam", this.temp);
+							this.showjigong.teamid = this.temp.teamid;
+							$("#gModal").modal("hide");
+						}
+					},
+					showg(){
+						$("#gModal").modal("show");
+					},
+					changetemp(i){
+						this.temp = i;
+					}
+				},
+				created() {
+					this.find();
+					this.findalljigon();
+				}
+			})
+			$("tbody tr").dblclick(function() {
+				$("#jigongModal").modal("show");
+			})
+		</script>
+	</body>
+</html>

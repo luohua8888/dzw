@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.UpkeepMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Upkeep">
+        <id column="upkeepid" property="upkeepid" />
+        <result column="carnum" property="carnum" />
+        <result column="upkeepname" property="upkeepname" />
+        <result column="plantime" property="plantime" />
+        <result column="planmileage" property="planmileage" />
+        <result column="facttime" property="facttime" />
+        <result column="factmileage" property="factmileage" />
+        <result column="up1" property="up1" />
+        <result column="up2" property="up2" />
+        <result column="up3" property="up3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        upkeepid, carnum, upkeepname, plantime, planmileage, facttime, factmileage, up1, up2, up3
+    </sql>
+
+</mapper>

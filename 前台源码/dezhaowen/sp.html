@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#ctn{
+				width: 99%;
+				height: 100%;
+				
+			}
+				
+			#find{
+				width: 100%;
+				margin-right: 20px;
+				
+			}
+			input[type="text"]{
+				height: 25px;
+				width: 150px;
+			}
+			#table{
+			}
+			tr{
+				font-size: 12px;
+			}
+			#theme{
+				height: 88%;
+				background: #f7f7f7;
+			}
+			
+			.til{
+				display: inline-block;
+				padding-left: 10px;
+				height: 25px;
+				border-left: 4px solid sandybrown;
+			}
+			
+			.must{
+				display: inline-block;
+				width: 5px;
+				color: red;
+			}
+			
+			.va{
+				display: inline-block;
+				color: #39cede;
+				width: 70px;
+			}
+			
+			.price input[type="text"]{
+				width: 80px;
+			}
+			
+			
+			li{
+				list-style: none;
+			}
+			
+			.ctable td{
+				width: 50px;
+			}
+			
+			.app{
+				color: red;
+			}
+			
+			#mfieldmodal td{
+				width: 100px;
+			}
+			
+			#mfieldmodal .item{
+				width: 50px;
+			}
+			
+			.item{
+				width: 50px;
+				background: #666;
+			}
+			
+			
+		</style>
+	<body>
+		<div id="ctn">
+			<div class="row">
+				<div class="col-sm-2">
+					<h3>&nbsp;&nbsp;&nbsp;商品资料</h3>
+				</div>
+				<div class="col-sm-5"></div>
+				<div class="col-sm-4">
+					<br />
+					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" style="width: 350px;"/>
+					<button class="btn btn-warning btn-xs">搜索</button>
+				</div>
+				<div class="col-sm-1">
+					<br>
+					<button class="btn btn-xs" >关闭</button>
+				</div>
+			</div>
+			<div id="theme">
+				<div id="find">
+					<hr />
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class="btn btn-warning btn-xs" @click="addgoods">增加</button>
+						<button class="btn btn-warning btn-xs" @click="updategoods">修改</button>
+						<button class="btn btn-warning btn-xs">删除</button>
+						<button class="btn btn-warning btn-xs" @click="findgoods">查询</button>
+					</div>
+					<div class="col-sm-9">
+						<button class="btn btn-warning btn-xs">导出</button>
+						<button class="btn btn-warning btn-xs">照片</button>
+						<button class="btn btn-warning btn-xs">条码</button>
+						<button class="btn btn-warning btn-xs">分类设置</button>
+						<button class="btn btn-warning btn-xs" @click="addfield">字段设置</button>
+						
+					</div>
+				</div>
+				<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" name="" id="" value="" placeholder="匹配	编码/名称" />
+				<button class="btn btn-warning btn-xs">搜索</button>
+				<br><br />
+				<div style="width: 300px;height: 85%;margin-left: 0px; background: #ffffff;">
+					<br />
+					<div id="table" style="background: #ffffff;">
+						<div id="app"></div>
+					</div>
+				</div>
+				
+				<div style="margin-left: 350px;margin-top: -590px; border: 0px solid #000000;background: #ffffff;height: 90%;overflow: auto;" >
+					<table id="ctable" class="table table-bordered table-striped table-hover" style="white-space: nowrap" >
+						<tr style="background: #39cede;">
+							<td style="border: 1px solid #666; color: #FFFFFF;padding-left: 25px;"></td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">登记门店</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">照片名</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品编码</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品名称</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品名称</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品品牌</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">适用车型</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">数量单位</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品大类</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品中类</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品小类</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">收入分类</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">原厂副厂</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品等级</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">商品产地</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">厂商名称</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">原厂编码</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">条形码</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">包装规格</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">体积A</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">毛重</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">净重</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">加价率</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">互换码</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">售价按</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>总厂</td>
+							<td>465566546545</td>
+							<td>456645</td>
+							<td>喷油嘴</td>
+							<td></td>
+							<td>JN-5</td>
+							<td>件</td>
+							<td>发动机</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>0.00</td>
+							<td>3454</td>
+							<td>售价表</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>总厂</td>
+							<td>465566546545</td>
+							<td>456645</td>
+							<td>喷油嘴</td>
+							<td></td>
+							<td>JN-5</td>
+							<td>件</td>
+							<td>发动机</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>0.00</td>
+							<td>3454</td>
+							<td>售价表</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>总厂</td>
+							<td>465566546545</td>
+							<td>456645</td>
+							<td>喷油嘴</td>
+							<td></td>
+							<td>JN-5</td>
+							<td>件</td>
+							<td>发动机</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>0.00</td>
+							<td>3454</td>
+							<td>售价表</td>
+						</tr>	
+					</table>
+				</div>
+				
+			</div>
+			
+			
+			
+			
+			<!-- 模态框 -->
+			
+			<div id="modal">
+				
+				<!-- 新增商品 -->
+				<div class="modal fade" id="addgoodsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">商品资料编辑</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7 ;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">商品编码</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must">*</span>
+									<span class="va">商品名称</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">商品品牌</span>
+									<select style="width: 150px;height: 25px;">
+										<option>别克</option>
+										<option>米其林</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">数量单位</span>
+									<select style="width: 150px;height: 25px;">
+										<option>件</option>
+										<option>个</option>
+										<option>把</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">适用车型</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">商品大类</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">收入分类</span>
+									<select style="width: 150px;height: 25px;">
+										<option>机修</option>
+										<option>钣喷</option>
+										<option>燃油</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">原厂副厂</span>
+									<select style="width: 150px;height: 25px;">
+										<option>一号厂</option>
+										<option>二号厂</option>
+										<option>三号厂</option>
+									</select>
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">商品等级</span>
+									<select style="width: 150px;height: 25px;">
+										<option>A级</option>
+										<option>B级</option>
+										<option>C级</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">商品产地</span>
+									<select style="width: 150px;height: 25px;">
+										<option>湖南</option>
+										<option>北京</option>
+										<option>广东</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">厂商名称</span>
+									<input type="text" name="" id="" value="" style="width: 388px;"/>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">原厂编码</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">条形码</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">包装规格</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">体积A</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">毛重</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">净重</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">进货价</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">售价按</span>
+									<select style="width: 150px;height: 25px;">
+										<option>售价表</option>
+										<option>加价率</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">互换码</span>
+									<input type="text" name="" id="" value="" style="width: 388px;"/>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">标准价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">会员价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">VIP价</span>
+										<input type="text" name="" id="" value="" />
+									</div>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">协议价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">索赔价</span>
+										<input type="text" name="" id="" value="" />
+										
+										<span class="va">保险价</span>
+										<input type="text" name="" id="" value="" />
+									</div>
+								</p>
+								<br />
+							</div>
+				      </div>
+				     
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				
+				<!-- 修改商品 -->
+				<div class="modal fade" id="updategoodsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">商品资料编辑</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7 ;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">商品编码</span>
+									<input type="text" name="" id="" value="111" />
+									<span class="must">*</span>
+									<span class="va">商品名称</span>
+									<input type="text" name="" id="" value="汽油发动机" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">商品品牌</span>
+									<select style="width: 150px;height: 25px;">
+										<option>别克</option>
+										<option>米其林</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">数量单位</span>
+									<select style="width: 150px;height: 25px;">
+										<option>件</option>
+										<option>个</option>
+										<option>把</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">适用车型</span>
+									<input type="text" name="" id="" value="所有" />
+									<span class="must"></span>
+									<span class="va">商品大类</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">收入分类</span>
+									<select style="width: 150px;height: 25px;">
+										<option>机修</option>
+										<option>钣喷</option>
+										<option>燃油</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">原厂副厂</span>
+									<select style="width: 150px;height: 25px;">
+										<option>一号厂</option>
+										<option>二号厂</option>
+										<option>三号厂</option>
+									</select>
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">商品等级</span>
+									<select style="width: 150px;height: 25px;">
+										<option>A级</option>
+										<option>B级</option>
+										<option>C级</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">商品产地</span>
+									<select style="width: 150px;height: 25px;">
+										<option>湖南</option>
+										<option>北京</option>
+										<option>广东</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">厂商名称</span>
+									<input type="text" name="" id="" value="" style="width: 388px;"/>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">原厂编码</span>
+									<input type="text" name="" id="" value="1221" />
+									<span class="must"></span>
+									<span class="va">条形码</span>
+									<input type="text" name="" id="" value="24334234" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">包装规格</span>
+									<input type="text" name="" id="" value="规格" />
+									<span class="must"></span>
+									<span class="va">体积A</span>
+									<input type="text" name="" id="" value="10000kg" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">毛重</span>
+									<input type="text" name="" id="" value="44545kg" />
+									<span class="must"></span>
+									<span class="va">净重</span>
+									<input type="text" name="" id="" value="54566kg" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">进货价</span>
+									<input type="text" name="" id="" value="1233124" />
+									<span class="must"></span>
+									<span class="va">售价按</span>
+									<select style="width: 150px;height: 25px;">
+										<option>售价表</option>
+										<option>加价率</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">互换码</span>
+									<input type="text" name="" id="" value="66465D45F45GF45" style="width: 388px;"/>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">标准价</span>
+										<input type="text" name="" id="" value="324324" />
+										
+										<span class="va">会员价</span>
+										<input type="text" name="" id="" value="43234" />
+										
+										<span class="va">VIP价</span>
+										<input type="text" name="" id="" value="32434" />
+									</div>
+								</p>
+								<p>
+									<div class="price">
+										<span class="must"></span>
+										<span class="va">协议价</span>
+										<input type="text" name="" id="" value="34234" />
+										
+										<span class="va">索赔价</span>
+										<input type="text" name="" id="" value="23454" />
+										
+										<span class="va">保险价</span>
+										<input type="text" name="" id="" value="23454" />
+									</div>
+								</p>
+								<br />
+							</div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				<!-- 字段设置 -->
+				<div class="modal fade" id="addfieldmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-12">
+									<span class="til">字段设置</span>
+								</div>
+							</div>
+							<br />
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div id="mfieldmodal" style="background:#f7f7f7; height: 500px;">
+								
+								<div class="row" style="height: 50px;">
+									
+									<div class="col-sm-8">
+										<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<button type="button" class="btn btn-success">保存</button>
+									</div>
+									<div class="col-sm-4" style="margin-top: 5px;">
+										<br />
+										<button class="btn btn-warning btn-xs">全部选择</button>
+										<button class="btn btn-warning btn-xs">全部取消</button>
+									</div>
+								</div>
+								<br />
+								<table id="ctable" class="table table-bordered table-striped table-hover" style="width: 551px;">
+									<tr style="background: #39cede;">
+										<td style="border: 1px solid #666; color: #FFFFFF; width: 50px;"></td>
+										<td style="border: 1px solid #666; color: #FFFFFF;">显示</td>
+										<td style="border: 1px solid #666; color: #FFFFFF;">字段</td>
+										<td style="border: 1px solid #666; color: #FFFFFF;">字段名称</td>
+										<td style="border: 1px solid #666; color: #FFFFFF;">序号</td>
+										<td style="border: 1px solid #666; color: #FFFFFF;">显示宽度</td>
+									</tr>
+									
+								</table>
+								<div style="overflow: auto; width: 100%;height: 70%;margin-top: -20px;" >
+									<table id="ctable" class="table table-bordered table-striped table-hover" style="width: nowrap" >
+										
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>asdasd</td>
+											<td>商品编码</td>
+											<td>1</td>
+											<td>165</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+										<tr class="pintr2">
+											<td class="item"></td>
+											<td style="text-align: center;"><input type="checkbox"/></td>
+											<td>sdeffds</td>
+											<td>商品名称</td>
+											<td>2</td>
+											<td>155</td>
+										</tr>
+									</table>
+								</div>
+								
+							</div>
+				      </div>
+				     
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				<!-- 查询 -->
+				<div class="modal fade" id="findgoodsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">商品查询</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">确定</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:lightyellow ;">
+								<br />
+								<p>
+									<span class="must"></span>
+									<span class="va">商品编码</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">商品名称</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">商品品牌</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>别克</option>
+										<option>米其林</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">适用车型</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">商品大类</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>11</option>
+										<option>22</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">商品中类</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">商品小类</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">收入分类</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>机修</option>
+										<option>钣喷</option>
+										<option>燃油</option>
+									</select>
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">原厂副厂</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>一号厂</option>
+										<option>二号厂</option>
+										<option>三号厂</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">商品等级</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>A级</option>
+										<option>B级</option>
+										<option>C级</option>
+									</select>
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">商品产地</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>湖南</option>
+										<option>北京</option>
+										<option>广东</option>
+									</select>
+									<span class="must"></span>
+									<span class="va">厂商名称</span>
+									<select style="width: 150px;">
+										<option style='display: none'></option>
+										<option>11</option>
+										<option>22</option>
+										<option>33</option>
+									</select>
+								</p>
+								
+								<p>
+									<span class="must"></span>
+									<span class="va">原厂编码</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">条形码</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">包装规格</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">体积A</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">毛重</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">净重</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">零部件</span>
+									<select style="width: 150px;height: 25px;">
+										<option style='display: none'></option>
+										<option>所有</option>
+										<option>父件</option>
+										<option>部件</option>
+									</select>
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">品牌车型</span>
+									<select style="width: 150px;height: 25px;width: 388px;">
+										<option>所有</option>
+										<option>父件</option>
+										<option>部件</option>
+									</select>
+								</p>
+								<br />
+							</div>
+				      </div>
+				     
+				    </div>
+				  </div>
+				</div>
+				
+				
+			</div>
+			
+			
+			
+			
+		</div>
+		
+<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/vue.js"></script>		
+<script>
+	
+	 //递归数据
+	 $(function () {
+	    var data = [
+	        {
+	            id: 1, name: "10-发动机", pid: 0,
+	            children: [
+	                {
+	                    id: 2, name: "100-发动机总成", pid: 1,
+	                    children: [
+	                        { id: 3, name: "1000-汽油发动机", pid: 2 },
+	                        { id: 4, name: "1001-柴油发动机", pid: 2 },
+	                    ],
+	                },
+	                { id: 8, name: "101-机体组", pid: 1 },
+	                {
+	                    id: 9, name: "泵", pid: 1,
+	                    children: [
+	                        { id: 10, name: "水泵", pid: 9 },
+	                    ]
+	                },
+	            ]
+	        },
+	        {
+	            id: 5, name: "11-传动系统", pid: 0,
+	            children: [
+	                {
+	                    id: 6, name: "105-离合器", pid: 5,
+	                    children: [
+	                        { id: 7, name: "1006-离合器器压片", pid: 6 },
+	                    ]
+	                },
+	            ]
+	        },
+	    ];
+	 
+	    var menu = '';
+	    menuFn(0, data)
+	    $("#app").append(menu)
+	 
+		//递归方法
+	    function menuFn(id, data) {
+	        if (data.length > 0) {
+	            menu += "<ul class='ul1'>"
+	            for (var i = 0; i < data.length; i++) { //获取省一级
+	                if (data[i].pid == id) {
+	                    menu += "<li style='margin-left: -10px;'>"
+	                    if(data[i].children){
+	                        menu += '<em style='+'margin-left: -80px;'+'></em><a href='+'javascript:void(0)'+'><span style='+'color:#000000;'+'>' + data[i].name + "</span></a>"
+	                        menuFn(data[i].id, data[i].children)   //递归
+	                    }else{
+	                        menu += '<a href='+'javascript:void(0)'+'><span style='+'color:#000000;'+'>' + data[i].name + "</span></a>"
+	                    }
+	                    menu += "</li>"
+	                }
+	            }
+	            menu += "</ul>"
+	            return menu;
+	        }
+	    }
+	 
+	    function fn() {
+	        var ull = $($(this).parent().children("ul")[0]);
+	        if (ull.length > 0) {
+	            ull.toggle();
+	            $(this).toggleClass("open")
+	        }
+	    }
+	    $("#app").delegate("a", "click", fn)
+	    $("#app").delegate("em", "click", fn)
+	})
+	//----------递归结束
+	
+	
+	new Vue({
+		el:"#ctn",
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			addgoods(){
+				$("#addgoodsmodal").modal("show");
+			},
+			updategoods(){
+				$("#updategoodsmodal").modal("show");
+			},
+			addfield(){
+				$("#addfieldmodal").modal("show");
+			},
+			findgoods(){
+				$("#findgoodsmodal").modal("show");
+			},
+		},
+		created(){
+			
+		}
+	});
+	$(".pintr").click(function(){
+		$(".pintr").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
+	$(".pintr2").click(function(){
+		$(".pintr2").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
+	
+	
+	$(".file1").mouseover(function(){
+		$(this).css("background","#e7e7e7")
+	}).mouseout(function(){
+		$(this).css("background","")
+	})
+	
+	$("#d1_body span").click(function(){
+		$("#d1_body span").css("color","")
+		$("#d1_body span").css("background","")
+		$(this).css("background","#666")
+		$(this).css("color","#ffffff")
+	})
+	
+	$(document).ready(function(){
+		$(".ul1 span").click(function(){
+			$(".ul1 span").css("color","#000000")
+			$(".ul1 span").css("background","")
+			$(this).css("background","#666")
+			$(this).css("color","#ffffff")
+	});
+});
+	
+
+	
+</script>
+	</body>
+</html>
