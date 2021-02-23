@@ -67,7 +67,7 @@
 					</thead>
 					<tbody>
 						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in levels">
-							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'all')"><span class="glyphicon glyphicon-triangle-right" v-show="i.orange"></span></td>
 							<td @click="addorange(i,'levelid')" :class="{orange:i.orange&&i.orange=='levelid'}">{{i.levelid}}</td>
 							<td @click="addorange(i,'levelname')" :class="{orange:i.orange&&i.orange=='levelname'}">{{i.levelname}}</td>
 							<td @click="addorange(i,'commissionweight')" :class="{orange:i.orange&&i.orange=='commissionweight'}">{{i.commissionweight}}</td>
