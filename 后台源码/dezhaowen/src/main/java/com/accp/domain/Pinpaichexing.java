@@ -1,7 +1,12 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,11 +15,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-02-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,6 +30,7 @@ public class Pinpaichexing extends Model<Pinpaichexing> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "编码")
+    @TableId(type = IdType.INPUT)
     private Integer pid;
 
     @ApiModelProperty(value = "品牌名称")
@@ -54,6 +60,7 @@ public class Pinpaichexing extends Model<Pinpaichexing> {
     public static final String P2 = "p2";
 
     public static final String P3 = "p3";
+
 
     @Override
     protected Serializable pkVal() {

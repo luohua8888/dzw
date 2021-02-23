@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -10,11 +12,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-02-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,7 +27,8 @@ public class Fadongjipinpaibiao extends Model<Fadongjipinpaibiao> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "发动机品牌编码")
-    private Integer fid;
+    @TableId()
+    private String fid;
 
     @ApiModelProperty(value = "发动机品牌名称")
     private String fname;

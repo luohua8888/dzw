@@ -16,24 +16,33 @@
 				<div class="bj_1">
 					<p class="fd"><img src="img/未标题-1.jpg" class="tp_01" /><span @click="zjpp">增加品牌</span></p>
 					<p class="fd"><img src="img/未标题-5.jpg" /><span @click="xgpp">修改</span></p>
-					<p class="fd"><img src="img/未标题-2.jpg" /><span>删除</span></p>
+					<p class="fd"><img src="img/未标题-2.jpg" /><span @click="remove">删除</span></p>
 					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="zjcx">增加车型</span></p>
 					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="xgcx">修改</span></p>
 					<p class="fd1"><img src="img/未标题-2.jpg" /><span>删除</span></p>
 					<p class="fd1"><img src="img/未标题-6.jpg" /><span>照片</span></p>
 					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputEmail3" placeholder="匹配 品牌编码/品牌名称/	首字母">
+						<div class="col-sm-10" style="
+    position: relative;
+    z-index: 0;
+">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="匹配 品牌编码/品牌名称/	首字母" v-model="chaxun">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputEmail4" placeholder="匹配 车型编码/车型名称">
+							<input type="text" class="form-control" id="inputEmail4" v-model="cxun" placeholder="匹配 车型编码/车型名称">
 						</div>
 					</div>
 				</div>
-				<button type="button" id="al1" class="btn btn-warning">搜索</button>
-				<button type="button" id="al2" class="btn btn-warning">搜索</button>
+				<a type="button" id="al1" class="btn btn-warning" @click="find" style="
+    position: relative;
+    z-index: 99;
+">搜索</a>
+				<button type="button" id="al2" class="btn btn-warning" @click="chefind(car[0].ping)" style="
+    position: relative;
+    z-index: 99;
+">搜索</button>
 				<div class="bj_03">
 					<table class="table table-bordered">
 						<tr>
@@ -62,21 +71,21 @@
 							<td>载重</td>
 							<td>燃油编号</td>
 						</tr>
-						<tr v-if="pingpd">
+						<tr v-if="car" v-for="item in car">
 							<td>
 								<label class="checkbox-inline">
 									<input type="checkbox" id="inlineCheckbox1" value="option1">
 								</label>
 							</td>
-							<td>{{car.cheid}}</td>
-							<td>{{car.jingkoumingchang}}</td>
-							<td>{{car.chankaojiage}}</td>
-							<td>{{car.cheliangniankuan}}</td>
-							<td>{{car.gonglv}}</td>
-							<td>{{car.ranyoubianhao}}</td>
-							<td>{{car.zaizhong}}</td>
-							<td>{{car.fadingjipingpai}}</td>
-							<td>{{car.zhaopian}}</td>
+							<td>{{item.cheid}}</td>
+							<td>{{item.jingkoumingchang}}</td>
+							<td>{{item.chankaojiage}}</td>
+							<td>{{item.cheliangniankuan}}</td>
+							<td>{{item.gonglv}}</td>
+							<td>{{item.ranyoubianhao}}</td>
+							<td>{{item.zaizhong}}</td>
+							<td>{{item.fadingjipingpai}}</td>
+							<td>{{item.zhaopian}}</td>
 						</tr>
 					</table>
 				</div>
@@ -129,19 +138,19 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">品牌编码</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pid">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pid">
 									</div>
 								</div>
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">品牌名称</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pname">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pname">
 									</div>
 								</div>
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">首字母</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.shouzimu">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.shouzimu">
 									</div>
 								</div>
 							</form>
@@ -164,10 +173,10 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_01" class="col-sm-1 control-label">*车辆品牌</label>
 									<div class="col-sm-3" id="div1">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pid">
 									</div>
 									<div class="col-sm-7" id="div2">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pname">
 									</div>
 								</div>
 
@@ -188,10 +197,8 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
 									<div class="col-sm-10" id="div5">
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+										<select class="form-control" >
+											<option v-for="item in jlist">{{item.jname}}</option>
 										</select>
 									</div>
 								</div>
@@ -256,7 +263,6 @@
 										<input type="file">
 									</span>
 								</div>
-
 							</form>
 						</div>
 						<div class="modal-footer">
@@ -303,12 +309,10 @@
 									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
 									<div class="col-sm-10" id="div5">
 										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+											<option v-for="item in jlist">{{item.jname}}</option>
 										</select>
 									</div>
-									<img src="img/111未标题-1.jpg" class="abcd" @ />
+									<img src="img/111未标题-1.jpg" class="abcd"  />
 								</div>
 
 								<div class="form-group" id="ppbd">
@@ -372,7 +376,7 @@
 									</span>
 								</div>
 							</form>
-						</div>			
+						</div>
 						<div class="modal-footer">
 							<a @click="update" class="btn btn-success" data-dismiss="modal">提交</a>
 							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
@@ -391,15 +395,23 @@
 				data() {
 					return {
 						list: [],
-						car: {
-							ping:{}
-						},
+						car:[
+						],
+						
 						pinginsert: {
-							pid:"",
-							pname:"",
-							shouzimu:""
+							pid: "",
+							pname: "",
+							shouzimu: ""
 						},
-						pingpd:false
+						pingupdert: {
+							pid: "",
+							pname: "",
+							shouzimu: ""
+						},
+						pingpd: false,
+						chaxun: "",
+						cxun:"",
+						jlist:[]
 					}
 				},
 				methods: {
@@ -425,8 +437,10 @@
 						let that = this;
 						$.ajax({
 							url: BaseUrl + "/chexingdingyibiao/find",
+							data: {
+								chaxun: that.chaxun
+							},
 							success: function(result) {
-								console.log(result)
 								that.list = result;
 								that.chefind(that.list[0])
 							}
@@ -434,15 +448,21 @@
 					},
 					chefind(item) {
 						let that = this;
+						this.pingupdert=JSON.parse(JSON.stringify(item));
 						$.ajax({
 							url: BaseUrl + "/chexingdingyibiao/carfind/" + item.pid,
 							type: "get",
+							data:{
+								cxun:that.cxun
+							}
+							,
 							dataType: "json",
 							success: function(result) {
-								that.pingpd=true;
-								that.car = result
+								that.pingpd = true;
+								that.car = 	result
 								console.log("查询进入")
 								console.log(that.car)
+								
 							}
 						})
 					},
@@ -450,35 +470,59 @@
 						let that = this;
 						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
 						$.ajax({
-							url:BaseUrl+"/chexingdingyibiao/padd",
-							data:that.pinginsert,
+							url: BaseUrl + "/chexingdingyibiao/padd",
+							data: that.pinginsert,
 							dataType: "json",
-							type: "post",	
+							type: "post",
 							success: function(result) {
 								console.log("进入了")
 								that.find();
 							}
 						})
 					},
-					
 					pupdate(){
 						let that = this;
-						console.log("aaaaa")
-						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
+						let json = JSON.stringify(that.pingupdert);
+						console.log(json)
 						$.ajax({
-							url:BaseUrl+"/chexingdingyibiao/pupdate",
-							data:that.car,
-							dataType: "json",
-							type: "post",	
+							url: BaseUrl + "/chexingdingyibiao/pupdate",
+							data: that.pingupdert,
+							type: "post",
 							success: function(result) {
 								console.log("修改成功")
 								that.find();
 							}
 						})
+					},remove(){
+						let that=this;
+						console.log("444444")
+						$.ajax({
+							url:BaseUrl+"/chexingdingyibiao/remove/"+that.pingupdert.pid,
+							type:"get",
+							success:function(result){
+								that.find()
+							}
+						})
+					},
+					jkgcfind(){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"/chexingdingyibiao/jkgcfind",
+							success:function(result){
+								console.log("11111")
+								that.jlist=result;
+								console.log(that.list)
+							}
+						})
+					},
+					cheinsert(){
+						
 					}
 				},
+			
 				created() {
 					this.find()
+					this.jkgcfind();
 				}
 			})
 			$(document).on('click', '.pintr', function() {
