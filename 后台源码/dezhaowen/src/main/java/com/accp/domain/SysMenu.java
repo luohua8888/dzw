@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -66,6 +68,10 @@ public class SysMenu extends Model<SysMenu> {
 
     @ApiModelProperty(value = "备用字段")
     private String men3;
+    @ApiModelProperty(value = "字节的集合")
+    private List<SysMenu> children;
+
+    private boolean l;
 
 
     public static final String MENU_ID = "menu_id";
@@ -93,6 +99,7 @@ public class SysMenu extends Model<SysMenu> {
     public static final String MEN2 = "men2";
 
     public static final String MEN3 = "men3";
+    
 
     @Override
     protected Serializable pkVal() {
