@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -10,11 +11,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-01-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,6 +25,10 @@ public class FieldVehicles extends Model<FieldVehicles> {
 
     private static final long serialVersionUID=1L;
 
+    @TableField(exist = false)
+    private String recarnumber;
+    @TableField(exist = false)
+    private MaintenanceTeam maintenanceTeam;
     @ApiModelProperty(value = "车牌号")
     private String carnumber;
 
