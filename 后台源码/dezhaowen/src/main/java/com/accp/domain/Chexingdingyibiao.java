@@ -57,7 +57,7 @@ public class Chexingdingyibiao extends Model<Chexingdingyibiao> {
     private String fadingjipingpai;
 
     @ApiModelProperty(value = "车型id")
-    @TableId(type = IdType.AUTO)
+    @TableId()
     private Integer cheid;
 
     @ApiModelProperty(value = " 备用字段")
