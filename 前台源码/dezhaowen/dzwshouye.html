@@ -129,7 +129,7 @@
 				 </div>
 			</div>
 			<div class="row">
-				<div class="col-sm-1" style="width: 120px;">
+				<div class="col-sm-1" >
 					<div class="dropdown">
 					  	<div>
 						    
@@ -167,6 +167,10 @@
 		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
 		<script type="text/javascript" src="js/menu.js" ></script>
 		<script type="text/javascript">
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			var tabs=[
 			{
 				id:0,
@@ -205,8 +209,12 @@
 					}
 				},
 				created(){
+					var ss=sessionStorage.getItem("user");
+					var u=JSON.parse(ss);
+					console.log(u);
+					this.user=u;
 					let that=this;
-					menuApi.findMenuByUserId(1,function(result){
+					menuApi.findMenuByUserId(u.roleId,function(result){
 					console.log(result);
 					that.menu = result;
 					that.selectedMenu = that.menu[0];
