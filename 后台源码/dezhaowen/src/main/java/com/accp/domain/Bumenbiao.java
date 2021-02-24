@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -23,7 +25,7 @@ import lombok.experimental.Accessors;
 public class Bumenbiao extends Model<Bumenbiao> {
 
     private static final long serialVersionUID=1L;
-
+    @TableId("bid")
     @ApiModelProperty(value = "部门编号")
     private Integer bid;
 
@@ -41,6 +43,9 @@ public class Bumenbiao extends Model<Bumenbiao> {
 
     @ApiModelProperty(value = "备用字段")
     private String b3;
+
+    @TableField(exist = false)
+    private Bumenbiao bu;
 
 
     public static final String BID = "bid";

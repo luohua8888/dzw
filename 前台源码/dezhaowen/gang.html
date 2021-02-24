@@ -1,175 +1,216 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<style type="text/css">
-			.row{
-				background-color:#F7FFFF;
+			.row {
+				background-color: #F7FFFF;
 				height: 55px;
 				width: 1536px;
 			}
-			.row div:nth-of-type(1){
+			
+			.row div:nth-of-type(1) {
 				padding-left: 45px;
 				padding-top: 15px;
 			}
-			.row div:nth-of-type(2){
+			
+			.row div:nth-of-type(2) {
 				padding-top: 15px;
 			}
-			.row1{
-				background-color:#F7F7F7;
+			
+			.row1 {
+				background-color: #F7F7F7;
 				height: 695px;
 			}
-			.row1 div:nth-of-type(1){
+			
+			.row1 div:nth-of-type(1) {
 				padding-top: 10px;
 				padding-right: 20px;
 			}
-			.form-inline{
+			
+			.form-inline {
 				padding-left: 60px;
 			}
-			.form-inline .form-group:nth-of-type(2){
+			
+			.form-inline .form-group:nth-of-type(2) {
 				padding-top: 8px;
 			}
-			.show1{
+			
+			.show1 {
 				margin-top: 25px;
 				width: 1400px;
 				height: 550px;
 				background-color: white;
 				margin-left: 60px;
 			}
-			.show1 table tr td{
-				text-align:center;
+			
+			.show1 table tr td {
+				text-align: center;
 			}
 		</style>
 	</head>
+
 	<body>
 		<div id="ctn">
 			<div class="row">
-			  <div class="col-md-11" style="font-size: 25px;color: #1A2846;">岗位定义</div>
-			  <div class="col-md-1"><button class="btn">关闭</button></div>
+				<div class="col-md-11" style="font-size: 25px;color: #1A2846;">岗位定义</div>
+				<div class="col-md-1"><button class="btn">关闭</button></div>
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size: 18px;">
 					<div class="col-md-8"></div>
-					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png"/>增加</div>
-					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png"/><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
-					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>导出</div>
+					<div class="col-md-1" @click="add()"><img src="img/26d502752909327e0126dd1795f6cba.png" />增加</div>
+					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal" data-toggle="modal">删除</span></div>
+					<div class="col-md-1" @click="update()"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />保存</div>
+					<div class="col-md-1" @click="daochu()"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />导出</div>
 				</div>
 				<form class="form-inline">
-				  <div class="form-group">
-				    <label style="color: #39CEDE;">岗位编码</label>
-				    <input type="text" class="form-control" v-model="bian">
-				  </div>
-				  <div class="form-group">
-				    <label style="color: #39CEDE;">岗位名称</label>
-				    <input type="text" class="form-control" v-model="name">
-				  </div>
+					<div class="form-group">
+						<label style="color: #39CEDE;">岗位编码</label>
+						<input type="text" class="form-control" v-model="post.gid">
+					</div>
+					<div class="form-group">
+						<label style="color: #39CEDE;">岗位名称</label>
+						<input type="text" class="form-control" v-model="post.gname">
+					</div>
 				</form>
 				<div class="show1">
 					<table class="table table-bordered">
-					  <tr style="background-color:#39CEDE;">
-					  	<td width="70px"></td>
-					  	<td>岗位编码</td>
-					  	<td>岗位名称</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>001</td>
-					  	<td>总经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>002</td>
-					  	<td>副总经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>003</td>
-					  	<td>销售总监</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>004</td>
-					  	<td>客流登记员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>005</td>
-					  	<td>销售顾问</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>006</td>
-					  	<td>服务经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>007</td>
-					  	<td>服务顾问</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>008</td>
-					  	<td>服务总监</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>009</td>
-					  	<td>信息员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>010</td>
-					  	<td>库管员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>011</td>
-					  	<td>移车员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>012</td>
-					  	<td>上牌员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>013</td>
-					  	<td>人事专员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>014</td>
-					  	<td>人事经理</td>
-					  </tr>
+						<tr style="background-color:#39CEDE;">
+							<td width="70px"></td>
+							<td>岗位编码</td>
+							<td>岗位名称</td>
+						</tr>
+						<tr v-for="p in postlist">
+							<td style="background-color: #D6D6CE;"><input type="radio" name="hname" @click="findById(p.gid)"></td>
+							<td>{{p.gid}}</td>
+							<td>{{p.gname}}</td>
+						</tr>
 					</table>
 				</div>
 			</div>
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">删除确认</h4>
-			      </div>
-			      <div class="modal-body">
-			             是否确认删除该记录？
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
-			        <button type="button" class="btn btn-danger">是(Y)</button>
-			      </div>
-			    </div>
-			  </div>
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">删除确认</h4>
+						</div>
+						<div class="modal-body">
+							是否确认删除该记录？
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" @click="remove()">是(Y)</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/vue-2.6.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript">
-			
+			new Vue({
+				el: "#ctn",
+				data() {
+					return {
+						postlist: {},
+						post: {},
+						id: 1
+					};
+				},
+				methods: {
+					query() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/gangweibiao/find",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.postlist = result;
+							}
+						});
+					},
+					add() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/gangweibiao/add",
+							data: that.post,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								if(result) {
+									alert("添加成功!");
+									that.query();
+								} else {
+									alert("添加失败!");
+								}
+							}
+						});
+					},
+					findById(id) {
+						this.id = id;
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/gangweibiao/findById/"+id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post = result;
+							}
+						});
+					},
+					remove() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/gangweibiao/delete/" + that.id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.query();
+							}
+						});
+					},
+					update() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/gangweibiao/update",
+							data: that.post,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								if(result) {
+									alert("修改成功!");
+									that.query();
+								} else {
+									alert("修改失败!");
+								}
+							}
+						});
+					},
+					daochu() {
+						window.location.href = "http://127.0.0.1:8080/gangweibiao/downloadExcel";
+					}
+				},
+				created() {
+					this.query();
+				}
+			});
 		</script>
 	</body>
+
 </html>
