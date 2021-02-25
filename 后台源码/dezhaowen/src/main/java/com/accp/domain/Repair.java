@@ -4,11 +4,15 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -47,22 +51,25 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "接车人")
     private String getman;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工时间")
-    private LocalDateTime overworkdate;
-
+    private Date overworkdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "实际完工时间")
     @TableField("nowworkDate")
-    private LocalDateTime nowworkDate;
+    private Date nowworkDate;
 
     @ApiModelProperty(value = "结算方式")
     private String setter;
 
     @ApiModelProperty(value = "赔款公司")
     private String company;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "上次进场时间")
-    private LocalDateTime befor;
+    private Date befor;
 
     @ApiModelProperty(value = "预估金额")
     private Float price;
@@ -81,14 +88,16 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "维修状态")
     private String status;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")
-    private LocalDateTime orderTime;
-
+    private Date orderTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     @TableField("stockDater")
-    private LocalDateTime stockDater;
+    private Date stockDater;
 
     @ApiModelProperty(value = "其它字段1")
     private String otherone;

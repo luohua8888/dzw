@@ -38,10 +38,96 @@
         <result column="car2" property="car2" />
         <result column="car3" property="car3" />
     </resultMap>
+    <resultMap type="com.accp.domain.ClientAndCar" id="BaseResult1" extends="BaseResultMap">
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="carnumber" property="carnumber" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="carer" property="carer" jdbcType="VARCHAR" />
+        <result column="carerphone" property="carerphone" jdbcType="VARCHAR" />
+        <result column="carBrandName" property="carBrandName" jdbcType="VARCHAR" />
+        <result column="engineBrandName" property="engineBrandName" jdbcType="VARCHAR" />
+        <result column="enginenumber" property="enginenumber" jdbcType="VARCHAR" />
+        <result column="jqinsurancedate" property="jqinsurancedate" jdbcType="DATE" />
+        <result column="maintaindate" property="maintaindate" jdbcType="DATE" />
+        <result column="integral" property="integral" jdbcType="INTEGER" />
+        <result column="onCredit" property="onCredit" jdbcType="REAL" />
+        <result column="deposit" property="deposit" jdbcType="REAL" />
+        <result column="clientType" property="clientType" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="BaseResultMap5" type="com.accp.domain.Carinfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="carNumber" property="carnumber" jdbcType="VARCHAR" />
+        <result column="carBrandId" property="carbrandid" jdbcType="INTEGER" />
+        <result column="carId" property="carid" jdbcType="INTEGER" />
+        <result column="carer" property="carer" jdbcType="VARCHAR" />
+        <result column="carerPhone" property="carerphone" jdbcType="VARCHAR" />
+        <result column="bornDate" property="borndate" jdbcType="DATE" />
+        <result column="affiliation" property="affiliation" jdbcType="VARCHAR" />
+        <result column="drivingLicence" property="drivinglicence" jdbcType="DATE" />
+        <result column="carNumber1" property="carnumber1" jdbcType="VARCHAR" />
+        <result column="engineNumber" property="enginenumber" jdbcType="VARCHAR" />
+        <result column="yearPrice" property="yearprice" jdbcType="REAL" />
+        <result column="mileage" property="mileage" jdbcType="REAL" />
+        <result column="engineId" property="engineid" jdbcType="INTEGER" />
+        <result column="deadweight" property="deadweight" jdbcType="VARCHAR" />
+        <result column="buyDate" property="buydate" jdbcType="TIMESTAMP" />
+        <result column="dutyDate" property="dutydate" jdbcType="TIMESTAMP" />
+        <result column="carCheckDate" property="carcheckdate" jdbcType="TIMESTAMP" />
+        <result column="fuelOilType" property="fueloiltype" jdbcType="VARCHAR" />
+        <result column="carSeries" property="carseries" jdbcType="VARCHAR" />
+        <result column="Jqinsurance" property="jqinsurance" jdbcType="VARCHAR" />
+        <result column="Jqinsurancedate" property="jqinsurancedate" jdbcType="DATE" />
+        <result column="Syinsurance" property="syinsurance" jdbcType="VARCHAR" />
+        <result column="Syinsurancedate" property="syinsurancedate" jdbcType="DATE" />
+        <result column="maintain" property="maintain" jdbcType="REAL" />
+        <result column="maintaindate" property="maintaindate" jdbcType="DATE" />
+        <result column="clientid" property="clientid" jdbcType="VARCHAR" />
 
+        <result column="insuredcar" property="insuredcar" jdbcType="VARCHAR" />
+        <result column="otherone" property="otherone" jdbcType="VARCHAR" />
+        <result column="othertwo" property="othertwo" jdbcType="VARCHAR" />
+        <result column="otherthree" property="otherthree" jdbcType="VARCHAR" />
+        <result column="otherfour" property="otherfour" jdbcType="VARCHAR" />
+        <result column="otherfive" property="otherfive" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap type="com.accp.domain.Carinfo" id="BaseResult2" extends="BaseResultMap5">
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="carTypeName" property="carTypeName" jdbcType="VARCHAR" />
+        <result column="carBrandName" property="carBrandName" jdbcType="VARCHAR" />
+        <result column="engineBrandName" property="enginebrandname" jdbcType="VARCHAR" />
+        <result column="carBrandName" property="carBrandName" jdbcType="VARCHAR" />
+        <result column="jjdate" property="jjdate" jdbcType="DATE" />
+        <result column="ordertime" property="ordertime" jdbcType="DATE" />
+    </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         carnum, platename, carbrandid, driver, driverphone, birthday, caraffiliationid, driveraddress, drivingouttime, framnum, enginenum, engineid, carnyear, mileage, load, carseries, buytime, uptime, carouttime, mlicompanyid, mliouttime, cicompanyid, ciouttime, mytoucar, twotime, oiltypeid, nextmileage, nextupkeeptime, membernum, customernum, car1, car2, car3
     </sql>
-
+    <select id="selectCarInfo" resultMap="BaseResult2">
+ SELECT car.carnum id,car.`platename` carNumber,car.`framnum` carNumber1,
+`pinpaichexing`.`pname` carBrandName
+,car.`enginenum` engineNumber,`fadongjipinpaibiao`.`fname` engineBrandName,
+customer.`customername` `name`,car.`driver` carer,car.`driverphone` carerPhone
+,car.`mileage` mileage,item.orderTime orderTime
+ FROM `car`
+LEFT JOIN `pinpaichexing` ON `pinpaichexing`.`pid`=car.`carbrandid`
+LEFT JOIN `fadongjipinpaibiao` ON `fadongjipinpaibiao`.`fid`=car.`engineid`
+LEFT JOIN customer ON customer.`customernum`=car.`customernum`
+LEFT JOIN (SELECT carinfoid,orderTime FROM `repair` WHERE `carinfoId`=(SELECT `carnum` FROM `car` WHERE `platename`=#{carNumber}) ORDER BY orderTime DESC LIMIT 0,1 ) item ON item.carinfoid=car.`carnum`
+WHERE car.`platename`=#{carNumber}
+  </select>
+    <select id="selectClientAndCar" resultMap="BaseResult1">
+SELECT car.platename carnumber,customer.customername name,customer.`customeraddress` address,
+car.`driver` carer,car.`driverphone` carerphone,
+pinpaichexing.`pname` carBrandName,
+fadongjipinpaibiao.`fname` engineBrandName,car.`enginenum` enginenumber,car.`mliouttime` jqinsurancedate,
+car.`nextupkeeptime` maintaindate,
+customer.`integral`,customer.`payment` onCredit,customer.`earnest` deposit,`customertype`.`customertype` clientType
+ FROM `car`
+LEFT JOIN `customer` ON car.customernum=customer.customernum
+LEFT JOIN `pinpaichexing` ON pinpaichexing.`pid`=car.`carbrandid`
+LEFT JOIN `fadongjipinpaibiao`  ON `fadongjipinpaibiao`.fid=car.`engineid`
+LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
+ WHERE platename =#{carNumber}
+  </select>
 </mapper>
