@@ -45,5 +45,9 @@ public class SysRoleController {
                 }
                 return null;
         }
+        @GetMapping
+        public List<SysRole> find(){
+                return service.list();
+        }
 }
 

@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +30,8 @@ public class SysRoleMenu extends Model<SysRoleMenu> {
 
     @ApiModelProperty(value = "菜单id")
     private Integer menuId;
+    @TableField(exist = false)
+    private SysMenu sysm;
 
 
     public static final String ROLE_ID = "role_id";
