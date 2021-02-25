@@ -334,8 +334,7 @@ public class CustomerController {
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
-    @RequestMapping("/car")
-    public List<>
+
 
 }
 

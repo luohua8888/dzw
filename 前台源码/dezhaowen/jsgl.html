@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div id="ntc">
-			<table>
+			<table class="table table-responsive">
 				<thead>
 					<tr>
 						<th>编号</th>
@@ -20,10 +20,10 @@
 				<tbody>
 					<tr v-for="item in list">
 						<td>{{item.roleId}}</td>
-						<td>{{item.remark}}</td>
+						<td>{{item.role2}}</td>
 						<td>{{item.roleName}}</td>
 						<td>
-							<span @click="auth(item)">授权</span>
+							<button @click="auth(item)" class="btn btn-success">授权</button>
 						</td>
 					</tr>
 				</tbody>
@@ -94,13 +94,17 @@
 						//将选中的和半选的元素进行和并到一个数组
 						selected.push(...undetermined);
 						$.ajax({
-							url:top.baseUrl+"sys/"+that.authRole.roleId,
+							url:top.baseUrl+"sysRoleMenu/"+that.authRole.roleId,
 							data:{
 								array:selected.join(",")
 							},
 							type:"post",
 							success:function(result){
-								console.log(result)
+								if(result==1){
+									alert("授权成功");
+								}else{
+									alert("授权失败");
+								}
 							}
 						});
 					},
