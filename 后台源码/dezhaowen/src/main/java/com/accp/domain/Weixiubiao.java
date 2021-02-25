@@ -57,8 +57,8 @@ public class Weixiubiao extends Model<Weixiubiao> {
     @ApiModelProperty(value = "保险价")
     private Double pxj;
 
-    @ApiModelProperty(value = "备用字段")
-    private String w1;
+    @ApiModelProperty(value = "售价按")
+    private String sj;
 
     @ApiModelProperty(value = "备用字段")
     private String w2;
