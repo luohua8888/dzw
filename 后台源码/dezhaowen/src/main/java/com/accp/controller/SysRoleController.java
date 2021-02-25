@@ -29,7 +29,7 @@ public class SysRoleController {
         SysRoleServiceImpl service;
         @PostMapping
         public SysRole login(SysRole s, HttpSession session) {
-                if (s.getRoleName() != null && s.getRole1() != null) {
+                if (s.getRole2() != null && s.getRole1() != null) {
                         QueryWrapper<SysRole> qw = new QueryWrapper<>();
                         qw.eq("role_name", s.getRoleName());
                         qw.eq("role1", s.getRole1());

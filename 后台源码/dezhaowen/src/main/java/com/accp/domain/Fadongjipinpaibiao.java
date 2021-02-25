@@ -1,9 +1,12 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -41,6 +44,9 @@ public class Fadongjipinpaibiao extends Model<Fadongjipinpaibiao> {
 
     @ApiModelProperty(value = "备用字段")
     private String f3;
+
+    @TableField(exist = false)
+    private List<Pinpaichexing> che;
 
 
     public static final String FID = "fid";
