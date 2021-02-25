@@ -1,10 +1,9 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-<<<<<<< HEAD
-=======
+
 import com.baomidou.mybatisplus.annotation.TableId;
->>>>>>> 2012fddc77242cb1203aa763fed88e5de71805aa
+
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
