@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -25,6 +26,7 @@ public class Weixiubiao extends Model<Weixiubiao> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "项目编码")
+    @TableId
     private Integer wid;
 
     @ApiModelProperty(value = "项目名称")

@@ -33,8 +33,7 @@
     <resultMap type="com.accp.domain.RepairAndRescue" id="BaseResultMap2" extends="BaseResultMap">
         <result column="number" property="number" jdbcType="VARCHAR" />
         <result column="clientname" property="clientname" jdbcType="VARCHAR" />
-        <result column="carNumber" property="carNumber" jdbcType="VARCHAR" />
-        <result column="clienttype" property="clienttype" jdbcType="VARCHAR" />
+        <result column="platename" property="platename" jdbcType="VARCHAR" />
         <result column="phone" property="phone" jdbcType="VARCHAR" />
         <result column="tname" property="tname" jdbcType="VARCHAR" />
         <result column="carinfoId" property="carinfoid" jdbcType="INTEGER" />
@@ -44,7 +43,7 @@
         <result column="worktime" property="worktime" jdbcType="VARCHAR" />
         <result column="getman" property="getman" jdbcType="VARCHAR" />
         <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
-        <result column="nowworkDate" property="nowworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkDate" property="nowworkDate" jdbcType="TIMESTAMP" />
         <result column="setter" property="setter" jdbcType="VARCHAR" />
         <result column="company" property="company" jdbcType="VARCHAR" />
         <result column="befor" property="befor" jdbcType="TIMESTAMP" />
@@ -54,29 +53,113 @@
         <result column="fault" property="fault" jdbcType="VARCHAR" />
         <result column="faultreasult" property="faultreasult" jdbcType="VARCHAR" />
         <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <resultMap type="com.accp.domain.MaintainHistary" id="BaseResultMap3" extends="BaseResultMap">
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="workhour" property="workhour" jdbcType="INTEGER" />
+        <result column="fprice" property="fprice" jdbcType="REAL" />
+        <result column="qprice" property="qprice" jdbcType="REAL" />
+        <result column="hprice" property="hprice" jdbcType="REAL" />
+        <result column="allprice" property="allprice" jdbcType="REAL" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="itemTypeName" property="itemTypeName" jdbcType="VARCHAR" />
+        <result column="artisanClassName" property="artisanClassName" jdbcType="VARCHAR" />
+        <result column="itemsName" property="itemsName" jdbcType="VARCHAR" />
+        <result column="priceType" property="priceType" jdbcType="VARCHAR" />
+        <result column="carNumber" property="carNumber" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkDate" property="nowworkDate" jdbcType="TIMESTAMP" />
+        <result column="price" property="price" jdbcType="REAL" />
+        <result column="faultreasult" property="faultreasult" jdbcType="VARCHAR" />
+        <result column="llpeople" property="llpeople" jdbcType="VARCHAR" />
+        <result column="llname" property="llname" jdbcType="VARCHAR" />
+        <result column="dw" property="dw" jdbcType="VARCHAR" />
+        <result column="lltype" property="lltype" jdbcType="VARCHAR" />
+        <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+        <result column="count" property="count" jdbcType="INTEGER" />
+        <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="lldate" property="lldate" jdbcType="TIMESTAMP" />
+        <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <resultMap type="com.accp.domain.MaintainHistary" id="BaseResultMap3" extends="BaseResultMap">
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="workhour" property="workhour" jdbcType="INTEGER" />
+        <result column="fprice" property="fprice" jdbcType="REAL" />
+        <result column="qprice" property="qprice" jdbcType="REAL" />
+        <result column="hprice" property="hprice" jdbcType="REAL" />
+        <result column="allprice" property="allprice" jdbcType="REAL" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="itemTypeName" property="itemTypeName" jdbcType="VARCHAR" />
+        <result column="artisanClassName" property="artisanClassName" jdbcType="VARCHAR" />
+        <result column="itemsName" property="itemsName" jdbcType="VARCHAR" />
+        <result column="priceType" property="priceType" jdbcType="VARCHAR" />
+        <result column="carNumber" property="carNumber" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkDate" property="nowworkdate" jdbcType="TIMESTAMP" />
+        <result column="price" property="price" jdbcType="REAL" />
+        <result column="faultreasult" property="faultreasult" jdbcType="VARCHAR" />
+        <result column="llpeople" property="llpeople" jdbcType="VARCHAR" />
+        <result column="llname" property="llname" jdbcType="VARCHAR" />
+        <result column="dw" property="dw" jdbcType="VARCHAR" />
+        <result column="lltype" property="lltype" jdbcType="VARCHAR" />
+        <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+        <result column="count" property="count" jdbcType="INTEGER" />
         <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
+        <result column="lldate" property="lldate" jdbcType="TIMESTAMP" />
         <result column="stockDater" property="stockdater" jdbcType="TIMESTAMP" />
     </resultMap>
+
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
+    <select id="selectRepairItem" resultMap="BaseResultMap3">
+SELECT carinfo.`carNumber`,client.`name`, repair.`number`,repair.`orderTime`,repair.type,repair.`nowworkDate`,repair.`stockDater`,item.id,item.itemsName,ir.priceType
+,(TIMESTAMPDIFF(HOUR,repair.`orderTime`,repair.`stockDater`)) workhour,ir.fprice,artisanclass.`artisanClassName`,repair.`faultreasult` FROM`repair`
+LEFT JOIN `item_repair` ir ON ir.wjid=repair.`number`
+LEFT JOIN `maintenanceitems` item ON item.id=ir.itemid
+LEFT JOIN`itemtype` TYPE ON type.id=item.typeid
+LEFT JOIN `carinfo` ON carinfo.`id`=repair.`carinfoId`
+LEFT JOIN `artisanclass` ON artisanclass.`id`=ir.teamid
+LEFT JOIN CLIENT ON client.`number`=carinfo.`clientid`
+WHERE ${type} like '%${content}%'
+  </select>
+    <select id="selectHistray" resultMap="BaseResultMap3">
+        SELECT repair.`number`,repair.`orderTime`,repair.type,repair.`nowworkDate`,
+        customer.`customername` AS `name`,car.`platename` AS carNumber,customer.`phone`,
+        repair.`stockDater`,repair.`price` FROM`repair`
+        LEFT JOIN `car` ON car.carnum=repair.`carinfoId`
+        LEFT JOIN `customer` ON customer.`customernum`=car.`customernum`
+        WHERE ${type} LIKE '%${content}%'
+    </select>
     <select id="selectRepairAndRescue" resultMap="BaseResultMap2">
-  	select *from	(SELECT repair.status,repair.type,client.name clientname,carinfo.carNumber,client.phone,repair.number,'维修' AS tname,repair.orderTime,
-repair.overworkdate,repair.nowworkDate,repair.stockDater,repair.price,staff.name,repair.getman,clienttype.clienttype
- FROM REPAIR JOIN `carinfo` ON carinfo.id=repair.carinfoId
-left JOIN `staff` ON staff.staffNo=repair.staffno
- JOIN `client` ON client.number=carinfo.clientid
- join clientType on clienttype.id=client.typeid
+  	SELECT *FROM (SELECT repair.status,repair.type,customer.customername clientname,car.platename,customer.phone,
+repair.number,'维修' AS tname,repair.orderTime,repair.overworkdate,repair.nowworkDate,repair.stockDater,repair.price,
+yuangongziliaobiao.yname name,repair.getman FROM `repair`
+LEFT  JOIN `car`ON car.carnum=repair.`carinfoId`
+JOIN `yuangongziliaobiao` ON yuangongziliaobiao.yid=repair.staffno
+ JOIN `customer` ON customer.customernum=car.customernum
  UNION ALL
- SELECT rescue.status,rescue.type,client.name clientname,carinfo.carNumber,client.phone,rescue.number,'救援' AS tname,rescue.orderTime,
-rescue.nowdate,rescue.overtime,rescue.stockDater,rescue.price,staff.name,rescue.getman,clienttype.clienttype
- FROM rescue JOIN `carinfo` ON carinfo.id=rescue.carinfoId
- left JOIN `staff` ON staff.staffNo=rescue.staffno
- JOIN `client` ON client.number=carinfo.clientid
- join clientType on clienttype.id=client.typeid
+ SELECT rescue.status,rescue.type,customer.customername clientname,
+car.platename,customer.phone,rescue.number,'救援' AS tname,rescue.orderTime,
+rescue.nowdate,rescue.overtime,rescue.stockDater,rescue.price,yuangongziliaobiao.yname name,rescue.getman
+ FROM rescue
+  LEFT JOIN `car` ON car.carnum=rescue.carinfoid
+ JOIN `yuangongziliaobiao` ON yuangongziliaobiao.yid=rescue.staffno
+ JOIN `customer` ON customer.customernum=car.customernum
  ) item
 WHERE ${type} like '%${content}%' OR item.clientname LIKE '%${cpc}%'
-OR item.carNumber LIKE '%${cpc}%' OR item.phone LIKE '%${cpc}%'
+OR item.platename LIKE '%${cpc}%' OR item.phone LIKE '%${cpc}%'
   </select>
 </mapper>

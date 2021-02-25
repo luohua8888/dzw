@@ -35,7 +35,7 @@ public class ItemRepair extends Model<ItemRepair> {
     private Integer isRepair;
 
     @ApiModelProperty(value = "救援或者维修表id")
-    private Integer wjid;
+    private String wjid;
 
     @ApiModelProperty(value = "项目id")
     private Integer itemid;

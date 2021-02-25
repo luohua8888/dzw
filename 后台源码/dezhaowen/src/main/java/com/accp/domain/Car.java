@@ -1,5 +1,11 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2012fddc77242cb1203aa763fed88e5de71805aa
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -23,10 +29,30 @@ import lombok.experimental.Accessors;
 public class Car extends Model<Car> {
 
     private static final long serialVersionUID=1L;
-
+    @TableId
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 
+    @TableField(exist = false)
+    private Caraffiliation caraffiliation;
+
+    @TableField(exist = false)
+    private  Carbrand carbrand;
+
+    @TableField(exist = false)
+    private Chexingdingyibiao chexingdingyibiao;
+
+    @TableField(exist = false)
+    private Mlicompany mlicompany;
+
+    @TableField(exist = false)
+    private Cicompany cicompany;
+
+    @TableField(exist = false)
+    private  Oiltype oiltype;
+
+    @TableField(exist = false)
+    private Fadongjipinpaibiao fadongjipinpaibiao;
     @ApiModelProperty(value = "车牌号")
     private String platename;
 
@@ -66,7 +92,9 @@ public class Car extends Model<Car> {
     @ApiModelProperty(value = "里程")
     private String mileage;
 
+    @TableField("`load`")
     @ApiModelProperty(value = "载重")
+    @TableField("`load`")
     private String load;
 
     @ApiModelProperty(value = "车系")
