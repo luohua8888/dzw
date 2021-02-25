@@ -84,7 +84,11 @@
 				</div>
 				<div class="col-xs-offset-6 col-xs-4 text-center car">
 					<div class="col-xs-3">
+<<<<<<< HEAD
 						<a href="javascript:;" id="addRepair" style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/接车单.png);" class="icon">接车完成</a>
+=======
+						<a href="javascript:;" id="addRepair" style="text-indent: 1.5em; font-size: 20px;" class="icon">接车完成</a>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 					</div>
 					<!--<div class="col-xs-3">
 						<a href="javascript:;" style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/打印.png);" class="icon">委托书</a>
@@ -103,6 +107,7 @@
 					<p>
 						<input type="hidden" id="clientType" />
 						<span class="fontRed">车牌号码</span><input disabled="disabled" v-model="carInfo.carnumber" type="text" class="form-control"> &nbsp;&nbsp;&nbsp;<span class="fontRed">驾驶员</span>
+<<<<<<< HEAD
 						<input disabled="disabled" v-model="carInfo.carer" type="text" class="form-control"> 车辆型号
 						<input v-model="carInfo.carTypeName" disabled="disabled" type="text" class="form-control"> 车辆品牌
 						<input v-model="carInfo.carBrandName" disabled="disabled" type="text" class="form-control"> 发动机号
@@ -111,6 +116,18 @@
 					<p>
 						发动机品牌
 						<input v-model="carInfo.enginebrandname" style="width: 180px;" disabled="disabled" type="text" class="form-control">
+=======
+						<input disabled="disabled" v-model="carInfo.carer" type="text" class="form-control"> 
+						<!--车辆型号]<input v-model="carInfo.carTypeName" disabled="disabled" type="text" class="form-control">--> 
+						车辆品牌
+						<input v-model="carInfo.carBrandName" disabled="disabled" type="text" class="form-control"> 发动机号
+						<input v-model="carInfo.enginenumber" disabled="disabled" type="text" class="form-control"> 
+						发动机品牌
+						<input v-model="carInfo.enginebrandname" style="width: 180px;" disabled="disabled" type="text" class="form-control">
+					</p>
+					<p>
+						
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						<span class="fontRed">服务顾问</span>
 						<select id="fwman" v-model="repair.staffno" class="form-control" style="width: 120px; margin-right:0 ;">
 							<option value="">无</option>
@@ -119,8 +136,11 @@
 						<input v-model="carInfo.name" disabled="disabled" type="text" class="form-control"> &nbsp;&nbsp;&nbsp; 车架号
 						<input v-model="carInfo.carnumber1" disabled="disabled" type="text" class="form-control">联系电话
 						<input v-model="carInfo.carerphone" disabled="disabled" type="text" class="form-control"> &nbsp;&nbsp;&nbsp;
+<<<<<<< HEAD
 					</p>
 					<p>
+=======
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						进厂油量
 						<select v-model="repair.oil" class="form-control" style="width: 190px;">
 							<option>空</option>
@@ -131,6 +151,12 @@
 							<option>2/4</option>
 							<option>3/4</option>
 						</select>
+<<<<<<< HEAD
+=======
+					</p>
+					<p>
+						
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						 进厂里程
 						<input v-model="carInfo.mileage" disabled="disabled" type="text" class="form-control">
 						<span class="fontRed">业务类别</span>
@@ -147,11 +173,20 @@
 							<option>白天</option>
 							<option>夜晚</option>
 						</select>上次里程<input disabled="disabled" type="text" class="form-control"> 
+<<<<<<< HEAD
 					</p>
 					<p>
 						进厂时间
 						<input id="nowdate" v-model="carInfo.jjdate"  disabled="disabled" type="datetime" class="form-control" style="width: 190px;"> &nbsp;&nbsp;&nbsp;接车人
 						<input v-model="repair.getman" disabled="disabled"  type="text" class="form-control"> &nbsp;&nbsp;&nbsp;预计完工
+=======
+						进厂时间
+						<input id="nowdate" v-model="carInfo.jjdate"  disabled="disabled" type="datetime" class="form-control" style="width: 190px;"> 
+					</p>
+					<p>
+						&nbsp;&nbsp;&nbsp;接车人
+						<input v-model="repair.getman" disabled="disabled" type="text" class="form-control"> &nbsp;&nbsp;&nbsp;预计完工
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						<input v-model="repair.overworkdate" type="date" class="form-control" style="width: 200px;">
 						<span class="fontRed">结算方式</span>
 						<select v-model="repair.setter" class="form-control" style="width: 210px;">
@@ -160,10 +195,18 @@
 							<option>返修</option>
 						</select> <span class="fontRed">预估金额</span>
 						<input v-model="repair.price" disabled="disabled" type="text" class="form-control">
+<<<<<<< HEAD
 					</p>
 					<p>
 						赔款公司
 						<input v-model="repair.company" style="width: 190px;" type="text" class="form-control"> 完工时间
+=======
+						赔款公司
+						<input v-model="repair.company" style="width: 190px;" type="text" class="form-control">
+					</p>
+					<p>
+						 完工时间
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						<input disabled="disabled" type="date" class="form-control" style="width: 200px;"> 上次进厂
 						<input disabled="disabled" v-model="carInfo.ordertime" type="date" class="form-control" style="width: 210px;"> &nbsp;&nbsp;&nbsp;接待备注
 						<input v-model="repair.remark" type="text" class="form-control">
@@ -195,16 +238,27 @@
 						<div class="btn-group">
 							<button type="button" class="btn btn-default">维修项目</button>
 							<button type="button" class="btn btn-default" @click="openMaintenanceItems">单个增加</button>
+<<<<<<< HEAD
 							<button id="adds" type="button" class="btn btn-default">多个增加</button>
+=======
+							<!--<button id="adds" type="button" class="btn btn-default">多个增加</button>-->
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							<button @click="update" type="button" class="btn btn-default">修改</button>
 							<button @click="delete1" type="button" class="btn btn-default">删除</button>
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">领料情况</button>
+<<<<<<< HEAD
 							<button type="button" class="btn btn-default" @click="materialRequirement">物料需求</button>
 							<button type="button" class="btn btn-default" @click="receiveMaterial">领料</button>
 							<button type="button" class="btn btn-default" @click="resetPrice">重置价格</button>
 							<button type="button" class="btn btn-default">库房领料</button>
+=======
+							<!--<button type="button" class="btn btn-default" @click="materialRequirement">物料需求</button>-->
+							<button type="button" class="btn btn-default" @click="receiveMaterial">领料</button>
+							<button type="button" class="btn btn-default" @click="resetPrice">重置价格</button>
+							<!--<button type="button" class="btn btn-default">库房领料</button>-->
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">附加项目</button>
@@ -232,8 +286,13 @@
 						</tr>
 						<tr v-for="item in itemRepair">
 							<td><input v-model="checkArray" :value="item.id" type="checkbox" /></td>
+<<<<<<< HEAD
 							<td>{{item.id}}</td>
 							<td>{{item.itemsname}}</td>
+=======
+							<td>{{item.wid}}</td>
+							<td>{{item.wname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							<td>{{item.count}}</td>
 							<td>{{item.priceType}}</td>
 							<td>{{item.qprice}}</td>
@@ -265,8 +324,13 @@
 						</tr>
 						<tr v-for="item in allCommodity">
 							<td>{{item.type}}</td>
+<<<<<<< HEAD
 							<td>{{item.commodityno}}</td>
 							<td>{{item.name}}</td>
+=======
+							<td>{{item.goodnum}}</td>
+							<td>{{item.goodname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							<td>{{item.unit}}</td>
 							<td>{{item.priceType}}</td>
 							<td>{{item.count}}</td>
@@ -345,7 +409,11 @@
 						<div class="modal-body form-inline">
 							<div class="form-group">
 								<label class="control-label"><span class="fontRed">★</span>维修项目</label>
+<<<<<<< HEAD
 								<input v-model="item.itemsname" disabled="disabled" type="text" class="form-control"><button  class="btn btn-success chooseItem">选择项目</button>
+=======
+								<input v-model="item.wname" disabled="disabled" type="text" class="form-control"><button  class="btn btn-success chooseItem">选择项目</button>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							</div>
 							<div class="form-group">
 								<label class="control-label"><span class="fontRed">★</span>价类</label>
@@ -374,7 +442,11 @@
 							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-group">
 								<label class="control-label"><span class="fontRed">★</span>维修班组</label>
+<<<<<<< HEAD
 								<input style="width: 130px;" v-model="item.bzname" id="bz" :bzid="item.bzid" type="text" class="form-control">
+=======
+								<input style="width: 130px;" disabled="disabled" v-model="item.bzname" id="bz" :bzid="item.bzid" type="text" class="form-control">
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								
 								<button type="button" class="btn btn-success chosebz" style="margin-left: 0;">选择班组</button>
 							</div>
@@ -413,7 +485,11 @@
 						<div class="modal-body form-inline">
 							<div class="form-group">
 								<label class="control-label"><span class="fontRed">★</span>维修项目</label>
+<<<<<<< HEAD
 								<input v-model="item.itemsname" disabled="disabled" type="text" class="form-control"><button  class="btn btn-success chooseItem">选择项目</button>
+=======
+								<input v-model="item.wname" disabled="disabled" type="text" class="form-control"><button  class="btn btn-success chooseItem">选择项目</button>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							</div>
 							<div class="form-group">
 								<label class="control-label"><span class="fontRed">★</span>价类</label>
@@ -484,6 +560,7 @@
 							</div>
 							<div class="col-xs-offset-1 col-xs-6 text-center car">
 								<div class="col-xs-offset-6 col-xs-2">
+<<<<<<< HEAD
 									<a id="addCommodity" href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;  background-image: url(static/images/增加.png);">增加</a>
 								</div>
 								<div class="col-xs-2">
@@ -491,15 +568,32 @@
 								</div>
 								<div class="col-xs-2">
 									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   background-image: url(static/images/打印.png);">打印</a>
+=======
+									<a id="addCommodity" href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center; ">增加</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" @click="deleteCommodity" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center; ">删除</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center; ">打印</a>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label">商品编码</label>
+<<<<<<< HEAD
 								<input disabled="disabled" v-model="commodity.commodityno" type="text" class="form-control">
 							</div>
 							<div class="form-group">
 								<label class="control-label">商品名称</label>
 								<input disabled="disabled" v-model="commodity.name"  type="text" class="form-control">
+=======
+								<input disabled="disabled" v-model="commodity.goodnum" type="text" class="form-control">
+							</div>
+							<div class="form-group">
+								<label class="control-label">商品名称</label>
+								<input disabled="disabled" v-model="commodity.goodname"  type="text" class="form-control">
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							</div>
 							<div class="form-group">
 								<label class="control-label">商品品牌</label>
@@ -577,14 +671,22 @@
 								<tr @dblclick="changeCommodity(item.commodityno)" v-for="item in allCommodity" v-if="item.type=='需求'">
 									<td><input type="checkbox"></td>
 									<td>{{item.type}}</td>
+<<<<<<< HEAD
 									<td>{{item.commodityno}}</td>
 									<td>{{item.name}}</td>
+=======
+									<td>{{item.goodnum}}</td>
+									<td>{{item.goodname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 									<td>{{item.count}}</td>
 									<td>{{item.pricetype}}</td>
 									<td>{{item.qprice}}</td>
 									<td>{{item.discountsPrice}}</td>
 									<td>{{item.count*item.discountsPrice}}</td>
+<<<<<<< HEAD
 									
+=======
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 									<td>{{item.warehouse}}</td>
 									<td>{{item.item}}</td>
 								</tr>
@@ -609,6 +711,7 @@
 							</div>
 							<div class="col-xs-offset-1 col-xs-6 text-center car">
 								<div class="col-xs-2">
+<<<<<<< HEAD
 									<a href="javascript:;" id="wladd" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;  background-image: url(static/images/增加.png);">增加</a>
 								</div>
 								<div class="col-xs-2">
@@ -625,6 +728,24 @@
 								</div>
 								<div class="col-xs-2">
 									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   background-image: url(static/images/打印.png);">打印</a>
+=======
+									<a href="javascript:;" id="wladd" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center; ">增加</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" @click="deleteall" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;">删除</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" @click="choseall" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;  ">全部选择</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" @click="cancelall" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center; ">全部取消</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   ">设置</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;  ">打印</a>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								</div>
 							</div>
 							<table class="table">
@@ -641,19 +762,32 @@
 									<th>领料仓库</th>
 									<th>对应项目</th>
 								</tr>
+<<<<<<< HEAD
 								<tr @dblclick="changeCommodity(item.commodityno)" v-for="item in allCommodity" v-if="item.type=='领料'">
 									<td><input v-model="arrayList" :value="item.commodityno" type="checkbox"></td>
 									<td>{{item.type}}</td>
 									<td>{{item.commodityno}}</td>
 									<td>{{item.name}}</td>
+=======
+								<tr @dblclick="changeCommodity(item.gooddataid)" v-for="item in allCommodity" v-if="item.type=='领料'">
+									<td><input v-model="arrayList" :value="item.commodityno" type="checkbox"></td>
+									<td>{{item.type}}</td>
+									<td>{{item.goodnum}}</td>
+									<td>{{item.goodname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 									<td>{{item.count}}</td>
 									<td>{{item.pricetype}}</td>
 									<td>{{item.qprice}}</td>
 									<td>{{item.discountsPrice}}</td>
 									<td>{{item.count*item.discountsPrice}}</td>
 									
+<<<<<<< HEAD
 									<td>{{item.warehouse}}</td>
 									<td>{{item.item}}</td>
+=======
+									<td>{{item.goodaddressid}}</td>
+									<td>{{item.fitcartype}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								</tr>
 							</table>
 						</div>
@@ -676,6 +810,7 @@
 							</div>
 							<div class="col-xs-offset-1 col-xs-6 text-center car">
 								<div class="col-xs-offset-6 col-xs-2">
+<<<<<<< HEAD
 									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   background-image: url(static/images/选择.png);">全部选择</a>
 								</div>
 								<div class="col-xs-2">
@@ -683,6 +818,15 @@
 								</div>
 								<div class="col-xs-2">
 									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   background-image: url(static/images/设置.png);">设置</a>
+=======
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   ">全部选择</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;   ">全部取消</a>
+								</div>
+								<div class="col-xs-2">
+									<a href="javascript:;" style="display: inline-block; text-indent: 1em; background-size: 10px; background-repeat: no-repeat; background-position: left center;  ">设置</a>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								</div>
 							</div>
 							<div class="form-group">
@@ -813,8 +957,13 @@
 							</tr>
 							<tr v-for="item in allstaff">
 								<td><input name="cc" type="radio"></td>
+<<<<<<< HEAD
 								<td>{{item.staffno}}</td>
 								<td>{{item.name}}</td>
+=======
+								<td>{{item.yid}}</td>
+								<td>{{item.yname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -842,8 +991,13 @@
 							</tr>
 							<tr v-for="item in artisan">
 								<td><input name="cc" type="radio"></td>
+<<<<<<< HEAD
 								<td>{{item.id}}</td>
 								<td>{{item.artisanclassname}}</td>
+=======
+								<td>{{item.teamid}}</td>
+								<td>{{item.teamname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -871,8 +1025,13 @@
 							</tr>
 							<tr v-for="item in mainten">
 								<td><input name="cc"  type="radio"></td>
+<<<<<<< HEAD
 								<td>{{item.id}}</td>
 								<td>{{item.itemsname}}</td>
+=======
+								<td>{{item.wid}}</td>
+								<td>{{item.wname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -900,8 +1059,13 @@
 							</tr>
 							<tr v-for="item in mainten">
 								<td><input  type="checkbox"></td>
+<<<<<<< HEAD
 								<td>{{item.id}}</td>
 								<td>{{item.itemsname}}</td>
+=======
+								<td>{{item.wid}}</td>
+								<td>{{item.wname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -929,8 +1093,13 @@
 							</tr>
 							<tr v-for="item in commoditys">
 								<td><input  type="checkbox"></td>
+<<<<<<< HEAD
 								<td>{{item.commodityno}}</td>
 								<td>{{item.name}}</td>
+=======
+								<td>{{item.gooddataid}}</td>
+								<td>{{item.goodname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -958,8 +1127,13 @@
 							</tr>
 							<tr v-for="item in commoditys">
 								<td><input  type="checkbox"></td>
+<<<<<<< HEAD
 								<td>{{item.commodityno}}</td>
 								<td>{{item.name}}</td>
+=======
+								<td>{{item.gooddataid}}</td>
+								<td>{{item.goodname}}</td>
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							</tr>							
 						</table>
@@ -1029,7 +1203,11 @@
 							},
 				 	     	dataType:"json",
 				 	     	success:function(result){
+<<<<<<< HEAD
 				 	     		console.log("11"+result)
+=======
+				 	     		console.log(result)
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 				 	     		vm.carInfo=result
 				 	     		var now=new Date();
 				 	     		var year = now.getFullYear();
@@ -1057,6 +1235,10 @@
 							      
 							    
 							      console.log(nowdate)
+<<<<<<< HEAD
+=======
+							      		vm.repair.getman="超级管理员"
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						 	     		vm.carInfo.jjdate=nowdate
 						 	     		vm.carInfo=JSON.parse(JSON.stringify(vm.carInfo))
 						 	     	}
@@ -1248,7 +1430,11 @@
 					     
 					      
 					      
+<<<<<<< HEAD
 					     var dateTime ="WGQ"+year + month+ day+ hour+minute+second;
+=======
+					     var dateTime ="WZL"+year + month+ day+ hour+minute+second;
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 					     return dateTime;
 					  }
 
@@ -1435,7 +1621,11 @@
 				$(".itemkeep").click(function(){
 					var index=0;
 						for (var i=0;i<vm.itemRepair.length;i++) {
+<<<<<<< HEAD
 								if(vm.itemRepair[i].id==vm.item.id){
+=======
+								if(vm.itemRepair[i].id==vm.item.yid){
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 									
 								}else{
 									index++;
@@ -1446,7 +1636,11 @@
 							vm.item={}
 						}
 						vm.getsume();
+<<<<<<< HEAD
 					
+=======
+						js();
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 					$("#maintenanceItems").modal("hide")
 					$("#updatemaintenanceItems").modal("hide")
 				
@@ -1488,15 +1682,24 @@
 						success:function(result){
 							vm.item=result;
 							vm.item.count=1
+<<<<<<< HEAD
 							vm.item.priceType="自费"
 							vm.item.qprice=result.normalprice;
+=======
+							vm.item.pricetype="自费"
+							vm.item.qprice=vm.item.normalprice;
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							var clientType=$("#clientType").val();
 							if(clientType=="标准客户"){
 								vm.item.hprice=vm.item.normalprice;
 							}else if (clientType=="会员客户"){
 								vm.item.hprice=vm.item.memberprice;
 							}
+<<<<<<< HEAD
 							
+=======
+							vm.item.hprice=vm.item.normalprice;
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 							
 							vm.itemRepair.push(vm.item)
 							
@@ -1705,7 +1908,12 @@
 							}else if (clientType=="会员客户"){
 								vm.commodity.qprice=vm.commodity.memberprice;
 							}
+<<<<<<< HEAD
 							vm.commodity.discountsPrice=vm.commodity.qprice
+=======
+						vm.commodity.qprice=vm.commodity.standardprice;
+							vm.commodity.discountsPrice=vm.commodity.standardprice
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						vm.allCommodity.push(vm.commodity)
 					}
 				})
@@ -1722,8 +1930,13 @@
 				var cs=1;
 				vm.repair.befor=vm.carInfo.ordertime;
 				vm.repair.number=$(".number").html();
+<<<<<<< HEAD
 				vm.repair.carinfoid=vm.carInfo.id;
 				vm.repair.ordertime=vm.carInfo.jjdate
+=======
+				vm.repair.carinfoId=vm.carInfo.id;
+				vm.repair.ordertime=vm.carInfo.jjdate;
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 				vm.repair.price=vm.jsInfo.hprice;
 				vm.repair=JSON.parse(JSON.stringify(vm.repair))
 				if(vm.itemRepair.length==0){
@@ -1750,7 +1963,11 @@
 					cs++;
 					successid++;
 					for (var i=0;i<vm.allCommodity.length;i++) {
+<<<<<<< HEAD
 						vm.allCommodity[i].goodid=vm.allCommodity[i].commodityno
+=======
+						vm.allCommodity[i].goodid=vm.allCommodity[i].gooddataid
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 								vm.allCommodity[i].wjid=vm.repair.number
 						vm.allCommodity[i].pricetype=vm.allCommodity[i].priceType
 						vm.allCommodity[i].discountsprice=vm.allCommodity[i].discountsPrice
@@ -1774,12 +1991,20 @@
 					cs++;
 					successid++;
 					for (var i=0;i<vm.itemRepair.length;i++) {
+<<<<<<< HEAD
 						vm.itemRepair[i].itemid=vm.itemRepair[i].id
+=======
+						vm.itemRepair[i].itemid=vm.itemRepair[i].wid
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 						vm.$delete(vm.itemRepair[i],"id")
 						vm.itemRepair[i].teamid=vm.itemRepair[i].bzid
 						vm.itemRepair[i].fprice=vm.itemRepair[i].hprice	
 						vm.itemRepair[i].wjid=vm.repair.number
+<<<<<<< HEAD
 						vm.itemRepair[i].pricetype=vm.itemRepair[i].priceType	
+=======
+						vm.itemRepair[i].priceType=vm.itemRepair[i].priceType
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 					}
 				$.ajax({
 					type:"post",
@@ -1825,7 +2050,11 @@
 			$(".chosebz").click(function(){
 					$.ajax({
 					type:"post",
+<<<<<<< HEAD
 					url:data.ip+"leg/selectAll",
+=======
+					url:data.ip+"repair/selectAll",
+>>>>>>> a14599b2f8891433c7efcb0fb0a0d3749fd98e6f
 					dataType:"json",
 					success:function(res){
 						vm.artisan=res
