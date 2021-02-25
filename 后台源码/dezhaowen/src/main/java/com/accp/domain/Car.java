@@ -89,7 +89,7 @@ public class Car extends Model<Car> {
     @ApiModelProperty(value = "里程")
     private String mileage;
 
-    @TableField("`load`")
+
     @ApiModelProperty(value = "载重")
     @TableField("`load`")
     private String load;

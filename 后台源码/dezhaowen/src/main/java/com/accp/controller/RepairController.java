@@ -3,6 +3,7 @@ package com.accp.controller;
 
 import com.accp.domain.*;
 import com.accp.mapper.CarMapper;
+import com.accp.mapper.CompletedMapper;
 import com.accp.mapper.RepairMapper;
 import com.accp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +48,31 @@ public class RepairController {
     IGetgoodService getgoodService;
     @Autowired
     IEwitemService ewitemService;
+    @Autowired
+    IRescueService rescueService;
+    @Autowired
+    CompletedMapper comMapper;
     //`item_repair`.wjid修改为varchar(20)
 
+    @RequestMapping("/selectJunGong")
+    @ResponseBody
+    public List<JunGong> selectJunGong(String tj,String date1,String date2,String number,String carnumber,String carnumber1){
+        return comMapper.selectJunGong(tj, date1, date2, number, carnumber, carnumber1);
+    }
+    @RequestMapping("/addRescue")
+    @ResponseBody
+    public boolean addRescue(@RequestBody Rescue rescue){
+        rescue.setWorktime(rescue.getNowdate());
+//        repair.setFault(repair.getState());
+//        repair.setFaultreasult(repair.getState());
+//        repair.setOrderTime(repair.getBefor());
+        return rescueService.save(rescue);
+    }
     @RequestMapping("/selectRepairItem")
     @ResponseBody
     public List<MaintainHistary> selectRepairItem(String type,String content){
 
-        return repairService.selectRepairItem(type, content);
+        return repairMapper.selectRepairItem(type,content);
     }
     @RequestMapping("/addEwitem")
     @ResponseBody
@@ -118,6 +137,9 @@ public class RepairController {
     @ResponseBody
     public Boolean addRepair(@RequestBody Repair repair){
         System.out.println(repair);
+        repair.setFault(repair.getState());
+        repair.setFaultreasult(repair.getState());
+        repair.setOrderTime(repair.getBefor());
         return repairService.save(repair);
     }
     @RequestMapping("/selectCarInfo")
