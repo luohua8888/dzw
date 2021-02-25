@@ -110,10 +110,12 @@ public class CustomerController {
     }
     @RequestMapping("/insert")
     public Boolean insert(@RequestBody Customer customer){
+        System.out.println(customer.getCounselorid());
         return service.save(customer);
     }
     @RequestMapping("/update")
     public Boolean update(@RequestBody Customer customer){
+        System.out.println("ss");
         return service.updateById(customer);
     }
     @RequestMapping("/downloadExcel")
@@ -334,8 +336,7 @@ public class CustomerController {
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
-    @RequestMapping("/car")
-    public List<>
+
 
 }
 
