@@ -27,6 +27,12 @@ public class Customer extends Model<Customer> {
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
+    @TableField(exist = false)
+    private  Customertype customertype;
+
+    @TableField(exist = false)
+    private  Yuangongziliaobiao yuan;
+
     @ApiModelProperty(value = "客户名称")
     private String customername;
 
