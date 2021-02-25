@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="js/jstree/themes/default/style.min.css" />
+	</head>
+	<body>
+		<div id="ntc">
+			<table>
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>管理员账户</th>
+						<th>管理员姓名</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="item in list">
+						<td>{{item.roleId}}</td>
+						<td>{{item.remark}}</td>
+						<td>{{item.roleName}}</td>
+						<td>
+							<span @click="auth(item)">授权</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="modal" id="authModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">角色授权</h3>
+						</div>
+						<div class="modal-body">
+							<div id="myTree"></div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="primaryAuth">授权</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/jstree/jstree.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/api/menu.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript">
+			var menuList = [];
+			function findMenu(){
+				var that = this;
+				$.ajax({
+					url:top.baseUrl+"sysMenu",
+					type:"post",
+					dataType:"json",
+					async:false,
+					success:function(result){
+						menuList=result.map(item=>{
+							return {
+								id:item.menuId+"",
+								parent:item.parentId==0?"#":item.parentId,
+								text:item.menuName,
+								state:{
+									selected:false
+								}
+							}
+						});
+					}
+				})
+			}
+			//初始化当前系统中所有权限数据，数据变量为menuList
+			findMenu();
+			var vm = new Vue({
+				el:"#ntc",
+				data(){
+					return {              
+						list:[],
+						menuList:[],
+						authRole:{},
+					}
+				},
+				methods:{
+					primaryAuth(){
+						var that = this;
+						//获取选中元素
+						var selected = $("#myTree").jstree(true).get_selected();
+						//获取半选状态
+						var undetermined = $("#myTree").jstree(true).get_undetermined();
+						//将选中的和半选的元素进行和并到一个数组
+						selected.push(...undetermined);
+						$.ajax({
+							url:top.baseUrl+"sys/"+that.authRole.roleId,
+							data:{
+								array:selected.join(",")
+							},
+							type:"post",
+							success:function(result){
+								console.log(result)
+							}
+						});
+					},
+					find(){
+						var that = this;
+						$.ajax({
+							url:top.baseUrl + "sysRole",
+							type:"get",
+							dataType:"json",
+							success:function(result){
+								that.list=result;
+							}
+						})
+					},
+					auth(item){
+						this.authRole=item;
+						//取消全部被选中的节点
+						$('#myTree').jstree(true).deselect_all();
+						//根据角色获取到对应的权限列表
+						menuApi.findPerms(item.roleId,function(result){
+							console.log(result);
+							//只要集合中的编号作为选中的唯一表示
+							let selecedSet = result.map(item=>item.menuId);
+
+							//调用jstree的选中方法，可以传入集合
+							$('#myTree').jstree(true).select_node(selecedSet);
+						});
+						//打开模态框
+						$("#authModal").modal("show");
+					}
+				},
+				created() {
+					//加载角色数据
+					this.find();
+				}
+			})
+			//加载jstree，不能放到vue中使用，与vue冲突
+			function loadTree(){
+				$('#myTree').jstree({
+					core:{
+						data:menuList,
+					},
+					"plugins" : ["checkbox" ]
+				});
+			}
+			loadTree();
+		</script>
+	</body>
+</html>

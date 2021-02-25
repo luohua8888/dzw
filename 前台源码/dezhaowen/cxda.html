@@ -16,24 +16,33 @@
 				<div class="bj_1">
 					<p class="fd"><img src="img/未标题-1.jpg" class="tp_01" /><span @click="zjpp">增加品牌</span></p>
 					<p class="fd"><img src="img/未标题-5.jpg" /><span @click="xgpp">修改</span></p>
-					<p class="fd"><img src="img/未标题-2.jpg" /><span>删除</span></p>
+					<p class="fd"><img src="img/未标题-2.jpg" /><span @click="remove">删除</span></p>
 					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="zjcx">增加车型</span></p>
 					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="xgcx">修改</span></p>
-					<p class="fd1"><img src="img/未标题-2.jpg" /><span>删除</span></p>
+					<p class="fd1"><img src="img/未标题-2.jpg" /><span @click="cheremove">删除</span></p>
 					<p class="fd1"><img src="img/未标题-6.jpg" /><span>照片</span></p>
 					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputEmail3" placeholder="匹配 品牌编码/品牌名称/	首字母">
+						<div class="col-sm-10" style="
+    position: relative;
+    z-index: 0;
+">
+							<input type="text" class="form-control" id="inputEmail3" placeholder="匹配 品牌编码/品牌名称/	首字母" v-model="chaxun">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputEmail4" placeholder="匹配 车型编码/车型名称">
+							<input type="text" class="form-control" id="inputEmail4" v-model="cxun" placeholder="匹配 车型编码/车型名称">
 						</div>
 					</div>
 				</div>
-				<button type="button" id="al1" class="btn btn-warning">搜索</button>
-				<button type="button" id="al2" class="btn btn-warning">搜索</button>
+				<a type="button" id="al1" class="btn btn-warning" @click="find" style="
+    position: relative;
+    z-index: 99;
+">搜索</a>
+				<button type="button" id="al2" class="btn btn-warning" @click="chefind(car[0].ping)" style="
+    position: relative;
+    z-index: 99;
+">搜索</button>
 				<div class="bj_03">
 					<table class="table table-bordered">
 						<tr>
@@ -58,25 +67,27 @@
 							<td>参考价格</td>
 							<td>车辆年款</td>
 							<td>功率</td>
+							<td>索赔厂商</td>
 							<td>进口国产</td>
 							<td>载重</td>
 							<td>燃油编号</td>
 						</tr>
-						<tr v-if="pingpd">
+						<tr v-if="car" v-for="item in car">
 							<td>
 								<label class="checkbox-inline">
 									<input type="checkbox" id="inlineCheckbox1" value="option1">
 								</label>
 							</td>
-							<td>{{car.cheid}}</td>
-							<td>{{car.jingkoumingchang}}</td>
-							<td>{{car.chankaojiage}}</td>
-							<td>{{car.cheliangniankuan}}</td>
-							<td>{{car.gonglv}}</td>
-							<td>{{car.ranyoubianhao}}</td>
-							<td>{{car.zaizhong}}</td>
-							<td>{{car.fadingjipingpai}}</td>
-							<td>{{car.zhaopian}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.cheid}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.cname}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.fadingjipingpai}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.chankaojiage}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.cheliangniankuan}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.gonglv}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.c2}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.jingkoumingchang}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.zaizhong}}</td>
+							<td class="pintr1" @click="chexing(item)">{{item.ranyoubianhao}}</td>
 						</tr>
 					</table>
 				</div>
@@ -129,19 +140,19 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">品牌编码</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pid">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pid">
 									</div>
 								</div>
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">品牌名称</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.pname">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pname">
 									</div>
 								</div>
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" class="col-sm-2 control-label">首字母</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputEmail3" v-model="car.ping.shouzimu">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.shouzimu">
 									</div>
 								</div>
 							</form>
@@ -164,34 +175,32 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_01" class="col-sm-1 control-label">*车辆品牌</label>
 									<div class="col-sm-3" id="div1">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pid">
 									</div>
 									<div class="col-sm-7" id="div2">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pname">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
-									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*品牌名称</label>
+									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*车型id</label>
 									<div class="col-sm-10" id="div3">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.cheid">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">*车型名称</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.cname">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
 									<div class="col-sm-10" id="div5">
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+										<select class="form-control" v-model="cheadd.jingkoumingchang">
+											<option v-for="item in jlist">{{item.jname}}</option>
 										</select>
 									</div>
 								</div>
@@ -199,68 +208,67 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">参考价格</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.chankaojiage">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">车辆年款</label>
 									<div class="col-sm-10" id="div5">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.cheliangniankuan">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">功率</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.gonglv">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">燃油编号</label>
 									<div class="col-sm-10" id="div5">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.ranyoubianhao">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">载重</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.zaizhong">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">*索赔产商</label>
 									<div class="col-sm-10" id="div8">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="cheadd.c2">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_07" class="col-sm-2 control-label">*发动机品牌</label>
 									<div class="col-sm-10" id="div6">
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+										<select class="form-control" v-model="cheadd.fadingjipingpai">
+											<option v-for="fdj in flist">{{fdj.fname}}</option>
 										</select>
 									</div>
 								</div>
-
-								<div align="center" id="div9">
-									<span class="btn btn-success fileinput-button" id="div7">
-										<span class="span1">照</span>
-										<span class="span2">片</span>
-										<input type="file">
-									</span>
-								</div>
+								<form action="http://127.0.0.1:8080/chexingdingyibiao/upload" id="uploadform" method="post" enctype="multipart/form-data">
+									<div align="center" id="div9">
+										<span class="btn btn-success fileinput-button" id="div7">
+											<span class="span1">照</span>
+											<span class="span2">片</span>
+											<input type="file" name="file" ref="fileupload">
+										</span>
+									</div>
+								</form>
 
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a @click="update" class="btn btn-success" data-dismiss="modal">提交</a>
+							<a @click="cheinsert" class="btn btn-success" data-dismiss="modal">提交</a>
 							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
 						</div>
 					</div>
@@ -278,103 +286,101 @@
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_01" class="col-sm-1 control-label">*车辆品牌</label>
 									<div class="col-sm-3" id="div1">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pid">
 									</div>
 									<div class="col-sm-7" id="div2">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="pingupdert.pname">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
-									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*品牌名称</label>
+									<label for="inputEmail3" id="wz_02" class="col-sm-2 control-label">*车型id</label>
 									<div class="col-sm-10" id="div3">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.cheid">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">*车型名称</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.cname">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_04" class="col-sm-2 control-label">进口国产</label>
 									<div class="col-sm-10" id="div5">
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+										<select class="form-control" v-model="chexinglist.jingkoumingchang">
+											<option v-for="item in jlist">{{item.jname}}</option>
 										</select>
 									</div>
-									<img src="img/111未标题-1.jpg" class="abcd" @ />
+									
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_03" class="col-sm-2 control-label">参考价格</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.chankaojiage">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">车辆年款</label>
 									<div class="col-sm-10" id="div5">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.cheliangniankuan">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">功率</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.gonglv">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_05" class="col-sm-2 control-label">燃油编号</label>
 									<div class="col-sm-10" id="div5">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.ranyoubianhao">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_06" class="col-sm-2 control-label">载重</label>
 									<div class="col-sm-10" id="div4">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.zaizhong">
 									</div>
 								</div>
 
 
 								<div class="form-group" id="ppbd">
-									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">燃油编号</label>
+									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">索赔厂商</label>
 									<div class="col-sm-10" id="div8">
-										<input type="text" class="form-control" id="inputEmail3">
+										<input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.c2">
 									</div>
 								</div>
 
 								<div class="form-group" id="ppbd">
 									<label for="inputEmail3" id="wz_07" class="col-sm-2 control-label">*发动机品牌</label>
 									<div class="col-sm-10" id="div6">
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
+										<select class="form-control" v-model="chexinglist.fadingjipingpai">
+											<option v-for="fdj in flist">{{fdj.fname}}</option>
 										</select>
 									</div>
 								</div>
-								<div align="center" id="div9">
-									<span class="btn btn-success fileinput-button" id="div7">
-										<span class="span1">照</span>
-										<span class="span2">片</span>
-										<input type="file">
-									</span>
-								</div>
+								<<form action="http://127.0.0.1:8080/chexingdingyibiao/updateupload" id="uploadform" method="post" enctype="multipart/form-data">
+									<div align="center" id="div9">
+										<span class="btn btn-success fileinput-button" id="div7">
+											<span class="span1">照</span>
+											<span class="span2">片</span>
+											<input type="file" name="file" ref="fileupload1">
+										</span>
+									</div>
+								</form>
 							</form>
-						</div>			
+						</div>
 						<div class="modal-footer">
-							<a @click="update" class="btn btn-success" data-dismiss="modal">提交</a>
+							<a @click="updatechexin" class="btn btn-success" data-dismiss="modal">提交</a>
 							<a data-toggle="modal" data-dismiss="modal" class="btn btn-danger">关闭</a>
 						</div>
 					</div>
@@ -391,15 +397,24 @@
 				data() {
 					return {
 						list: [],
-						car: {
-							ping:{}
-						},
+						car: [],
 						pinginsert: {
-							pid:"",
-							pname:"",
-							shouzimu:""
+							pid: "",
+							pname: "",
+							shouzimu: ""
 						},
-						pingpd:false
+						pingupdert: {
+							pid: "",
+							pname: "",
+							shouzimu: ""
+						},
+						pingpd: false,
+						chaxun: "",
+						cxun: "",
+						jlist: [],
+						flist: [],
+						cheadd: {},
+						chexinglist:{}
 					}
 				},
 				methods: {
@@ -425,8 +440,10 @@
 						let that = this;
 						$.ajax({
 							url: BaseUrl + "/chexingdingyibiao/find",
+							data: {
+								chaxun: that.chaxun
+							},
 							success: function(result) {
-								console.log(result)
 								that.list = result;
 								that.chefind(that.list[0])
 							}
@@ -434,15 +451,20 @@
 					},
 					chefind(item) {
 						let that = this;
+						this.pingupdert = JSON.parse(JSON.stringify(item));
 						$.ajax({
 							url: BaseUrl + "/chexingdingyibiao/carfind/" + item.pid,
 							type: "get",
+							data: {
+								cxun: that.cxun
+							},
 							dataType: "json",
 							success: function(result) {
-								that.pingpd=true;
+								that.pingpd = true;
 								that.car = result
 								console.log("查询进入")
 								console.log(that.car)
+
 							}
 						})
 					},
@@ -450,39 +472,138 @@
 						let that = this;
 						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
 						$.ajax({
-							url:BaseUrl+"/chexingdingyibiao/padd",
-							data:that.pinginsert,
+							url: BaseUrl + "/chexingdingyibiao/padd",
+							data: that.pinginsert,
 							dataType: "json",
-							type: "post",	
+							type: "post",
 							success: function(result) {
 								console.log("进入了")
 								that.find();
 							}
 						})
 					},
-					
-					pupdate(){
+					pupdate() {
 						let that = this;
-						console.log("aaaaa")
-						console.log("http://127.0.0.1:8080/chexingdingyibiao/padd");
+						let json = JSON.stringify(that.pingupdert);
+						console.log(json)
 						$.ajax({
-							url:BaseUrl+"/chexingdingyibiao/pupdate",
-							data:that.car,
-							dataType: "json",
-							type: "post",	
+							url: BaseUrl + "/chexingdingyibiao/pupdate",
+							data: that.pingupdert,
+							type: "post",
 							success: function(result) {
 								console.log("修改成功")
 								that.find();
 							}
 						})
-					}
+					},
+					remove() {
+						let that = this;
+						console.log("444444")
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/remove/" + that.pingupdert.pid,
+							type: "get",
+							success: function(result) {
+								that.find()
+							}
+						})
+					},
+					jkgcfind() {
+						let that = this;
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/jkgcfind",
+							success: function(result) {
+								console.log("11111")
+								that.jlist = result;
+								console.log(that.list)
+							}
+						})
+					},
+					fdjfind() {
+						let that = this;
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/fdjfind",
+							success: function(result) {
+								console.log("11111")
+								that.flist = result;
+							}
+						})
+					},
+					cheinsert() {
+						var that = this
+						var formdata = new FormData();
+						formdata.append("file", this.$refs.fileupload.files[0]);
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/upload",
+							data: formdata,
+							type: "post",
+							processData: false, //不处理参数中的数据
+							contentType: false, //数据内容不进行定义
+							success: function(result) {
+								that.cheadd.cid = that.pingupdert.pid
+								that.cheadd.name = that.pingupdert.name
+								that.cheadd.zhaopian=result
+								$.ajax({
+									url: BaseUrl + "/chexingdingyibiao/chexinadd",
+									data: that.cheadd,
+									type: "post",
+									success: function() {
+										this.find();
+									}
+								})
+							}
+						});
+
+					},
+					chexing(item){
+						let that = this;
+						console.log("132132123")
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/chexingByid/" + item.cheid,
+							type:"get",
+							success: function(result) {
+								that.chexinglist = result;
+							}
+						})
+					},
+					updatechexin(){
+						let that = this;
+						let json = JSON.stringify(that.chexinglist);
+						console.log(json)
+						$.ajax({
+							url: BaseUrl + "/chexingdingyibiao/chexinupdate",
+							data: json,
+							type: "post",
+							contentType:"application/json;charset=utf-8",
+							success: function(result) {
+								console.log("修改成功")
+							}
+						})
+					},
+					cheremove() {
+						let that = this;
+						console.log("http://127.0.0.1:8080/chexingdingyibiao/chexinremove/"+that.chexinglist.cheid)
+						$.ajax({
+							url: BaseUrl+"/chexingdingyibiao/chexinremove/"+that.chexinglist.cheid,
+							type: "post",
+							success: function(result) {
+								console.log("123")
+								that.find()
+							}
+						})
+					},
 				},
 				created() {
 					this.find()
+					this.jkgcfind();
+					this.fdjfind();
 				}
 			})
 			$(document).on('click', '.pintr', function() {
 				$(".pintr").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			})
+			$(document).on('click', '.pintr1', function() {
+				$(".pintr1").css("background", "#ffffff")
 				$(this).css("background", "sandybrown")
 			})
 		</script>

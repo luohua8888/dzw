@@ -16,5 +16,10 @@
     <sql id="Base_Column_List">
         bid, bname, blei, b1, b2, b3
     </sql>
-
+    <select id="bu" resultMap="BaseResultMap">
+        SELECT * FROM `bumenbiao` WHERE `blei`!=0
+    </select>
+    <select id="bu1" resultMap="BaseResultMap">
+        SELECT * FROM `bumenbiao` WHERE `blei`=0
+    </select>
 </mapper>

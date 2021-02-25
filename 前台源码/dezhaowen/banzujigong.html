@@ -163,7 +163,7 @@
 						</thead>
 						<tbody>
 							<tr @click="changejigong(i)" :class="{orange:i.orange&&i.orange=='all'}"  v-for="i in jigongs">
-								<td @click="addorange(i,'all')"></td>
+								<td @click="addorange(i,'all')"><span class="glyphicon glyphicon-triangle-right" v-show="i.orange"></span></td>
 								<td @click="addorange(i,'teamid')" :class="{orange:i.orange&&i.orange=='teamid'}">{{i.maintenanceTeam.teamid}}</td>
 								<td @click="addorange(i,'teamname')" :class="{orange:i.orange&&i.orange=='teamname'}">{{i.maintenanceTeam.teamname}}</td>
 								<td @click="addorange(i,'technicianid')" :class="{orange:i.orange&&i.orange=='technicianid'}">{{i.technicianid}}</td>

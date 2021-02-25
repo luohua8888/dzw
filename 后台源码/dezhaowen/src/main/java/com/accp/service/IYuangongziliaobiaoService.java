@@ -1,7 +1,9 @@
 package com.accp.service;
 
 import com.accp.domain.Yuangongziliaobiao;
+import com.accp.mapper.YuangongziliaobiaoMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>

@@ -92,7 +92,7 @@
 					</thead>
 					<tbody>
 						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in cars">
-							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'all')"><span class="glyphicon glyphicon-triangle-right" v-show="i.orange"></span></td>
 							<td @click="addorange(i,'carnumber')" :class="{orange:i.orange&&i.orange=='carnumber'}">{{i.carnumber}}</td>
 							<td @click="addorange(i,'brand')" :class="{orange:i.orange&&i.orange=='brand'}">{{i.brand}}</td>
 							<td @click="addorange(i,'model')" :class="{orange:i.orange&&i.orange=='model'}">{{i.model}}</td>

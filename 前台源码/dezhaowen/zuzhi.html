@@ -1,203 +1,251 @@
-
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<style>
-			body{
+		body {
 				width: 100%;
 			}
-			#a1{
-				width:70px;
+			
+			#a1 {
+				width: 70px;
 				background-color: orange;
-				border:0px;
+				border: 0px;
 			}
-			.aa2{
-				width:1535px;
+			
+			.aa2 {
+				width: 1535px;
 			}
-			.a5{
-				height:50px;
+			
+			.a5 {
+				height: 50px;
 				line-height: 50px;
 			}
-			.container-fluid{
+			
+			.container-fluid {
 				width: 100%;
-				margin:0px;
+				margin: 0px;
 				padding: 0px;
-				padding-left:15px;
+				padding-left: 15px;
 			}
-			#b1{
-				border:0px;
+			
+			#b1 {
+				border: 0px;
 				background-color: #E3E3E3;
 			}
-			.row:nth-of-type(1){
-				 background-color: #f7ffff;
+			
+			.row:nth-of-type(1) {
+				background-color: #f7ffff;
 			}
-			.row:nth-of-type(2){
-				height:705px;
+			
+			.row:nth-of-type(2) {
+				height: 705px;
 				background-color: #f7f7f7;
 			}
-			#h3{
-				margin-top:14px;
-				margin-bottom:10px;
+			
+			#h3 {
+				margin-top: 14px;
+				margin-bottom: 10px;
 			}
-			.z1{
+			
+			.z1 {
 				height: 50px;
-				line-height:50px;
+				line-height: 50px;
 			}
-			.z2{
-				width:1535px;
-				height:615px;
+			
+			.z2 {
+				width: 1535px;
+				height: 615px;
 				background-color: #fff;
 			}
-			.z3{
+			
+			.z3 {
 				height: 31px;
-				line-height:31px;
-				margin-left:10px;
-				margin-top:7px;
+				line-height: 31px;
+				margin-left: 10px;
+				margin-top: 7px;
 			}
-			.c1{
-				width:20px;
-				height:15px;
-				margin-top:-2px;
+			
+			.c1 {
+				width: 20px;
+				height: 15px;
+				margin-top: -2px;
 				margin-right: 4px;
 			}
-			.d1{
-				width:100px;
-				height:30px;
-				line-height:30px;
+			
+			.d1 {
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
 				border: 1px solid #262626;
 				padding-left: 10px;
-				color:#fff;
-				background-color:darkturquoise;
+				color: #fff;
+				background-color: darkturquoise;
 			}
-			#table1 tr td{
+			
+			#table1 tr td {
 				padding-left: 10px;
 				border: 1px solid #e3e3e3;
-				width:100px;
-				height:30px;
-				line-height:30px;
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
 			}
-			#model1{
-				width:1100px;
-				height:650px;
+			
+			#model1 {
+				width: 1100px;
+				height: 650px;
 			}
-			#model3{
-				width:1100px;
+			
+			#model3 {
+				width: 1100px;
 			}
-			#model2{
-				width:600px;
-				height:500px;
+			
+			#model2 {
+				width: 600px;
+				height: 500px;
 			}
-			#myModal2,#myModal8,#myModal9{
+			
+			#myModal2,
+			#myModal8,
+			#myModal9 {
 				margin-left: -500px;
 			}
-			#myModal7,#myModal10,#myModal11{
+			
+			#myModal7,
+			#myModal10,
+			#myModal11 {
 				margin-left: -200px;
 				margin-top: 125px;
 			}
-			#myModal1,#myModal4,#myModal3,#myModal5,#myModal,#myModal8,#myModal9{
-				margin-top:80px;
+			
+			#myModal1,
+			#myModal4,
+			#myModal3,
+			#myModal5,
+			#myModal,
+			#myModal8,
+			#myModal9 {
+				margin-top: 80px;
 			}
-			#aa1{
-				width:1068px;
-				height:470px;
+			
+			#aa1 {
+				width: 1068px;
+				height: 470px;
 				background-color: #e3e3e3;
 			}
-			#aa3{
-				height:50px;
+			
+			#aa3 {
+				height: 50px;
 				line-height: 50px;
 				background-color: #fff;
 			}
-			#aa4{
+			
+			#aa4 {
 				width: 1068px;
-				height:465px;
+				height: 465px;
 				border: 1px solid #fff;
 			}
-			#kkk1{
+			
+			#kkk1 {
 				width: 1068px;
-				height:450px;
+				height: 450px;
 				border: 1px solid #fff;
 			}
-			.aa5{
+			
+			.aa5 {
 				height: 30px;
 				width: 150px;
 				border: 0px;
-				margin-left:10px;
+				margin-left: 10px;
 			}
-			.aa6{
+			
+			.aa6 {
 				height: 30px;
 				border: 0px;
-				width:402px;
-				margin-left:10px;
+				width: 402px;
+				margin-left: 10px;
 			}
-			ul li{
+			
+			ul li {
 				list-style-type: none;
 			}
-			.ul1{
+			
+			.ul1 {
 				padding: 0px;
 				margin-left: 30px;
 				border-left: 1px dotted #444444;
 			}
-			#j1{
-				width:10px;
-				height:10px;
+			
+			#j1 {
+				width: 10px;
+				height: 10px;
 				display: inline-block;
-				border-bottom:1px dotted #000;
+				border-bottom: 1px dotted #000;
 			}
-			#aa4 table tr td{
-				color:#337AB7;
-				padding-left:30px;
+			
+			#aa4 table tr td {
+				color: #337AB7;
+				padding-left: 30px;
 				display: inline-block;
-				height:34px;
+				height: 34px;
 			}
-			.aa8{
-				width:130px;
-				height:30px;
+			
+			.aa8 {
+				width: 130px;
+				height: 30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left:7px;
+				margin-left: 7px;
 				border: 0px;
 			}
-			.aa19{
-				width:149px;
-				height:30px;
+			
+			.aa19 {
+				width: 149px;
+				height: 30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left:7px;
+				margin-left: 7px;
 				border: 0px;
 			}
-			.aa18{
-				width:150px;
-				height:30px;
+			
+			.aa18 {
+				width: 150px;
+				height: 30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left:7px;
+				margin-left: 7px;
 				border: 0px;
 			}
-			.aa9{
-				width:20px;
-				height:30px;
+			
+			.aa9 {
+				width: 20px;
+				height: 30px;
 				line-height: 30px;
-				display:inline-block;
+				display: inline-block;
 				background-color: #fff;
 				position: relative;
-				top:0;
-				left:-4px;
+				top: 0;
+				left: -4px;
 				text-align: center;
 			}
-			#img1{
-				width:15px;
-				height:10px;
+			
+			#img1 {
+				width: 15px;
+				height: 10px;
 			}
-			.ming{
-				margin-left:-6px;
+			
+			.ming {
+				margin-left: -6px;
 			}
-			#tab1{
-				display:flex;
+			
+			#tab1 {
+				display: flex;
 			}
-			#zhao{
+			
+			#zhao {
 				width: 15px;
 				height: 500px;
 				line-height: 70px;
@@ -206,99 +254,118 @@
 				text-align: center;
 				margin-left: 255px;
 			}
-			.biao1{
+			
+			.biao1 {
 				width: 280px;
 				height: 200px;
 			}
-			#kkk1 div{
-				width:900px;
-				height:300px;
+			
+			#kkk1 div {
+				width: 900px;
+				height: 300px;
 				margin-left: 65px;
 				margin-top: 15px;
 			}
-			.form-control{
+			
+			.form-control {
 				margin-top: 10px;
 				margin-bottom: 10px;
 			}
-			#mm1 table tr td{
-				color:#000;
+			
+			#mm1 table tr td {
+				color: #000;
 				display: inline-block;
-				height:34px;
+				height: 34px;
 				line-height: 34px;
 				border: 1px solid #E8E8E8;
 				text-align: center;
-				width:150px;
+				width: 150px;
 			}
-			#mm1 table tr td:nth-of-type(1){
-				background-color:#f7f7f7;
-				width:60px;
+			
+			#mm1 table tr td:nth-of-type(1) {
+				background-color: #f7f7f7;
+				width: 60px;
 			}
-			#mm1 table tr td:nth-of-type(2){
-				width:90px;
+			
+			#mm1 table tr td:nth-of-type(2) {
+				width: 90px;
 			}
-			#mm1 table tr td:nth-of-type(3){
-				width:268px;
+			
+			#mm1 table tr td:nth-of-type(3) {
+				width: 268px;
 			}
-			#mm1 table tr:nth-of-type(1){
-				background-color:darkturquoise;
+			
+			#mm1 table tr:nth-of-type(1) {
+				background-color: darkturquoise;
 			}
-			#mm1{
+			
+			#mm1 {
 				height: 330px;
 			}
-			#mm2 table tr td{
-				color:#000;
+			
+			#mm2 table tr td {
+				color: #000;
 				display: inline-block;
-				height:34px;
+				height: 34px;
 				line-height: 34px;
 				border: 1px solid #E8E8E8;
 				text-align: center;
-				width:113px;
+				width: 113px;
 			}
-			#mm2 table tr td:nth-of-type(1){
-				background-color:#f7f7f7;
+			
+			#mm2 table tr td:nth-of-type(1) {
+				background-color: #f7f7f7;
 			}
-			#mm2 table tr td:nth-of-type(3){
+			
+			#mm2 table tr td:nth-of-type(3) {
 				width: 116px;
 			}
-			#mm2 table tr:nth-of-type(1){
-				background-color:darkturquoise;
+			
+			#mm2 table tr:nth-of-type(1) {
+				background-color: darkturquoise;
 			}
-			#mm2{
+			
+			#mm2 {
 				height: 330px;
 			}
-			a{
-				color:#000000;
+			
+			a {
+				color: #000000;
 			}
-			.ko1{
+			
+			.ko1 {
 				height: 30px;
 				border: 5px solid #fff;
 				width: 303px;
 			}
+			
 			.div {
 				position: relative;
-				left:240px;
+				left: 240px;
 				width: 30px;
 				height: 100px;
-			  }
-
-			  .searImageThreeBtn {
+			}
+			
+			.searImageThreeBtn {
 				position: absolute;
 				top: 0;
-				left:1px;
+				left: 1px;
 				bottom: 0;
 				letter-spacing: 0;
 				right: 0;
 				width: 100%;
 				height: 100%;
 				pointer-events: none;
-			  }
-			  .layui-upload-file {
+			}
+			
+			.layui-upload-file {
 				width: 100%;
 				height: 100%;
-			  }
 			}
+		}
 		</style>
 	</head>
+
 	<body>
 		<div class="container-fluid" id="ctn">
 			<div class="row aa2">
@@ -315,17 +382,33 @@
 			</div>
 			<div class="row aa2">
 				<div class="z1">
-					<div class="col-md-1"><a href="#myModal8" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">使用门店</a></div>
-					<div class="col-md-1"><a href="#myModal9" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">门店编辑</a></div>
-					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">增加员工</a></div>
-					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改员工</a></div>
+					<div class="col-md-1">
+						<a href="#myModal8" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">使用门店</a>
+					</div>
+					<div class="col-md-1">
+						<a href="#myModal9" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">门店编辑</a>
+					</div>
+					<div class="col-md-1">
+						<a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">增加员工</a>
+					</div>
+					<div class="col-md-1">
+						<a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改员工</a>
+					</div>
 					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">删除</div>
-					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">查询</a></div>
+					<div class="col-md-1">
+						<a href="#myModal7" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">查询</a>
+					</div>
 					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">置空密码</div>
 					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导出</div>
-					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导入</a></div>
-					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">员工角色</a></div>
-					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">字段设置</a></div>
+					<div class="col-md-1">
+						<a href="#myModal6" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导入</a>
+					</div>
+					<div class="col-md-1">
+						<a href="#myModal4" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">员工角色</a>
+					</div>
+					<div class="col-md-1">
+						<a href="#myModal5" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">字段设置</a>
+					</div>
 				</div>
 				<div class="z2">
 					<div class="col-xs-2">
@@ -368,7 +451,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>员工卡片</h3></div>
+								<div class="col-md-7">
+									<h3>员工卡片</h3></div>
 								<div class="col-md-5">
 									<button class="btn btn-default" type="submit">保存</button>
 									<span><a href="#myModal11" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">打印</a></span>
@@ -393,12 +477,12 @@
 													<span class="aa9"><a href="#myModal1" data-toggle="modal"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></a></span>
 												</td>
 												<td>
-													 <div class="div">
+													<div class="div">
 														<button type="button" class="searImageThreeBtn" id="upload_input">
 														  <span>照片</span>
 														</button>
-														<input class="layui-upload-file" type="file" name="file" >
-													  </div>
+														<input class="layui-upload-file" type="file" name="file">
+													</div>
 												</td>
 											</tr>
 											<tr>
@@ -453,13 +537,13 @@
 													</select>
 													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td  class="ming">专业资格:
+												<td class="ming">专业资格:
 													<select class="aa8">
 														<option></option>
 													</select>
 													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td  >属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
+												<td>属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
 													<select class="aa18">
 														<option></option>
 													</select>
@@ -478,7 +562,7 @@
 													</select>
 													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td  class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5"></td>
+												<td class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5"></td>
 												<td colspan="2">户口地址:<input type="text" class="aa6"></td>
 											</tr>
 											<tr>
@@ -523,16 +607,13 @@
 									<div id="kkk1">
 										<div>
 											工作简历
-											<textarea class="form-control " rows="3" style="width:400px;height: 100px;"></textarea>
-											教育经验
-											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
-											聘用意见
+											<textarea class="form-control " rows="3" style="width:400px;height: 100px;"></textarea> 教育经验
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea> 聘用意见
 											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
 										</div>
 										<div>
 											家庭成员
-											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
-											奖惩记录
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea> 奖惩记录
 											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
 										</div>
 									</div>
@@ -540,19 +621,20 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a  class="btn btn-default" data-dismiss="modal">提交</a>
+							<a class="btn btn-default" data-dismiss="modal">提交</a>
 							<a data-toggle="modal" data-dismiss="modal" class="btn btn-default">关闭</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="modal" id="myModal3" data-backdrop>
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
-							<div class="col-md-10"><h4>部门选择</h4></div>
+							<div class="col-md-10">
+								<h4>部门选择</h4></div>
 							<div class="col-md-2">
 								<button class="btn btn-default" type="submit">选择</button>
 							</div>
@@ -610,7 +692,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-10"><h3>员工角色</h3></div>
+								<div class="col-md-10">
+									<h3>员工角色</h3></div>
 								<div class="col-md-2">
 									<button class="btn btn-default" type="submit">保存</button>
 								</div>
@@ -655,7 +738,8 @@
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
-						<div class="modal-header"><h4>字段设置</h4></div>
+						<div class="modal-header">
+							<h4>字段设置</h4></div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: lightgoldenrodyellow;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
@@ -759,7 +843,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>员工查询</h3></div>
+								<div class="col-md-7">
+									<h3>员工查询</h3></div>
 								<div class="col-md-5" style="text-align: right;"><button class="btn btn-default" type="submit" style="background-color:#67B168;">确定</button></div>
 							</div>
 						</div>
@@ -771,12 +856,14 @@
 											<tr>
 												<td>员工编号:<input type="text" class="aa5"></td>
 												<td>员工姓名:<input type="text" class="aa5"></td>
-												<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input type="text" class="aa5"></td></tr>
+												<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input type="text" class="aa5"></td>
+											</tr>
 											<tr>
 												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
-												<select class="aa19">
-													<option></option>
-												</select>
+													<select class="aa19">
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list1">{{item.gname}}</option>
+													</select>
 												</td>
 												<td>所在部门:
 													<select class="aa19" style="width:400px;">
@@ -789,7 +876,8 @@
 												<td>籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:<input type="text" class="aa5"></td>
 												<td>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list3">{{item.name}}</option>
 													</select>
 												</td>
 											</tr>
@@ -797,19 +885,22 @@
 												<td>
 													婚姻状况:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list4">{{item.name}}</option>
 													</select>
 												</td>
 												<td>
 													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list5">{{item.name}}</option>
 													</select>
 												</td>
 												<td>
 													毕业学校:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list6">{{item.name}}</option>
 													</select>
 												</td>
 											</tr>
@@ -817,19 +908,26 @@
 												<td>
 													专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option>计算机科学与技术</option>
+														<option>网络工程</option>
+														<option>生命起源</option>
 													</select>
 												</td>
 												<td>
 													专业资格:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list7">{{item.name}}</option>
 													</select>
 												</td>
 												<td>
 													属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option>记考勤不计薪</option>
+														<option>不计考勤计薪</option>
+														<option>不计薪记考勤</option>
 													</select>
 												</td>
 											</tr>
@@ -839,13 +937,17 @@
 												<td>
 													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option v-for="item in list8">{{item.name}}</option>
 													</select>
 												</td>
 												<td>
 													编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
 													<select class="aa19">
-														<option></option>
+														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+														<option>管理人员</option>
+														<option>销售人员</option>
+														<option>维修人员</option>
 													</select>
 												</td>
 											</tr>
@@ -874,7 +976,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>门店编辑</h3></div>
+								<div class="col-md-7">
+									<h3>门店编辑</h3></div>
 								<div class="col-md-5" style="text-align: right;">
 									<button class="btn btn-default" type="submit">保存</button>
 								</div>
@@ -903,25 +1006,25 @@
 												<td>
 													调拨价类
 													<select class="aa19">
-													<option></option>
-												</select>
+														<option></option>
+													</select>
 												</td>
 											</tr>
 											<tr>
 												<td>
 													省
 													<select class="aa19">
-													<option></option>
+														<option></option>
 												</td>
 												<td>
 													市
 													<select class="aa19">
-													<option></option>
+														<option></option>
 												</td>
 												<td>
 													区
 													<select class="aa19">
-													<option></option>
+														<option></option>
 												</td>
 											</tr>
 											<tr>
@@ -961,7 +1064,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>用户公司定义</h3></div>
+								<div class="col-md-7">
+									<h3>用户公司定义</h3></div>
 								<div class="col-md-5" style="text-align: right;">
 									<button class="btn btn-default" type="submit">保存</button>
 								</div>
@@ -1031,7 +1135,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>选择门店</h3></div>
+								<div class="col-md-7">
+									<h3>选择门店</h3></div>
 								<div class="col-md-5" style="text-align: right;">
 									<input type="text" style="height: 35px;">
 									<button class="btn btn-default" type="submit" style="background-color:#67B168;">搜索</button>
@@ -1088,7 +1193,8 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7"><h3>报表打印</h3></div>
+								<div class="col-md-7">
+									<h3>报表打印</h3></div>
 							</div>
 						</div>
 						<div class="modal-body">
@@ -1107,7 +1213,8 @@
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
-						<div class="modal-header"><h4>选择内容设置</h4></div>
+						<div class="modal-header">
+							<h4>选择内容设置</h4></div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
@@ -1142,99 +1249,207 @@
 						</div>
 						<div class="modal-footer" style="padding: 0px;">
 							<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 20px;">
-								<a  class="btn btn-default" data-dismiss="modal">选择</a>
+								<a class="btn btn-default" data-dismiss="modal">选择</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="js/region.js"></script>
-	<script type="text/javascript" src="js/vue.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		var stafflist=[
-			{
-				id:"1",
-				bool:0,
-				field:"aaa",
-				fieldname:"机构",
-				width:"100"},
-			{
-				id:"2",
-				bool:0,
-				field:"aaa",
-				fieldname:"部门代码",
-				width:"100"
-			},
-			{
-				id:"3",
-				bool:0,
-				field:"aaa",
-				fieldname:"部门名称",
-				width:"100"
-			},
-			{
-				id:"4",
-				bool:0,
-				field:"aaa",
-				fieldname:"工号",
-				width:"100"
-			},
-			{
-				id:"5",
-				bool:0,
-				field:"aaa",
-				fieldname:"姓名",
-				width:"100"
-			},
-		];
-		$("#kkk1").css("display","none");
-		new Vue({
-			el:"#ctn",
-			data(){
-				return{
-					stafflist:stafflist,
-					xs:true
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="js/region.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			var stafflist = [{
+					id: "1",
+					bool: 0,
+					field: "aaa",
+					fieldname: "机构",
+					width: "100"
+				},
+				{
+					id: "2",
+					bool: 0,
+					field: "aaa",
+					fieldname: "部门代码",
+					width: "100"
+				},
+				{
+					id: "3",
+					bool: 0,
+					field: "aaa",
+					fieldname: "部门名称",
+					width: "100"
+				},
+				{
+					id: "4",
+					bool: 0,
+					field: "aaa",
+					fieldname: "工号",
+					width: "100"
+				},
+				{
+					id: "5",
+					bool: 0,
+					field: "aaa",
+					fieldname: "姓名",
+					width: "100"
+				},
+			];
+			$("#kkk1").css("display", "none");
+			new Vue({
+				el: "#ctn",
+				data() {
+					return {
+						stafflist: stafflist,
+						xs: true,
+						list1: {},
+						list3: {},
+						list4: {},
+						list5: {},
+						list6: {},
+						list7: {},
+						list8: {}
+					}
+				},
+				methods: {
+					xianshi() {
+						if(this.xs) {
+							this.xs = false;
+						} else {
+							this.xs = true;
+						}
+
+					},
+					createTab(item) {
+						if(item.children && item.children.length > 0) {
+							return;
+						}
+						this.tabs.forEach(item => { item.active = false; });
+						this.$set(item, "active", true);
+						var bool = this.tabs.some(sitem => sitem.ename == item.ename);
+						if(!bool) {
+							this.tabs.push(item);
+						}
+					},
+					removeTab(index) {
+						if(index == this.tabs.length - 1) {
+							this.tabs[index - 1].active = true;
+						}
+						this.tabs.splice(index, 1);
+					},
+					ying() {
+						$("#aa4").css("display", "none");
+						$("#kkk1").css("display", "flex");
+					},
+					ying2() {
+						$("#aa4").css("display", "flex");
+						$("#kkk1").css("display", "none");
+					},
+					query1() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/gfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list1 = result;
+							}
+						});
+					},
+					query3() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/mfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list3 = result;
+							}
+						});
+					},
+					query4() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/hfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list4 = result;
+							}
+						});
+					},
+					query5() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/xfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list5 = result;
+							}
+						});
+					},
+					query6() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/bfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list6 = result;
+							}
+						});
+					},
+					query7() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/zfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list7 = result;
+							}
+						});
+					},
+					query8() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/yuangongziliaobiao/xwfind",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.list8 = result;
+							}
+						});
+					}
+				},
+				created() {
+					this.query1();
+					this.query3();
+					this.query4();
+					this.query5();
+					this.query6();
+					this.query7();
+					this.query8();
 				}
-			},
-			methods:{
-				xianshi(){
-					if(this.xs){
-						this.xs=false;
-					}else{
-						this.xs=true;
-					}
-					
-				},
-				createTab(item){
-					if(item.children && item.children.length>0){
-						return;
-					}
-					this.tabs.forEach(item=>{item.active=false;});
-					this.$set(item,"active",true);
-					var bool = this.tabs.some(sitem=>sitem.ename==item.ename);
-					if(!bool){
-						this.tabs.push(item);
-					}
-				},
-				removeTab(index){
-					if(index==this.tabs.length-1){
-						this.tabs[index-1].active=true;
-					}
-					this.tabs.splice(index,1);
-				},
-				ying(){
-					$("#aa4").css("display","none");
-					$("#kkk1").css("display","flex");
-				},
-				ying2(){
-					$("#aa4").css("display","flex");
-					$("#kkk1").css("display","none");
-				}
-			}
-		});
-	</script>
+			});
+		</script>
 	</body>
+
 </html>

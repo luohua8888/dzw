@@ -82,7 +82,7 @@
 					</thead>
 					<tbody>
 						<tr @click="show(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in tcs">
-							<td @click="addorange(i,'all')"></td>
+							<td @click="addorange(i,'all')"><span class="glyphicon glyphicon-triangle-right" v-show="i.orange"></span></td>
 							<td @click="addorange(i,'id')" :class="{orange:i.orange&&i.orange=='id'}">{{i.teamid}}</td>
 							<td @click="addorange(i,'tea1')" :class="{orange:i.orange&&i.orange=='tea1'}">{{i.tea1}}</td>
 							<td @click="addorange(i,'inam')" :class="{orange:i.orange&&i.orange=='inam'}">{{i.inam}}</td>

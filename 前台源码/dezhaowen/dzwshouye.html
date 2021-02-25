@@ -119,7 +119,7 @@
 				<nav>
 					<div class="img"><img src="img/dzwlog.png" width="150px" height="40px" /></div>
 				    <ul>
-				      <li v-for="item in menu" @click="selectedMenu=item"><span :title="item.name">{{item.name}}</span></li>
+				      <li v-for="item in menu" @click="selectedMenu=item"><span :title="item.menuName">{{item.menuName}}</span></li>
 				    </ul>
 				 </nav>
 				 <div class="header-div">
@@ -129,16 +129,16 @@
 				 </div>
 			</div>
 			<div class="row">
-				<div class="col-sm-1">
+				<div class="col-sm-1" >
 					<div class="dropdown">
 					  	<div>
 						    
 						    <ul>
 						    	<li @click="createTab(item)" v-for="item in selectedMenu.children">
-						    		{{item.name}}
+						    		{{item.menuName}}
 						    		<ul style="margin-left:20px" v-if="item.children">
 								    	<li  @click="createTab(c)" v-for="c in item.children">
-								    		{{c.name}}
+								    		{{c.menuName}}
 								    	</li>
 								    </ul>	
 						    	</li>
@@ -149,303 +149,43 @@
 				</div>
 				<div class="col-sm-11">
 					<ul class="nav nav-tabs">
-						<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.ename"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.name}}</a></li>
+						<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.perms"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.menuName}}</a></li>
 					</ul>
 					<div class="tab-content">
-						<div v-for="item in tabs" :id="item.ename" :class="['tab-pane',item.active?'active':'false']">
-							<iframe :src="item.path"></iframe>
+						<div v-for="item in tabs" :id="item.perms" :class="['tab-pane',item.active?'active':'false']">
+							<iframe :src="item.url"></iframe>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<script>
+			var baseUrl = "http://localhost:8080/";
+		</script>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
 		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/menu.js" ></script>
 		<script type="text/javascript">
-			var menu=[{
-				id:1,
-				name:"服务接待",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-						name:"服务接待",
-						ename:"sys",
-						children:[
-							{
-								id:2,
-								name:"维修接车",
-								ename:"role",
-								path:"wxjc/kehuziliao.html"
-							},
-							{
-								id:3,
-								name:"竣工检验",
-								ename:"jgjyw",
-								path:"jgjy/jungongjianyan.html"
-							}
-						]
-					}		
-				]		
-			},
-			{
-				id:2,
-				name:"备品管理",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"商品入库",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"入库开单",
-									ename:"role",
-									path:"pages/sys/role.html"
-								},{
-									id:3,
-									name:"入库退货",
-									ename:"user",
-									path:"pages/sys/user.html"
-								},{
-									id:4,
-									name:"入库审核",
-									ename:"dd",
-									path:"pages/sys/user.html"
-								}
-						]	
-					}
-				]
-			},
-			{
-				id:3,
-				name:"前台结算",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"前台结算",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"结算中心",
-									ename:"role",
-									path:"jszxym/jszx.html"
-								}
-						]
-					}
-				]
-			},{
-				id:4,
-				name:"客户档案",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"客户档案",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"客户资料",
-									ename:"role",
-									path:"kehudangan.html"
-								},
-								{
-									id:3,
-									name:"车辆资料",
-									ename:"czl",
-									path:"cheliang.html"
-								}
-						]
-					}
-				]
-			},{
-				id:5,
-				name:"基础数据",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"基础数据",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"发动机品牌",
-									ename:"fdj",
-									path:"fdj.html"
-								},
-								{
-									id:3,
-									name:"车型档案",
-									ename:"cxda",
-									path:"cxda.html"
-								},
-								{
-									id:4,
-									name:"维修项目",
-									ename:"wxxm",
-									path:"wxxm.html"
-								},{
-									id:5,
-									name:"商品资料",
-									ename:"sp",
-									path:"sp.html"
-								},{
-									id:6,
-									name:"供货单位",
-									ename:"ghdw",
-									path:"gonghuodanwei.html"
-								}
-						]
-					}
-				]
-			},{
-				id:6,
-				name:"财务管理",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"财务管理",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"结算中心",
-									ename:"role",
-									path:"pages/sys/role.html"
-								},
-								{
-									id:3,
-									name:"结算中心",
-									ename:"role",
-									path:"pages/sys/role.html"
-								},
-								{
-									id:4,
-									name:"结算中心",
-									ename:"role",
-									path:"pages/sys/role.html"
-								}
-						]
-					}
-				]
-			},{
-				id:7,
-				name:"行政人事",
-				ename:"sys",
-				children:[
-					{
-						id:9,
-						name:"员工资料",
-						ename:"sys",
-						children:[
-							{
-								id:2,
-								name:"组织机构",
-								ename:"zzjg",
-								path:"zuzhi.html"
-							},
-							{
-								id:3,
-								name:"岗位定义",
-								ename:"gw",
-								path:"gang.html"
-							},
-							{
-								id:4,
-								name:"离职登记",
-								ename:"lz",
-								path:"lizhi.html"
-							},
-							{
-								id:5,
-								name:"通讯名录",
-								ename:"tx",
-								path:"phone.html"
-							}
-						]
-					},{
-						id:10,
-						name:"技工管理",
-						ename:"sys",
-						children:[
-							{
-								id:2,
-								name:"技工星级",
-								ename:"jgxj",
-								path:"jigongxingji.html"
-							},
-							{
-								id:3,
-								name:"班组技工",
-								ename:"bzjg",
-								path:"banzujigong.html"
-							},
-							{
-								id:4,
-								name:"外勤车辆",
-								ename:"wqcl",
-								path:"waiqingcheliang.html"
-							}
-						]
-					}
-				]
-			},{
-				id:8,
-				name:"系统设置",
-				ename:"sys",
-				children:[
-					{
-						id:1,
-							name:"初始数据",
-							ename:"sys",
-							children:[
-								{
-									id:2,
-									name:"系统参数定义",
-									ename:"role",
-									path:"pages/sys/role.html"
-								},
-								{
-									id:3,
-									name:"结算中心",
-									ename:"role",
-									path:"pages/sys/role.html"
-								},
-								{
-									id:4,
-									name:"结算中心",
-									ename:"role",
-									path:"pages/sys/role.html"
-								}
-						]
-					}
-				]
-			},
-			
-			];
-			
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			var tabs=[
 			{
 				id:0,
-				name:"首页",
-				ename:"index",
+				menuName:"首页",
+				perms:"index",
 				active:true,
-				path:"jszxsy/dzwindex.html"
+				url:"jszxsy/dzwindex.html"
 			}
 			];
 			new Vue({
 				el:"#ctn",
 				data(){
 					return{
-						menu:menu,
-						selectedMenu:null,
+						menu:[],
+						selectedMenu:[],
 						tabs:tabs
 					}
 				},
@@ -456,7 +196,7 @@
 						}
 						this.tabs.forEach(item=>item.active=false);
 						this.$set(item,"active",true);
-						var flag = this.tabs.some(sitem=>sitem.ename==item.ename)
+						var flag = this.tabs.some(sitem=>sitem.perms==item.perms)
 						if(!flag){
 							this.tabs.push(item);
 						}
@@ -469,7 +209,17 @@
 					}
 				},
 				created(){
-					this.selectedMenu = this.menu[0];
+					var ss=sessionStorage.getItem("user");
+					var u=JSON.parse(ss);
+					console.log(u);
+					this.user=u;
+					let that=this;
+					menuApi.findMenuByUserId(u.roleId,function(result){
+					console.log(result);
+					that.menu = result;
+					that.selectedMenu = that.menu[0];
+					console.log(that.selectedMenu);
+					});
 				}
 			});
 		</script>

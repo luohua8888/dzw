@@ -1,6 +1,12 @@
 package com.accp.controller;
 
 
+import com.accp.domain.SysRoleMenu;
+import com.accp.service.impl.SysRoleMenuServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +22,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/sysRoleMenu")
 public class SysRoleMenuController {
-
+    @Autowired
+    SysRoleMenuServiceImpl service;
+    @PostMapping("/{roleId}")
+    public String find(@PathVariable("roleId") Integer roleId ,String [] array){
+        if(roleId!=null&&array!=null){
+            QueryWrapper<SysRoleMenu> queryWrapper=new QueryWrapper<>();
+            queryWrapper.eq("roleId",roleId);
+            service.remove(queryWrapper);
+            for(String in : array){
+                SysRoleMenu srm=new SysRoleMenu();
+                srm.setRoleId(roleId);
+                srm.setMenuId(Integer.valueOf(in));
+                service.save(srm);
+            }
+            return "授权成功";
+        }
+        return "授权失败";
+    }
 }
 
