@@ -28,5 +28,10 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         for (SysMenu s : ss) { s.setL(false); }
         return ss;
     }
+    public List<SysMenu> select1(Integer roleid){
+        List<SysMenu> ss= Mapper.select1(roleid);
+        //for (SysMenu s : ss) { s.setL(false); }
+        return ss;
+    }
 
 }

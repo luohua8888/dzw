@@ -16,4 +16,5 @@ import java.util.List;
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
     List<SysMenu> select(@Param("id") Integer id, @Param("roleid") Integer roleid);
+    List<SysMenu> select1(@Param("roleid") Integer roleid);
 }
