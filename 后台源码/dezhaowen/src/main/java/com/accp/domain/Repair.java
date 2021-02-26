@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -29,7 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Repair extends Model<Repair> {
 
     private static final long serialVersionUID=1L;
-
+    @TableId
     @ApiModelProperty(value = "维修编号")
     private String number;
 
