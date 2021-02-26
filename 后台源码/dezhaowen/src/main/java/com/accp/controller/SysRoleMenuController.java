@@ -25,10 +25,10 @@ public class SysRoleMenuController {
     @Autowired
     SysRoleMenuServiceImpl service;
     @PostMapping("/{roleId}")
-    public String find(@PathVariable("roleId") Integer roleId ,String [] array){
+    public int find(@PathVariable("roleId") Integer roleId ,String [] array){
         if(roleId!=null&&array!=null){
             QueryWrapper<SysRoleMenu> queryWrapper=new QueryWrapper<>();
-            queryWrapper.eq("roleId",roleId);
+            queryWrapper.eq("role_id",roleId);
             service.remove(queryWrapper);
             for(String in : array){
                 SysRoleMenu srm=new SysRoleMenu();
@@ -36,9 +36,9 @@ public class SysRoleMenuController {
                 srm.setMenuId(Integer.valueOf(in));
                 service.save(srm);
             }
-            return "授权成功";
+            return 1;
         }
-        return "授权失败";
+        return 2;
     }
 }
 

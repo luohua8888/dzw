@@ -8,26 +8,32 @@
 	</head>
 	<body>
 		<div id="ntc">
-			<table>
+			<button class="btn btn-primary" @click="xz">新增</button>
+			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>编号</th>
 						<th>管理员账户</th>
 						<th>管理员姓名</th>
+						<th>管理员职务</th>
 						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr v-for="item in list">
 						<td>{{item.roleId}}</td>
-						<td>{{item.remark}}</td>
+						<td>{{item.role2}}</td>
 						<td>{{item.roleName}}</td>
+						<td>{{item.remark}}</td>
 						<td>
-							<span @click="auth(item)">授权</span>
+							<button @click="auth(item)" class="btn btn-success">授权</button>
+							<button class="btn btn-primary" @click="xg(item)">修改</button>
+							<button class="btn btn-danger" @click="sc(item.roleId)">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
+			<!--授权-->
 			<div class="modal" id="authModal">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -39,6 +45,109 @@
 						</div>
 						<div class="modal-footer">
 							<button class="btn btn-primary" @click="primaryAuth">授权</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--修改-->
+			<div class="modal" id="xgmodal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-center" >修改角色</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">角色名称</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.roleName" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">创建时间</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.createTime" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">角色</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.remark" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.role2" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.role1" />
+									</div>
+								</div>
+							</form>
+							<input type="hidden" v-model="xgrole.roleId"/>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="xgjs">修改</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--新增-->
+			<div class="modal" id="xzmodal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-center" >新增角色</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色名称</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.roleName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色状态</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.status"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">创建时间</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.createTime"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.remark"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.role2"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.role1"/>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="xzjs">新增</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -82,6 +191,8 @@
 						list:[],
 						menuList:[],
 						authRole:{},
+						role:{},
+						xgrole:{},
 					}
 				},
 				methods:{
@@ -94,13 +205,18 @@
 						//将选中的和半选的元素进行和并到一个数组
 						selected.push(...undetermined);
 						$.ajax({
-							url:top.baseUrl+"sys/"+that.authRole.roleId,
+							url:top.baseUrl+"sysRoleMenu/"+that.authRole.roleId,
 							data:{
 								array:selected.join(",")
 							},
 							type:"post",
 							success:function(result){
-								console.log(result)
+								if(result==1){
+									alert("授权成功");
+								}else{
+									alert("授权失败");
+								}
+								$("#authModal").modal("hide");
 							}
 						});
 					},
@@ -130,6 +246,70 @@
 						});
 						//打开模态框
 						$("#authModal").modal("show");
+					},
+					xz(){
+						$("#xzmodal").modal("show");
+					},
+					xzjs(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl + "sysRole/xz",
+							type:"post",
+							data:that.role,
+							dataType:"json",
+							success:function(result){
+								if(result=1){
+									alert("新增成功");
+								}else{
+									alert("新增失败");
+								}
+								$("#xzmodal").modal("hide");
+								that.find();
+							}
+						});
+					},
+					sc(id){
+						let that=this;
+						var r=confirm("确实要删除吗？");
+						if(r==true){
+							$.ajax({
+							url:top.baseUrl + "sysRole/sc",
+							type:"post",
+							data:{
+								id:id,
+							},
+							dataType:"json",
+							success:function(result){
+								if(result=1){
+									alert("删除成功");
+								}else{
+									alert("删除失败");
+								}
+								that.find();
+							}
+						});
+						}
+					},
+					xg(item){
+						this.xgrole=item;
+						$("#xgmodal").modal("show");
+					},
+					xgjs(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl + "sysRole/xg",
+							type:"post",
+							data:that.xgrole,
+							dataType:"json",
+							success:function(result){
+								if(result==1){
+									alert("修改成功");
+								}else{
+									alert("修改失败");
+								}
+								$("#xgmodal").modal("hide");
+							}
+						});
 					}
 				},
 				created() {

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Data
 public class RepairAndRescue {
     private String clientname;
-    private String carNumber;
+    private String platename;
     private String phone;
     private String tname;
     private String number;
@@ -38,7 +38,7 @@ public class RepairAndRescue {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date nowworkdate;
+    private Date nowworkDate;
 
     private String setter;
 
@@ -62,11 +62,11 @@ public class RepairAndRescue {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date ordertime;
+    private Date orderTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date stockdater;
+    private Date stockDater;
 
 
 

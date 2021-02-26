@@ -4,11 +4,15 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -47,12 +51,14 @@ public class Rescue extends Model<Rescue> {
 
     @ApiModelProperty(value = "接车人")
     private String getman;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "派工时间")
-    private LocalDateTime workdate;
-
+    private Date workdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "出发时间")
-    private LocalDateTime nowdate;
+    private Date nowdate;
 
     @ApiModelProperty(value = "出发地址")
     private String address;
@@ -62,12 +68,14 @@ public class Rescue extends Model<Rescue> {
 
     @ApiModelProperty(value = "行驶里程")
     private Float liche;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "施工时间")
-    private LocalDateTime worktime;
-
+    private Date worktime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结束时间")
-    private LocalDateTime overtime;
+    private Date overtime;
 
     @ApiModelProperty(value = "救援地址")
     private String rescueaddress;
@@ -98,11 +106,11 @@ public class Rescue extends Model<Rescue> {
 
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")
-    private LocalDateTime orderTime;
+    private Date orderTime;
 
     @ApiModelProperty(value = "结算时间")
     @TableField("stockDater")
-    private LocalDateTime stockDater;
+    private Date stockDater;
 
     @ApiModelProperty(value = "其它字段1")
     private String otherone;

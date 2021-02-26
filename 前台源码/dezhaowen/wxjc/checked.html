@@ -101,7 +101,7 @@
 		</select>
 		车牌号：<input id="carnumber" class="form-control ss" type="text" />
 		<div style="padding-top: 20px;">
-		车架号：<input id="carnumber1" class="form-control ss" type="text" />
+		<!--车架号：<input id="carnumber1" class="form-control ss" type="text" />-->
 		</div>
 	</div>
 	<div id="caidan">
@@ -260,7 +260,7 @@
  	$(function(){
  		$("#date1").val('2021-1-1')
  		$("#date2").val('2021-11-1')
- 		vm.selectJunGong("!=","2020-1-1","2020-3-1","","","");
+ 		vm.selectJunGong("!=","2021-1-1","2029-3-1","","","");
  	$("#cha").change(function(){
  		var tj=$(this).val()
  		var date1=$("#date1").val()
