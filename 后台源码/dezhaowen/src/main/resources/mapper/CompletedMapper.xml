@@ -21,7 +21,53 @@
         <result column="otherfour" property="otherfour" />
         <result column="otherfive" property="otherfive" />
     </resultMap>
+    <resultMap id="BaseResultMap1" type="com.accp.domain.JunGong" extends="BaseResultMap" >
+        <result column="count" property="count" jdbcType="INTEGER" />
+        <result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
+        <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkdate" property="nowworkdate" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="clientType" property="clientType" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="clientname" property="clientname" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="REAL" />
 
+        <result column="fgreason" property="fgreason" jdbcType="VARCHAR" />
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="carnumber" property="carnumber" jdbcType="VARCHAR" />
+        <result column="carnumber1" property="carnumber1" jdbcType="VARCHAR" />
+        <result column="tname" property="tname" jdbcType="VARCHAR" />
+        <result column="worktime" property="worktime" jdbcType="VARCHAR" />
+        <result column="cartypename" property="cartypename" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="reason" property="reason" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectJunGong" resultMap="BaseResultMap1">
+  SELECT *FROM (SELECT repair.status,repair.type,`customer`.`customername` clientname,
+car.`platename` carNumber,repair.number,'维修' AS tname,repair.orderTime,
+repair.overworkdate,repair.nowworkDate,repair.`worktime`,
+car.framnum carNumber1,com.reason,com.count,com.fgreason,`yuangongziliaobiao`.`yname` `name`,com.price,customertype.customertype `clientType`
+ FROM REPAIR JOIN `car` ON car.carnum=repair.carinfoId
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+ LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
+ LEFT JOIN `completed` com ON com.wjid=repair.number
+  LEFT JOIN yuangongziliaobiao ON yuangongziliaobiao.`yid`=com.dutyid
+ UNION ALL
+ SELECT rescue.status,rescue.type,customer.`customername` clientname,car.`platename` carNumber,
+ rescue.number,'救援' AS tname,rescue.orderTime,
+rescue.nowdate,rescue.overtime,rescue.`worktimes`,
+car.framnum carNumber1,com.reason,com.count,com.fgreason,`yuangongziliaobiao`.`yname` `name`,com.price,customertype.customertype `clientType`
+ FROM rescue LEFT JOIN `car` ON car.carnum=rescue.carinfoId
+  LEFT JOIN `completed` com ON com.wjid=rescue.number
+  LEFT JOIN `yuangongziliaobiao` ON yuangongziliaobiao.`yid`=com.dutyid
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
+ ) item
+ WHERE
+ item.status ${tj} '完工' AND ((item.ordertime &gt;='${date1}' AND item.ordertime &lt;='${date2}')AND item.number LIKE '%${number}%'
+AND item.carNumber LIKE '%${carnumber}%' AND item.carNumber1 LIKE '%${carnumber1}%'
+ )
+  </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, yesOrno, predicttime, nowtime, reason, workid, dutyid, price, count, fgreason, wjid, otherone, othertwo, otherthree, otherfour, otherfive
