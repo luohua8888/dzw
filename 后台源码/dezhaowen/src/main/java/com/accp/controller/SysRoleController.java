@@ -36,7 +36,7 @@ public class SysRoleController {
         public SysRole login(SysRole s, HttpSession session) {
                 if (s.getRole2() != null && s.getRole1() != null) {
                         QueryWrapper<SysRole> qw = new QueryWrapper<>();
-                        qw.eq("role_name", s.getRoleName());
+                        qw.eq("role2", s.getRole2());
                         qw.eq("role1", s.getRole1());
                         List<SysRole> list = service.list(qw);
                         SysRole sys = list.get(0);

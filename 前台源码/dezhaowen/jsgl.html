@@ -8,13 +8,14 @@
 	</head>
 	<body>
 		<div id="ntc">
-			<button class="btn-primary" @click="xz">新增</button>
-			<table class="table table-responsive">
+			<button class="btn btn-primary" @click="xz">新增</button>
+			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>编号</th>
 						<th>管理员账户</th>
 						<th>管理员姓名</th>
+						<th>管理员职务</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -23,15 +24,16 @@
 						<td>{{item.roleId}}</td>
 						<td>{{item.role2}}</td>
 						<td>{{item.roleName}}</td>
+						<td>{{item.remark}}</td>
 						<td>
 							<button @click="auth(item)" class="btn btn-success">授权</button>
-							<button class="btn-group" @click="xg(item)">修改</button>
-							<button class="btn-success" @click="sc(item.roleId)">删除</button>
+							<button class="btn btn-primary" @click="xg(item)">修改</button>
+							<button class="btn btn-danger" @click="sc(item.roleId)">删除</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			//授权
+			<!--授权-->
 			<div class="modal" id="authModal">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -48,78 +50,104 @@
 					</div>
 				</div>
 			</div>
-			//修改
+			<!--修改-->
 			<div class="modal" id="xgmodal">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h3 class="text-danger">修改角色</h3>
+							<h3 class="text-center" >修改角色</h3>
 						</div>
 						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">角色名称</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.roleName" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">创建时间</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.createTime" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">角色</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.remark" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.role2" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xgrole.role1" />
+									</div>
+								</div>
+							</form>
 							<input type="hidden" v-model="xgrole.roleId"/>
-							<div>
-								<label>角色名称</label>
-								<input v-model="xgrole.roleName" />
-							</div>
-							<div>
-								<label>创建时间</label>
-								<input v-model="xgrole.createTime" />
-							</div>
-							<div>
-								<label>角色</label>
-								<input v-model="xgrole.remark" />
-							</div>
-							<div>
-								<label>用户名</label>
-								<input v-model="xgrole.role2" />
-							</div>
-							<div>
-								<label>密码</label>
-								<input v-model="role.role1"/>
-							</div>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="xgjs">授权</button>
+							<button class="btn btn-primary" @click="xgjs">修改</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			//新增
+			<!--新增-->
 			<div class="modal" id="xzmodal">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h3 class="text-danger">新增角色</h3>
+							<h3 class="text-center" >新增角色</h3>
 						</div>
 						<div class="modal-body">
-							<div>
-								<label>角色名称</label>
-								<input v-model="role.roleName"/>
-							</div>
-							<div>
-								<label>角色状态</label>
-								<input v-model="role.status"/>
-							</div>
-							<div>
-								<label>创建时间</label>
-								<input v-model="role.createTime"/>
-							</div>
-							<div>
-								<label>角色</label>
-								<input v-model="role.remark"/>
-							</div>
-							<div>
-								<label>用户名</label>
-								<input v-model="role.role2"/>
-							</div>
-							<div>
-								<label>密码</label>
-								<input v-model="role.role1"/>
-							</div>
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色名称</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.roleName"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色状态</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.status"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">创建时间</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.createTime"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">角色</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.remark"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.role2"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="role.role1"/>
+									</div>
+								</div>
+							</form>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="xzjs">修改</button>
+							<button class="btn btn-primary" @click="xzjs">新增</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -188,6 +216,7 @@
 								}else{
 									alert("授权失败");
 								}
+								$("#authModal").modal("hide");
 							}
 						});
 					},
@@ -235,6 +264,7 @@
 									alert("新增失败");
 								}
 								$("#xzmodal").modal("hide");
+								that.find();
 							}
 						});
 					},
@@ -277,6 +307,7 @@
 								}else{
 									alert("修改失败");
 								}
+								$("#xgmodal").modal("hide");
 							}
 						});
 					}
