@@ -62,7 +62,12 @@ public class CustomerController {
     IZuzhijiegoubiaoService zuzhiservice;
     @Autowired
     IYuangongziliaobiaoService ygservice;
-
+    @Autowired
+    IMlicompanyService mservice;
+    @Autowired
+    ICicompanyService cicservice;
+    @Autowired
+    IPlatenumberService plservice;
 
     @RequestMapping("/cus")
     public List<Customer> find(){
@@ -336,7 +341,46 @@ public class CustomerController {
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
-
-
+    @RequestMapping("/jqx")
+    public List<Mlicompany> findM(){
+        return mservice.list();
+    }
+    @RequestMapping("/syx")
+    public List<Cicompany> findCi(){
+        return cicservice.list();
+    }
+    @RequestMapping("/fdj")
+    public  List<Fadongjipinpaibiao> findfa(){
+        return fservice.list();
+    }
+    @RequestMapping("/clgs")
+    public List<Caraffiliation> findcara(){
+        return cservic.list();
+    }
+    @RequestMapping("/p")
+    public List<Platenumber> findPla(){
+        return plservice.list();
+    }
+    @RequestMapping("/clgd")
+    public Boolean inss(@RequestBody Customer customer){
+        return service.save(customer);
+    }
+    @RequestMapping("/clgy")
+    public Boolean insd(Car car){
+        System.out.println(car);
+        return cservice.save(car);
+    }
+    @RequestMapping("/ryl")
+    public  List<Oiltype> findoil(){
+        return oservice.list();
+    }
+    @RequestMapping("/op")
+    public  List<Customer> findcus(){
+        return service.list();
+    }
+    @RequestMapping("/cbc")
+    public  Boolean insertCar(@RequestBody Car car){
+        return cservice.save(car);
+    }
 }
 

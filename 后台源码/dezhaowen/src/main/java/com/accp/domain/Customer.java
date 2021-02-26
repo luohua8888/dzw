@@ -33,6 +33,9 @@ public class Customer extends Model<Customer> {
     private  Customertype customertype;
 
     @TableField(exist = false)
+    private  Car car;
+
+    @TableField(exist = false)
     private  Yuangongziliaobiao yuan;
 
     @ApiModelProperty(value = "客户名称")
