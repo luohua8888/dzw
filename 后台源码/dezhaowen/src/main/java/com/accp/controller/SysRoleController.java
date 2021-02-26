@@ -2,6 +2,8 @@ package com.accp.controller;
 
 
 import com.accp.domain.SysRole;
+import com.accp.domain.SysRoleMenu;
+import com.accp.service.impl.SysRoleMenuServiceImpl;
 import com.accp.service.impl.SysRoleServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,10 @@ import java.util.List;
 public class SysRoleController {
         @Autowired
         SysRoleServiceImpl service;
-        @PostMapping
+        @Autowired
+        SysRoleMenuServiceImpl servicem;
+
+        @PostMapping//登录
         public SysRole login(SysRole s, HttpSession session) {
                 if (s.getRole2() != null && s.getRole1() != null) {
                         QueryWrapper<SysRole> qw = new QueryWrapper<>();
@@ -45,9 +50,37 @@ public class SysRoleController {
                 }
                 return null;
         }
-        @GetMapping
+        @GetMapping//查询所有角色
         public List<SysRole> find(){
                 return service.list();
+        }
+        @PostMapping("/xz")//新增角色
+        public int xz(SysRole ss){ boolean b=service.save(ss);
+              if(b) {
+                    return 1;
+              }
+              return 2;
+        }
+        @PostMapping("/sc")//删除
+        public int sc(Integer id){ boolean b=service.removeById(id);
+                QueryWrapper<SysRoleMenu> queryWrapper=new QueryWrapper<>();
+                queryWrapper.eq("role_id",id);
+                servicem.remove(queryWrapper);
+                if(b){
+                        return 1;
+                }else{
+                 return 2;
+                }
+        }
+
+        @PostMapping("/xg")
+        public int xg(SysRole sys){
+              boolean b = service.updateById(sys);
+              if(b){
+                      return 1;
+              }else{
+                      return 2;
+              }
         }
 }
 
