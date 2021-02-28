@@ -188,5 +188,9 @@ public class WeixiubiaoController {
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
+    @RequestMapping("jgxg")
+    public boolean jgxg(Weixiubiao weixiubiao){
+        return wservice.updateById(weixiubiao);
+    }
 }
 

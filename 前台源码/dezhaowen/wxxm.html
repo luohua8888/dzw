@@ -480,7 +480,7 @@
 											<span class="til">调价</span>
 										</div>
 										<div class="col-sm-1">
-											<button type="button" class="btn btn-success">保存</button>
+											<button @click="save" type="button" class="btn btn-success">保存</button>
 										</div>
 									</div>
 
@@ -494,19 +494,17 @@
 										<p>
 											<span class="must"></span>
 											<span class="va"></span>
-											<select style="width: 150px;height: 25px;">
-												<option>自费</option>
-												<option>促销</option>
-												<option>三包</option>
-												<option>标准价</option>
-												<option>会员价</option>
-												<option>VIP价</option>
-												<option>协议价</option>
-												<option>索赔价</option>
+											<select style="width: 150px;height: 25px;" v-model="jg">
+												<option  value="bzj">标准价</option>
+												<option value="hyj">会员价</option>
+												<option value="vipj">VIP价</option>
+												<option  value="xyj">协议价</option>
+												<option value="spj">索赔价</option>
+												<option value="pxj">保险价</option>	
 											</select>
 											<span class="must"></span>
 											<span class="va">= 标准价 *</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" value="" v-model="jgsr"/>
 										</p>
 									</p>
 									<br />
@@ -572,7 +570,10 @@
 						wxadd:{},
 						shouru:[],
 						sjan:"",
-						wxupdate:{}
+						wxupdate:{},
+						jg:"",
+						jiege:{},
+						jgsr:""
 					}
 				},
 				methods: {
@@ -716,6 +717,20 @@
 							this.$set(this.wxupdate,"xyj",this.wxupdate.bzj*1.2);
 							this.$set(this.wxupdate,"spj",this.wxupdate.bzj*1.3);
 							this.$set(this.wxupdate,"pxj",this.wxupdate.bzj*1.4);
+					},
+					save(){
+						let that=this;
+						this.jiege=JSON.parse(JSON.stringify(this.wxupdate));
+						this.jiege[this.jg]=this.jgsr*this.jiege.bzj;
+						$.ajax({
+							url:BaseUrl+"/weixiubiao/jgxg",
+							data:that.jiege,
+							type:"post",
+							success(data){
+								that.find();
+								$("#pricechangemodal").modal("hide");
+							}
+						})
 					}
 
 				},
