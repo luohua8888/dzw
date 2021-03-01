@@ -1,17 +1,12 @@
 package com.accp.controller;
 
-import com.accp.domain.Car;
 import com.accp.domain.Cashier;
 import com.accp.domain.Repair;
-import com.accp.service.impl.CarServiceImpl;
 import com.accp.service.impl.CashierServiceImpl;
-import com.accp.service.impl.RepairServiceImpl;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController

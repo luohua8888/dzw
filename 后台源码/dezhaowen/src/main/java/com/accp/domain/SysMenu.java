@@ -80,8 +80,6 @@ public class SysMenu extends Model<SysMenu> {
     @TableField(exist = false)
     private Integer roleId;
 
-    @ApiModelProperty(value = "children")
-    private List<SysMenu> children;
 
 
     public static final String MENU_ID = "menu_id";
