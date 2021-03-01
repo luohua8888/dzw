@@ -42,4 +42,11 @@
        SELECT sys.*,role.role_id FROM sys_menu AS sys,sys_role_menu AS role WHERE sys.`menu_id`=role.`menu_id` AND role.`role_id`= #{roleid}
     </select>
 
+    <resultMap type="com.accp.domain.SysMenu" id="BaseResultMapExtends" extends="BaseResultMap">
+        <collection property="children" column="menu_id" ofType="com.accp.domain.SysMenu" select="findMenuByRoleId"></collection>
+    </resultMap>
+    <select id="findMenuByRoleId" resultMap="BaseResultMapExtends">
+  	select * from sys_menu where parent_id=#{parentId} and menu_type in ('F','M','C')
+    </select>
+
 </mapper>
