@@ -68,6 +68,11 @@ public class FirmController {
         return list;
     }
 
+    @RequestMapping("findById")
+    public Firm findById(Integer id){
+        return firmService.getById(id);
+    }
+
     @RequestMapping("add")
     @Transactional(rollbackFor=Exception.class)
     public boolean add(@RequestBody Firm firm){

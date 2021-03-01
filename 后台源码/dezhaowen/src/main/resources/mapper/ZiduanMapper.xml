@@ -15,5 +15,10 @@
     <sql id="Base_Column_List">
         id, width, dname, zname, display
     </sql>
-
+    <update id="upda">
+        update ziduan set display=2
+    </update>
+    <update id="upto">
+        update ziduan set display=1 where id=#{id}
+    </update>
 </mapper>

@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
@@ -11,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -24,7 +26,26 @@ import lombok.experimental.Accessors;
 public class Gooddata extends Model<Gooddata> {
 
     private static final long serialVersionUID=1L;
-    @TableId
+
+    @TableField(exist = false)
+    private Payto payto;
+    @TableField(exist = false)
+    private Firm firm;
+    @TableField(exist = false)
+    private Goodbrand goodbrand;
+    @TableField(exist = false)
+    private Goodaddress goodaddress;
+    @TableField(exist = false)
+    private Goodgrade goodgrade;
+    @TableField(exist = false)
+    private Ycfc ycfc;
+    @TableField(exist = false)
+    private Earning earning;
+    @TableField(exist = false)
+    private Goodbigkind goodbigkind;
+    @TableField(exist = false)
+    private Numunit numunit;
+    @TableId(type=IdType.AUTO)
     @ApiModelProperty(value = "商品资料id")
     private Integer gooddataid;
 

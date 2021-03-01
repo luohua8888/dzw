@@ -54,6 +54,7 @@ public class Car extends Model<Car> {
 
     @TableField(exist = false)
     private Fadongjipinpaibiao fadongjipinpaibiao;
+
     @ApiModelProperty(value = "车牌号")
     private String platename;
 

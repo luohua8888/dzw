@@ -1,7 +1,9 @@
 package com.accp.service;
 
 import com.accp.domain.Ziduan;
+import com.accp.mapper.ZiduanMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
