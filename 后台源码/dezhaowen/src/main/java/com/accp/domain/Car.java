@@ -2,11 +2,15 @@ package com.accp.domain;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -23,6 +27,17 @@ import lombok.experimental.Accessors;
 public class Car extends Model<Car> {
 
     private static final long serialVersionUID=1L;
+
+    private String brandname;
+    private String customername;
+    private String fname;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date ordertime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date jjdate;
+
 
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;

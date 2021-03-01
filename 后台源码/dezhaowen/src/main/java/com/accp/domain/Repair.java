@@ -4,11 +4,15 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
@@ -24,7 +28,42 @@ import lombok.experimental.Accessors;
 @ApiModel(value="Repair对象", description="")
 public class Repair extends Model<Repair> {
 
+    @TableField(exist = false)
+    private String startkd;
+    @TableField(exist = false)
+    private String endkd;
+
     private static final long serialVersionUID=1L;
+
+    private String carnumber;
+
+    private Boolean check;
+
+    private Float totalnum;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date cashiertime;
+
+    private String staffname;
+
+    private String paymenttype;
+
+    private String wtype;
+
+    private String carbrandname;
+
+    private String clientname;
+
+    private String cartypename;
+
+    private String carnumber1;
+
+    private String carerphone;
+
+    private String jqinsurance;
+
+    private String staffpeople;
 
     @ApiModelProperty(value = "维修编号")
     private String number;
@@ -48,9 +87,13 @@ public class Repair extends Model<Repair> {
     @ApiModelProperty(value = "接车人")
     private String getman;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工时间")
     private LocalDateTime overworkdate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "实际完工时间")
     @TableField("nowworkDate")
     private LocalDateTime nowworkDate;
@@ -82,6 +125,8 @@ public class Repair extends Model<Repair> {
     @ApiModelProperty(value = "维修状态")
     private String status;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd ")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")
     private LocalDateTime orderTime;
