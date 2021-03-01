@@ -6,6 +6,7 @@ import com.accp.mapper.CarMapper;
 import com.accp.mapper.CompletedMapper;
 import com.accp.mapper.RepairMapper;
 import com.accp.service.*;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,14 +54,70 @@ public class RepairController {
     IRescueService rescueService;
     @Autowired
     CompletedMapper comMapper;
+    @Autowired
+    ICompletedService completedService;
     //`item_repair`.wjid修改为varchar(20)
 
-//    @RequestMapping("/queryEwitem")
-//    @ResponseBody
-//    public List<Ewitem> queryEwitem(String number){
-//
-//        return ewitemService.
-//    }
+    @RequestMapping("/queryCom")
+    @ResponseBody
+    public int queryCom(String number){
+        QueryWrapper qw=new QueryWrapper<Completed>();
+        qw.eq("wjid",number);
+        List<Completed> list=completedService.list(qw);
+        if(list.size()==0) {
+            return 0;
+        }else {
+            return list.get(0).getCount();
+        }
+
+    }
+    @RequestMapping("/addCom")
+    @ResponseBody
+    public int queryCom(@RequestBody Completed com){
+        Repair repair=new Repair();
+        if(com.getYesOrno()==1) {
+
+            String date1=com.getNowtime().toString();
+            String date2;
+            if(com.getPredicttime()!=null) {
+                date2=com.getPredicttime().toString();
+            }else {
+                Date date=new Date();
+                date2=date.toString();
+            }
+            int dd=date1.compareTo(date2);
+            System.out.println("时间比较"+dd);
+            if(dd>0) {
+                repair.setStatus("超时完工");
+                repair.setNumber(com.getWjid());
+                repair.setNowworkDate(com.getNowtime());
+                repairService.updateById(repair);
+
+            }else {
+                repair.setStatus("完工");
+                repair.setNumber(com.getWjid());
+                repair.setNowworkDate(com.getNowtime());
+                repairService.updateById(repair);
+            }
+            QueryWrapper qw=new QueryWrapper<Completed>();
+            qw.eq("wjid",com.getWjid());
+            completedService.remove(qw);
+            completedService.save(com);
+        }else {
+            QueryWrapper qw=new QueryWrapper<Completed>();
+            qw.eq("wjid",com.getWjid());
+            completedService.remove(qw);
+            completedService.save(com);
+        }
+        return 0;
+    }
+    @RequestMapping("/queryEwitem")
+    @ResponseBody
+    public List<Ewitem> queryEwitem(String number){
+        QueryWrapper qw=new QueryWrapper<Ewitem>();
+        qw.eq("repairid",number);
+        return ewitemService.list(qw);
+    }
     @RequestMapping("/queryItemRepair")
     @ResponseBody
     public List<QueryItemRepair> queryItemRepair(String tab,String number){

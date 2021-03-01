@@ -71,8 +71,8 @@ public class GangweibiaoController {
         gidTilte.setCellValue("岗位编码");
         gnameTilte.setCellValue("岗位名称");
         if(list!=null){
-            for (int i = 1; i < list.size(); i++){
-                Gangweibiao xsdjValue = list.get(i);
+            for (int i = 1; i <= list.size(); i++){
+                Gangweibiao xsdjValue = list.get(i-1);
                 Row rowValue = sheet.createRow(i);
                 Cell gidValue = rowValue.createCell(0);
                 Cell gnameValue = rowValue.createCell(1);

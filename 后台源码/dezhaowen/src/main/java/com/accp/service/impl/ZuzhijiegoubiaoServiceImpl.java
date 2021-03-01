@@ -4,7 +4,10 @@ import com.accp.domain.Zuzhijiegoubiao;
 import com.accp.mapper.ZuzhijiegoubiaoMapper;
 import com.accp.service.IZuzhijiegoubiaoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ZuzhijiegoubiaoServiceImpl extends ServiceImpl<ZuzhijiegoubiaoMapper, Zuzhijiegoubiao> implements IZuzhijiegoubiaoService {
+    @Autowired
+    ZuzhijiegoubiaoMapper mapper;
 
+    public List<Zuzhijiegoubiao> find(){
+        return mapper.find(0);
+    }
 }
