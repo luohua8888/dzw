@@ -2,14 +2,9 @@ package com.accp.controller;
 
 
 import java.util.UUID;
-import com.accp.domain.Chexingdingyibiao;
-import com.accp.domain.Fadongjipinpaibiao;
-import com.accp.domain.Jinkouguochang;
-import com.accp.domain.Pinpaichexing;
-import com.accp.service.impl.ChexingdingyibiaoServiceImpl;
-import com.accp.service.impl.FadongjipinpaibiaoServiceImpl;
-import com.accp.service.impl.JinkouguochangServiceImpl;
-import com.accp.service.impl.PinpaichexingServiceImpl;
+
+import com.accp.domain.*;
+import com.accp.service.impl.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.xmlbeans.impl.xpath.XQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +43,9 @@ public class ChexingdingyibiaoController {
 
     @Autowired
     FadongjipinpaibiaoServiceImpl engineService;
+
+    @Autowired
+    FirmServiceImpl fservice;
 
 
     //查看品牌车型
@@ -188,5 +186,12 @@ public class ChexingdingyibiaoController {
             return  "删除失败";
         }
     }
+
+    //索赔厂商查询
+    @GetMapping("/spcs")
+    public List<Firm> spcs() {
+        return fservice.list();
+    }
+
 }
 

@@ -115,7 +115,10 @@ public class WeixiubiaoController {
     @RequestMapping("/downloadEcxel/{chaxun}")
     public ResponseEntity<byte []> downloadEcxel(@PathVariable Integer chaxun) throws IOException {
         QueryWrapper<Weixiubiao> query=new QueryWrapper<>();
-        query.lambda().like(Weixiubiao::getWid,chaxun);
+        if(chaxun!=null){
+            query.lambda().like(Weixiubiao::getWid,chaxun);
+        }
+       
         List<Weixiubiao> s=wservice.list(query);
 
         Workbook book=new XSSFWorkbook();
