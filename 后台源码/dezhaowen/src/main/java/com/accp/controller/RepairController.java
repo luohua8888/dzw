@@ -6,6 +6,7 @@ import com.accp.mapper.CarMapper;
 import com.accp.mapper.CompletedMapper;
 import com.accp.mapper.RepairMapper;
 import com.accp.service.*;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,12 +55,13 @@ public class RepairController {
     CompletedMapper comMapper;
     //`item_repair`.wjid修改为varchar(20)
 
-//    @RequestMapping("/queryEwitem")
-//    @ResponseBody
-//    public List<Ewitem> queryEwitem(String number){
-//
-//        return ewitemService.
-//    }
+    @RequestMapping("/queryEwitem")
+    @ResponseBody
+    public List<Ewitem> queryEwitem(String number){
+        QueryWrapper qw=new QueryWrapper<Ewitem>();
+        qw.eq("repairid",number);
+        return ewitemService.list(qw);
+    }
     @RequestMapping("/queryItemRepair")
     @ResponseBody
     public List<QueryItemRepair> queryItemRepair(String tab,String number){

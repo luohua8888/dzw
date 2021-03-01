@@ -209,10 +209,10 @@
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">领料情况</button>
-							<button type="button" class="btn btn-default" @click="materialRequirement">物料需求</button>
+							<!--<button type="button" class="btn btn-default" @click="materialRequirement">物料需求</button>-->
 							<button type="button" class="btn btn-default" @click="receiveMaterial">领料</button>
 							<button type="button" class="btn btn-default" @click="resetPrice">重置价格</button>
-							<button type="button" class="btn btn-default">库房领料</button>
+							<!--<button type="button" class="btn btn-default">库房领料</button>-->
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">附加项目</button>
@@ -876,8 +876,8 @@
 							</tr>
 							<tr v-for="item in allstaff">
 								<td><input name="cc" type="radio"></td>
-								<td>{{item.staffno}}</td>
-								<td>{{item.name}}</td>
+								<td>{{item.yid}}</td>
+								<td>{{item.yname}}</td>
 							
 							</tr>							
 						</table>
@@ -906,8 +906,8 @@
 							</tr>
 							<tr v-for="item in allstaff">
 								<td><input name="cc" type="radio"></td>
-								<td>{{item.staffno}}</td>
-								<td>{{item.name}}</td>
+								<td>{{item.yid}}</td>
+								<td>{{item.yname}}</td>
 							
 							</tr>							
 						</table>
@@ -935,8 +935,8 @@
 							</tr>
 							<tr v-for="item in artisan">
 								<td><input name="cc" type="radio"></td>
-								<td>{{item.id}}</td>
-								<td>{{item.artisanclassname}}</td>
+								<td>{{item.teamid}}</td>
+								<td>{{item.teamname}}</td>
 							
 							</tr>							
 						</table>
@@ -964,8 +964,8 @@
 							</tr>
 							<tr v-for="item in mainten">
 								<td><input name="cc"  type="radio"></td>
-								<td>{{item.id}}</td>
-								<td>{{item.itemsname}}</td>
+								<td>{{item.wid}}</td>
+								<td>{{item.wname}}</td>
 							
 							</tr>							
 						</table>
@@ -993,8 +993,8 @@
 							</tr>
 							<tr v-for="item in mainten">
 								<td><input  type="checkbox"></td>
-								<td>{{item.id}}</td>
-								<td>{{item.itemsname}}</td>
+								<td>{{item.wid}}</td>
+								<td>{{item.wname}}</td>
 							
 							</tr>							
 						</table>
@@ -1022,8 +1022,8 @@
 							</tr>
 							<tr v-for="item in commoditys">
 								<td><input  type="checkbox"></td>
-								<td>{{item.commodityno}}</td>
-								<td>{{item.name}}</td>
+								<td>{{item.gooddataid}}</td>
+								<td>{{item.goodname}}</td>
 							
 							</tr>							
 						</table>
@@ -1051,8 +1051,8 @@
 							</tr>
 							<tr v-for="item in commoditys">
 								<td><input  type="checkbox"></td>
-								<td>{{item.commodityno}}</td>
-								<td>{{item.name}}</td>
+								<td>{{item.gooddataid}}</td>
+								<td>{{item.goodname}}</td>
 							
 							</tr>							
 						</table>
