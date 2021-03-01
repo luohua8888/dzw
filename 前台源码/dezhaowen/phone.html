@@ -201,23 +201,22 @@
 			<div class="row">
 				<div class="col-md-6" style="font-size: 25px;color: #1A2846;">通讯名录</div>
 				<div class="col-md-4">
-					<input type="text" class="form-control" placeholder="匹配工号/姓名">
+					<input type="text" class="form-control" placeholder="匹配工号/姓名" v-model="names">
 				</div>
-				<div class="col-md-1"><button class="btn btn-danger">搜索</button></div>
+				<div class="col-md-1"><button class="btn btn-danger" @click="find()">搜索</button></div>
 				<div class="col-md-1"><button class="btn">关闭</button></div>
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
 					<div class="col-md-8" @click="show"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
-					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />保存</div>
+					<div class="col-md-1" @click="update()"><img src="img/26d502752909327e0126dd1795f6cba.png" />保存</div>
 					<div class="col-md-1" @click="show"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />导出</div>
+					<div class="col-md-1" @click="daochu()"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
 						<tr style="background-color:#39CEDE;">
 							<td width="70px"></td>
-							<td>所在门店</td>
 							<td>部门</td>
 							<td>员工编号</td>
 							<td>姓名</td>
@@ -226,16 +225,16 @@
 							<td>手机</td>
 							<td>邮箱</td>
 						</tr>
-						<tr v-for="item in yuanlist">
+						<tr v-for="list in taffsdata" class="koko">
 							<td style="background-color: #D6D6CE;"></td>
-							<td>{{item.yposition}}</td>
-							<td>{{item.bid}}</td>
-							<td>{{item.yid}}</td>
-							<td>{{item.yname}}</td>
-							<td>{{item.yjname}}</td>
-							<td>{{item.yjphone}}</td>
-							<td>{{item.yphone}}</td>
-							<td>{{item.email}}</td>
+							<td v-if="list.bu">{{list.bu.bname}}</td>
+							<td v-else></td>
+							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
+							<td><input type="text" style="border:0px;" v-model="list.yname"></td>
+							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
+							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yphone"></td>
+							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
+							<td><input type="text" style="border:0px;" v-model="list.reserved1"></td>
 						</tr>
 					</table>
 				</div>
@@ -244,15 +243,15 @@
 				<div class="men">
 					<div class="col-md-6" style="font-size: 25px;color: #1A2846;">门店选择</div>
 					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="匹配门店编码">
+						<input type="text" class="form-control" placeholder="匹配门店编码/门店姓名" v-model="namess">
 					</div>
-					<div class="col-md-1"><button class="btn btn-danger">搜索</button></div>
+					<div class="col-md-1"><button class="btn btn-danger" @click="findByAll()">搜索</button></div>
 					<div class="col-md-1"><button class="btn" id="no">关闭</button></div>
 				</div>
 				<div class="men1" style="background-color:#F7F7F7;height: 60px;">
-					<button class="btn btn-success col-md-2" style="width: 70px;">
+					<button class="btn btn-success col-md-2" style="width: 70px;" @click="findById()">
 					<span style="font-size: 16px;">确定</span>
-				</button>
+					</button>
 					<div style="color: #686868;font-size:18px;" class="col-md-10">
 						<div class="col-md-6"></div>
 						<div class="col-md-3" @click="quan"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />全部选择</div>
@@ -268,68 +267,12 @@
 							<td>门店名称</td>
 							<td>所在城市</td>
 						</tr>
-						<tr v-for="item in yuanlist">
+						<tr v-for="o in organ">
 							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
+							<td><input type="checkbox" :checked="bool" v-model="shu" :value="o.zid"></td>
+							<td>{{o.zid}}</td>
+							<td>{{o.zname}}</td>
+							<td>{{o.mcityid}}</td>
 						</tr>
 					</table>
 				</div>
@@ -337,72 +280,72 @@
 			<div id="yuan">
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
-					<div class="col-md-1"><button class="btn btn-success">确定</button></div>
+					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
 					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
 							<div class="form-group">
 								<label for="exampleInputName1">员工编号</label>
-								<input type="text" class="form-control" id="exampleInputName1">
+								<input type="text" class="form-control" id="exampleInputName1" v-model="taff.yid">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName2">员工姓名</label>
-								<input type="text" class="form-control" id="exampleInputName2">
+								<input type="text" class="form-control" id="exampleInputName2" v-model="taff.yname">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName3">员工性别</label>
-								<input type="text" class="form-control" id="exampleInputName3">
+								<input type="text" class="form-control" id="exampleInputName3" v-model="taff.ysex">
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName4">岗位</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.gid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list1">{{item.gname}}</option>
+									<option v-for="item in list1" :value="item.gid">{{item.gname}}</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName5">所在部门</label>
 								<a href="#myModal3" data-toggle="modal">
-									<input type="text" class="form-control" id="exampleInputName5" style="width: 200px;height: 30px">
+									<input type="text" class="form-control" id="exampleInputName5" style="width: 200px;height: 30px" v-model="post3.bname">
 								</a>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName6">身体状况</label>
-								<input type="text" class="form-control" id="exampleInputName6">
+								<input type="text" class="form-control" id="exampleInputName6" v-model="taff.yhealth">
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName7">籍贯</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.jnativplaceid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list2">{{item.jname}}</option>
+									<option v-for="item in list2" :value="item.jnativplaceid">{{item.jname}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName8">民族</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.nationid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list3">{{item.name}}</option>
+									<option v-for="item in list3" :value="item.nationid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName9">婚姻</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.marriageid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list4">{{item.name}}</option>
+									<option v-for="item in list4" :value="item.marriageid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName10">学历</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.educationid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list5">{{item.name}}</option>
+									<option v-for="item in list5" :value="item.educationid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName11">学校</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.schoolid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list6">{{item.name}}</option>
+									<option v-for="item in list6" :value="item.schoolid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
@@ -416,9 +359,9 @@
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName13">专业资格</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.specialtynid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list7">{{item.name}}</option>
+									<option v-for="item in list7" :value="item.specialtynid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
@@ -427,9 +370,9 @@
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName15">学位</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.collegeid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-									<option v-for="item in list8">{{item.name}}</option>
+									<option v-for="item in list8" :value="item.collegeid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
@@ -494,16 +437,15 @@
 							<div class="col-md-10">
 								<h4>部门选择</h4></div>
 							<div class="col-md-2">
-								<button class="btn btn-default" type="submit">选择</button>
+								<button class="btn btn-default" type="submit" @click="lizhibb1()" data-dismiss="modal">选择</button>
 							</div>
 						</div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
-									<select class="aa8" style="height: 25px;width: 300px;">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
+									<select class="aa8" style="height: 25px;width: 300px;" @change="lizhibb(selected)" v-model="selected">
+										<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+										<option v-for="item in post1" :value="item.bid">{{item.bname}}</option>
 									</select>
 								</div>
 								<div id="mm1">
@@ -514,23 +456,11 @@
 											<td>部门名称</td>
 											<td>部门分类</td>
 										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>人事经理</td>
-											<td>管理部</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>2</td>
-											<td>装饰部</td>
-											<td>管理部</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>3</td>
-											<td>备件组</td>
-											<td>管理部</td>
+										<tr v-for="item in post">
+											<td><input type="checkbox" @click="dian(item.bid)"></td>
+											<td>{{item.bid}}</td>
+											<td>{{item.bname}}</td>
+											<td>{{item.b1}}</td>
 										</tr>
 									</table>
 								</div>
@@ -569,6 +499,12 @@
 				data() {
 					return {
 						bool: false,
+						taffsdata: [{
+							bu: {
+
+							}
+						}],
+						taff: {},
 						list1: {},
 						list2: {},
 						list3: {},
@@ -577,10 +513,97 @@
 						list6: {},
 						list7: {},
 						list8: {},
-						yuanlist: {}
+						organ: {},
+						post: {},
+						post1: {},
+						post2: {},
+						post3: {},
+						id: 0,
+						shu: [],
+						names: "",
+						namess:""
 					}
 				},
 				methods: {
+					dian(cid) {
+						this.id = cid;
+					},
+					findById() {
+						var that = this;
+						var json = JSON.stringify(that.shu);
+						$.ajax({
+							url: "http://127.0.0.1:8080/staffData/findById",
+							data: json,
+							type: "post",
+							contentType: "application/json;charset=utf-8",
+							success: function(result) {
+								that.taffsdata = result;
+								$("#sys").css("display", "none");
+							}
+						});
+						
+					},
+					update() {
+						var that = this;
+						var json = JSON.stringify(that.taffsdata);
+						$.ajax({
+							url: "http://127.0.0.1:8080/staffData/update",
+							data: json,
+							type: "post",
+							contentType: "application/json;charset=utf-8",
+							success: function(result) {
+								if(result) {
+									alert("修改成功!");
+									that.find();
+								} else {
+									alert("修改失败!");
+								}
+							}
+						});
+					},
+					findByAll() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/zuzhijiegoubiao/find",
+							type: "post",
+							data: {
+								name: that.namess
+							},
+							dataType: "json",
+							success: function(result) {
+								that.organ = result;
+							}
+						});
+					},
+					find() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/staffData/find",
+							type: "post",
+							dataType: "json",
+							data: {
+								name: that.names
+							},
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.taffsdata = result;
+							}
+						});
+					},
+					findId() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/staffData/findId",
+							data: that.taff,
+							type: "post",
+							success: function(result) {
+								that.taffsdata = result;
+								$("#yuan").css("display", "none");
+							}
+						});
+					},
 					quan() {
 						this.bool = true;
 					},
@@ -600,6 +623,64 @@
 						my("yes1").onclick = function() {
 							my("yuan").style.display = "block";
 						}
+					},
+					daochu() {
+						window.location.href = "http://127.0.0.1:8080/staffData/downloadExcel";
+					},
+					lizhiB() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post = result;
+							}
+						});
+					},
+					lizhiB1() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibu",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post1 = result;
+							}
+						});
+					},
+					lizhibb(id) {
+						var that = this;
+						that.id = id;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibuxuan/" + id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post = result;
+							}
+						});
+					},
+					lizhibb1() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib1/" + that.id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post3 = result;
+							}
+						});
 					},
 					query1() {
 						var that = this;
@@ -704,25 +785,13 @@
 								that.list8 = result;
 							}
 						});
-					},
-					yuanFind() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/yuanfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.yuanlist = result;
-							}
-						});
-					},
-					daochu() {
-						window.location.href = "http://127.0.0.1:8080/yuangongziliaobiao/downloadExcel";
 					}
 				},
 				created() {
+					this.find();
+					this.findByAll();
+					this.lizhiB();
+					this.lizhiB1();
 					this.query1();
 					this.query2();
 					this.query3();
@@ -731,7 +800,6 @@
 					this.query6();
 					this.query7();
 					this.query8();
-					this.yuanFind();
 				}
 			});
 		</script>

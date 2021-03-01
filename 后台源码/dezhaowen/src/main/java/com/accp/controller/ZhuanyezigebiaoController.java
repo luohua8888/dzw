@@ -68,6 +68,7 @@ public class ZhuanyezigebiaoController{
     public List<Yuangongziliaobiao> findByIds(@PathVariable("id") Integer id){
         QueryWrapper<Yuangongziliaobiao> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("reserved5",id);
+        queryWrapper.eq("y1",1);
         return sdService.list(queryWrapper);
     }
 
@@ -207,6 +208,50 @@ public class ZhuanyezigebiaoController{
         String fileName = new String("通讯名录导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
+    }
+
+    @RequestMapping("/daochu")
+    public ResponseEntity<byte []> downloadExcels() throws IOException {
+        List<Yuangongziliaobiao> list = sdService.list();
+        Workbook book = new XSSFWorkbook();
+        Sheet sheet = book.createSheet();
+        //导出excel头部
+        Row rowTitle = sheet.createRow(0);
+        Cell studentCodeTitle = rowTitle.createCell(0);
+        Cell studentNameTitle = rowTitle.createCell(1);
+        Cell studentAgeTitle = rowTitle.createCell(2);
+        Cell studentBirthdayTitle = rowTitle.createCell(3);
+        studentCodeTitle.setCellValue("员工编号");
+        studentNameTitle.setCellValue("员工姓名");
+        studentAgeTitle.setCellValue("员工性别");
+        studentBirthdayTitle.setCellValue("身体状况");
+
+        //组装导出的学生数据，如果是其他业务，请根据业务情况进行编写
+        if(list!=null){
+            for (int i = 0; i < list.size(); i++) {
+                Yuangongziliaobiao stuValue = list.get(i);
+                //导出excel数据
+                Row rowValue = sheet.createRow(i+1);
+                Cell studentCodeValue = rowValue.createCell(0);
+                Cell studentNameValue = rowValue.createCell(1);
+                Cell studentAgeValue = rowValue.createCell(2);
+                Cell studentBirthdayValue = rowValue.createCell(3);
+                studentCodeValue.setCellValue(stuValue.getYid());
+                studentNameValue.setCellValue(stuValue.getYname());
+                studentAgeValue.setCellValue(stuValue.getYsex());
+                studentBirthdayValue.setCellValue(stuValue.getYhealth());
+            }
+        }
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        book.write(byteArrayOutputStream);
+
+        HttpHeaders headers = new HttpHeaders();
+        //设置响应内容为文件流模式
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        String fileName = new String("组织机构导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        //设置响应的文件的名称
+        headers.setContentDispositionFormData("attachment",fileName);
+        return new ResponseEntity(byteArrayOutputStream.toByteArray(), headers, HttpStatus.OK);
     }
 }
 

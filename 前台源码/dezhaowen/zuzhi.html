@@ -1,251 +1,201 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<style>
-		body {
+			body{
 				width: 100%;
 			}
-			
-			#a1 {
-				width: 70px;
+			#a1{
+				width:70px;
 				background-color: orange;
-				border: 0px;
+				border:0px;
 			}
-			
-			.aa2 {
-				width: 1535px;
+			.aa2{
+				width:1535px;
 			}
-			
-			.a5 {
-				height: 50px;
+			.a5{
+				height:50px;
 				line-height: 50px;
 			}
-			
-			.container-fluid {
+			.container-fluid{
 				width: 100%;
-				margin: 0px;
+				margin:0px;
 				padding: 0px;
-				padding-left: 15px;
+				padding-left:15px;
 			}
-			
-			#b1 {
-				border: 0px;
+			#b1{
+				border:0px;
 				background-color: #E3E3E3;
 			}
-			
-			.row:nth-of-type(1) {
-				background-color: #f7ffff;
+			.row:nth-of-type(1){
+				 background-color: #f7ffff;
 			}
-			
-			.row:nth-of-type(2) {
-				height: 705px;
+			.row:nth-of-type(2){
+				height:705px;
 				background-color: #f7f7f7;
 			}
-			
-			#h3 {
-				margin-top: 14px;
-				margin-bottom: 10px;
+			#h3{
+				margin-top:14px;
+				margin-bottom:10px;
 			}
-			
-			.z1 {
+			.z1{
 				height: 50px;
-				line-height: 50px;
+				line-height:50px;
 			}
-			
-			.z2 {
-				width: 1535px;
-				height: 615px;
+			.z2{
+				width:1535px;
+				height:615px;
 				background-color: #fff;
 			}
-			
-			.z3 {
+			.z3{
 				height: 31px;
-				line-height: 31px;
-				margin-left: 10px;
-				margin-top: 7px;
+				line-height:31px;
+				margin-left:10px;
+				margin-top:7px;
 			}
-			
-			.c1 {
-				width: 20px;
-				height: 15px;
-				margin-top: -2px;
+			.c1{
+				width:20px;
+				height:15px;
+				margin-top:-2px;
 				margin-right: 4px;
 			}
-			
-			.d1 {
-				width: 100px;
-				height: 30px;
-				line-height: 30px;
+			.d1{
+				width:100px;
+				height:30px;
+				line-height:30px;
 				border: 1px solid #262626;
 				padding-left: 10px;
-				color: #fff;
-				background-color: darkturquoise;
+				color:#fff;
+				background-color:darkturquoise;
 			}
-			
-			#table1 tr td {
+			#table1 tr td{
 				padding-left: 10px;
 				border: 1px solid #e3e3e3;
-				width: 100px;
-				height: 30px;
-				line-height: 30px;
+				height:30px;
+				line-height:30px;
 			}
-			
-			#model1 {
-				width: 1100px;
-				height: 650px;
+			#model1{
+				width:1100px;
+				height:650px;
 			}
-			
-			#model3 {
-				width: 1100px;
+			#model3{
+				width:1100px;
 			}
-			
-			#model2 {
-				width: 600px;
-				height: 500px;
+			#model2{
+				width:600px;
+				height:500px;
 			}
-			
-			#myModal2,
-			#myModal8,
-			#myModal9 {
+			#myModal2,#myModal8,#myModal9,#myModal19{
 				margin-left: -500px;
 			}
-			
-			#myModal7,
-			#myModal10,
-			#myModal11 {
+			#myModal7,#myModal10,#myModal11,#myModal12{
 				margin-left: -200px;
 				margin-top: 125px;
 			}
-			
-			#myModal1,
-			#myModal4,
-			#myModal3,
-			#myModal5,
-			#myModal,
-			#myModal8,
-			#myModal9 {
-				margin-top: 80px;
+			#myModal1,#myModal4,#myModal3,#myModal5,#myModal,#myModal8,#myModal9,#myModal13,#myModal12,#myModal19{
+				margin-top:80px;
 			}
-			
-			#aa1 {
-				width: 1068px;
-				height: 470px;
+			#aa1{
+				width:1068px;
+				height:470px;
 				background-color: #e3e3e3;
 			}
-			
-			#aa3 {
-				height: 50px;
+			#aa3{
+				height:50px;
 				line-height: 50px;
 				background-color: #fff;
 			}
-			
-			#aa4 {
+			#aa4{
 				width: 1068px;
-				height: 465px;
+				height:465px;
 				border: 1px solid #fff;
 			}
-			
-			#kkk1 {
+			#kkk1{
 				width: 1068px;
-				height: 450px;
+				height:450px;
 				border: 1px solid #fff;
 			}
-			
-			.aa5 {
+			.aa5{
 				height: 30px;
 				width: 150px;
 				border: 0px;
-				margin-left: 10px;
+				margin-left:10px;
 			}
-			
-			.aa6 {
+			.aa6{
 				height: 30px;
 				border: 0px;
-				width: 402px;
-				margin-left: 10px;
+				width:402px;
+				margin-left:10px;
 			}
-			
-			ul li {
+			ul li{
 				list-style-type: none;
 			}
-			
-			.ul1 {
+			.ul1{
 				padding: 0px;
 				margin-left: 30px;
 				border-left: 1px dotted #444444;
 			}
-			
-			#j1 {
-				width: 10px;
-				height: 10px;
+			#j1{
+				width:10px;
+				height:10px;
 				display: inline-block;
-				border-bottom: 1px dotted #000;
+				border-bottom:1px dotted #000;
 			}
-			
-			#aa4 table tr td {
-				color: #337AB7;
-				padding-left: 30px;
+			#aa4 table tr td{
+				color:#337AB7;
+				padding-left:30px;
 				display: inline-block;
-				height: 34px;
+				height:34px;
 			}
-			
-			.aa8 {
-				width: 130px;
-				height: 30px;
+			.aa8{
+				width:130px;
+				height:30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left: 7px;
+				margin-left:7px;
 				border: 0px;
 			}
-			
-			.aa19 {
-				width: 149px;
-				height: 30px;
+			.aa19{
+				width:149px;
+				height:30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left: 7px;
+				margin-left:7px;
 				border: 0px;
 			}
-			
-			.aa18 {
-				width: 150px;
-				height: 30px;
+			.aa18{
+				width:150px;
+				height:30px;
 				background-color: #fff;
 				display: inline-block;
-				margin-left: 7px;
+				margin-left:7px;
 				border: 0px;
 			}
-			
-			.aa9 {
-				width: 20px;
-				height: 30px;
+			.aa9{
+				width:20px;
+				height:30px;
 				line-height: 30px;
-				display: inline-block;
+				display:inline-block;
 				background-color: #fff;
 				position: relative;
-				top: 0;
-				left: -4px;
+				top:0;
+				left:-4px;
 				text-align: center;
 			}
-			
-			#img1 {
-				width: 15px;
-				height: 10px;
+			#img1{
+				width:15px;
+				height:10px;
 			}
-			
-			.ming {
-				margin-left: -6px;
+			.ming{
+				margin-left:-6px;
 			}
-			
-			#tab1 {
-				display: flex;
+			#tab1{
+				display:flex;
 			}
-			
-			#zhao {
+			#zhao{
 				width: 15px;
 				height: 500px;
 				line-height: 70px;
@@ -254,189 +204,174 @@
 				text-align: center;
 				margin-left: 255px;
 			}
-			
-			.biao1 {
+			.biao1{
 				width: 280px;
 				height: 200px;
 			}
-			
-			#kkk1 div {
-				width: 900px;
-				height: 300px;
+			#kkk1 div{
+				width:900px;
+				height:300px;
 				margin-left: 65px;
 				margin-top: 15px;
 			}
-			
-			.form-control {
+			.form-control{
 				margin-top: 10px;
 				margin-bottom: 10px;
 			}
-			
-			#mm1 table tr td {
-				color: #000;
+			#mm1 table tr td{
+				color:#000;
 				display: inline-block;
-				height: 34px;
+				height:34px;
 				line-height: 34px;
 				border: 1px solid #E8E8E8;
 				text-align: center;
-				width: 150px;
+				width:150px;
 			}
-			
-			#mm1 table tr td:nth-of-type(1) {
-				background-color: #f7f7f7;
-				width: 60px;
+			#mm1 table tr td:nth-of-type(1){
+				background-color:#f7f7f7;
+				width:60px;
 			}
-			
-			#mm1 table tr td:nth-of-type(2) {
-				width: 90px;
+			#mm1 table tr td:nth-of-type(2){
+				width:90px;
 			}
-			
-			#mm1 table tr td:nth-of-type(3) {
-				width: 268px;
+			#mm1 table tr td:nth-of-type(3){
+				width:268px;
 			}
-			
-			#mm1 table tr:nth-of-type(1) {
-				background-color: darkturquoise;
+			#mm1 table tr:nth-of-type(1){
+				background-color:darkturquoise;
 			}
-			
-			#mm1 {
+			#mm1{
 				height: 330px;
 			}
-			
-			#mm2 table tr td {
-				color: #000;
+			td{
+				margin-left:0px;
+			}
+			#mm2 table tr td{
+				color:#000;
 				display: inline-block;
-				height: 34px;
+				height:34px;
 				line-height: 34px;
 				border: 1px solid #E8E8E8;
 				text-align: center;
-				width: 113px;
+				width:108px;
 			}
-			
-			#mm2 table tr td:nth-of-type(1) {
-				background-color: #f7f7f7;
+			#mm2 table tr td:nth-of-type(1){
+				background-color:#f7f7f7;
 			}
-			
-			#mm2 table tr td:nth-of-type(3) {
+			#mm2 table tr td:nth-of-type(3){
 				width: 116px;
 			}
-			
-			#mm2 table tr:nth-of-type(1) {
-				background-color: darkturquoise;
+			#mm2 table tr:nth-of-type(1){
+				background-color:darkturquoise;
 			}
-			
-			#mm2 {
+			#mm2{
 				height: 330px;
 			}
-			
-			a {
-				color: #000000;
+			a{
+				color:#000000;
 			}
-			
-			.ko1 {
+			.ko1{
 				height: 30px;
 				border: 5px solid #fff;
 				width: 303px;
 			}
-			
 			.div {
 				position: relative;
-				left: 240px;
+				left:240px;
 				width: 30px;
 				height: 100px;
-			}
-			
-			.searImageThreeBtn {
+			  }
+
+			  .searImageThreeBtn {
 				position: absolute;
 				top: 0;
-				left: 1px;
+				left:1px;
 				bottom: 0;
 				letter-spacing: 0;
 				right: 0;
 				width: 100%;
 				height: 100%;
 				pointer-events: none;
-			}
-			
-			.layui-upload-file {
+			  }
+			  .layui-upload-file {
 				width: 100%;
 				height: 100%;
+			  }
+			.nav{
+				margin-left:25px;
 			}
-		}
 		</style>
 	</head>
-
 	<body>
 		<div class="container-fluid" id="ctn">
 			<div class="row aa2">
 				<div class="col-md-7">
-					<h3 id="h3">组织机构定义</h3>
+					<h3 id="h3">组机构定义</h3>
 				</div>
 				<div class="col-md-3 " id="l1">
-					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机">
+					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机" v-model="names">
 				</div>
 				<div class="col-md-2 a5">
-					<button type="submit" class="btn btn-default" id="a1">搜索</button>
+					<button type="submit" class="btn btn-default" id="a1" @click="query()">搜索</button>
 					<button type="submit" class="btn btn-default" id="b1">关闭</button>
 				</div>
 			</div>
 			<div class="row aa2">
 				<div class="z1">
-					<div class="col-md-1">
-						<a href="#myModal8" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">使用门店</a>
-					</div>
-					<div class="col-md-1">
-						<a href="#myModal9" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">门店编辑</a>
-					</div>
-					<div class="col-md-1">
-						<a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">增加员工</a>
-					</div>
-					<div class="col-md-1">
-						<a href="#myModal2" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改员工</a>
-					</div>
-					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">删除</div>
-					<div class="col-md-1">
-						<a href="#myModal7" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">查询</a>
-					</div>
-					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">置空密码</div>
-					<div class="col-md-1"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导出</div>
-					<div class="col-md-1">
-						<a href="#myModal6" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">导入</a>
-					</div>
-					<div class="col-md-1">
-						<a href="#myModal4" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">员工角色</a>
-					</div>
-					<div class="col-md-1">
-						<a href="#myModal5" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">字段设置</a>
-					</div>
+					<div class="col-md-1"><a href="#myModal8" @click="remove9()"><img src="img/1.png" class="c1">删除门店</a></div>
+					<div class="col-md-1"><a href="#myModal8" @click="show2()"><img src="img/1.png" class="c1">使用门店</a></div>
+					<div class="col-md-1"><a href="#myModal19" data-toggle="modal"><img src="img/2.png" class="c1">门店编辑</a></div>
+					<div class="col-md-1"><a href="#myModal2" @click="show()"><img src="img/1.png" class="c1">增加员工</a></div>
+					<div class="col-md-1" @click="jia1()"><a href="#myModal2" data-toggle="modal"><img src="img/2.png" class="c1">修改员工</a></div>
+					<div class="col-md-1" @click="removeId()"><img src="img/3.png" class="c1">删除</div>
+					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="img/4.png" class="c1">查询</a></div>
+					<div class="col-md-1" @click="daochu"><img src="img/6.png" class="c1">导出</div>
+					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="img/7.png" class="c1">导入</a></div>
+					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="img/8.png" class="c1">员工角色</a></div>
+					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="img/9.png" class="c1">字段设置</a></div>
 				</div>
 				<div class="z2">
-					<div class="col-xs-2">
+					<div class="col-xs-2" style="height: 300px;">
 						<div class="ddiv2">
-							<ul class="">
-								<li>
-									<a @click="xianshi()" href="#"><span>+</span>_株洲总店</a>
-									<ul class="ul1" v-if="this.xs">
-										<li><span></span>人事部</li>
-										<li><span></span>人事部</li>
-										<li><span></span>人事部</li>
-										<li><span></span>人事部</li>
-									</ul>
-								</li>
-							</ul>
+							<div class="tab-content">
+								<div class="col-xs-2 b4">
+									<tree :menu="menu" @create-tab="createTab"></tree>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-xs-10 a" style="width:1279px;overflow-x:scroll;height:615px;">
 						<table id="table1" style="width: 1900px;">
 							<tr>
-								<td v-for="s in stafflist" v-if="s.bool==0" class="d1">{{s.fieldname}}</td>
+								<td style="width:5px;background-color:#E3E3E3;"></td>
+								<td v-for="f in field" class="d1" v-if="f.display==1">{{f.name}}</td>
 							</tr>
-							<tr>
-								<td>成高</td>
-								<td>11</td>
-								<td>管钱部</td>
-								<td>HGO121312</td>
-								<td>张毅丰</td>
+							<tr v-for="item in staff">
+								<td><input type="radio" name="name" @click="remove(item)"></td>
+								<td v-if="field[1].display==1">{{item.yid}}</td>
+								<td v-if="field[2].display==1">{{item.yid}}</td>
+								<td v-if="field[3].display==1">{{item.yname}}</td>
+								<td v-if="field[4].display==1">{{item.ysex}}</td>
+								<td v-if="field[5].display==1">{{item.gid}}</td>
+								<td v-if="field[6].display==1" v-if="field[2].display==1">{{item.yhealth}}</td>
+								<td v-if="field[7].display==1">{{item.yheigth}}</td>
+								<td v-if="field[8].display==1">{{item.ynativplaceid}}</td>
+								<td v-if="field[9].display==1">{{item.ynationid}}</td>
+								<td v-if="field[10].display==1">{{item.yheigth}}</td>
+								<td v-if="field[11].display==1">{{item.yeducationid}}</td>
+								<td v-if="field[12].display==1">{{item.yschoolid}}</td>
+								<td v-if="field[13].display==1">{{item.yspecialtyid}}</td>
+								<td v-if="field[14].display==1">{{item.yspecialtynid}}</td>
+								<td v-if="field[15].display==1">{{item.yid}}</td>
+								<td v-if="field[16].display==1">{{item.yid}}</td>
+								<td v-if="field[17].display==1">{{item.yname}}</td>
+								<td v-if="field[18].display==1">{{item.ysex}}</td>
+								<td v-if="field[19].display==1">{{item.gid}}</td>
+								<td v-if="field[20].display==1" v-if="field[2].display==1">{{item.yhealth}}</td>
+								<td v-if="field[21].display==1">{{item.yheigth}}</td>
+								<td v-if="field[22].display==1">{{item.ynativplaceid}}</td>
+								<td v-if="field[23].display==1">{{item.ynationid}}</td>
+								<td v-if="field[24].display==1">{{item.yheigth}}</td>
 							</tr>
 						</table>
 					</div>
@@ -451,12 +386,11 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>员工卡片</h3></div>
+								<div class="col-md-7"><h3>员工卡片</h3></div>
 								<div class="col-md-5">
 									<button class="btn btn-default" type="submit">保存</button>
-									<span><a href="#myModal11" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">打印</a></span>
-									<span><img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">实名认证</span>
+									<span><a href="#myModal11" data-toggle="modal"><img src="img/2.png" class="c1">打印</a></span>
+									<span><img src="img/3.png" class="c1">实名认证</span>
 								</div>
 							</div>
 						</div>
@@ -467,153 +401,147 @@
 									<div id="aa4" style="padding-top:2px;">
 										<table id="tab1">
 											<tr>
-												<td>人员编号:<input type="text" class="aa5"></td>
-												<td>员工姓名:<input type="text" class="aa5"></td>
+												<td>人员编号:<input type="text" class="aa5" v-model="y.yid"></td>
+												<td>员工姓名:<input type="text" class="aa5" v-model="y.yname"></td>
 												<td class="dd1">
 													性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18"  v-model="y.ysex">
+														<option>男</option>
+														<option>女</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></a></span>
 												</td>
 												<td>
-													<div class="div">
+													 <div class="div">
 														<button type="button" class="searImageThreeBtn" id="upload_input">
 														  <span>照片</span>
 														</button>
-														<input class="layui-upload-file" type="file" name="file">
-													</div>
+														<input class="layui-upload-file" type="file" name="file" >
+													  </div>
 												</td>
 											</tr>
 											<tr>
-												<td colspan="2">所在门店:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;"><input type="text" class="ko1" disabled="disabled"></td>
-												<td colspan="2">所在部门:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" disabled="disabled"><input type="text" class="ko1" disabled="disabled" style="width:280px;"><span class="aa9"><a href="#myModal3" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span></td>
+												<td colspan="2">所在门店:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" v-model="dui.zid"><input type="text" class="ko1" disabled="disabled" v-model="dui.zname"></td>
+												<td colspan="2">所在部门:<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" disabled="disabled" v-model="dui.reserved2"><input type="text" class="ko1" disabled="disabled" style="width:280px;" v-model="dui.reserved3"></td>
 											</tr>
 											<tr>
-												<td>登录账号:<input type="text" class="aa5"></td>
-												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:<input type="text" class="aa5"></td>
-												<td>身体状况:<input type="text" class="aa5"></td>
+												<td>登录账号:<input type="text" class="aa5" value="2156313"></td>
+												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:<input type="text" class="aa5" v-model="y.gid"></td>
+												<td>身体状况:<input type="text" class="aa5" v-model="y.yhealth"></td>
 											</tr>
 											<tr>
-												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5"></td>
+												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5" v-model="y.yheight"></td>
 												<td>
 													籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.ynativplaceid">
+														<option v-for="n in nativPlacelist" :value="n.jnativplaceid">{{n.jname}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 												<td class="ming">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.ynationid">
+														<option v-for="n in nationlist" :value="n.nationid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 											</tr>
 											<tr>
 												<td>婚姻状况:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.ymarriageid">
+														<option v-for="n in list1" :value="n.marriageid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 												<td class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.yeducationid">
+														<option v-for="n in list2" :value="n.educationid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 												<td class="ming">毕业学校:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.yschoolid">
+														<option v-for="n in list3" :value="n.schoolid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 											</tr>
 											<tr>
 												<td>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.yspecialtyid">
+														<option v-for="n in list4" :value="n.specialtynid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td class="ming">专业资格:
-													<select class="aa8">
-														<option></option>
+												<td  class="ming">专业资格:
+													<select class="aa18" v-model="y.yspecialtynid">
+														<option value="1">有</option>
+														<option value="2">没有有</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 												<td>属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
-													<select class="aa18">
-														<option></option>
+													<select class="aa18" v-model="y.yattribute">
+														<option>有</option>
+														<option>没有有</option>
 													</select>
 												</td>
 												<td class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.ycollegeid">
+														<option v-for="n in list5" :value="n.collegeid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
 											</tr>
 											<tr>
 												<td>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.yorganizationid">
+														<option v-for="n in list6" :value="n.organizationid">{{n.name}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5"></td>
-												<td colspan="2">户口地址:<input type="text" class="aa6"></td>
+												<td  class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5" v-model="y.ynumber"></td>
+												<td colspan="2">户口地址:<input type="text" class="aa6" v-model="y.yaddressh"></td>
 											</tr>
 											<tr>
-												<td colspan="2">现住地址:<input type="text" class="aa6"></td>
-												<td>联系电话:<input type="text" class="aa5"></td>
-												<td>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:<input type="text" class="aa5"></td>
+												<td colspan="2">现住地址:<input type="text" class="aa6" v-model="y.yaddressx"></td>
+												<td>联系电话:<input type="text" class="aa5" v-model="y.yphonenumber"></td>
+												<td>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:<input type="text" class="aa5" v-model="y.yphone"></td>
 											</tr>
 											<tr>
-												<td>E&nbsp;M&nbsp;a&nbsp;i&nbsp;l&nbsp;:<input type="text" class="aa5"></td>
+												<td>E&nbsp;M&nbsp;a&nbsp;i&nbsp;l&nbsp;:<input type="text" class="aa5" v-model="y.email"></td>
 												<td>开户银行:
-													<select class="aa8">
-														<option></option>
+													<select class="aa18" v-model="y.ybankid">
+														<option v-for="n in list7" :value="n.bankid">{{n.bankname}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td class="ming">银行账号:<input type="text" class="aa5"></td>
 											</tr>
 											<tr>
-												<td>紧急联系:<input type="text" class="aa5"></td>
-												<td>联系电话:<input type="text" class="aa5"></td>
+												<td>紧急联系:<input type="text" class="aa5" v-model="y.yjname"></td>
+												<td>联系电话:<input type="text" class="aa5" v-model="y.yphonenumber"></td>
 											</tr>
 											<tr>
-												<td>入职日期:<input type="date" class="aa5"></td>
-												<td>试用到期:<input type="date" class="aa5"></td>
-												<td>出生日期:<input type="date" class="aa5"></td>
-												<td>合同开始:<input type="date" class="aa5"></td>
+												<td>入职日期:<input type="date" class="aa5" v-model="y.ystarttime"></td>
+												<td>试用到期:<input type="date" class="aa5" v-model="y.yendtime"></td>
+												<td>出生日期:<input type="date" class="aa5" v-model="y.ydatetime"></td>
+												<td>合同开始:<input type="date" class="aa5" v-model="y.ystarttimeh"></td>
 											</tr>
 											<tr>
-												<td>合同结束:<input type="date" class="aa5"></td>
+												<td>合同结束:<input type="date" class="aa5" v-model="y.ytname"></td>
 												<td>卡自编号:<input type="text" class="aa5"></td>
 												<td>卡内编号:<input type="text" class="aa5"></td>
-												<td>推&nbsp;&nbsp;荐&nbsp;&nbsp;人:<input type="text" class="aa5"></td>
+												<td>推&nbsp;&nbsp;荐&nbsp;&nbsp;人:<input type="text" class="aa5" v-model="y.tname"></td>
 											</tr>
 											<tr>
-												<td>整单折扣:<input type="text" class="aa5"></td>
-												<td>工时折扣:<input type="text" class="aa5"></td>
-												<td>商品折扣:<input type="text" class="aa5"></td>
-												<td>减&nbsp;&nbsp;免&nbsp;&nbsp;权:<input type="text" class="aa5"></td>
+												<td>整单折扣:<input type="text" class="aa5" v-model="y.yratez"></td>
+												<td>工时折扣:<input type="text" class="aa5" v-model="y.yrateg"></td>
+												<td>商品折扣:<input type="text" class="aa5" v-model="y.yrates"></td>
+												<td>减&nbsp;&nbsp;免&nbsp;&nbsp;权:<input type="text" class="aa5" v-model="y.yratej"></td>
 											</tr>
 										</table>
 									</div>
 									<div id="kkk1">
 										<div>
 											工作简历
-											<textarea class="form-control " rows="3" style="width:400px;height: 100px;"></textarea> 教育经验
-											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea> 聘用意见
+											<textarea class="form-control " rows="3" style="width:400px;height: 100px;"></textarea>
+											教育经验
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+											聘用意见
 											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
 										</div>
 										<div>
 											家庭成员
-											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea> 奖惩记录
+											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
+											奖惩记录
 											<textarea class="form-control" rows="3" style="width:400px;height: 100px;"></textarea>
 										</div>
 									</div>
@@ -621,20 +549,18 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a class="btn btn-default" data-dismiss="modal">提交</a>
+							<a class="btn btn-default" data-dismiss="modal" @click="add()">提交</a>
 							<a data-toggle="modal" data-dismiss="modal" class="btn btn-default">关闭</a>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<div class="modal" id="myModal3" data-backdrop>
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
-							<div class="col-md-10">
-								<h4>部门选择</h4></div>
+							<div class="col-md-10"><h4>部门选择</h4></div>
 							<div class="col-md-2">
 								<button class="btn btn-default" type="submit">选择</button>
 							</div>
@@ -692,8 +618,7 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-10">
-									<h3>员工角色</h3></div>
+								<div class="col-md-10"><h3>员工角色</h3></div>
 								<div class="col-md-2">
 									<button class="btn btn-default" type="submit">保存</button>
 								</div>
@@ -702,8 +627,8 @@
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部选则
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部取消
+									<img src="img/2.png" class="c1">全部选则
+									<img src="img/2.png" class="c1">全部取消
 								</div>
 								<div id="mm1">
 									<table>
@@ -738,16 +663,13 @@
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
-						<div class="modal-header">
-							<h4>字段设置</h4></div>
+						<div class="modal-header"><h4>字段设置</h4></div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: lightgoldenrodyellow;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
-									<button style="height: 40px;width: 70px;border: 0px;background-color: #008000;color: #fff;margin-right: 290px;">确定</button>
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部选择
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">全部取消
+									<button @click="update()" style="height: 40px;width: 70px;border: 0px;background-color: #008000;color: #fff;">确定</button>
 								</div>
-								<div id="mm2">
+								<div id="mm2" style="height:340px;overflow-x:scroll;">
 									<table>
 										<tr>
 											<td style="background-color: darkturquoise;">显示</td>
@@ -756,26 +678,12 @@
 											<td>序号</td>
 											<td>显示宽度</td>
 										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>AA1</td>
-											<td>机构</td>
-											<td>1</td>
-											<td>150</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>清华大学</td>
-											<td>1</td>
-											<td>清华大学</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>清华大学</td>
-											<td>1</td>
-											<td>清华大学</td>
+										<tr v-for="f in field">
+											<td><input type="checkbox" v-model="shuzu" :value="f.id"></td>
+											<td>{{f.zname}}</td>
+											<td>{{f.name}}</td>
+											<td>{{f.id}}</td>
+											<td>{{f.width}}</td>
 										</tr>
 									</table>
 								</div>
@@ -818,13 +726,7 @@
 									<div id="mm2" style="width: 563px;margin:0px;overflow-x: scroll;">
 										<table style="width:1200px;">
 											<tr>
-												<td style="background-color: darkturquoise;">显示</td>
-												<td>部门代码</td>
-												<td>部门名称</td>
-												<td>工号</td>
-												<td>姓名</td>
-												<td>性别</td>
-												<td>岗位</td>
+												<td v-for="f in field" class="d1" v-if="f.display==1" style="width: 92px;padding-left:5px;">{{f.name}}</td>
 											</tr>
 										</table>
 									</div>
@@ -843,9 +745,10 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>员工查询</h3></div>
-								<div class="col-md-5" style="text-align: right;"><button class="btn btn-default" type="submit" style="background-color:#67B168;">确定</button></div>
+								<div class="col-md-7"><h3>员工查询</h3></div>
+								<div class="col-md-5" style="text-align: right;">
+									<button @click="query2()" class="btn btn-default" type="submit" style="background-color:#67B168;">确定</button>
+								</div>
 							</div>
 						</div>
 						<div class="modal-body">
@@ -854,113 +757,98 @@
 									<div id="aa4" style="padding-top:5px;border:0px;width:790px;height:500px;">
 										<table id="tab1">
 											<tr>
-												<td>员工编号:<input type="text" class="aa5"></td>
-												<td>员工姓名:<input type="text" class="aa5"></td>
-												<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input type="text" class="aa5"></td>
-											</tr>
+												<td>员工编号:<input type="text" class="aa5" v-model="chastaff.yid"></td>
+												<td>员工姓名:<input type="text" class="aa5" v-model="chastaff.yname"></td>
+												<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input type="text" class="aa5"  v-model="chastaff.ysex"></td></tr>
 											<tr>
 												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list1">{{item.gname}}</option>
-													</select>
+												<select class="aa19" v-model="chastaff.gid">
+													<option v-for="l in list10" :value="l.gid">{{l.gname}}</option>
+												</select>
 												</td>
 												<td>所在部门:
-													<select class="aa19" style="width:400px;">
-														<option></option>
+													<select class="aa19" style="width:400px;" v-model="chastaff.bid">
+														<option v-for="l in list11" :value="l.bid">{{l.bname}}</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
-												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5"></td>
-												<td>籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:<input type="text" class="aa5"></td>
+												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5" v-model="chastaff.yheigth"></td>
+												<td>籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:<input type="text" class="aa5" v-model="chastaff.ynativplaceid"></td>
 												<td>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list3">{{item.name}}</option>
+													<select class="aa19"  v-model="chastaff.ynationid">
+														<option v-for="n in nationlist" :value="n.nationid">{{n.name}}</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<td>
 													婚姻状况:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list4">{{item.name}}</option>
+													<select class="aa19"  v-model="chastaff.ymarriageid">
+														<option v-for="n in list1" :value="n.marriageid">{{n.name}}</option>
 													</select>
 												</td>
 												<td>
 													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list5">{{item.name}}</option>
+													<select class="aa19"  v-model="chastaff.yeducationid">
+														<option v-for="n in list2" :value="n.educationid">{{n.name}}</option>
 													</select>
 												</td>
 												<td>
 													毕业学校:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list6">{{item.name}}</option>
+													<select class="aa19"  v-model="chastaff.yschoolid">
+														<option v-for="n in list3" :value="n.schoolid">{{n.name}}</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<td>
 													专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option>计算机科学与技术</option>
-														<option>网络工程</option>
-														<option>生命起源</option>
+													<select class="aa19"  v-model="chastaff.yspecialtyid">
+														<option v-for="n in list4" :value="n.specialtynid">{{n.name}}</option>
 													</select>
 												</td>
 												<td>
 													专业资格:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list7">{{item.name}}</option>
+													<select class="aa19" v-model="chastaff.yspecialtynid">
+														<option value="1">有</option>
+														<option value="2">没有有</option>
 													</select>
 												</td>
 												<td>
 													属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option>记考勤不计薪</option>
-														<option>不计考勤计薪</option>
-														<option>不计薪记考勤</option>
+													<select class="aa19" v-model="chastaff.yattribute">
+														<option>有</option>
+														<option>没有有</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日:<input type="date" class="aa5"></td>
+													生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日:<input type="date" class="aa5" v-model="chastaff.ydatetime"></td>
 												<td>
 													学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option v-for="item in list8">{{item.name}}</option>
+													<select class="aa19" v-model="chastaff.ycollegeid">
+														<option v-for="n in list5" :value="n.collegeid">{{n.name}}</option>
 													</select>
 												</td>
 												<td>
 													编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
-													<select class="aa19">
-														<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
-														<option>管理人员</option>
-														<option>销售人员</option>
-														<option>维修人员</option>
+													<select class="aa19" v-model="chastaff.yorganizationid">
+														<option v-for="n in list6" :value="n.organizationid">{{n.name}}</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
-												<td>身份证号:<input type="text" class="aa5"></td>
-												<td>入职日期:<input type="date" class="aa5"><span style="margin:0px 33px 0px 43px;">至</span><input type="date" class="aa5"></td>
+												<td>身份证号:<input type="text" class="aa5" v-model="chastaff.yphonenumber"></td>
+												<td>入职日期:<input type="date" class="aa5" v-model="chastaff.ystarttime"><span style="margin:0px 33px 0px 43px;">至</span><input type="date" class="aa5"></td>
 											</tr>
 											<tr>
-												<td>试用到期:<input type="date" class="aa5"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
-												<td class="ming">&nbsp;银行账号:<input type="text" class="aa5"></td>
+												<td>试用到期:<input type="date" class="aa5" v-model="chastaff.yendtime"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
+												<td class="ming">&nbsp;银行账号:<input type="text" class="aa5" v-model="chastaff.ybankphone"></td>
 											</tr>
 											<tr>
-												<td>合同开始:<input type="date" class="aa5"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
+												<td>合同开始:<input type="date" class="aa5" v-model="chastaff.ystarttimeh"><span style="margin:0px 33px 0px 45px;">至</span><input type="date" class="aa5"></td>
 											</tr>
 										</table>
 									</div>
@@ -976,10 +864,9 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>门店编辑</h3></div>
+								<div class="col-md-7"><h3>新增门店</h3></div>
 								<div class="col-md-5" style="text-align: right;">
-									<button class="btn btn-default" type="submit">保存</button>
+									<button class="btn btn-default" type="submit" @click="add2()">保存</button>
 								</div>
 							</div>
 						</div>
@@ -989,61 +876,128 @@
 									<div id="aa4" style="padding-top:2px;height: 240px;">
 										<table id="tab1">
 											<tr>
-												<td>门店编码:<input type="text" class="aa5"></td>
-												<td>门店名称:<input type="text" class="aa5"></td>
-												<td>上级门店:<input type="text" class="aa5"></td>
-												<td>售价权重:<input type="text" class="aa5"></td>
+												<td>门店编码:<input type="text" class="aa5" v-model="m.zid"></td>
+												<td>门店名称:<input type="text" class="aa5" v-model="m.zname"></td>
+												<td>上级门店:<input type="text" class="aa5" v-model="m.msname"></td>
+												<td>售价权重:<input type="text" class="aa5" v-model="m.mshou"></td>
 											</tr>
 											<tr>
 												<td>
 													门店分类
 													<select class="aa8">
-														<option></option>
+														<option v-for="l in list8" :value="l.mlid">{{l.mlname}}</option>
 													</select>
-													<span class="aa9"><a href="#myModal1" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
 												</td>
-												<td>最大许可数<input type="text" class="aa5"></td>
+												<td>最大许可数<input type="text" class="aa5" v-model="m.zuishu"></td>
 												<td>
 													调拨价类
 													<select class="aa19">
-														<option></option>
+														<option>无</option>
+														<option>有</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<td>
-													省
+													地区
 													<select class="aa19">
-														<option></option>
-												</td>
-												<td>
-													市
-													<select class="aa19">
-														<option></option>
-												</td>
-												<td>
-													区
-													<select class="aa19">
-														<option></option>
+														<option v-for="l in list9" :value="l.qcityid">{{l.qcityname}}</option>
+													</select>
 												</td>
 											</tr>
 											<tr>
-												<td>开票单位<input type="text" class="ko1"></td>
-												<td>地址<input type="text" class="ko1"></td>
+												<td>开票单位<input type="text" class="ko1" v-model="m.mkai"></td>
+												<td>地址<input type="text" class="ko1" v-model="m.maddress"></td>
 											</tr>
 											<tr>
-												<td>纳税人识别号<input type="text" class="ko1"></td>
-												<td>电话<input type="text" class="aa5"></td>
-												<td>联系人<input type="text" class="aa5"></td>
+												<td>纳税人识别号<input type="text" class="ko1" v-model="m.mshui"></td>
+												<td>电话<input type="text" class="aa5" v-model="m.mphone"></td>
+												<td>联系人<input type="text" class="aa5" v-model="m.mlname"></td>
 											</tr>
 											<tr>
-												<td>开户银行<input type="text" class="aa5"></td>
-												<td>银行账号<input type="text" class="aa5"></td>
+												<td>开户银行<input type="text" class="aa5" v-model="m.hang"></td>
+												<td>银行账号<input type="text" class="aa5" v-model="m.zhang"></td>
 												<td>
 													装修门店
-													<input type="text" class="ko1" style="margin-left: 10px;width: 100px;">
+													<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" v-model="m.mgouid">
 													<input type="text" class="ko1" disabled="disabled" style="margin-left: -10px;">
-													<span class="aa9"><a href="#myModal10" data-toggle="modal"><img src="img/26d502752909327e0126dd1795f6cba.png" id="img1"></a></span>
+												</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox">入库开单/审核分开</td>
+												<td><input type="checkbox">停用</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal19" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model3">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>门店编辑</h3></div>
+								<div class="col-md-5" style="text-align: right;">
+									<button class="btn btn-default" type="submit" @click="update9()">保存</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1" style="height: 255px;">
+									<div id="aa4" style="padding-top:2px;height: 240px;">
+										<table id="tab1">
+											<tr>
+												<td>门店编码:<input type="text" class="aa5" v-model="dui.zid"></td>
+												<td>门店名称:<input type="text" class="aa5" v-model="dui.zname"></td>
+												<td>上级门店:<input type="text" class="aa5" v-model="dui.msname"></td>
+												<td>售价权重:<input type="text" class="aa5" v-model="dui.mshou"></td>
+											</tr>
+											<tr>
+												<td>
+													门店分类
+													<select class="aa8">
+														<option v-for="l in list8" :value="l.mlid">{{l.mlname}}</option>
+													</select>
+												</td>
+												<td>最大许可数<input type="text" class="aa5" v-model="dui.zuishu"></td>
+												<td>
+													调拨价类
+													<select class="aa19">
+														<option>无</option>
+														<option>有</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													地区
+													<select class="aa19">
+														<option v-for="l in list9" :value="l.qcityid">{{l.qcityname}}</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td>开票单位<input type="text" class="ko1" v-model="dui.mkai"></td>
+												<td>地址<input type="text" class="ko1" v-model="dui.maddress"></td>
+											</tr>
+											<tr>
+												<td>纳税人识别号<input type="text" class="ko1" v-model="dui.mshui"></td>
+												<td>电话<input type="text" class="aa5" v-model="dui.mphone"></td>
+												<td>联系人<input type="text" class="aa5" v-model="dui.mlname"></td>
+											</tr>
+											<tr>
+												<td>开户银行<input type="text" class="aa5" v-model="dui.hang"></td>
+												<td>银行账号<input type="text" class="aa5" v-model="dui.zhang"></td>
+												<td>
+													装修门店
+													<input type="text" class="ko1" style="margin-left: 10px;width: 100px;" v-model="dui.mgouid">
+													<input type="text" class="ko1" disabled="disabled" style="margin-left: -10px;">
 												</td>
 											</tr>
 											<tr>
@@ -1064,8 +1018,7 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>用户公司定义</h3></div>
+								<div class="col-md-7"><h3>用户公司定义</h3></div>
 								<div class="col-md-5" style="text-align: right;">
 									<button class="btn btn-default" type="submit">保存</button>
 								</div>
@@ -1135,8 +1088,7 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>选择门店</h3></div>
+								<div class="col-md-7"><h3>选择门店</h3></div>
 								<div class="col-md-5" style="text-align: right;">
 									<input type="text" style="height: 35px;">
 									<button class="btn btn-default" type="submit" style="background-color:#67B168;">搜索</button>
@@ -1193,8 +1145,7 @@
 						<span class="close" data-dismiss="modal">&times;</span>
 						<div class="modal-header">
 							<div class="row" id="aa3">
-								<div class="col-md-7">
-									<h3>报表打印</h3></div>
+								<div class="col-md-7"><h3>报表打印</h3></div>
 							</div>
 						</div>
 						<div class="modal-body">
@@ -1209,17 +1160,97 @@
 					</div>
 				</div>
 			</div>
+			<div class="modal" id="myModal12" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model1" style="width: 820px;height:450px;">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>员工查询</h3></div>
+								<div class="col-md-5" style="text-align: right;"><button class="btn btn-default" type="submit" style="background-color:#67B168;">确定</button></div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
+									<a href="#myModal13" data-toggle="modal"><img src="img/2.png" class="c1">增加同级</a>
+									<a href="#myModal13" data-toggle="modal"><img src="img/2.png" class="c1">增加子级</a>
+									<a href="#myModal13" data-toggle="modal"><img src="img/2.png" class="c1">修改</a>
+									<img src="img/2.png" class="c1">删除
+									<img src="img/2.png" class="c1">导出
+								</div>
+								<div id="aa1" style="height:250px;width:788px;background-color:#fff;">
+									<div style="border:0px;width:790px;height:200px;">
+										<div id="mm2" style="height: 200px;">
+											<table>
+												<tr>
+													<td style="background-color:darkturquoise;"></td>
+													<td>部门编号</td>
+													<td>部门名称</td>
+													<td>部门分类</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>AA1</td>
+													<td>机构</td>
+													<td>1</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>1</td>
+													<td>清华大学</td>
+													<td>1</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>1</td>
+													<td>清华大学</td>
+													<td>1</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div style="height: 50px;line-height: 50px;">
+									共3条记录
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal13" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content" id="model2" style="height: 300px;">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-10"><h3>部门定义</h3></div>
+								<div class="col-md-2">
+									<button class="btn btn-default" type="submit">保存</button>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal" style="text-align: center;">
+								<div style="margin:20px 0px 20px 0px;">部门编码：<input type="text"></div>
+								<div style="margin:20px 0px 20px 0px;">部门名称：<input type="text"></div>
+								<div style="margin:20px 0px 20px 0px;">部门分类：<input type="text"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="modal" id="myModal1" data-backdrop>
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
-						<div class="modal-header">
-							<h4>选择内容设置</h4></div>
+						<div class="modal-header"><h4>选择内容设置</h4></div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">修改
-									<img src="img/26d502752909327e0126dd1795f6cba.png" class="c1">保存
+									<img src="img/2.png" class="c1">修改
+									<img src="img/2.png" class="c1">保存
 								</div>
 								<div id="mm1">
 									<table>
@@ -1245,211 +1276,421 @@
 										</tr>
 									</table>
 								</div>
+								
 							</form>
 						</div>
 						<div class="modal-footer" style="padding: 0px;">
 							<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 20px;">
-								<a class="btn btn-default" data-dismiss="modal">选择</a>
+								<a  class="btn btn-default" data-dismiss="modal">选择</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-		<script type="text/javascript" src="js/region.js"></script>
-		<script type="text/javascript" src="js/vue.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-			var stafflist = [{
-					id: "1",
-					bool: 0,
-					field: "aaa",
-					fieldname: "机构",
-					width: "100"
-				},
-				{
-					id: "2",
-					bool: 0,
-					field: "aaa",
-					fieldname: "部门代码",
-					width: "100"
-				},
-				{
-					id: "3",
-					bool: 0,
-					field: "aaa",
-					fieldname: "部门名称",
-					width: "100"
-				},
-				{
-					id: "4",
-					bool: 0,
-					field: "aaa",
-					fieldname: "工号",
-					width: "100"
-				},
-				{
-					id: "5",
-					bool: 0,
-					field: "aaa",
-					fieldname: "姓名",
-					width: "100"
-				},
-			];
-			$("#kkk1").css("display", "none");
-			new Vue({
-				el: "#ctn",
-				data() {
-					return {
-						stafflist: stafflist,
-						xs: true,
-						list1: {},
-						list3: {},
-						list4: {},
-						list5: {},
-						list6: {},
-						list7: {},
-						list8: {}
-					}
-				},
-				methods: {
-					xianshi() {
-						if(this.xs) {
-							this.xs = false;
-						} else {
-							this.xs = true;
-						}
-
-					},
-					createTab(item) {
-						if(item.children && item.children.length > 0) {
-							return;
-						}
-						this.tabs.forEach(item => { item.active = false; });
-						this.$set(item, "active", true);
-						var bool = this.tabs.some(sitem => sitem.ename == item.ename);
-						if(!bool) {
-							this.tabs.push(item);
-						}
-					},
-					removeTab(index) {
-						if(index == this.tabs.length - 1) {
-							this.tabs[index - 1].active = true;
-						}
-						this.tabs.splice(index, 1);
-					},
-					ying() {
-						$("#aa4").css("display", "none");
-						$("#kkk1").css("display", "flex");
-					},
-					ying2() {
-						$("#aa4").css("display", "flex");
-						$("#kkk1").css("display", "none");
-					},
-					query1() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/gfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list1 = result;
-							}
-						});
-					},
-					query3() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/mfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list3 = result;
-							}
-						});
-					},
-					query4() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/hfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list4 = result;
-							}
-						});
-					},
-					query5() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/xfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list5 = result;
-							}
-						});
-					},
-					query6() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/bfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list6 = result;
-							}
-						});
-					},
-					query7() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/zfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list7 = result;
-							}
-						});
-					},
-					query8() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/yuangongziliaobiao/xwfind",
-							type: "post",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.list8 = result;
-							}
-						});
-					}
-				},
-				created() {
-					this.query1();
-					this.query3();
-					this.query4();
-					this.query5();
-					this.query6();
-					this.query7();
-					this.query8();
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		Vue.component("tree",{
+			props:["menu"],
+			template:`
+				<ul class="nav nav-pills nav-stacked">
+					<li v-for="item in menu">
+						<a href="#" @click="createTab(item)" style="width:100px">{{item.zname}}</a>
+						<tree v-if="item.z1==0" @create-tab="createTab" :menu="item.children"></tree>
+					</li>
+				</ul>
+			`,
+			methods:{
+				createTab(item){
+					this.$emit("create-tab",item);
 				}
-			});
-		</script>
+			}
+		})
+		$("#kkk1").css("display","none");
+		new Vue({
+			el:"#ctn",
+			data(){
+				return{
+					jia:0,
+					y:{},
+					xs:true,
+					menu:[],
+					tabs:[],
+					staff:{},
+					chastaff:{},
+					field:{},
+					shuzu:[],
+					shuzuid:{},
+					xx:"1",
+					id:0,
+					nativPlacelist:{},
+					nationlist:{},
+					list1:{},
+					list2:{},
+					list3:{},
+					list4:{},
+					list5:{},
+					list6:{},
+					list7:{},
+					list8:{},
+					list9:{},
+					list10:{},
+					list11:{},
+					dui:{},
+					m:{},
+					names:""
+				}
+			},
+			methods:{
+				query2(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/staffData/findId",
+						data:that.chastaff,
+						type:"post",
+						success:function(result){
+							that.staff=result;
+						}
+					});
+				},
+				add(){
+					this.y.reserved5=this.dui.zid;
+					this.y.gid=11;
+					this.y.bid=this.dui.zid;
+					var that=this;
+					if(this.jia==0){
+						$.ajax({
+							url:"http://127.0.0.1:8080/zuzhijiegoubiao/insert",
+							data:that.y,
+							type:"post",
+							success:function(result){
+								that.query();
+							}
+						});
+					}else{
+						console.log(that.y)
+						$.ajax({
+							url:"http://127.0.0.1:8080/zuzhijiegoubiao/updates",
+							data:JSON.stringify(that.y),
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								that.query();
+							}
+						});
+					}
+				},
+				update9(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/zuzhijiegoubiao/update",
+						data:that.dui,
+						type:"post",
+						success:function(result){
+							that.findId();
+						}
+					});
+				},
+				add2(){
+					var that=this;
+					this.m.zids=this.dui.zid;
+					$.ajax({
+						url:"http://127.0.0.1:8080/zuzhijiegoubiao/inserts",
+						data:that.m,
+						type:"post",
+						success:function(result){
+							that.findId();
+						}
+					});
+				},
+				find13(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find10",
+						type:"post",
+						success:function(result){
+							that.list11=result;
+						}
+					});
+				},
+				find12(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find9",
+						type:"post",
+						success:function(result){
+							that.list10=result;
+						}
+					});
+				},
+				find11(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find8",
+						type:"post",
+						success:function(result){
+							that.list9=result;
+						}
+					});
+				},
+				find10(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find11",
+						type:"post",
+						success:function(result){
+							that.list8=result;
+						}
+					});
+				},
+				find9(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/findBank",
+						type:"post",
+						success:function(result){
+							that.list7=result;
+						}
+					});
+				},
+				find7(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find1",
+						type:"post",
+						success:function(result){
+							that.list5=result;
+						}
+					});
+				},
+				find6(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find7",
+						type:"post",
+						success:function(result){
+							that.list4=result;
+						}
+					});
+				},
+				jia1(){
+					this.jia=1;
+				},
+				find5(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find3",
+						type:"post",
+						success:function(result){
+							that.list3=result;
+						}
+					});
+				},
+				find4(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find2",
+						type:"post",
+						success:function(result){
+							that.list2=result;
+						}
+					});
+				},
+				find3(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find4",
+						type:"post",
+						success:function(result){
+							console.log(result);
+							that.list1=result;
+						}
+					});
+				},
+				find2(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find5",
+						type:"post",
+						success:function(result){
+							that.nationlist=result;
+						}
+					});
+				},
+				find1(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/xueweibiao/find6",
+						type:"post",
+						success:function(result){
+							that.nativPlacelist=result;
+						}
+					});
+				},
+				remove9(){
+					if(this.xx=="0"){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/zuzhijiegoubiao/remove",
+							data:{
+								id:that.dui.zid
+							},
+							type:"post",
+							success:function(result){
+								that.findId();
+							}
+						});
+					}
+				},
+				remove(item){
+					this.id=item.yid;
+					this.y=item;
+				},
+				show2(){
+					if(this.dui.zids==1){
+						$("#myModal8").modal("show");
+					}
+				},
+				daochu(){
+					window.location.href="http://127.0.0.1:8080/staffData/daochu";
+				},
+				show(){
+					this.y={};
+					this.jia=0;
+					if(this.xx=="0"){
+						$("#myModal2").modal("show");
+					}
+				},
+				removeId(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/zuzhijiegoubiao/removeId",
+						data:{
+							id:that.id
+						},
+						type:"post",
+						success:function(result){
+							that.query();
+						}
+					});
+				},
+				query(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/staffData/find",
+						type:"post",
+						data: {
+								name: that.names
+							},
+						success:function(result){
+							that.staff=result;
+						}
+					});
+				},
+				update(){
+					var that=this;
+					var json=JSON.stringify(that.shuzu);
+					console.log(json)
+					$.ajax({
+						url:"http://127.0.0.1:8080/field/update",
+						data:json,
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						success:function(result){
+							that.query();
+						}
+					});
+				},
+				findField(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/field/find",
+						type:"post",
+						success:function(result){
+							that.field=result;
+							var temp = that.field.filter(item=>item.display==1);
+							that.shuzu = temp.map(item=>item.id);
+						}
+					});
+				},
+				findId(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/zuzhijiegoubiao/findId",
+						type:"post",
+						success:function(result){
+							console.log(result);
+							that.menu=result;
+						}
+					});
+				},
+				xianshi(){
+					if(this.xs){
+						this.xs=false;
+					}else{
+						this.xs=true;
+					}
+				},
+				createTab(item){
+					this.dui=item;
+					if(item.zid==1){
+						this.query();
+					}
+					if(item.children && item.children.length>0){
+						this.xx="1";
+						if(item.z1==0){
+							item.z1=1;
+						}else{
+							item.z1=0;
+						}
+						return;
+					}else{
+						this.xx="0";
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/staffData/findByIds/"+item.zid,
+							type:"post",
+							success:function(result){
+								that.staff=result;
+							}
+						});
+					}
+					this.tabs.forEach(item=>{item.active=false;});
+					this.$set(item,"active",true);
+					var bool = this.tabs.some(sitem=>sitem.ename==item.ename);
+					if(!bool){
+						this.tabs.push(item);
+					}
+				},
+				ying(){
+					$("#aa4").css("display","none");
+					$("#kkk1").css("display","flex");
+				},
+				ying2(){
+					$("#aa4").css("display","flex");
+					$("#kkk1").css("display","none");
+				}
+			},
+			created(){
+				this.findId();
+				this.findField();
+				this.query();
+				this.find1();
+				this.find2();
+				this.find3();
+				this.find4();
+				this.find5();
+				this.find6();
+				this.find7();
+				this.find9();
+				this.find10();
+				this.find11();
+				this.find12();
+				this.find13();
+			}
+		});
+	</script>
 	</body>
-
 </html>
