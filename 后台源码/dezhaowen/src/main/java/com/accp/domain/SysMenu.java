@@ -81,6 +81,7 @@ public class SysMenu extends Model<SysMenu> {
     private Integer roleId;
 
 
+
     public static final String MENU_ID = "menu_id";
 
     public static final String MENU_NAME = "menu_name";

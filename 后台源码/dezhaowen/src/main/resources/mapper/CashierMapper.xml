@@ -27,5 +27,24 @@
     <sql id="Base_Column_List">
         id, totalNum, cashierstatic, paymentType, invoiceNo, cashiertime, staffId, onCredit, interior, clientId, change, Number, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
+    <select id="selectByExample" resultMap="BaseResultMap">
+        SELECT id, totalNum, cashierstatic, paymentType, invoiceNo, cashiertime, staffId, onCredit,
+        interior, clientId, Number, otherone, othertwo, otherthree, otherfour, otherfive FROM `cashier`
+    </select>
+
+    <insert id="insertjz" parameterType="com.accp.domain.Cashier" >
+    insert into cashier (id, totalNum, cashierstatic,
+      paymentType, invoiceNo, cashiertime,
+      staffId, onCredit, interior,
+      clientId, `change`, `Number`,
+      otherone, othertwo, otherthree,
+      otherfour, otherfive)
+    values (#{id}, #{totalNum}, #{cashierstatic},
+      #{paymentType}, #{invoiceNo}, #{cashiertime},
+      #{staffId}, #{onCredit}, #{interior},
+      #{clientId}, #{change}, #{Number},
+      #{otherone}, #{othertwo}, #{otherthree},
+      #{otherfour}, #{otherfive})
+  </insert>
 
 </mapper>

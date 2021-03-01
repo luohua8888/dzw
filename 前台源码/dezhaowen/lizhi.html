@@ -246,7 +246,7 @@
 					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" /><span data-target="#myModal2" data-toggle="modal">回滚</span></div>
 					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal1" data-toggle="modal">删除</span></div>
 					<div class="col-md-1" @click="show"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()"><img src="img/bf85271b165061da46d9b136dc0a4d2.png"/>导出</div>
+					<div class="col-md-1" @click="daochu()"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
@@ -264,7 +264,7 @@
 						<tr v-for="item in list">
 							<td style="background-color: #D6D6CE;"><input type="radio" name="name" @click="dian(item.yid)"></td>
 							<td>总厂</td>
-							<td>{{item.bu.bname}}</td>
+							<td>{{item.bu?item.bu.bname:''}}</td>
 							<td>{{item.yid}}</td>
 							<td>{{item.yname}}</td>
 							<td>{{item.ysex}}</td>
@@ -279,15 +279,15 @@
 				<div class="men">
 					<div class="col-md-6" style="font-size: 25px;color: #1A2846;">门店选择</div>
 					<div class="col-md-4">
-						<input type="text" class="form-control" placeholder="匹配门店编码/门店姓名">
+						<input type="text" class="form-control" placeholder="匹配门店编码/门店姓名" v-model="namess">
 					</div>
-					<div class="col-md-1"><button class="btn btn-danger">搜索</button></div>
+					<div class="col-md-1"><button class="btn btn-danger" @click="findByAll()">搜索</button></div>
 					<div class="col-md-1"><button class="btn" id="no">关闭</button></div>
 				</div>
 				<div class="men1" style="background-color:#F7F7F7;height: 60px;">
-					<button class="btn btn-success col-md-2" style="width: 70px;">
+					<button class="btn btn-success col-md-2" style="width: 70px;" @click="findById()">
 					<span style="font-size: 16px;">确定</span>
-				</button>
+					</button>
 					<div style="color: #686868;font-size:18px;" class="col-md-10">
 						<div class="col-md-6"></div>
 						<div class="col-md-3" @click="quan"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />全部选择</div>
@@ -303,68 +303,12 @@
 							<td>门店名称</td>
 							<td>所在城市</td>
 						</tr>
-						<tr>
+						<tr v-for="o in organ">
 							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
-						</tr>
-						<tr>
-							<td style="background-color: #D6D6CE;"></td>
-							<td><input type="checkbox" :checked="bool"></td>
-							<td>总经办</td>
-							<td>001</td>
-							<td>张三</td>
+							<td><input type="checkbox" :checked="bool" v-model="shu" :value="o.zid"></td>
+							<td>{{o.zid}}</td>
+							<td>{{o.zname}}</td>
+							<td>{{o.mcityid}}</td>
 						</tr>
 					</table>
 				</div>
@@ -372,25 +316,25 @@
 			<div id="yuan">
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
-					<div class="col-md-1"><button class="btn btn-success">确定</button></div>
+					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
 					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
 							<div class="form-group">
 								<label for="exampleInputName1">员工编号</label>
-								<input type="text" class="form-control" id="exampleInputName1">
+								<input type="text" class="form-control" id="exampleInputName1" v-model="taff.yid">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName2">员工姓名</label>
-								<input type="text" class="form-control" id="exampleInputName2">
+								<input type="text" class="form-control" id="exampleInputName2" v-model="taff.yname">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName3">员工性别</label>
-								<input type="text" class="form-control" id="exampleInputName3">
+								<input type="text" class="form-control" id="exampleInputName3" v-model="taff.ysex">
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName4">岗位</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.gid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list1" :value="item.gid">{{item.gname}}</option>
 								</select>
@@ -398,44 +342,44 @@
 							<div class="form-group">
 								<label for="exampleInputName5">所在部门</label>
 								<a href="#myModal3" data-toggle="modal">
-									<input type="text" class="form-control" id="exampleInputName5" style="width: 200px;height: 30px">
+									<input type="text" class="form-control" id="exampleInputName5" style="width: 200px;height: 30px" v-model="post3.bname">
 								</a>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName6">身体状况</label>
-								<input type="text" class="form-control" id="exampleInputName6">
+								<input type="text" class="form-control" id="exampleInputName6" v-model="taff.yhealth">
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName7">籍贯</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.jnativplaceid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list2" :value="item.jnativplaceid">{{item.jname}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName8">民族</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.nationid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list3" :value="item.nationid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName9">婚姻</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.marriageid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list4" :value="item.marriageid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName10">学历</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.educationid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list5" :value="item.educationid">{{item.name}}</option>
 								</select>
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName11">学校</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.schoolid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list6" :value="item.schoolid">{{item.name}}</option>
 								</select>
@@ -451,7 +395,7 @@
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName13">专业资格</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.specialtynid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list7" :value="item.specialtynid">{{item.name}}</option>
 								</select>
@@ -462,7 +406,7 @@
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName15">学位</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.collegeid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option v-for="item in list8" :value="item.collegeid">{{item.name}}</option>
 								</select>
@@ -529,13 +473,13 @@
 							<div class="col-md-10">
 								<h4>部门选择</h4></div>
 							<div class="col-md-2">
-								<button class="btn btn-default" type="submit">选择</button>
+								<button class="btn btn-default" type="submit" @click="lizhibb1()" data-dismiss="modal">选择</button>
 							</div>
 						</div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
-									<select class="aa8" style="height: 25px;width: 300px;">
+									<select class="aa8" style="height: 25px;width: 300px;" @change="lizhibb(selected)" v-model="selected">
 										<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 										<option v-for="item in post1" :value="item.bid">{{item.bname}}</option>
 									</select>
@@ -549,7 +493,7 @@
 											<td>部门分类</td>
 										</tr>
 										<tr v-for="item in post">
-											<td><input type="checkbox"></td>
+											<td><input type="checkbox" @click="dian(item.bid)"></td>
 											<td>{{item.bid}}</td>
 											<td>{{item.bname}}</td>
 											<td>{{item.b1}}</td>
@@ -603,22 +547,25 @@
 			<div id="lizhi">
 				<div class="row" id="row">
 					<div class="col-md-8" style="font-size: 25px;color: #1A2846;">离职登记</div>
-					<div class="col-md-2"><button class="btn btn-success">确定</button></div>
-					<div class="col-md-1"><button class="btn" id="no2">关闭</button></div>
+					<div class="col-md-2"><button class="btn btn-success" id="no2" @click="lizhixz()">确定</button></div>
+					<div class="col-md-1"><button class="btn" @click="guan()">关闭</button></div>
 				</div>
 				<div class="row1s">
 					<form class="form-inline" style="height: 110px;padding-top: 10px;">
 						<div class="form-group" style="margin-left: 20px;">
 							<label>员工姓名</label>
-							<a href="#myModal33" data-toggle="modal"><input type="text" class="form-control" style="border-right: 0px;"></a><input type="text" class="form-control" style="border-left: 0px;">
+							<select style="width: 200px;height: 30px;" @change="lizhiId(selected)" v-model="selected">
+								<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
+								<option v-for="item in lizhi" :value="item.yid">{{item.yname}}</option>
+							</select>
 						</div>
 						<div class="form-group" style="margin-left: 20px;">
 							<label>离职日期</label>
-							<input type="date" class="form-control" style="width: 200px;">
+							<input type="text" class="form-control" style="width: 200px;" v-model="post2.y2">
 						</div>
 						<div class="form-group" style="margin-left: 20px;margin-top: 10px;">
 							<label>离职原因</label>
-							<input type="text" class="form-control" style="width: 682px;">
+							<input type="text" class="form-control" style="width: 682px;" v-model="post2.y3">
 						</div>
 					</form>
 					<table class="table table-bordered" style="width: 740px;margin-left:20px;height: 300px;">
@@ -626,71 +573,9 @@
 							<td style="width: 100px;background-color: grey;height: 30px;"></td>
 							<td style="height: 30px;">选择</td>
 						</tr>
-						<tr>
-							<td style="width: 100px;background-color: grey;height: 30px;"></td>
-							<td style="height: 30px;">选择</td>
-						</tr>
-						<tr>
-							<td style="width: 100px;background-color: grey;height: 30px;"></td>
-							<td style="30px">选择</td>
-						</tr>
 					</table>
 				</div>
 			</div>
-			<div class="modal" id="myModal33" data-backdrop>
-				<div class="modal-dialog">
-					<div class="modal-content" id="model2">
-						<span class="close" data-dismiss="modal">&times;</span>
-						<div class="modal-header">
-							<div class="col-md-10">
-								<h4>选择员工</h4></div>
-							<div class="col-md-2">
-								<button class="btn btn-success" type="submit">确认</button>
-							</div>
-						</div>
-						<div class="modal-body">
-							<form class="form-horizontal">
-								<div style="background-color:#f7f7f7;height: 40px;line-height: 40px;padding-left: 20px;">
-									<select class="aa8" style="height: 25px;width: 400px;">
-										<option>00000-总厂</option>
-										<option>00001-ddm</option>
-										<option>00002-11</option>
-									</select>
-								</div>
-								<div id="mm1">
-									<table>
-										<tr>
-											<td style="background-color:darkturquoise;"></td>
-											<td>部门名称</td>
-											<td>部门编号</td>
-											<td>部门姓名</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>前台</td>
-											<td>0EX0001</td>
-											<td>张三</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>销售部</td>
-											<td>0EM0004</td>
-											<td>耶律</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>售后服务部</td>
-											<td>101</td>
-											<td>成千</td>
-										</tr>
-									</table>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -722,7 +607,7 @@
 				data() {
 					return {
 						bool: false,
-						list:{bu:{}},
+						list: { bu: {} },
 						list1: {},
 						list2: {},
 						list3: {},
@@ -731,10 +616,19 @@
 						list6: {},
 						list7: {},
 						list8: {},
-						post:{},
-						post1:{},
-						id:0,
-						names:""
+						taff: {},
+						taffsdata: {},
+						organ: {},
+						post: {},
+						post1: {},
+						post2: {},
+						post3: {},
+						id: 0,
+						shu: [],
+						names: "",
+						namess: "",
+						selected: "",
+						lizhi: {}
 					}
 				},
 				methods: {
@@ -744,8 +638,39 @@
 					qu() {
 						this.bool = false;
 					},
-					dian(cid){
-						this.id=cid;
+					dian(cid) {
+						this.id = cid;
+					},
+					guan() {
+						$("#lizhi").style.display = "none";
+					},
+					lizhiyuans() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhiyuans",
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.lizhi = result;
+							}
+						});
+					},
+					lizhixz() {
+						var that = this;
+						delete this.post2.bu
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhixz",
+							type: "post",
+							data: that.post2,
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.lizhiFind();
+							}
+						});
 					},
 					show() {
 						my("no").onclick = function() {
@@ -767,15 +692,43 @@
 							my("lizhi").style.display = "block";
 						}
 					},
-					lizhiFind(){
+					findByAll() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/find",
+							type: "post",
+							data: {
+								name: that.namess
+							},
+							success: function(result) {
+								that.organ = result;
+							}
+						});
+					},
+					findById() {
+						var that = this;
+						var json = JSON.stringify(that.shu);
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/findById",
+							data: json,
+							type: "post",
+							contentType: "application/json;charset=utf-8",
+							success: function(result) {
+								that.list = result;
+								$("#sys").css("display", "none");
+							}
+						});
+
+					},
+					lizhiFind() {
 						var that = this;
 						$.ajax({
 							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhifind",
 							type: "post",
-							data:{
-								name:that.names
+							data: {
+								name: that.names
 							},
-							dataType:"json",
+							dataType: "json",
 							xhrFields: {
 								withCredentials: true
 							},
@@ -784,10 +737,10 @@
 							}
 						});
 					},
-					lizhiDelete(){
+					lizhiDelete() {
 						var that = this;
 						$.ajax({
-							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhid/"+that.id,
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhid/" + that.id,
 							type: "post",
 							xhrFields: {
 								withCredentials: true
@@ -797,25 +750,25 @@
 							}
 						});
 					},
-					lizhiH(){
+					lizhiH() {
 						var that = this;
 						$.ajax({
-							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhih/"+that.id,
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhih/" + that.id,
 							type: "post",
 							xhrFields: {
 								withCredentials: true
 							},
-							success:function(result) {
+							success: function(result) {
 								that.lizhiFind();
 							}
 						});
 					},
-					lizhiB(){
+					lizhiB() {
 						var that = this;
 						$.ajax({
 							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib",
 							type: "post",
-							dataType:"json",
+							dataType: "json",
 							xhrFields: {
 								withCredentials: true
 							},
@@ -824,17 +777,69 @@
 							}
 						});
 					},
-					lizhiB1(){
+					lizhiB1() {
 						var that = this;
 						$.ajax({
 							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibu",
 							type: "post",
-							dataType:"json",
+							dataType: "json",
 							xhrFields: {
 								withCredentials: true
 							},
 							success: function(result) {
 								that.post1 = result;
+							}
+						});
+					},
+					lizhiId(id) {
+						var that = this;
+						that.id = id;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhiid/" + id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post2 = result;
+							}
+						});
+					},
+					lizhibb(id) {
+						var that = this;
+						that.id = id;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibuxuan/" + id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post = result;
+							}
+						});
+					},
+					lizhibb1() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib1/" + that.id,
+							type: "post",
+							xhrFields: {
+								withCredentials: true
+							},
+							success: function(result) {
+								that.post3 = result;
+							}
+						});
+					},
+					findId() {
+						var that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/allc",
+							data: that.taff,
+							type: "post",
+							success: function(result) {
+								that.list = result;
 							}
 						});
 					},
@@ -947,9 +952,11 @@
 					}
 				},
 				created() {
+					this.findByAll();
 					this.lizhiFind();
 					this.lizhiB();
 					this.lizhiB1();
+					this.lizhiyuans();
 					this.query1();
 					this.query2();
 					this.query3();

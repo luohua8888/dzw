@@ -50,13 +50,19 @@
         <result column="y1" property="y1" />
         <result column="y2" property="y2" />
         <result column="y3" property="y3" />
+        <result column="reserved3" property="reserved3" />
+        <result column="reserved5" property="reserved5" />
+        <result column="reserved1" property="reserved1" />
+        <result column="reserved2" property="reserved2" />
+        <result column="reserved4" property="reserved4" />
+        <result column="reserved9" property="reserved9" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, zhaopian, y1, y2, y3
+        yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, zhaopian, y1, y2, y3, reserved3, reserved5, reserved1, reserved2, reserved4, reserved9
     </sql>
     <update id="lizhih">
-        UPDATE `yuangongziliaobiao` SET `y1`=1 WHERE `yid`=${id}
+        UPDATE `yuangongziliaobiao` SET `y1`=1,y2="",y3="" WHERE `yid`=${id}
     </update>
 </mapper>

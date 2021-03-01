@@ -3,12 +3,14 @@ package com.accp.controller;
 
 import com.accp.domain.Bumenbiao;
 import com.accp.domain.Yuangongziliaobiao;
+import com.accp.domain.Zuzhijiegoubiao;
 import com.accp.mapper.BumenbiaoMapper;
+import com.accp.mapper.LizhiyuanyingbiaoMapper;
 import com.accp.mapper.YuangongziliaobiaoMapper;
 import com.accp.service.IBumenbiaoService;
 import com.accp.service.IYuangongziliaobiaoService;
+import com.accp.service.impl.ZuzhijiegoubiaoServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -20,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -44,9 +47,13 @@ public class LizhiyuanyingbiaoController {
     @Autowired
     BumenbiaoMapper bmapper;
     @Autowired
+    LizhiyuanyingbiaoMapper lmapper;
+    @Autowired
     IYuangongziliaobiaoService service;
     @Autowired
     IBumenbiaoService bservice;
+    @Autowired
+    ZuzhijiegoubiaoServiceImpl o;
 
     @RequestMapping("/lizhifind")
     public List<Yuangongziliaobiao> LizhiFind(String name){
@@ -78,6 +85,131 @@ public class LizhiyuanyingbiaoController {
     public List<Bumenbiao> LizhiB2(){
         List<Bumenbiao> s=bmapper.bu1();
         return s;
+    }
+
+    @RequestMapping("/lizhibuxuan/{id}")
+    public List<Bumenbiao> LizhibuXuan(@PathVariable Integer id){
+        List<Bumenbiao> s=bmapper.bu2(id);
+        return s;
+    }
+
+    @RequestMapping("/lizhiid/{id}")
+    public Yuangongziliaobiao LizhiId(@PathVariable("id") Integer id){
+        Yuangongziliaobiao s=service.getById(id);
+        return s;
+    }
+
+    @RequestMapping("/lizhixiu")
+    public boolean LizhiXiu(Yuangongziliaobiao stu){
+        boolean s=service.updateById(stu);
+        return s;
+    }
+
+    @RequestMapping("/find")
+    public List<Zuzhijiegoubiao> findByAll(String name){
+        QueryWrapper<Zuzhijiegoubiao> stu=new QueryWrapper<>();
+        if(name!=null&&name.length()>0){
+            stu.lambda().like(Zuzhijiegoubiao::getZid,name).or().like(Zuzhijiegoubiao::getZname,name);
+        }
+        return o.list(stu);
+    }
+
+    @RequestMapping("/findById")
+    public List<Yuangongziliaobiao> findById(@RequestBody List<Integer> s){
+        QueryWrapper<Yuangongziliaobiao> queryWrapper=new QueryWrapper<>();
+        for(Integer i:s){
+            queryWrapper.or().eq("reserved3",i);
+        }
+        queryWrapper.eq("y1",2);
+        List<Yuangongziliaobiao> sdd= service.list(queryWrapper);
+        for (Yuangongziliaobiao c: sdd) {
+            c.setBu(bservice.getById(c.getBid()));
+        }
+        return sdd;
+    }
+
+    @RequestMapping("/lizhib1/{id}")
+    public Bumenbiao lizhib1(@PathVariable("id") Integer id){
+        return bservice.getById(id);
+    }
+
+    @RequestMapping("/lizhiyuans")
+    public List<Yuangongziliaobiao> LizhiYuans(){
+        QueryWrapper<Yuangongziliaobiao> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("y1",1);
+        List<Yuangongziliaobiao> sdd= service.list(queryWrapper);
+        for (Yuangongziliaobiao c: sdd) {
+            c.setBu(bservice.getById(c.getBid()));
+        }
+        return sdd;
+    }
+
+    @RequestMapping("/lizhixz")
+    public boolean LizhiXz(Yuangongziliaobiao stu){
+        boolean s=lmapper.lizhixz(stu);
+        return s;
+    }
+
+    @RequestMapping("/allc")
+    public List<Yuangongziliaobiao> AllSelect(Yuangongziliaobiao s){
+        QueryWrapper<Yuangongziliaobiao> queryWrapper=new QueryWrapper<>();
+        if (s.getYname()!=null) {
+            queryWrapper.like("yname",s.getYname());
+        }
+        if (s.getYid()!=null) {
+            queryWrapper.like("yid",s.getYid());
+        }
+        if (s.getYsex()!=null) {
+            queryWrapper.like("ysex",s.getYsex());
+        }
+        if (s.getGid()!=null) {
+            queryWrapper.like("gid",s.getGid());
+        }
+        if (s.getBid()!=null) {
+            queryWrapper.like("bid",s.getBid());
+        }
+        if (s.getYheigth()!=null) {
+            queryWrapper.like("yheigth",s.getYheigth());
+        }
+        if (s.getYnativplaceid()!=null) {
+            queryWrapper.like("ynativplaceid",s.getYnativplaceid());
+        }
+        if (s.getYnationid()!=null) {
+            queryWrapper.like("ynationid",s.getYnationid());
+        }
+        if (s.getYschoolid()!=null) {
+            queryWrapper.like("yschoolid",s.getYschoolid());
+        }
+        if (s.getYspecialtyid()!=null) {
+            queryWrapper.like("yspecialtyid",s.getYspecialtyid());
+        }
+        if (s.getYspecialtynid()!=null) {
+            queryWrapper.like("yspecialtynid",s.getYspecialtynid());
+        }
+        if (s.getYdatetime()!=null) {
+            queryWrapper.like("ydatetime",s.getYdatetime());
+        }
+        if (s.getYorganizationid()!=null) {
+            queryWrapper.like("yorganizationid",s.getYorganizationid());
+        }
+        if (s.getYschoolid()!=null) {
+            queryWrapper.like("yschoolid",s.getYschoolid());
+        }
+        if (s.getYnumber()!=null) {
+            queryWrapper.like("ynumber",s.getYnumber());
+        }
+        if (s.getYattribute()!=null) {
+            queryWrapper.like("yattribute",s.getYattribute());
+        }
+        if (s.getYheigth()!=null) {
+            queryWrapper.like("yheigth",s.getYheigth());
+        }
+        queryWrapper.eq("y1",2);
+        List<Yuangongziliaobiao> stt= service.list(queryWrapper);
+        for (Yuangongziliaobiao sd: stt) {
+            sd.setBu(bservice.getById(sd.getBid()));
+        }
+        return stt;
     }
 
     @RequestMapping("/lizhid/{id}")
@@ -115,8 +247,8 @@ public class LizhiyuanyingbiaoController {
         y2Tilte.setCellValue("离职日期");
         y3Tilte.setCellValue("离职原因");
         if(s!=null){
-            for (int i = 1; i < s.size(); i++){
-                Yuangongziliaobiao xsdjValue = s.get(i);
+            for (int i = 1; i <= s.size(); i++){
+                Yuangongziliaobiao xsdjValue = s.get(i-1);
                 Row rowValue = sheet.createRow(i);
                 Cell ypositionsValue = rowValue.createCell(0);
                 Cell bnameValue = rowValue.createCell(1);

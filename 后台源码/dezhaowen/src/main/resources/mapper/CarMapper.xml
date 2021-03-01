@@ -82,7 +82,6 @@
         <result column="maintain" property="maintain" jdbcType="REAL" />
         <result column="maintaindate" property="maintaindate" jdbcType="DATE" />
         <result column="clientid" property="clientid" jdbcType="VARCHAR" />
-
         <result column="insuredcar" property="insuredcar" jdbcType="VARCHAR" />
         <result column="otherone" property="otherone" jdbcType="VARCHAR" />
         <result column="othertwo" property="othertwo" jdbcType="VARCHAR" />
@@ -90,6 +89,7 @@
         <result column="otherfour" property="otherfour" jdbcType="VARCHAR" />
         <result column="otherfive" property="otherfive" jdbcType="VARCHAR" />
     </resultMap>
+
     <resultMap type="com.accp.domain.Carinfo" id="BaseResult2" extends="BaseResultMap5">
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="carTypeName" property="carTypeName" jdbcType="VARCHAR" />

@@ -16,5 +16,7 @@
     <sql id="Base_Column_List">
         carcoding, brandname, initial, brand1, brand2, brand3
     </sql>
-
+    <select id="selectAllcx" resultMap="BaseResultMap">
+        SELECT carcoding, brandname, initial, brand1, brand2, brand3 FROM `carbrand`
+    </select>
 </mapper>

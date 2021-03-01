@@ -73,7 +73,7 @@ public class SysRoleController {
                 }
         }
 
-        @PostMapping("/xg")
+        @PostMapping("/xg")//修改
         public int xg(SysRole sys){
               boolean b = service.updateById(sys);
               if(b){

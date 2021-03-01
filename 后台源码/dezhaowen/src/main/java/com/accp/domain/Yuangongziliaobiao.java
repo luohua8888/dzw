@@ -15,8 +15,8 @@ import lombok.experimental.Accessors;
  * 
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author quanl
+ * @since 2021-03-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,6 +25,7 @@ import lombok.experimental.Accessors;
 public class Yuangongziliaobiao extends Model<Yuangongziliaobiao> {
 
     private static final long serialVersionUID=1L;
+
     @TableId("yid")
     @ApiModelProperty(value = "员工编号")
     private Integer yid;
@@ -167,6 +168,18 @@ public class Yuangongziliaobiao extends Model<Yuangongziliaobiao> {
     @TableField(exist = false)
     private Bumenbiao bu;
 
+    private Integer reserved3;
+
+    private Integer reserved5;
+
+    private String reserved1;
+
+    private String reserved2;
+
+    private String reserved4;
+
+    private String reserved9;
+
 
     public static final String YID = "yid";
 
@@ -259,6 +272,18 @@ public class Yuangongziliaobiao extends Model<Yuangongziliaobiao> {
     public static final String Y2 = "y2";
 
     public static final String Y3 = "y3";
+
+    public static final String RESERVED3 = "reserved3";
+
+    public static final String RESERVED5 = "reserved5";
+
+    public static final String RESERVED1 = "reserved1";
+
+    public static final String RESERVED2 = "reserved2";
+
+    public static final String RESERVED4 = "reserved4";
+
+    public static final String RESERVED9 = "reserved9";
 
     @Override
     protected Serializable pkVal() {

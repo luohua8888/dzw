@@ -66,7 +66,7 @@
 						<span @click="toadd"><img src="img/未标题-1.jpg" width="6%"><a href="javascript:void(0)">增加</a></span>
 						<span><img src="img/未标题-2.jpg" width="6%"><a href="javascript:void(0)" @click="remove()">删除</a> </span>
 						<span><img src="img/未标题-3.jpg" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
-						<span><img src="img/未标题-4.jpg" width="6%"><a href="javascript:void(0)">导出</a> </span>
+						<span><img src="img/未标题-4.jpg" width="6%"><a href="javascript:void(0)" @click="downloadEcxel">导出</a> </span>
 					</div>
 					<br />
 					<span style="margin-left: 50px;" v-if="addtext">
@@ -115,6 +115,9 @@
 					}
 				},
 				methods:{
+					downloadEcxel(){
+						window.location.href="http://127.0.0.1:8080/fadongjipinpaibiao/downloadEcxel"
+					},
 					//显示所有
 					find(){
 						let that=this;
@@ -180,7 +183,7 @@
 							that.find()
 						}
 					})
-			},
+			}, 
 					
 				 	//查询出选择qwe
 					findbyengin(item){

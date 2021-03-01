@@ -86,6 +86,10 @@
 		li {
 			list-style: none;
 		}
+		
+		.aaaaa{
+			margin-left:1200px;
+		}
 	</style>
 	<body>
 		<div id="ctn">
@@ -110,18 +114,18 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-8">
+					<!-- <div class="col-sm-8">
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<button class="btn btn-warning btn-xs" @click="addson">增加分类</button>
 						<button class="btn btn-warning btn-xs" @click="updatesame">修改分类</button>
 						<button class="btn btn-warning btn-xs">删除</button>
-					</div>
-					<div class="col-sm-3">
+					</div> -->
+					<div class="aaaaa">
 						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
 						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
-						<button class="btn btn-warning btn-xs">删除</button>
+						<button class="btn btn-warning btn-xs" @click="wxremove">删除</button>
 						<button class="btn btn-warning btn-xs" @click="pricechange">调价</button>
-						<button class="btn btn-warning btn-xs">导出</button>
+						<button class="btn btn-warning btn-xs" @click="downloadEcxel">导出</button>
 					</div>
 				</div>
 				<br />
@@ -181,18 +185,18 @@
 						</tr>
 						<tr class="pintr2" v-for="item in car">
 							<td class="item"></td>
-							<td>{{item.xiangmuleibie}}</td>
-							<td>{{item.wid}}</td>
-							<td>{{item.wname}}</td>
-							<td>{{item.sj}}</td>
-							<td>{{item.shourujizhong}}</td>
-							<td>{{item.bzj}}</td>
-							<td>{{item.hyj}}</td>
-							<td>{{item.vipj}}</td>
-							<td>{{item.xyj}}</td>
-							<td>{{item.spj}}</td>
-							<td>{{item.pxj}}</td>
-							<td>{{item.beizhu}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.xiangmuleibie}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.wid}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.wname}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.sj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.shourujizhong}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.bzj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.hyj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.vipj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.xyj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.spj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.pxj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.beizhu}}</td>
 						</tr>
 					</table>
 				</div>
@@ -218,7 +222,7 @@
 											<span class="til">服务项目定义</span>
 										</div>
 										<div class="col-sm-1">
-											<button type="button" class="btn btn-success">保存</button>
+											<button type="button" class="btn btn-success" @click="weixiuinsert">保存</button>
 										</div>
 									</div>
 
@@ -231,52 +235,55 @@
 									<p>
 										<span class="must">*</span>
 										<span class="va">项目编码</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" / v-model="wxadd.wid">
 										<span class="must">*</span>
 										<span class="va">项目名称</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="wxadd.wname"/>
 									</p>
 									<p>
 										<span class="must">*</span>
 										<span class="va">收入种类</span>
-										<select style="width: 150px;height: 25px;">
-											<option>工时费</option>
+										<select style="width: 150px;height: 25px;" v-model="wxadd.shourujizhong">
+											<option v-for="item in shouru">{{item.earningname}}</option>
 										</select>
 										<span class="must">*</span>
 										<span class="va">项目类别</span>
-										<select style="width: 150px;height: 25px;">
-											<option>中国重汽</option>
+										<select style="width: 150px;height: 25px;" v-if="panduan1" v-model="wxadd.xiangmuleibie">
+											<option v-for="item in chexin">{{item.fname}}</option>
+										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxadd.xiangmuleibie">
+											<option v-for="item in chexin">{{item.pname}}</option>
 										</select>
 									</p>
 									<p>
 										<span class="must"></span>
 										<span class="va">备注</span>
-										<input type="text" name="" id="" value="" style="width: 388px;" />
+										<input type="text" name="" id="" value="" style="width: 388px;" v-model="wxadd.beizhu"/>
 									</p>
 									<p>
 										<div class="price">
 											<span class="must"></span>
 											<span class="va">标准价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" value=""  @keyup="a()" v-model="wxadd.bzj" />
 
 											<span class="va">会员价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" @keyup="a()"  v-model="wxadd.hyj"/>
 
 											<span class="va">VIP价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.vipj"/>
 										</div>
 									</p>
 									<p>
 										<div class="price">
 											<span class="must"></span>
 											<span class="va">协议价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.xyj"/>
 
 											<span class="va">索赔价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.spj"/>
 
 											<span class="va">保险价</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.pxj"/>
 										</div>
 									</p>
 									<br />
@@ -302,7 +309,7 @@
 											<span class="til">服务项目定义</span>
 										</div>
 										<div class="col-sm-1">
-											<button type="button" class="btn btn-success">保存</button>
+											<button type="button" class="btn btn-success" @click="weixiuupdate">保存</button>
 										</div>
 									</div>
 
@@ -315,52 +322,55 @@
 									<p>
 										<span class="must">*</span>
 										<span class="va">项目编码</span>
-										<input type="text" name="" id="" value="1003" />
+										<input type="text" name="" id="" value="1003" v-model="wxupdate.wid"/>
 										<span class="must">*</span>
 										<span class="va">项目名称</span>
-										<input type="text" name="" id="" value="车型" />
+										<input type="text" name="" id="" value="车型" v-model="wxupdate.wname"/>
 									</p>
 									<p>
 										<span class="must">*</span>
 										<span class="va">收入种类</span>
-										<select style="width: 150px;height: 25px;">
-											<option>工时费</option>
+										<select style="width: 150px;height: 25px;" v-model="wxupdate.shourujizhong">
+											<option v-for="item in shouru">{{item.earningname}}</option>
 										</select>
 										<span class="must">*</span>
 										<span class="va">项目类别</span>
-										<select style="width: 150px;height: 25px;">
-											<option>中国重汽</option>
+										<select style="width: 150px;height: 25px;" v-if="panduan1" v-model="wxupdate.xiangmuleibie">
+											<option v-for="item in chexin">{{item.fname}}</option>
+										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxupdate.xiangmuleibie">
+											<option v-for="item in chexin">{{item.pname}}</option>
 										</select>
 									</p>
 									<p>
 										<span class="must"></span>
 										<span class="va">备注</span>
-										<input type="text" name="" id="" value="没有备注" style="width: 388px;" />
+										<input type="text" name="" id="" value="没有备注" style="width: 388px;" v-model="wxupdate.beizhu" />
 									</p>
 									<p>
 										<div class="price">
 											<span class="must"></span>
 											<span class="va">标准价</span>
-											<input type="text" name="" id="" value="66666" />
+											<input type="text" name="" id="" value="66666" @keyup="b()" v-model="wxupdate.bzj"/>
 
 											<span class="va">会员价</span>
-											<input type="text" name="" id="" value="55555" />
+											<input type="text" name="" id="" value="55555" v-model="wxupdate.hyj"/>
 
 											<span class="va">VIP价</span>
-											<input type="text" name="" id="" value="44444" />
+											<input type="text" name="" id="" value="44444" v-model="wxupdate.vipj"/>
 										</div>
 									</p>
 									<p>
 										<div class="price">
 											<span class="must"></span>
 											<span class="va">协议价</span>
-											<input type="text" name="" id="" value="33333" />
+											<input type="text" name="" id="" value="33333" v-model="wxupdate.xyj"/>
 
 											<span class="va">索赔价</span>
-											<input type="text" name="" id="" value="22222" />
+											<input type="text" name="" id="" value="22222" v-model="wxupdate.spj"/>
 
 											<span class="va">保险价</span>
-											<input type="text" name="" id="" value="11111" />
+											<input type="text" name="" id="" value="11111" v-model="wxupdate.pxj"/>
 										</div>
 									</p>
 									<br />
@@ -474,7 +484,7 @@
 											<span class="til">调价</span>
 										</div>
 										<div class="col-sm-1">
-											<button type="button" class="btn btn-success">保存</button>
+											<button @click="save" type="button" class="btn btn-success">保存</button>
 										</div>
 									</div>
 
@@ -488,19 +498,17 @@
 										<p>
 											<span class="must"></span>
 											<span class="va"></span>
-											<select style="width: 150px;height: 25px;">
-												<option>自费</option>
-												<option>促销</option>
-												<option>三包</option>
-												<option>标准价</option>
-												<option>会员价</option>
-												<option>VIP价</option>
-												<option>协议价</option>
-												<option>索赔价</option>
+											<select style="width: 150px;height: 25px;" v-model="jg">
+												<option  value="bzj">标准价</option>
+												<option value="hyj">会员价</option>
+												<option value="vipj">VIP价</option>
+												<option  value="xyj">协议价</option>
+												<option value="spj">索赔价</option>
+												<option value="pxj">保险价</option>	
 											</select>
 											<span class="must"></span>
 											<span class="va">= 标准价 *</span>
-											<input type="text" name="" id="" value="" />
+											<input type="text" name="" id="" value="" v-model="jgsr"/>
 										</p>
 									</p>
 									<br />
@@ -559,10 +567,77 @@
 						list2: [],
 						car: [],
 						chaxun: "",
+						xiala:[],
+						chexin:[],
+						panduan:false,
+						panduan1:true,
+						wxadd:{},
+						shouru:[],
+						sjan:"",
+						wxupdate:{},
+						jg:"",
+						jiege:{},
+						jgsr:""
 					}
 				},
 				methods: {
+					downloadEcxel(){
+						alert(this.chaxun);
+						window.location.href="http://127.0.0.1:8080/weixiubiao/downloadEcxel/"+this.chaxun
+					},
+					wxremove(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"/weixiubiao/wxremove/"+that.wxupdate.wid,
+								type:"post",
+								success:function(result){
+									that.find()
+								}
+							})
+					},
+					weixiuupdate(){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"/weixiubiao/weixiuupdate",
+							data:JSON.stringify(that.wxupdate),
+							dataType:"json",
+							type:"post",
+							xhrFields: {
+								withCredentials: true
+							},
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								console.log("修改进入")
+								that.find();
+							}
+						})
+					},
+					wxfindByid(item){
+						let that = this;
+						console.log("132132123")
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/wxfindByid/" + item.wid,
+							type:"get",
+							success: function(result) {
+								that.wxupdate = result;
+							}
+						})
+					},
+					weixiuinsert() {
+						let that = this;
+						that.wxadd.sj=that.sjan;
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/weixiuadd",
+							data: that.wxadd,
+							dataType: "json",
+							type: "post",
+							success: function(result) {
+								that.find();
+							}
+						})
+					},
 					wxfind(item) {
+						let that = this;
 						if (item) {
 							var js1 = item.pname;
 							var js2 = item.fname;
@@ -570,12 +645,20 @@
 						var js3 = 0;
 						if (js1 != null) {
 							js3 = js1;
+							that.chexin= that.list2
+							that.panduan1=false;
+							that.panduan=true;
+							that.sjan="车型";
 						}
 						if (js2 != null) {
 							js3 = js2;
+							that.chexin= that.list
+							
+							that.panduan1=true;
+							that.panduan=false;
+							that.sjan="发动机";
 						}
 						console.log(js3)
-						let that = this;
 						$.ajax({
 							url: BaseUrl + "/weixiubiao/weixiufind/" + js3,
 							type: "get",
@@ -587,7 +670,7 @@
 								console.log(result);
 								that.car = result
 							}
-						})
+						});
 					},
 					find() {
 						let that = this;
@@ -598,6 +681,15 @@
 								that.list2 = result.plist;
 								console.log(that.list)
 								that.wxfind(that.list[0])
+							}
+						})
+					},
+					shou(){
+						let that = this;
+						$.ajax({
+							url: BaseUrl+"/weixiubiao/shou",
+							success: function(result) {
+								that.shouru=result;
 							}
 						})
 					},
@@ -615,12 +707,40 @@
 					},
 					pricechange() {
 						$("#pricechangemodal").modal("show");
+					},
+					a(){
+						this.$set(this.wxadd,"hyj",this.wxadd.bzj*0.95);
+						this.$set(this.wxadd,"vipj",this.wxadd.bzj*0.9);
+						this.$set(this.wxadd,"xyj",this.wxadd.bzj*1.2);
+						this.$set(this.wxadd,"spj",this.wxadd.bzj*1.3);
+						this.$set(this.wxadd,"pxj",this.wxadd.bzj*1.4);
+					},
+					b(){
+							this.$set(this.wxupdate,"hyj",this.wxupdate	.bzj*0.95);
+							this.$set(this.wxupdate,"vipj",this.wxupdate.bzj*0.9);
+							this.$set(this.wxupdate,"xyj",this.wxupdate.bzj*1.2);
+							this.$set(this.wxupdate,"spj",this.wxupdate.bzj*1.3);
+							this.$set(this.wxupdate,"pxj",this.wxupdate.bzj*1.4);
+					},
+					save(){
+						let that=this;
+						this.jiege=JSON.parse(JSON.stringify(this.wxupdate));
+						this.jiege[this.jg]=this.jgsr*this.jiege.bzj;
+						$.ajax({
+							url:BaseUrl+"/weixiubiao/jgxg",
+							data:that.jiege,
+							type:"post",
+							success(data){
+								that.find();
+								$("#pricechangemodal").modal("hide");
+							}
+						})
 					}
 
 				},
 				created() {
 					this.find();
-
+					this.shou();
 				}
 			});
 			$(".pintr").click(function() {
@@ -644,6 +764,10 @@
 				$("#d1_body span").css("background", "")
 				$(this).css("background", "#666")
 				$(this).css("color", "#ffffff")
+			})
+			$(document).on('click', '.pintr1', function() {
+				$(".pintr1").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
 			})
 		</script>
 	</body>

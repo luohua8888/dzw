@@ -16,5 +16,7 @@
     <sql id="Base_Column_List">
         ytime, yreason, yid, y1, y2, y3
     </sql>
-
+    <update id="lizhixz">
+        UPDATE `yuangongziliaobiao` SET `y1`=2,`y2`=#{y2},`y3`=#{y3} WHERE `yid`=#{yid}
+    </update>
 </mapper>
