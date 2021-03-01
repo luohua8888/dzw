@@ -12,77 +12,85 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 	</head>
-		<style type="text/css">
-			html,body{
-				width: 100%;
-				height: 100%;
-			}
-			#ctn{
-				width: 99%;
-				height: 100%;
-				
-			}
-				
-			#find{
-				width: 100%;
-				margin-right: 20px;
-				
-			}
-			input[type="text"]{
-				height: 25px;
-				width: 150px;
-			}
-			#table{
-				width: 200px;
-			}
-			tr{
-				font-size: 12px;
-			}
-			#theme{
-				height: 88%;
-				background: #f7f7f7;
-			}
-			
-			.til{
-				display: inline-block;
-				padding-left: 10px;
-				height: 25px;
-				border-left: 4px solid sandybrown;
-			}
-			
-			.must{
-				display: inline-block;
-				width: 5px;
-				color: red;
-			}
-			
-			.va{
-				display: inline-block;
-				color: #39cede;
-				width: 70px;
-			}
-			
-			.price input[type="text"]{
-				width: 80px;
-			}
-			
-			.item{
-				width: 40px;
-				background: #666;
-			}
-			.item td{
-				border: 1px solid #666;
-			}
-			li{
-				list-style: none;
-			}
-			
-			
-			
-			
-		</style>
+	<style type="text/css">
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		#ctn {
+			width: 99%;
+			height: 100%;
+
+		}
+
+		#find {
+			width: 100%;
+			margin-right: 20px;
+
+		}
+
+		input[type="text"] {
+			height: 25px;
+			width: 150px;
+		}
+
+		#table {
+			width: 200px;
+		}
+
+		tr {
+			font-size: 12px;
+		}
+
+		#theme {
+			height: 88%;
+			background: #f7f7f7;
+		}
+
+		.til {
+			display: inline-block;
+			padding-left: 10px;
+			height: 25px;
+			border-left: 4px solid sandybrown;
+		}
+
+		.must {
+			display: inline-block;
+			width: 5px;
+			color: red;
+		}
+
+		.va {
+			display: inline-block;
+			color: #39cede;
+			width: 70px;
+		}
+
+		.price input[type="text"] {
+			width: 80px;
+		}
+
+		.item {
+			width: 40px;
+			background: #666;
+		}
+
+		.item td {
+			border: 1px solid #666;
+		}
+
+		li {
+			list-style: none;
+		}
+		
+		.aaaaa{
+			margin-left:1200px;
+		}
+	</style>
 	<body>
 		<div id="ctn">
 			<div class="row">
@@ -92,96 +100,72 @@
 				<div class="col-sm-6"></div>
 				<div class="col-sm-3">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" />
-					<button class="btn btn-warning btn-xs">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" v-model="chaxun" />
+					<button class="btn btn-warning btn-xs" @click="wxfind(car[0])">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
-					<button class="btn btn-xs" >关闭</button>
+					<button class="btn btn-xs">关闭</button>
 				</div>
 			</div>
 			<div id="theme">
 				<div id="find">
 					<hr />
 				</div>
-				
+
 				<div class="row">
-					<div class="col-sm-8">
+					<!-- <div class="col-sm-8">
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<button class="btn btn-warning btn-xs" @click="addson">增加分类</button>
 						<button class="btn btn-warning btn-xs" @click="updatesame">修改分类</button>
 						<button class="btn btn-warning btn-xs">删除</button>
-					</div>
-					<div class="col-sm-3">
+					</div> -->
+					<div class="aaaaa">
 						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
 						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
-						<button class="btn btn-warning btn-xs">删除</button>
+						<button class="btn btn-warning btn-xs" @click="wxremove">删除</button>
 						<button class="btn btn-warning btn-xs" @click="pricechange">调价</button>
-						<button class="btn btn-warning btn-xs">导出</button>
+						<button class="btn btn-warning btn-xs" @click="downloadEcxel">导出</button>
 					</div>
 				</div>
 				<br />
-				
+
 				<div style="width: 200px;height: 85%;margin-left: 0px; background: #ffffff;">
 					<br />
 					<div id="table" style="background: #ffffff;">
 						<div id="d1">
-						    <div id="d1_body">
-						        <ul>
-						            <li>
-						                <img onclick="doAction2(1);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
+							<div id="d1_body">
+								<ul>
+									<li>
+										<img onclick="doAction2(1);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
 										<span onclick="doAction(1);"><span><a href="javascript:void(0)">车型</a></span></span>
-						            </li>
-						            <ul style="display:none;" id="u1">
-						                <li>
+									</li>
+									<ul style="display:none;" id="u1">
+										<li v-for="item in list2">
 											<a href="#">
 												<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-												<span>中国重汽</span>
+												<span @click="wxfind(item)">{{item.pname}}</span>
 											</a>
 										</li>
-						                 <li>
-						                	<a href="#">
-						                		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						                		<span>陕汽重卡</span>
-						                	</a>
-						                </li>
-										 <li>
-											<a href="#">
-												<img onclick2="doAction(1);" src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-												<span>中国红旗</span>
-											</a>
-										</li>
-						            </ul>
-						            <li>
+									</ul>
+									<li>
 										<img onclick="doAction2(2);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
-						                <span onclick="doAction(2);"><span><a href="javascript:void(0)">发动机</a></span></span>
-						            </li>
-						            <ul style="display:none;" id="u2">
-						                <li>
-						               	<a href="#">
-						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>一号发动机</span>
-						               	</a>
-						               </li>
-						                <li>
-						               	<a href="#">
-						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>二号发动机</span>
-						               	</a>
-						               </li>
-						                <li>
-						               	<a href="#">
-						               		<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>三号发动机</span>
-						               	</a>
-						               </li>
-						            </ul>
-						        </ul>
-						    </div>
+										<span onclick="doAction(2);"><span><a href="javascript:void(0)">发动机</a></span></span>
+									</li>
+									<ul style="display:none;" id="u2">
+										<li v-for="item in list">
+											<a href="#">
+												<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+												<span @click="wxfind(item)">{{item.fname}}</span>
+											</a>
+										</li>
+									</ul>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
 					<table class="table table-bordered table-striped table-hover">
 						<tr style="background: #39cede;">
@@ -199,467 +183,592 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
 						</tr>
-						<tr class="pintr2">
+						<tr class="pintr2" v-for="item in car">
 							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1003</td>
-							<td>更换后钢板销或衬套</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>6666666</td>
-							<td>156222</td>
-							<td>136566</td>
-							<td>156656</td>
-							<td>187888</td>
-							<td>198556</td>
-							<td>没有备注</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1053</td>
-							<td>更换前置轮胎</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>522</td>
-							<td>253</td>
-							<td>524</td>
-							<td>244</td>
-							<td>534</td>
-							<td>242</td>
-							<td>好好修</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1123</td>
-							<td>检查后桥轴间间隙</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>342</td>
-							<td>342</td>
-							<td>435</td>
-							<td>344</td>
-							<td>243</td>
-							<td>546</td>
-							<td>没有备注</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.xiangmuleibie}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.wid}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.wname}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.sj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.shourujizhong}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.bzj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.hyj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.vipj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.xyj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.spj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.pxj}}</td>
+							<td class="pintr1" @click="wxfindByid(item)">{{item.beizhu}}</td>
 						</tr>
 					</table>
 				</div>
-				
+
 			</div>
-			
-			
-			
-			
+
+
+
+
 			<!-- 模态框 -->
-			
+
 			<div id="modal">
-				
+
 				<!-- 新增服务项目 -->
 				<div class="modal fade" id="addservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">
-							<div class="row">
-								<div class="col-sm-9">
-									<span class="til">服务项目定义</span>
-								</div>
-								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
-								</div>
-							</div>
-							
-							
-						</h4>
-				      </div>
-				      <div class="modal-body">
-				        	<div style="background:#f7f7f7 ;">
-								<br />
-								<p>
-									<span class="must">*</span>
-									<span class="va">项目编码</span>
-									<input type="text" name="" id="" value="" />
-									<span class="must">*</span>
-									<span class="va">项目名称</span>
-									<input type="text" name="" id="" value="" />
-								</p>
-								<p>
-									<span class="must">*</span>
-									<span class="va">收入种类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>工时费</option>
-									</select>
-									<span class="must">*</span>
-									<span class="va">项目类别</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
-									</select>
-								</p>
-								<p>
-									<span class="must"></span>
-									<span class="va">备注</span>
-									<input type="text" name="" id="" value="" style="width: 388px;"/>
-								</p>
-								<p>
-									<div class="price">
-										<span class="must"></span>
-										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="" />
-										
-										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="" />
-										
-										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="" />
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">
+									<div class="row">
+										<div class="col-sm-9">
+											<span class="til">服务项目定义</span>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-success" @click="weixiuinsert">保存</button>
+										</div>
 									</div>
-								</p>
-								<p>
-									<div class="price">
-										<span class="must"></span>
-										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="" />
-										
-										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="" />
-										
-										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="" />
-									</div>
-								</p>
-								<br />
+
+
+								</h4>
 							</div>
-				      </div>
-				     
-				    </div>
-				  </div>
-				</div>
-				
-				
-				
-				
-				<!-- 修改服务项目 -->
-				<div class="modal fade" id="updateservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">
-							<div class="row">
-								<div class="col-sm-9">
-									<span class="til">服务项目定义</span>
-								</div>
-								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
-								</div>
-							</div>
-							
-							
-						</h4>
-				      </div>
-				      <div class="modal-body">
-				        	<div style="background:#f7f7f7 ;">
-								<br />
-								<p>
-									<span class="must">*</span>
-									<span class="va">项目编码</span>
-									<input type="text" name="" id="" value="1003" />
-									<span class="must">*</span>
-									<span class="va">项目名称</span>
-									<input type="text" name="" id="" value="车型" />
-								</p>
-								<p>
-									<span class="must">*</span>
-									<span class="va">收入种类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>工时费</option>
-									</select>
-									<span class="must">*</span>
-									<span class="va">项目类别</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
-									</select>
-								</p>
-								<p>
-									<span class="must"></span>
-									<span class="va">备注</span>
-									<input type="text" name="" id="" value="没有备注" style="width: 388px;"/>
-								</p>
-								<p>
-									<div class="price">
-										<span class="must"></span>
-										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="66666" />
-										
-										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="55555" />
-										
-										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="44444" />
-									</div>
-								</p>
-								<p>
-									<div class="price">
-										<span class="must"></span>
-										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="33333" />
-										
-										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="22222" />
-										
-										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="11111" />
-									</div>
-								</p>
-								<br />
-							</div>
-				      </div>
-				     
-				    </div>
-				  </div>
-				</div>
-				
-				
-				
-				
-				<!-- 添加子类 -->
-				<div class="modal fade" id="addsonmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">
-							<div class="row">
-								<div class="col-sm-9">
-									<span class="til">添加分类</span>
-								</div>
-								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
-								</div>
-							</div>
-							
-							
-						</h4>
-				      </div>
-				      <div class="modal-body">
-				        	<div style="background:#f7f7f7;text-align: center;">
-								<br />
-								<p>
-									<span class="must"></span>
-									<span class="va">类别编码</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
-									</select>
-								</p>
-								<p>
-									<span class="must"></span>
-									<span class="va">类别名称</span>
-									<input type="text" name="" id="" value="" />
-								</p>
-								<br />
-							</div>
-				      </div>
-				      <div class="modal-footer">
-				        
-				      </div>
-				    </div>
-				  </div>
-				</div>
-				
-				
-				<!-- 修改子类 -->
-				<div class="modal fade" id="updatesamemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">
-							<div class="row">
-								<div class="col-sm-9">
-									<span class="til">修改分类</span>
-								</div>
-								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
-								</div>
-							</div>
-							
-							
-						</h4>
-				      </div>
-				      <div class="modal-body">
-				        	<div style="background:#f7f7f7;text-align: center;">
-								<br />
-								<p>
-									<span class="must"></span>
-									<span class="va">类别编码</span>
-									<input type="text" name="" id="" value="113" />
-								</p>
-								<p>
-									<span class="must"></span>
-									<span class="va">类别名称</span>
-									<input type="text" name="" id="" value="中国重汽" />
-								</p>
-								<br />
-							</div>
-				      </div>
-				      <div class="modal-footer">
-				        
-				      </div>
-				    </div>
-				  </div>
-				</div>
-				
-				
-				<!-- 调价 -->
-				<div class="modal fade" id="pricechangemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">
-							<div class="row">
-								<div class="col-sm-9">
-									<span class="til">调价</span>
-								</div>
-								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
-								</div>
-							</div>
-							
-							
-						</h4>
-				      </div>
-				      <div class="modal-body">
-				        	<div style="background:#f7f7f7;">
-								<br />
-								<p>
+							<div class="modal-body">
+								<div style="background:#f7f7f7 ;">
+									<br />
+									<p>
+										<span class="must">*</span>
+										<span class="va">项目编码</span>
+										<input type="text" name="" id="" value="" / v-model="wxadd.wid">
+										<span class="must">*</span>
+										<span class="va">项目名称</span>
+										<input type="text" name="" id="" value="" v-model="wxadd.wname"/>
+									</p>
+									<p>
+										<span class="must">*</span>
+										<span class="va">收入种类</span>
+										<select style="width: 150px;height: 25px;" v-model="wxadd.shourujizhong">
+											<option v-for="item in shouru">{{item.earningname}}</option>
+										</select>
+										<span class="must">*</span>
+										<span class="va">项目类别</span>
+										<select style="width: 150px;height: 25px;" v-if="panduan1" v-model="wxadd.xiangmuleibie">
+											<option v-for="item in chexin">{{item.fname}}</option>
+										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxadd.xiangmuleibie">
+											<option v-for="item in chexin">{{item.pname}}</option>
+										</select>
+									</p>
 									<p>
 										<span class="must"></span>
-										<span class="va"></span>
-										<select style="width: 150px;height: 25px;">
-											<option>自费</option>
-											<option>促销</option>
-											<option>三包</option>
-											<option>标准价</option>
-											<option>会员价</option>
-											<option>VIP价</option>
-											<option>协议价</option>
-											<option>索赔价</option>
+										<span class="va">备注</span>
+										<input type="text" name="" id="" value="" style="width: 388px;" v-model="wxadd.beizhu"/>
+									</p>
+									<p>
+										<div class="price">
+											<span class="must"></span>
+											<span class="va">标准价</span>
+											<input type="text" name="" id="" value=""  @keyup="a()" v-model="wxadd.bzj" />
+
+											<span class="va">会员价</span>
+											<input type="text" name="" id="" @keyup="a()"  v-model="wxadd.hyj"/>
+
+											<span class="va">VIP价</span>
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.vipj"/>
+										</div>
+									</p>
+									<p>
+										<div class="price">
+											<span class="must"></span>
+											<span class="va">协议价</span>
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.xyj"/>
+
+											<span class="va">索赔价</span>
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.spj"/>
+
+											<span class="va">保险价</span>
+											<input type="text" name="" id="" @keyup="a()" v-model="wxadd.pxj"/>
+										</div>
+									</p>
+									<br />
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<!-- 修改服务项目 -->
+				<div class="modal fade" id="updateservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">
+									<div class="row">
+										<div class="col-sm-9">
+											<span class="til">服务项目定义</span>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-success" @click="weixiuupdate">保存</button>
+										</div>
+									</div>
+
+
+								</h4>
+							</div>
+							<div class="modal-body">
+								<div style="background:#f7f7f7 ;">
+									<br />
+									<p>
+										<span class="must">*</span>
+										<span class="va">项目编码</span>
+										<input type="text" name="" id="" value="1003" v-model="wxupdate.wid"/>
+										<span class="must">*</span>
+										<span class="va">项目名称</span>
+										<input type="text" name="" id="" value="车型" v-model="wxupdate.wname"/>
+									</p>
+									<p>
+										<span class="must">*</span>
+										<span class="va">收入种类</span>
+										<select style="width: 150px;height: 25px;" v-model="wxupdate.shourujizhong">
+											<option v-for="item in shouru">{{item.earningname}}</option>
 										</select>
+										<span class="must">*</span>
+										<span class="va">项目类别</span>
+										<select style="width: 150px;height: 25px;" v-if="panduan1" v-model="wxupdate.xiangmuleibie">
+											<option v-for="item in chexin">{{item.fname}}</option>
+										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxupdate.xiangmuleibie">
+											<option v-for="item in chexin">{{item.pname}}</option>
+										</select>
+									</p>
+									<p>
 										<span class="must"></span>
-										<span class="va">=  标准价 *</span>
+										<span class="va">备注</span>
+										<input type="text" name="" id="" value="没有备注" style="width: 388px;" v-model="wxupdate.beizhu" />
+									</p>
+									<p>
+										<div class="price">
+											<span class="must"></span>
+											<span class="va">标准价</span>
+											<input type="text" name="" id="" value="66666" @keyup="b()" v-model="wxupdate.bzj"/>
+
+											<span class="va">会员价</span>
+											<input type="text" name="" id="" value="55555" v-model="wxupdate.hyj"/>
+
+											<span class="va">VIP价</span>
+											<input type="text" name="" id="" value="44444" v-model="wxupdate.vipj"/>
+										</div>
+									</p>
+									<p>
+										<div class="price">
+											<span class="must"></span>
+											<span class="va">协议价</span>
+											<input type="text" name="" id="" value="33333" v-model="wxupdate.xyj"/>
+
+											<span class="va">索赔价</span>
+											<input type="text" name="" id="" value="22222" v-model="wxupdate.spj"/>
+
+											<span class="va">保险价</span>
+											<input type="text" name="" id="" value="11111" v-model="wxupdate.pxj"/>
+										</div>
+									</p>
+									<br />
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<!-- 添加子类 -->
+				<div class="modal fade" id="addsonmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">
+									<div class="row">
+										<div class="col-sm-9">
+											<span class="til">添加分类</span>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-success">保存</button>
+										</div>
+									</div>
+
+
+								</h4>
+							</div>
+							<div class="modal-body">
+								<div style="background:#f7f7f7;text-align: center;">
+									<br />
+									<p>
+										<span class="must"></span>
+										<span class="va">类别编码</span>
+										<select style="width: 150px;height: 25px;">
+											<option>中国重汽</option>
+										</select>
+									</p>
+									<p>
+										<span class="must"></span>
+										<span class="va">类别名称</span>
 										<input type="text" name="" id="" value="" />
 									</p>
-								</p>
-								<br />
+									<br />
+								</div>
 							</div>
-				      </div>
-				      <div class="modal-footer">
-				        
-				      </div>
-				    </div>
-				  </div>
+							<div class="modal-footer">
+
+							</div>
+						</div>
+					</div>
 				</div>
-				
-				
-				
+
+
+				<!-- 修改子类 -->
+				<div class="modal fade" id="updatesamemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">
+									<div class="row">
+										<div class="col-sm-9">
+											<span class="til">修改分类</span>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-success">保存</button>
+										</div>
+									</div>
+
+
+								</h4>
+							</div>
+							<div class="modal-body">
+								<div style="background:#f7f7f7;text-align: center;">
+									<br />
+									<p>
+										<span class="must"></span>
+										<span class="va">类别编码</span>
+										<input type="text" name="" id="" value="113" />
+									</p>
+									<p>
+										<span class="must"></span>
+										<span class="va">类别名称</span>
+										<input type="text" name="" id="" value="中国重汽" />
+									</p>
+									<br />
+								</div>
+							</div>
+							<div class="modal-footer">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- 调价 -->
+				<div class="modal fade" id="pricechangemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">
+									<div class="row">
+										<div class="col-sm-9">
+											<span class="til">调价</span>
+										</div>
+										<div class="col-sm-1">
+											<button @click="save" type="button" class="btn btn-success">保存</button>
+										</div>
+									</div>
+
+
+								</h4>
+							</div>
+							<div class="modal-body">
+								<div style="background:#f7f7f7;">
+									<br />
+									<p>
+										<p>
+											<span class="must"></span>
+											<span class="va"></span>
+											<select style="width: 150px;height: 25px;" v-model="jg">
+												<option  value="bzj">标准价</option>
+												<option value="hyj">会员价</option>
+												<option value="vipj">VIP价</option>
+												<option  value="xyj">协议价</option>
+												<option value="spj">索赔价</option>
+												<option value="pxj">保险价</option>	
+											</select>
+											<span class="must"></span>
+											<span class="va">= 标准价 *</span>
+											<input type="text" name="" id="" value="" v-model="jgsr"/>
+										</p>
+									</p>
+									<br />
+								</div>
+							</div>
+							<div class="modal-footer">
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			
-			
-			
-			
 		</div>
-		
-<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/vue.js"></script>		
-<script>
-	
-// 	 function doAction(index){
-// 	    var obj = document.getElementById('u' + index);
-// 	    if(obj.style.display == 'none'){
-// 	            obj.style.display = 'block';
-// 	    }else{
-// 	            obj.style.display = 'none';
-// 	    }
-// 	}
-	
-	 function doAction(index){
-	    var obj = document.getElementById('u' + index);
-	    if(obj.style.display == 'none'){
-	            obj.style.display = 'block';
-	    }
-	}
-	
-	function doAction2(index){
-	    var obj = document.getElementById('u' + index);
-			if(obj.style.display == 'none'){
- 	            obj.style.display = 'block';
-			}else{
-				obj.style.display = 'none';
+
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script>
+			var BaseUrl = "http://127.0.0.1:8080";
+			// 	 function doAction(index){
+			// 	    var obj = document.getElementById('u' + index);
+			// 	    if(obj.style.display == 'none'){
+			// 	            obj.style.display = 'block';
+			// 	    }else{
+			// 	            obj.style.display = 'none';
+			// 	    }
+			// 	}
+
+			function doAction(index) {
+				var obj = document.getElementById('u' + index);
+				if (obj.style.display == 'none') {
+					obj.style.display = 'block';
+				}
 			}
-	}
-			
-	function test(){
-	    var obj = document.getElementById('d1');
-	    alert(obj.innerHTML);
-	}
-	
-	
-	new Vue({
-		el:"#ctn",
-		data(){
-			return{
-				
+
+			function doAction2(index) {
+				var obj = document.getElementById('u' + index);
+				if (obj.style.display == 'none') {
+					obj.style.display = 'block';
+				} else {
+					obj.style.display = 'none';
+				}
 			}
-		},
-		methods:{
-			addservice(){
-				$("#addservicemodal").modal("show");
-			},
-			updateservice(){
-				$("#updateservicemodal").modal("show");
-			},
-			addson(){
-				$("#addsonmodal").modal("show");
-			},
-			updatesame(){
-				$("#updatesamemodal").modal("show");
-			},
-			pricechange(){
-				$("#pricechangemodal").modal("show");
+
+			function test() {
+				var obj = document.getElementById('d1');
+				alert(obj.innerHTML);
 			}
-			
-		},
-		created(){
-			
-		}
-	});
-	$(".pintr").click(function(){
-		$(".pintr").css("background","#ffffff")
-		$(this).css("background","sandybrown")
-	});
-	$(".pintr2").click(function(){
-		$(".pintr2").css("background","#ffffff")
-		$(this).css("background","sandybrown")
-	});
-	
-	
-	$(".file1").mouseover(function(){
-		$(this).css("background","#e7e7e7")
-	}).mouseout(function(){
-		$(this).css("background","")
-	})
-	
-	$("#d1_body span").click(function(){
-		$("#d1_body span").css("color","")
-		$("#d1_body span").css("background","")
-		$(this).css("background","#666")
-		$(this).css("color","#ffffff")
-	})
-	
-</script>
+
+
+			new Vue({
+				el: "#ctn",
+				data() {
+					return {
+						list: [],
+						list2: [],
+						car: [],
+						chaxun: "",
+						xiala:[],
+						chexin:[],
+						panduan:false,
+						panduan1:true,
+						wxadd:{},
+						shouru:[],
+						sjan:"",
+						wxupdate:{},
+						jg:"",
+						jiege:{},
+						jgsr:""
+					}
+				},
+				methods: {
+					downloadEcxel(){
+						alert(this.chaxun);
+						window.location.href="http://127.0.0.1:8080/weixiubiao/downloadEcxel/"+this.chaxun
+					},
+					wxremove(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"/weixiubiao/wxremove/"+that.wxupdate.wid,
+								type:"post",
+								success:function(result){
+									that.find()
+								}
+							})
+					},
+					weixiuupdate(){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"/weixiubiao/weixiuupdate",
+							data:JSON.stringify(that.wxupdate),
+							dataType:"json",
+							type:"post",
+							xhrFields: {
+								withCredentials: true
+							},
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								console.log("修改进入")
+								that.find();
+							}
+						})
+					},
+					wxfindByid(item){
+						let that = this;
+						console.log("132132123")
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/wxfindByid/" + item.wid,
+							type:"get",
+							success: function(result) {
+								that.wxupdate = result;
+							}
+						})
+					},
+					weixiuinsert() {
+						let that = this;
+						that.wxadd.sj=that.sjan;
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/weixiuadd",
+							data: that.wxadd,
+							dataType: "json",
+							type: "post",
+							success: function(result) {
+								that.find();
+							}
+						})
+					},
+					wxfind(item) {
+						let that = this;
+						if (item) {
+							var js1 = item.pname;
+							var js2 = item.fname;
+						}
+						var js3 = 0;
+						if (js1 != null) {
+							js3 = js1;
+							that.chexin= that.list2
+							that.panduan1=false;
+							that.panduan=true;
+							that.sjan="车型";
+						}
+						if (js2 != null) {
+							js3 = js2;
+							that.chexin= that.list
+							
+							that.panduan1=true;
+							that.panduan=false;
+							that.sjan="发动机";
+						}
+						console.log(js3)
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/weixiufind/" + js3,
+							type: "get",
+							data: {
+								chaxun: that.chaxun
+							},
+							dataType: "json",
+							success: function(result) {
+								console.log(result);
+								that.car = result
+							}
+						});
+					},
+					find() {
+						let that = this;
+						$.ajax({
+							url: BaseUrl + "/weixiubiao/findall",
+							success: function(result) {
+								that.list = result.flist;
+								that.list2 = result.plist;
+								console.log(that.list)
+								that.wxfind(that.list[0])
+							}
+						})
+					},
+					shou(){
+						let that = this;
+						$.ajax({
+							url: BaseUrl+"/weixiubiao/shou",
+							success: function(result) {
+								that.shouru=result;
+							}
+						})
+					},
+					addservice() {
+						$("#addservicemodal").modal("show");
+					},
+					updateservice() {
+						$("#updateservicemodal").modal("show");
+					},
+					addson() {
+						$("#addsonmodal").modal("show");
+					},
+					updatesame() {
+						$("#updatesamemodal").modal("show");
+					},
+					pricechange() {
+						$("#pricechangemodal").modal("show");
+					},
+					a(){
+						this.$set(this.wxadd,"hyj",this.wxadd.bzj*0.95);
+						this.$set(this.wxadd,"vipj",this.wxadd.bzj*0.9);
+						this.$set(this.wxadd,"xyj",this.wxadd.bzj*1.2);
+						this.$set(this.wxadd,"spj",this.wxadd.bzj*1.3);
+						this.$set(this.wxadd,"pxj",this.wxadd.bzj*1.4);
+					},
+					b(){
+							this.$set(this.wxupdate,"hyj",this.wxupdate	.bzj*0.95);
+							this.$set(this.wxupdate,"vipj",this.wxupdate.bzj*0.9);
+							this.$set(this.wxupdate,"xyj",this.wxupdate.bzj*1.2);
+							this.$set(this.wxupdate,"spj",this.wxupdate.bzj*1.3);
+							this.$set(this.wxupdate,"pxj",this.wxupdate.bzj*1.4);
+					},
+					save(){
+						let that=this;
+						this.jiege=JSON.parse(JSON.stringify(this.wxupdate));
+						this.jiege[this.jg]=this.jgsr*this.jiege.bzj;
+						$.ajax({
+							url:BaseUrl+"/weixiubiao/jgxg",
+							data:that.jiege,
+							type:"post",
+							success(data){
+								that.find();
+								$("#pricechangemodal").modal("hide");
+							}
+						})
+					}
+
+				},
+				created() {
+					this.find();
+					this.shou();
+				}
+			});
+			$(".pintr").click(function() {
+				$(".pintr").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			});
+			$(".pintr2").click(function() {
+				$(".pintr2").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			});
+
+
+			$(".file1").mouseover(function() {
+				$(this).css("background", "#e7e7e7")
+			}).mouseout(function() {
+				$(this).css("background", "")
+			})
+
+			$("#d1_body span").click(function() {
+				$("#d1_body span").css("color", "")
+				$("#d1_body span").css("background", "")
+				$(this).css("background", "#666")
+				$(this).css("color", "#ffffff")
+			})
+			$(document).on('click', '.pintr1', function() {
+				$(".pintr1").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			})
+		</script>
 	</body>
 </html>

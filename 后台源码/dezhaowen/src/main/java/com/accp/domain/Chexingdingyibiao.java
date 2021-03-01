@@ -1,7 +1,12 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,11 +15,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-02-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -51,8 +56,9 @@ public class Chexingdingyibiao extends Model<Chexingdingyibiao> {
     @ApiModelProperty(value = "发动机品牌")
     private String fadingjipingpai;
 
-    @ApiModelProperty(value = "备用字段")
-    private String c1;
+    @ApiModelProperty(value = "车型id")
+    @TableId()
+    private Integer cheid;
 
     @ApiModelProperty(value = " 备用字段")
     private String c2;
@@ -63,6 +69,8 @@ public class Chexingdingyibiao extends Model<Chexingdingyibiao> {
     @ApiModelProperty(value = "照片")
     private String zhaopian;
 
+    @TableField(exist = false)
+    private Pinpaichexing ping;
 
     public static final String CID = "cid";
 

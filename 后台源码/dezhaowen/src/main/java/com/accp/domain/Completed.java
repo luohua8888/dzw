@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -36,10 +38,10 @@ public class Completed extends Model<Completed> {
     private Integer yesOrno;
 
     @ApiModelProperty(value = "预计完工时间")
-    private LocalDateTime predicttime;
+    private Date predicttime;
 
     @ApiModelProperty(value = "实际完工时间")
-    private LocalDateTime nowtime;
+    private Date nowtime;
 
     @ApiModelProperty(value = "误工原因")
     private String reason;

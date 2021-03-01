@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -68,6 +69,16 @@ public class SysMenu extends Model<SysMenu> {
 
     @ApiModelProperty(value = "备用字段")
     private String men3;
+    @ApiModelProperty(value = "字节的集合")
+
+    @TableField(exist = false)
+    private List<SysMenu> children;
+
+    @TableField(exist = false)
+    private boolean l;
+
+    @TableField(exist = false)
+    private Integer roleId;
 
     @ApiModelProperty(value = "children")
     private List<SysMenu> children;
@@ -98,6 +109,7 @@ public class SysMenu extends Model<SysMenu> {
     public static final String MEN2 = "men2";
 
     public static final String MEN3 = "men3";
+    
 
     @Override
     protected Serializable pkVal() {

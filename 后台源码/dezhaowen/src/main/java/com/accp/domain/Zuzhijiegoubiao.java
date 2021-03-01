@@ -1,7 +1,11 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,6 +28,10 @@ public class Zuzhijiegoubiao extends Model<Zuzhijiegoubiao> {
 
     private static final long serialVersionUID=1L;
 
+    @TableField(exist = false)
+    private List<Zuzhijiegoubiao> children;
+
+    @TableId("zid")
     @ApiModelProperty(value = "机构id")
     private Integer zid;
 

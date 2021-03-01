@@ -23,6 +23,24 @@
     <sql id="Base_Column_List">
         menu_id, menu_name, parent_id, order_num, url, menu_type, visible, perms, create_time, remark, men1, men2, men3
     </sql>
+    <resultMap type="com.accp.domain.SysMenu" id="BaseResultMapss" extends="BaseResultMap">
+        <collection property="children" column="{id=menu_id,roleid=role_id}" ofType="com.accp.domain.SysMenu" select="select"  >
+            <result property="menuId" column="menu_id"/>
+            <result property="roleId" column="role_id"/>
+        </collection>
+    </resultMap>
+
+    <resultMap type="com.accp.domain.SysMenu" id="BaseResultMaptt" >
+        <result property="roleId" column="role_id"/>
+    </resultMap>
+
+    <select id="select" resultMap="BaseResultMapss" >
+  	SELECT * FROM sys_menu AS sys,sys_role_menu AS role WHERE sys.`menu_id`=role.`menu_id` AND role.`role_id`= #{roleid}  AND sys.`parent_id`=#{id}
+    </select>
+
+    <select id="select1" resultMap="BaseResultMaptt">
+       SELECT sys.*,role.role_id FROM sys_menu AS sys,sys_role_menu AS role WHERE sys.`menu_id`=role.`menu_id` AND role.`role_id`= #{roleid}
+    </select>
 
     <resultMap type="com.accp.domain.SysMenu" id="BaseResultMapExtends" extends="BaseResultMap">
         <collection property="children" column="menu_id" ofType="com.accp.domain.SysMenu" select="findMenuByRoleId"></collection>

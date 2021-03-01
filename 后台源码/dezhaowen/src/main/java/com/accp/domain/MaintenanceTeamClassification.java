@@ -1,7 +1,10 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,11 +13,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-01-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -39,6 +42,8 @@ public class MaintenanceTeamClassification extends Model<MaintenanceTeamClassifi
     @ApiModelProperty(value = "备用字段")
     private String class3;
 
+    @TableField(exist = false)
+    private List<MaintenanceTeam> list;
 
     public static final String CLASSIFICATIONID = "classificationid";
 

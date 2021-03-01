@@ -1,7 +1,10 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,11 +13,11 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
- * @author yy
- * @since 2021-02-22
+ * @author ytang
+ * @since 2021-01-27
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,6 +27,7 @@ public class Gangweibiao extends Model<Gangweibiao> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId("gid")
     @ApiModelProperty(value = "岗位编码")
     private Integer gid;
 

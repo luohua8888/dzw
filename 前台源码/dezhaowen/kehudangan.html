@@ -42,7 +42,7 @@
 				<img src="img/QQ图片20210121164604.png" width="14"><span @click="czl">车资料</span>
 				<img src="img/QQ图片20210121164610.png" width="14"><span @click="showmo5">客户分类</span>
 				<img src="img/QQ图片20210121164614.png" width="14"><span>查询</span>
-				<img style="margin-left: 80px;" src="img/QQ图片20210121164913.png" width="14"><span>导出</span>
+				<img style="margin-left: 80px;" src="img/QQ图片20210121164913.png" width="14"><span @click="dc">导出</span>
 				<img style="margin-left: 20px;" src="img/QQ图片20210121164909.png" width="14"><span @click="zid">字段设置</span>
 			</div>
 			<div style="float: left;width:1490px ;height: 100px;">
@@ -50,7 +50,7 @@
 					<div id="che" style="background-color: #EFF7FF; float: left;width: 1500px;height: 25px; margin-top: 10px;display: none;">
 						<span style="font-weight: bolder;">车&nbsp;&nbsp;资&nbsp;&nbsp;料</span>
 						<span style="margin-left: 40px;" @click="s">增加车资料</span>
-						<span style="margin-left: 100px;">修改车资料</span>
+						<span style="margin-left: 100px;" @click="upche()">修改车资料</span>
 						<span style="margin-left: 100px;">删除车资料</span>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 						<span style="font-weight: bolder;">客户编辑</span>
 						<span style="margin-left: 40px;" @click="showmo3()">增加客户和车</span>
 						<span style="margin-left: 15px;" @click="showmo4()">增加客户</span>
-						<span style="margin-left: 15px;">修改客户</span>
+						<span style="margin-left: 15px;" @click="up()">修改客户</span>
 						<span style="margin-left: 15px;">删除客户</span>
 						<span style="margin-left: 15px;" @click="ba1">相关证照</span>
 						<span style="margin-left: 15px;">设置密码</span>
@@ -100,103 +100,37 @@
 						<td style="width: 90px">其它三</td>
 						<td style="width: 90px">其它四</td>
 					</tr>
-					<tr style="height: 30px;">
-						<td class="wrap">上帝</td>
-						<td>上帝</td>
-				
-				
-				<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-					</tr>
-					<tr style="height: 30px;">
-						<td class="wrap">上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-					</tr>
-					<tr style="height: 30px;">
-						<td class="wrap">上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
-						<td>上帝</td>
+					<tr style="height: 30px;" v-for="item in customer" @click="findc(item)">
+						<td class="wrap">{{item.customernum}}</td>
+						<td>{{item.customername}}</td>
+						<td>{{item.customeraddress}}</td>
+						<td>{{item.linkman}}</td>
+						<td>{{item.phone}}</td>
+						<td>{{item.birthday}}</td>
+						<td v-if="item.customertype">{{item.customertype.customertype}}</td><td v-else></td>
+						<td>{{item.customernumber}}</td>
+						<td>{{item.jointime}}</td>
+						<td>{{item.outtime}}</td>
+						<td>{{item.remark}}</td>
+						<td>{{item.filing}}</td>
+						<td v-if="item.yuan">{{item.yuan.yname}}</td><td v-else></td>
+						<td v-if="item.yuan">{{item.yuan.yphonenumber}}</td><td v-else></td>
+						<td>{{item.paytime}}</td>
+						<td>{{item.payment}}</td>
+						<td>{{item.integral}}</td>
+						<td>{{item.earnest}}</td>
+						<td>省</td>
+						<td>市</td>
+						<td>区</td>
+						<td>{{item.paytest}}</td>
+						<td>{{item.registerphone}}</td>
+						<td>{{item.desportbank}}</td>
+						<td>{{item.bankaccount}}</td>
+						<td>{{item.registeraddress}}</td>
+						<td>{{item.otherone}}</td>
+						<td>{{item.othertwo}}</td>
+						<td>{{item.otherthree}}</td>
+						<td>{{item.otherfour}}</td>
 					</tr>
 				</table>
 			</div>
@@ -235,8 +169,8 @@
 									<tr>
 										<td>*<label style="margin-left: 10px;">发动机品牌</label>
 											<select style="width: 280px;margin-left: 20px;">
-												<option>1-d2</option>
-												<option>阿达-d3</option>
+												<option>
+												</option>
 											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
 									</tr>
 									<tr>
@@ -288,91 +222,92 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
-								<h5 class="col-xs-10">客户资料编辑</h5>
-								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;">保存</button>
+								<h5 class="col-xs-10">客户资料编辑3</h5>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="khc()">保存</button>
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;">
 								<table class="table table-hover">
 									<tr>
-										<td>*<label style="margin-left: 10px;">客户编码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">客户名称</label><input style="width: 120px; margin-left: 10px;"><label style="margin-left: 10px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">手机号码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td>*<label style="margin-left: 10px;">客户编码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cus.customernum"/>*<label style="margin-left: 10px;">客户名称</label><input style="width: 120px; margin-left: 10px;" v-model="cus.customername"><label style="margin-left: 10px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cus.linkman">*<label style="margin-left: 10px;">手机号码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cus.phone"></td>
 									</tr>
 
 									<tr>
-										<td><label style="margin-left: 10px;">客户地址</label><input style="width: 340px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">客户生日</label><input type="date" style="width: 120px; margin-left: 10px;margin-right: 10px;"></td>
+										<td><label style="margin-left: 10px;">客户地址</label><input style="width: 340px;margin-left: 7px;margin-right: 10px;" v-model="cus.customeraddress" /><label style="margin-left: 11px;">客户生日</label><input type="date" style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cus.birthday"></td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;">
+										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" v-model="cus.paytime" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cus.payment"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="cus.yname"><img @click="sds5" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: -10px;" /><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="cus.yuangongziliaobiao.yphonenumber">
 									</tr>
 									<tr>
 										<td>
 											<label>省</label>
-											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 											<label>市</label>
-											<input /><img @click="showmo1" src="img/20210125084610.png"  height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input /><img @click="showmo1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 											<label>区</label>
-											<input><img @click="showmo2" src="img/20210125084610.png"  height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input><img @click="showmo2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cus.remark"></td>
 									</tr>
 									<tr>
-										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" /><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="cas.platename"/><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" v-model="cas.pinpaichexing.pname"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.vehiclename">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.driver"></td>
 									</tr>
 									<tr>
-										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">*<label style="margin-left: 10px;">车辆归属</label>
-											<select style="margin-left: 10px;width: 150px;height: 25px;">
-												<option>个人车</option>
-												<option>公司车</option>
-												<option>租赁车</option>
+										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="cas.driverphone"/><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cas.birthday">*<label style="margin-left: 10px;">车辆归属</label>
+											<select style="margin-left: 10px;width: 150px;height: 25px;" v-model="cas.caraffiliationid">
+												<option v-for="item in gs" :value="item.caraffiliationid">
+													{{item.caraffiliation}}
+												</option>
 											</select>
 											<img @click="mod2" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
 											<label>驾证到期</label>
-											<input type="date"/>
+											<input type="date" v-model="cas.drivingouttime"/>
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;">
+										<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="cas.framnum"/><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cas.enginenum"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="cas.carnyear"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="cas.mileage">
 									</tr>
 									<tr>
 										<td>*<label style="margin-left: 10px;">发动机品牌</label>
-											<select style="width: 280px;margin-left: 20px;">
-												<option>1-d2</option>
-												<option>阿达-d3</option>
-											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+											<select style="width: 280px;margin-left: 20px;" v-model="cas.engineid">
+												<option v-for="item in fd" :value="item.fid">
+													{{item.fname}}
+												</option>
+											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;" v-model="cas.load"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.buytime"></td>
 									</tr>
 									<tr>
 										<td>
-											<label style="margin-left: 11px;">上牌日期</label><input type="date" style="margin-left: 10px; width: 110px;"><label style="margin-left: 11px;">车检到期</label>
-											<input type="date" style="margin-left: 10px; width: 110px;">
+											<label style="margin-left: 11px;">上牌日期</label><input type="date" style="margin-left: 10px; width: 110px;" v-model="cas.uptime"><label style="margin-left: 11px;">车检到期</label>
+											<input type="date" style="margin-left: 10px; width: 110px;" v-model="cas.carouttime">
 											<label>燃油类别</label>
-											<select style="margin-left: 10px;width: 103px;height: 25px;">
-												<option>个人车</option>
-												<option>公司车</option>
-												<option>租赁车</option>
+											<select style="margin-left: 10px;width: 103px;height: 25px;" v-model="cas.oiltypeid">
+												<option v-for="item in ry" :value="item.oiltypeid">
+													{{item.oiltype}}
+												</option>
 											</select>
 											<img @click="mod3" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
-											<input type="checkbox"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>
+											<input type="checkbox" @click="chezc" v-model="z" @click="chezc1"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>
 										</td>
 									</tr>
 									<tr>
 										<td>
 											<span style="color: red;">保险</span>
 											<label style="margin-left: 11px;">交强险保险公司</label>
-											<select style="margin-left: 10px;width: 105px;">
-												<option>阳光保险</option>
-												<option>中华联合保险公司</option>
-											</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;">
+											<select style="margin-left: 10px;width: 105px;" v-model="cas.mlicompanyid">
+												<option v-for="item in jq" :value="item.mlicompanyid">{{item.mlicompany}}</option>
+											</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cas.mliouttime">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											
+
 											<label style="margin-left: 11px;">商业保险公司</label>
-											<select style="margin-left: 10px;width: 105px;">
-												<option>阳光保险</option>
-												<option>中华联合保险公司</option>
-											</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;">
+											<select style="margin-left: 10px;width: 105px;" v-model="cas.cicompanyid">
+												<option v-for="item in sy" :value="item.cicompanyid">
+													{{item.cicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cas.ciouttime">
 										</td>
 									</tr>
 								</table>
@@ -380,55 +315,57 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="modal" id="mymodal10" data-backdrop="static">
 					<div style="width: 900px;" class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
-								<h5 class="col-xs-10">客户资料编辑</h5>
-								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;">保存</button>
+								<h5 class="col-xs-10">客户资料编辑1</h5>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="khbc()">保存</button>
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;">
 								<table class="table table-hover">
 									<tr>
-										<td>*<label style="margin-left: 10px;">客户编码</label><input disabled="disabled" style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">客户名称</label><input style="width: 120px; margin-left: 10px;"><label style="margin-left: 10px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">手机号码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td>*<label style="margin-left: 10px;">客户编码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="xxx.customernum"/>*<label style="margin-left: 10px;">客户名称</label><input style="width: 120px; margin-left: 10px;" v-model="xxx.customername"><label style="margin-left: 10px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="xxx.linkman">*<label style="margin-left: 10px;">手机号码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="xxx.phone"></td>
 									</tr>
 
 									<tr>
-										<td><label style="margin-left: 10px;">客户地址</label><input style="width: 340px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">客户生日</label><input type="date" style="width: 120px; margin-left: 10px;margin-right: 10px;"></td>
+										<td><label style="margin-left: 10px;">客户地址</label><input style="width: 340px;margin-left: 7px;margin-right: 10px;" v-model="xxx.customeraddress" /><label style="margin-left: 11px;">客户生日</label><input type="date" style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="xxx.birthday"></td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;">
+										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" v-model="xxx.paytime" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="xxx.payment"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="xxx.yname"><img @click="sds" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: -10px;" /><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="xxx.gwphone">
 									</tr>
 									<tr>
 										<td>
 											<label>省</label>
-											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 											<label>市</label>
-											<input /><img @click="showmo1" src="img/20210125084610.png"  height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input /><img @click="showmo1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 											<label>区</label>
-											<input><img @click="showmo2" src="img/20210125084610.png"  height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;"/>
+											<input><img @click="showmo2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="xxx.remark"></td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 10px;">纳税人识别号</label><input style="width: 120px;margin-left: 7px;" /><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;"><label style="margin-left: 10px;">注册电话</label><input style="width: 120px; margin-left: 10px;"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;"><label style="margin-left: 10px;">开户银行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+										<td><label style="margin-left: 10px;">纳税人识别号</label><input style="width: 120px;margin-left: 7px;" v-model="xxx.paytest" /><label style="margin-left: 10px;">注册电话</label><input style="width: 120px; margin-left: 10px;" v-model="xxx.registerphone"><label style="margin-left: 10px;">开户银行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="xxx.desportbank"></td>
 									</tr>
 									<tr>
 										<td>
-											<label style="margin-left: 10px;">银行账号</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">注册地址</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">
+											<label style="margin-left: 10px;">银行账号</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="xxx.bankaccount" /><label style="margin-left: 11px;">注册地址</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="xxx.registeraddress">
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">其它一</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">其它二</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">其它三</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">其它四</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;">
+										<td><label style="margin-left: 11px;">其它一</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="xxx.otherone" /><label style="margin-left: 11px;">其它二</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="xz.othertwo"><label style="margin-left: 11px;">其它三</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="xz.otherthree"><label style="margin-left: 11px;">其它四</label><input style="width: 155px;margin-left: 7px;margin-right: 10px; " v-model=" xz.otherfour ">
 									</tr>
 								</table>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="modal" id="mymodal11" data-backdrop="static">
 					<div style="width: 1510px;" class="modal-dialog">
 						<div class="modal-content">
@@ -436,9 +373,9 @@
 								<span class="close" data-dismiss="modal">&times;</span>
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;height: 600px;">
-								
+
 								<div style="float: left; background-color:#D6D7CE;width: 1509px;line-height:40px;margin-left: -15px;">
-									<div @click="ba" style="float: left;"><img src="img/20210126110220.png" >增加照片</div>
+									<div @click="ba" style="float: left;"><img src="img/20210126110220.png">增加照片</div>
 									<div style="float: left;"><img src="img/20210126110229.png">删除照片</div>
 									<div style="float: left;"><img src="img/20210126110259.jpg">退出</div>
 								</div>
@@ -457,7 +394,7 @@
 							<div class="modal-header" style="">
 								<span class="close" data-dismiss="modal">&times;</span>
 								<h5 class="col-xs-10">客户资料编辑</h5>
-								
+
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;height: 380px;">
 								<div style="background: #F7FFDE;width: 760PX;line-height: 37px;">
@@ -562,14 +499,14 @@
 								<div style="background: #F7F7F7;width: 760PX;line-height: 37px;">
 									<img src="img/20210126141619.png" style="margin-left: 520px;">增加
 									<img src="img/20210126141636.png" style="margin-left: 13px;">删除
-									<img src="img/20210125191943.png" style="margin-left: 13px;"/>保存
+									<img src="img/20210125191943.png" style="margin-left: 13px;" />保存
 								</div>
 								<div style="width: 760px;height: 300px;">
 									<table class="table table-hover" style="width: 760px;">
 										<tr>
-											<td >分类代码<input disabled="disabled"></td>
-											<td >客户类别<input></td>
-											<td >
+											<td>分类代码<input disabled="disabled"></td>
+											<td>客户类别<input></td>
+											<td>
 												价格类型
 												<select>
 													<option>标准价</option>
@@ -616,7 +553,23 @@
 						</div>
 					</div>
 				</div>
-				
+				<div class="modal" id="mymodal14" data-backdrop="static">
+					<div class="modal-dialog" style="width: 1530px;margin-top: 0px;margin-left: 0px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<span style="font-size: 23px;font-weight: bold;">客户档案</span>
+								<button class="btn btn-default" style="width: 80px;line-height: 25px; background-color:#82D921;margin-left: 200px;">选择</button>
+								<input style="width: 300px; margin-left: 670px;height: 30px;" />
+								<button style="width: 50px;height: 30px;background-color: #FEAC26;color: white;">搜索</button>
+								<button style="width: 50px;height: 30px;">关闭</button>
+							</div>
+							<div class="modal-body" style="height: 600px;background-color: #F7F7F7;">
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="modal" id="mymodal7" data-backdrop="static">
 					<div class="modal-dialog" style="width: 600px;height: 500px;">
 						<div class="modal-content">
@@ -637,7 +590,8 @@
 										<tr>
 											<td>1</td>
 											<td>北京</td>
-										</tr><tr>
+										</tr>
+										<tr>
 											<td>1</td>
 											<td>北京</td>
 										</tr>
@@ -813,37 +767,7 @@
 							</div>
 							<div class="modal-body">
 								<div style="width: 380px;margin-left: 100px;height: 300px;  ">
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">京</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">沪</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">津</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">渝</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">鲁</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ;">冀</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;">晋</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;">蒙</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">辽</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">吉</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">黑</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">苏</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">浙</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">皖</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">闽</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">赣</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">豫</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">鄂</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">湘</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">粤</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">桂</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">琼</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;">川</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">贵</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">云</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">藏</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">陕</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">甘</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">青</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">宁</div>
-									<div style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px; margin-top:9px;">新</div>
+									<div @click="xcp(item)" style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;" v-for="item in plate">{{item.platename}}</div>
 								</div>
 							</div>
 						</div>
@@ -969,7 +893,8 @@
 					</div>
 				</div>
 				
-				<div style="width: 1500px;height:240px; float: left;margin-top: -10px;overflow: scroll;">
+				
+				<div style="width: 1500px;height:235px; float: left;margin-top: -10px;overflow: scroll;">
 					<table id="clxx" style=" width: 2910px; max-width: 2920px;height: 300px;max-height: 380px;" class="table table-bordered">
 						<tr style="background-color: #39CEDE;height: 30px;">
 							<td>车牌号码</td>
@@ -1001,185 +926,36 @@
 							<td>下次保养里程</td>
 							<td>会员码</td>
 						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-						</tr>
-						<tr>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
-							<td>上天</td>
+						<tr v-for="item in car" @click="ztc(item)">
+							<td>{{item.platename}}</td>
+							<td v-if="item.carbrand">{{item.carbrand.brandname}}</td><td v-else></td>
+							<td v-if="item.chexingdingyibiao">{{item.chexingdingyibiao.cname}}</td><td v-else></td>
+							<td>{{item.driver}}</td>
+							<td>{{item.driverphone}}</td>
+							<td>{{item.birthday}}</td>
+							<td>{{item.driveraddress}}</td>
+							<td v-if="item.caraffiliation">{{item.caraffiliation.caraffiliation}}</td><td v-else></td>
+							<td>{{item.drivingouttime}}</td>
+							<td>{{item.framnum}}</td>
+							<td>{{item.enginenum}}</td>
+							<td v-if="item.fadongjipinpaibiao">{{item.fadongjipinpaibiao.fadingjipingpai}}</td><td v-else></td>
+							<td>{{item.carnyear}}</td>
+							<td>{{item.mileage}}</td>
+							<td>{{item.load}}</td>
+							<td>{{item.carseries}}</td>
+							<td>{{item.buytime}}</td>
+							<td>{{item.uptime}}</td>
+							<td>{{item.carouttime}}</td>
+							<td v-if="item.mlicompany">{{item.mlicompany.milcompany}}</td><td v-else></td>
+							<td>{{item.mliouttime}}</td>
+							<td v-if="item.cicompany">{{item.cicompany.cicompany}}</td><td v-else></td>
+							<td>{{item.ciouttime}}</td>
+							<td>{{item.mytoucar}}</td>
+							<td>{{item.twotime}}</td>
+							<td v-if="item.oiltype">{{item.oiltype.oiltype}}</td><td v-else></td>
+							<td>{{item.nextmileage}}</td>
+							<td>{{item.nextupkeeptime}}</td>
+							<td>{{item.membernum}}</td>
 						</tr>
 					</table>
 					<table id="lsxf" class="table table-bordered" style="display: none;">
@@ -1231,17 +1007,581 @@
 					</table>
 				</div>
 			</div>
+			<div class="modal" id="mymodal30" data-backdrop="static">
+				<div style="width: 600px;" class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h5 class="col-xs-10">选择员工1</h5>
+							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="onl()">确定</button>
+						</div>
+						<div class="modal-body">
+							<select style="width: 400px; margin-left:40px;" v-model="ns" @change="soc1()">
+								<option v-for="item in bm" :value="item.zid">
+									{{item.zname}}
+								</option>
+							</select>
+							<table class="table table-bordered">
+								<tr>
+									<td>工号1</td>
+									<td>姓名1</td>
+								</tr>
+								<tr v-for="item in yg" @click="xz2(item)">
+									<td>{{item.yid}}</td>
+									<td>{{item.yname}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="mymodal32" data-backdrop="static">
+					<div style="width: 900px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">客户资料修改</h5>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="lhy()">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">客户编码</label><input disabled="disabled" style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="hk.customernum"/>*<label style="margin-left: 10px;">客户名称</label><input style="width: 120px; margin-left: 10px;" v-model="hk.customername"><label style="margin-left: 10px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="hk.linkman">*<label style="margin-left: 10px;">手机号码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="hk.phone"></td>
+									</tr>
+
+									<tr>
+										<td><label style="margin-left: 10px;">客户地址</label><input style="width: 340px;margin-left: 7px;margin-right: 10px;" v-model="hk.customeraddress" /><label style="margin-left: 11px;">客户生日</label><input type="date" style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="hk.birthday"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" v-model="hk.paytime" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="hk.payment"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="hk.yname"><img @click="sds2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: -10px;" /><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="hk.gwphone">
+									</tr>
+									<tr>
+										<td>
+											<label>省</label>
+											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
+											<label>市</label>
+											<input /><img @click="showmo1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
+											<label>区</label>
+											<input><img @click="showmo2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="hk.remark"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 10px;">纳税人识别号</label><input style="width: 120px;margin-left: 7px;" v-model="hk.paytest" /><label style="margin-left: 10px;">注册电话</label><input style="width: 120px; margin-left: 10px;" v-model="hk.registerphone"><label style="margin-left: 10px;">开户银行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="hk.desportbank"></td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 10px;">银行账号</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="hk.bankaccount" /><label style="margin-left: 11px;">注册地址</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="hk.registeraddress">
+										</td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">其它一</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="hk.otherone" /><label style="margin-left: 11px;">其它二</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="hk.othertwo"><label style="margin-left: 11px;">其它三</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="hk.otherthree"><label style="margin-left: 11px;">其它四</label><input style="width: 155px;margin-left: 7px;margin-right: 10px; " v-model=" hk.otherfour ">
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="modal" id="mymodal33" data-backdrop="static">
+				<div style="width: 600px;" class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h5 class="col-xs-10">选择员工2</h5>
+							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="onl2()">确定</button>
+						</div>
+						<div class="modal-body">
+							<select style="width: 400px; margin-left:40px;">
+								<option v-for="item in bm" @click="soc(item.zid)">
+									{{item.zname}}
+								</option>
+							</select>
+							<table class="table table-bordered">
+								<tr>
+									<td>工号</td>
+									<td>姓名</td>
+								</tr>
+								<tr v-for="item in yg" @click="xz3(item)">
+									<td>{{item.yid}}</td>
+									<td>{{item.yname}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="mymodal31" data-backdrop="static">
+				<div style="width: 600px;" class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h5 class="col-xs-10">选择员工1</h5>
+							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="onl1()">确定</button>
+						</div>
+						<div class="modal-body">
+							<select style="width: 400px; margin-left:40px;" v-model="ns" @change="soc1()">
+								<option v-for="item in bm" :value="item.zid">
+									{{item.zname}}
+								</option>
+							</select>
+							<table class="table table-bordered">
+								<tr>
+									<td>工号</td>
+									<td>姓名</td>
+								</tr>
+								<tr v-for="item in yg" @click="xz1(item)">
+									<td>{{item.yid}}</td>
+									<td>{{item.yname}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="mymodal37" data-backdrop="static">
+				<div style="width: 600px;" class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h5 class="col-xs-10">选择员工2</h5>
+							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="onl3()">确定</button>
+						</div>
+						<div class="modal-body">
+							<select style="width: 400px; margin-left:40px;">
+								<option v-for="item in bm" @click="socz(item.zid)">
+									{{item.zname}}
+								</option>
+							</select>
+							<table class="table table-bordered">
+								<tr>
+									<td>工号</td>
+									<td>姓名</td>
+								</tr>
+								<tr v-for="item in yg" @click="xz4(item)">
+									<td>{{item.yid}}</td>
+									<td>{{item.yname}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="mymodal38" data-backdrop="static">
+					<div style="width: 900px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">车辆资料编辑1</h5>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="cbc()">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="cs.platename"/><img @click="mod4" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
+									</tr>
+
+									<tr>
+										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="cs.driverphone"/><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cs.birthday"><label style="margin-left: 11px;">驾驶员地址</label><input style="width: 310px;margin-left: 7px;margin-right: 10px;" v-model="cs.driveraddress"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="cs.framnum"/><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cs.enginenum"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="cs.carnyear"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="cs.mileage">
+									</tr>
+									<tr>
+										<td>*<label style="margin-left: 10px;">发动机品牌</label>
+											<select style="width: 280px;margin-left: 20px;">
+												<option v-for="item in fd" :value="item.fid">
+													{{item.fname}}
+												</option>
+											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;" v-model="cs.load"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cs.buytime"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">上牌日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车检到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">二维日期</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车系</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color: red;">保险</span>
+											<label style="margin-left: 11px;">交强险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="cs.mlicompanyid">
+												<option v-for="item in jq" :value="item.mlicompanyid">
+													{{item.mlicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cs.mliouttime"><input type="checkbox" v-model="z1"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>*<label style="margin-left: 10px;">车辆归属</label>
+											<select style="margin-left: 10px;width: 150px;height: 25px;" v-model="cs.caraffiliationid">
+												<option v-for="item in gs" :value="item.caraffiliationid">
+													{{item.caraffiliation}}
+												</option>
+											</select>
+											<img @click="mod2" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 43px;">商业险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="cs.cicompanyid">
+												<option v-for="item in sy" :value="item.cicompanyid">
+													{{item.cicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label>驾证到期</label><input style="width: 90px;margin-left:7px;margin-right: 10px;"><label>燃油类别</label>
+											<select style="margin-left: 10px;width: 103px;height: 25px;" v-model="cs.oiltypeid">
+												<option v-for="item in ry" :value="item.oiltypeid">
+													{{item.oiltype}}
+												</option>
+											</select>
+											<img @click="mod3" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">下次保养里程</label><input style="margin-left: 10px; width: 110px;" v-model="cs.nextmileage"><label style="margin-left: 11px;">下次保养日期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cs.nextupkeeptime"><label>客户名称</label>
+											<select v-model="cs.customernum">
+												<option v-for="item in cop" :value="item.customernum">
+													{{item.customername}}
+												</option>
+											</select>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal39" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">车牌字</h5>
+							</div>
+							<div class="modal-body">
+								<div style="width: 380px;margin-left: 100px;height: 300px;  ">
+									<div @click="xcp1(item)" style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;" v-for="item in plate">{{item.platename}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/region.js"></script>
 		<script>
 			new Vue({
 				el: "#lx",
 				data: {
-					ss:[]
+					ss: [],
+					customer: [],
+					address: [],
+					car: [],
+					cus: {
+						yuangongziliaobiao:[]
+					},
+					cas:{
+						pinpaichexing:[]
+					},
+					bm: [],
+					yg: [],
+					ys: [],
+					xxx:{},
+					ns: [],
+					ys1:[],
+					hk:[],
+					ys3:[],
+					sj:{yuan:[]},
+					jq:{},
+					sy:{},
+					fd:{},
+					gs:{},
+					ys4:{},
+					plate:{},
+					ry:{},
+					z:false,
+					cs:{},
+					z1:false,
+					cop:{}
 				},
 				methods: {
+					cbc(){
+						let that=this;
+						var jjjx=JSON.stringify(this.cs);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/cbc",
+							data:jjjx,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								if(result){
+									alert("修改成功");
+								}
+							}
+						});
+					},
+					ztc(item){
+						this.cs=item;
+						console.log(this.cs);
+					},
+					chezc(){
+						if(this.z){
+							this.cas.mytoucar="是";
+						}else{
+							this.cas.mytoucar="否";
+						}
+					},
+					chezc1(){
+						if(this.z1){
+							this.cs.mytoucar="是";
+						}else{
+							this.cs.mytoucar="否";
+						}
+					},
+					dc(){
+						window.location.href="http://127.0.0.1:8080/customer/downloadExcel"
+					},
+					upche(){
+						$("#mymodal38").modal("show");
+						if(this.cs.mytoucar="是"){
+							this.z1=true;
+						}else{
+							this.z1=false;
+						}
+					},
+					op(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/op",
+							type:"post",
+							success:function(result){
+								that.cop=result;
+							}
+						});
+					},
+					khc(){
+						let that=this;
+						this.cas.customernum=this.cus.customernum;
+						console.log(this.cas);
+						console.log(this.cus);
+						var json=JSON.stringify(this.cus);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/clgd",
+							type:"post",
+							data:json,
+							contentType:"application/json;charset=utf-8",
+							success:function(){
+								that.gd();
+							}
+						});
+						
+					},
+					ryl(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/ryl",
+							type:"post",
+							success:function(result){
+								that.ry=result;
+							}
+						})
+					},
+					gd(){
+						let that=this;
+						alert("s");
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/clgy",
+							type:"post",
+							data:that.cas,
+							success:function(result){
+								alert("car");
+							}
+						});
+					},
+					clgs(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/clgs",
+							type:"post",
+							success:function(result){
+								that.gs=result;
+							}
+						});
+					},
+					p(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/p",
+							type:"post",
+							success:function(result){
+								that.plate=result;
+							}
+						});
+					},
+					xcp(item){
+						this.$set(this.cas,'platename',item.platename);
+						$("#mymodal1").modal("hide");						
+					},
+					xcp1(item){
+						this.$set(this.cs,'platename',item.platename);
+						$("#mymodal39").modal("hide");						
+					},
+					lhy(){
+						let that=this;
+						var json=JSON.stringify(this.hk);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/update",
+							type:"post",
+							data:json,
+							contentType: "application/json;charset=utf-8",
+							success:function(result){
+								if(result){
+									alert("修改成功");
+								}
+							}
+						})
+					},
+					jqx(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/jqx",
+							type:"post",
+							success:function(result){
+								that.jq=result;
+							}
+						});
+					},
+					syx(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/syx",
+							type:"post",
+							success:function(result){
+								that.sy=result;
+							}
+						});
+					},
+					fdj(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/fdj",
+							type:"post",
+							success:function(result){
+								that.fd=result;
+							}
+						});
+					},
+					khbc(){
+						let that=this;
+						alert(this.xxx.counselorid);
+						var json=JSON.stringify(this.xxx);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/insert",
+							type:"post",
+							data:json,
+							contentType: "application/json;charset=utf-8",
+							success:function(result){
+								alert("ss");
+								if(result){
+									alert("新增成功");
+								}
+							}
+						});
+					},
+					up(){
+						this.hk=this.sj;
+						this.$set(this.hk,'yname',this.sj.yuan.yname);
+						alert(this.hk.yname);
+						$("#mymodal32").modal("show");
+					},
+					onl1() {
+						this.hk.counselorid=this.ys3.yid;
+						console.log(this.hk);
+						$("#mymodal31").hide();
+						console.log(this.ys);
+					},
+					onl2() {
+						this.hk.counselorid=this.ys.yid;
+						this.$set(this.hk,'yname',this.ys3.yname);
+						alert(this.hk.yname);
+						$("#mymodal33").hide();
+					},
+					onl() {
+						$("#mymodal30").hide();
+						console.log(this.ys1);
+					},
+					onl3() {
+						$("#mymodal37").hide();
+						console.log(this.ys1);
+					},
+					xz1(item) {
+						this.ys = item;
+					},
+					xz2(item) {
+						this.ys1 = item;
+						this.$set(this.xxx,'counselorid',this.ys1.yid);
+						this.$set(this.xxx,'yname',this.ys1.yname);
+						alert(this.xxx.counselorid);
+					},
+					xz3(item) {
+						this.ys3 = item;
+						this.hk.counselorid=this.ys3.yid;
+					},
+					xz4(item){
+						this.ys4=item;
+						this.$set(this.cus,'counselorid',this.ys4.yid);
+						this.$set(this.cus,'yname',this.ys4.yname);
+					},
+					sds() {
+						$("#mymodal30").show();
+					},
+					sds1() {
+						$("#mymodal31").show();
+					},
+					sds2() {
+						$("#mymodal33").show();
+					},
+					sds5(){
+						$("#mymodal37").show();
+					},
+					ca() {
+						let that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cud",
+							type: "post",
+							success: function(result) {
+								that.bm = result;
+							}
+						})
+					},
+					soc(zid) {
+						let that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cuds/" + zid,
+							type: "post",
+							success: function(result) {
+								that.yg = result;
+							}
+						})
+					},
+					socz(zid) {
+						let that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cuds/" + zid,
+							type: "post",
+							success: function(result) {
+								that.yg = result;
+							}
+						})
+					},
+					soc1() {
+						let that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cuds/" + that.ns,
+							type: "post",
+							success: function(result) {
+								that.yg = result;
+							}
+						})
+					},
 					khbj() {
 						$("#kh").show();
 					},
@@ -1275,47 +1615,90 @@
 					mod3() {
 						$("#mymodal4").modal("show");
 					},
-					s(){
+					mod4() {
+						$("#mymodal39").modal("show");
+					},
+					s() {
 						$("#mymodal").modal("show");
 					},
-					luo(){
+					luo() {
 						$("#mymodal5").modal("show");
 					},
-					showmo(){
+					showmo() {
 						$("#mymodal7").modal("show");
 					},
-					showmo1(){
+					showmo1() {
 						$("#mymodal8").modal("show");
 					},
-					showmo2(){
+					showmo2() {
 						$("#mymodal9").modal("show");
 					},
-					showmo3(){
+					showmo3() {
 						$("#mymodal6").modal("show");
+
 					},
-					showmo4(){
+					showmo4() {
 						$("#mymodal10").modal("show");
 					},
-					ba(){
-						window.location.href="zhaopian.html";
+					ba() {
+						window.location.href = "file.html";
 					},
-					ba1(){
+					ba1() {
 						$("#mymodal11").modal("show");
 					},
-					xz(){
-						ss=1;
+					xz() {
+						ss = 1;
 					},
-					qx(){
-						ss=[];
+					qx() {
+						ss = [];
 					},
-					showmo5(){
+					showmo5() {
 						$("#mymodal13").modal("show");
 					},
-					zid(){
+					zid() {
 						$("#mymodal12").modal("show");
+					},
+
+					find() {
+						let that = this;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cus",
+							type: "post",
+							success: function(result) {
+								that.customer = result;
+							}
+						});
+					},
+					findc(item) {
+						var json = JSON.stringify(item);
+						let that = this;
+						this.sj=item;
+						$.ajax({
+							url: "http://127.0.0.1:8080/customer/cuss",
+							type: "post",
+							data: json,
+							contentType: "application/json;charset=utf-8",
+							success: function(result) {
+								that.car = result;
+							}
+						});
 					}
 				},
 				created() {
+					this.find();
+					this.ca();
+					this.jqx();
+					this.syx();
+					this.fdj();
+					this.clgs();
+					this.p();
+					this.ryl();
+					this.op();
+				},
+				watch: {
+					address(val) {
+						console.log(val);
+					}
 				}
 			});
 		</script>

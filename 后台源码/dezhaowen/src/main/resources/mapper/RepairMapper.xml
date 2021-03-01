@@ -33,8 +33,7 @@
     <resultMap type="com.accp.domain.RepairAndRescue" id="BaseResultMap2" extends="BaseResultMap">
         <result column="number" property="number" jdbcType="VARCHAR" />
         <result column="clientname" property="clientname" jdbcType="VARCHAR" />
-        <result column="carNumber" property="carNumber" jdbcType="VARCHAR" />
-        <result column="clienttype" property="clienttype" jdbcType="VARCHAR" />
+        <result column="platename" property="platename" jdbcType="VARCHAR" />
         <result column="phone" property="phone" jdbcType="VARCHAR" />
         <result column="tname" property="tname" jdbcType="VARCHAR" />
         <result column="carinfoId" property="carinfoid" jdbcType="INTEGER" />
@@ -44,7 +43,7 @@
         <result column="worktime" property="worktime" jdbcType="VARCHAR" />
         <result column="getman" property="getman" jdbcType="VARCHAR" />
         <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
-        <result column="nowworkDate" property="nowworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkDate" property="nowworkDate" jdbcType="TIMESTAMP" />
         <result column="setter" property="setter" jdbcType="VARCHAR" />
         <result column="company" property="company" jdbcType="VARCHAR" />
         <result column="befor" property="befor" jdbcType="TIMESTAMP" />
@@ -54,9 +53,41 @@
         <result column="fault" property="fault" jdbcType="VARCHAR" />
         <result column="faultreasult" property="faultreasult" jdbcType="VARCHAR" />
         <result column="status" property="status" jdbcType="VARCHAR" />
-        <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
-        <result column="stockDater" property="stockdater" jdbcType="TIMESTAMP" />
+        <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
     </resultMap>
+    <resultMap type="com.accp.domain.MaintainHistary" id="BaseResultMap3" extends="BaseResultMap">
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="workhour" property="workhour" jdbcType="INTEGER" />
+        <result column="fprice" property="fprice" jdbcType="REAL" />
+        <result column="qprice" property="qprice" jdbcType="REAL" />
+        <result column="hprice" property="hprice" jdbcType="REAL" />
+        <result column="allprice" property="allprice" jdbcType="REAL" />
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="itemTypeName" property="itemTypeName" jdbcType="VARCHAR" />
+        <result column="artisanClassName" property="artisanClassName" jdbcType="VARCHAR" />
+        <result column="itemsName" property="itemsName" jdbcType="VARCHAR" />
+        <result column="priceType" property="priceType" jdbcType="VARCHAR" />
+        <result column="carNumber" property="carNumber" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="overworkdate" property="overworkdate" jdbcType="TIMESTAMP" />
+        <result column="nowworkDate" property="nowworkDate" jdbcType="TIMESTAMP" />
+        <result column="price" property="price" jdbcType="REAL" />
+        <result column="faultreasult" property="faultreasult" jdbcType="VARCHAR" />
+        <result column="llpeople" property="llpeople" jdbcType="VARCHAR" />
+        <result column="llname" property="llname" jdbcType="VARCHAR" />
+        <result column="dw" property="dw" jdbcType="VARCHAR" />
+        <result column="lltype" property="lltype" jdbcType="VARCHAR" />
+        <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+        <result column="count" property="count" jdbcType="INTEGER" />
+        <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+        <result column="lldate" property="lldate" jdbcType="TIMESTAMP" />
+        <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
+    </resultMap>
+<<<<<<< HEAD
     <resultMap type="com.accp.domain.Repair" id="BaseResultPlus" extends="BaseResultMap">
         <result column="platename" property="carnumber" jdbcType="VARCHAR" />
         <result column="totalnum" property="totalnum" jdbcType="REAL" />
@@ -93,10 +124,47 @@ rescue.overtime,rescue.`price`,rescue.`orderTime`
 LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item LEFT JOIN cashier ON item.number=cashier.`Number`
   WHERE item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
   </select>
+=======
+    <resultMap id="QueryGetGoodsResultMap" type="com.accp.domain.QueryGetGoods">
+        <result column="commodityno" jdbcType="VARCHAR" property="commodityno" />
+        <result column="count" jdbcType="INTEGER" property="count" />
+        <result column="priceType" jdbcType="VARCHAR" property="pricetype" />
+        <result column="discountsPrice" jdbcType="REAL" property="discountsprice" />
+        <result column="qprice" jdbcType="REAL" property="qprice" />
+        <result column="NormalPrice" jdbcType="VARCHAR" property="normalprice" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="cause" jdbcType="VARCHAR" property="cause" />
+        <result column="clname" jdbcType="VARCHAR" property="clname" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="warehouse" jdbcType="VARCHAR" property="warehouse" />
+        <result column="item" jdbcType="VARCHAR" property="item" />
+        <result column="commodityNo" jdbcType="VARCHAR" property="commodityNo" />
+        <result column="brand" jdbcType="VARCHAR" property="brand" />
+        <result column="cartype" jdbcType="VARCHAR" property="cartype" />
+    </resultMap>
+    <resultMap id="QueryItemRepair" type="com.accp.domain.QueryItemRepair">
+        <result column="itemsname" jdbcType="VARCHAR" property="itemsname" />
+        <result column="count" jdbcType="INTEGER" property="count" />
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="bzid" jdbcType="INTEGER" property="bzid" />
+        <result column="priceType" jdbcType="VARCHAR" property="priceType" />
+        <result column="bzname" jdbcType="VARCHAR" property="bzname" />
+        <result column="fwman" jdbcType="VARCHAR" property="fwman" />
+        <result column="qprice" jdbcType="REAL" property="qprice" />
+        <result column="hprice" jdbcType="REAL" property="hprice" />
+
+    </resultMap>
+
+
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
+<<<<<<< HEAD
     <select id="queryRepair" resultMap="BaseResultMap" >
         SELECT * FROM `repair` WHERE number=#{number}
     </select>
@@ -121,23 +189,65 @@ rescue.overtime,rescue.`price`,rescue.`orderTime`
 LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item
 LEFT JOIN cashier ON item.number=cashier.`Number`
   WHERE item.number = #{number} OR item.platename = #{platename} OR item.orderTime BETWEEN #{startkd} AND #{endkd} AND item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
+=======
+    <select id="queryItemRepair" resultMap="QueryItemRepair">
+   SELECT mi.`wid` id,mi.wname `itemsname`,ir.count,ir.`priceType`,mi.`bzj` qprice,
+  ir.`otherone` hprice,ir.count*ir.otherone price,ac.`teamname` bzname,s.`yname` fwman,ac.teamid bzid  FROM
+item_repair ir LEFT JOIN ${tab} r ON ir.wjid=r.number
+ LEFT JOIN weixiubiao mi ON ir.`itemid`=mi.`wid`
+   LEFT JOIN `maintenance_team` ac ON ir.`teamid`=ac.`teamid`
+    LEFT JOIN `yuangongziliaobiao` s ON s.`yid` = r.`staffno`
+WHERE ir.wjid ='${number}'
+  </select>
+    <select id="queryGetGoods" resultMap="QueryGetGoodsResultMap">
+  SELECT getg.`id`,getg.`type`,cl.`customername` clname,getg.`goodid` commodityno,
+  com.goodname `name`,com.numunitid `unit`,getg.`priceType`,getg.`count`,
+getg.`discountsPrice` qprice,getg.`discountsPrice`,getg.count*getg.`discountsPrice` price,
+s.`yname` sname,getg.`cause`,com.goodbrandid brand,com.fitcartype cartype
+FROM getgood getg,gooddata com,`${tab}` r,`yuangongziliaobiao` s,car,`customer` cl
+WHERE getg.`wjid`='${number}' AND com.`gooddataid` = getg.`goodid` AND r.`number`=getg.`wjid`
+ AND s.`yid` = r.`staffno` AND car.`carnum`=r.`carinfoId` AND car.`customernum`=cl.`customernum`   ORDER BY getg.`type`
+  </select>
+    <select id="selectRepairItem" resultMap="BaseResultMap3">
+SELECT car.`platename` carNumber,`customer`.`customername` `name`, repair.`number`,
+repair.`orderTime`,repair.type,repair.`nowworkDate`,repair.`stockDater`,
+item.gooddataid id,item.goodname itemsName,ir.priceType
+,(TIMESTAMPDIFF(HOUR,repair.`orderTime`,repair.`stockDater`)) workhour,
+ir.otherone fprice,`maintenance_team`.`teamname` artisanClassName,repair.`faultreasult` FROM`repair`
+LEFT JOIN `item_repair` ir ON ir.wjid=repair.`number`
+LEFT JOIN `gooddata` item ON item.gooddataid=ir.itemid
+LEFT JOIN`goodbigkind` TYPE ON type.goodbigkindid=item.goodbigkindid
+LEFT JOIN `car` ON car.`customernum`=repair.`carinfoId`
+LEFT JOIN `maintenance_team` ON `maintenance_team`.`teamid`=ir.teamid
+LEFT JOIN customer ON customer.`customernum`=car.`customernum`
+WHERE ${type} like '%${content}%'
+  </select>
+    <select id="selectHistray" resultMap="BaseResultMap3">
+        SELECT repair.`number`,repair.`orderTime`,repair.type,repair.`nowworkDate`,
+        customer.`customername` AS `name`,car.`platename` AS carNumber,customer.`phone`,
+        repair.`stockDater`,repair.`price` FROM`repair`
+        LEFT JOIN `car` ON car.carnum=repair.`carinfoId`
+        LEFT JOIN `customer` ON customer.`customernum`=car.`customernum`
+        WHERE ${type} LIKE '%${content}%'
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     </select>
     <select id="selectRepairAndRescue" resultMap="BaseResultMap2">
-  	select *from	(SELECT repair.status,repair.type,client.name clientname,carinfo.carNumber,client.phone,repair.number,'维修' AS tname,repair.orderTime,
-repair.overworkdate,repair.nowworkDate,repair.stockDater,repair.price,staff.name,repair.getman,clienttype.clienttype
- FROM REPAIR JOIN `carinfo` ON carinfo.id=repair.carinfoId
-left JOIN `staff` ON staff.staffNo=repair.staffno
- JOIN `client` ON client.number=carinfo.clientid
- join clientType on clienttype.id=client.typeid
+  	SELECT *FROM (SELECT repair.status,repair.type,customer.customername clientname,car.platename,customer.phone,
+repair.number,'维修' AS tname,repair.orderTime,repair.overworkdate,repair.nowworkDate,repair.stockDater,repair.price,
+yuangongziliaobiao.yname name,repair.getman FROM `repair`
+LEFT  JOIN `car`ON car.carnum=repair.`carinfoId`
+JOIN `yuangongziliaobiao` ON yuangongziliaobiao.yid=repair.staffno
+ JOIN `customer` ON customer.customernum=car.customernum
  UNION ALL
- SELECT rescue.status,rescue.type,client.name clientname,carinfo.carNumber,client.phone,rescue.number,'救援' AS tname,rescue.orderTime,
-rescue.nowdate,rescue.overtime,rescue.stockDater,rescue.price,staff.name,rescue.getman,clienttype.clienttype
- FROM rescue JOIN `carinfo` ON carinfo.id=rescue.carinfoId
- left JOIN `staff` ON staff.staffNo=rescue.staffno
- JOIN `client` ON client.number=carinfo.clientid
- join clientType on clienttype.id=client.typeid
+ SELECT rescue.status,rescue.type,customer.customername clientname,
+car.platename,customer.phone,rescue.number,'救援' AS tname,rescue.orderTime,
+rescue.nowdate,rescue.overtime,rescue.stockDater,rescue.price,yuangongziliaobiao.yname name,rescue.getman
+ FROM rescue
+  LEFT JOIN `car` ON car.carnum=rescue.carinfoid
+ JOIN `yuangongziliaobiao` ON yuangongziliaobiao.yid=rescue.staffno
+ JOIN `customer` ON customer.customernum=car.customernum
  ) item
 WHERE ${type} like '%${content}%' OR item.clientname LIKE '%${cpc}%'
-OR item.carNumber LIKE '%${cpc}%' OR item.phone LIKE '%${cpc}%'
+OR item.platename LIKE '%${cpc}%' OR item.phone LIKE '%${cpc}%'
   </select>
 </mapper>

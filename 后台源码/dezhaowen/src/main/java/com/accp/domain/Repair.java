@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -34,6 +35,7 @@ public class Repair extends Model<Repair> {
     private String endkd;
 
     private static final long serialVersionUID=1L;
+<<<<<<< HEAD
 
     private String carnumber;
 
@@ -65,6 +67,9 @@ public class Repair extends Model<Repair> {
 
     private String staffpeople;
 
+=======
+    @TableId
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @ApiModelProperty(value = "维修编号")
     private String number;
 
@@ -86,26 +91,34 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "接车人")
     private String getman;
+<<<<<<< HEAD
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工时间")
     private LocalDateTime overworkdate;
 
+=======
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @ApiModelProperty(value = "预计完工时间")
+    private Date overworkdate;
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "实际完工时间")
     @TableField("nowworkDate")
-    private LocalDateTime nowworkDate;
+    private Date nowworkDate;
 
     @ApiModelProperty(value = "结算方式")
     private String setter;
 
     @ApiModelProperty(value = "赔款公司")
     private String company;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "上次进场时间")
-    private LocalDateTime befor;
+    private Date befor;
 
     @ApiModelProperty(value = "预估金额")
     private Float price;
@@ -124,16 +137,21 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "维修状态")
     private String status;
+<<<<<<< HEAD
 
     @DateTimeFormat(pattern = "yyyy-MM-dd ")
+=======
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")
-    private LocalDateTime orderTime;
-
+    private Date orderTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     @TableField("stockDater")
-    private LocalDateTime stockDater;
+    private Date stockDater;
 
     @ApiModelProperty(value = "其它字段1")
     private String otherone;
