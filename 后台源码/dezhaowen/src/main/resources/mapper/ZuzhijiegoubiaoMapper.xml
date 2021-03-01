@@ -33,5 +33,13 @@
     <sql id="Base_Column_List">
         zid, zname, msname, mshou, mdianid, mzuishu, mtiao, mcityid, mkai, maddress, mshui, mphone, mlname, mhang, mzhang, mgouid, mru, mting, zids, zyid, z1, z2, z3
     </sql>
+    <resultMap type="com.accp.domain.Zuzhijiegoubiao" id="BaseResultMapss" extends="BaseResultMap">
+        <collection property="children" column="zid" ofType="com.accp.domain.Zuzhijiegoubiao" select="find">
+
+        </collection>
+    </resultMap>
+    <select id="find" resultMap="BaseResultMapss" >
+		select * from zuzhijiegoubiao where zids=#{zid}
+  </select>
 
 </mapper>

@@ -22,4 +22,7 @@
     <select id="bu1" resultMap="BaseResultMap">
         SELECT * FROM `bumenbiao` WHERE `blei`=0
     </select>
+    <select id="bu2" resultMap="BaseResultMap">
+        select * from bumenbiao where blei=${id}
+    </select>
 </mapper>

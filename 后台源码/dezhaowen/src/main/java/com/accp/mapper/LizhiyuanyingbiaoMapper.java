@@ -1,6 +1,7 @@
 package com.accp.mapper;
 
 import com.accp.domain.Lizhiyuanyingbiao;
+import com.accp.domain.Yuangongziliaobiao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -12,5 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-02-22
  */
 public interface LizhiyuanyingbiaoMapper extends BaseMapper<Lizhiyuanyingbiao> {
-
+    boolean lizhixz(Yuangongziliaobiao stu);
 }
