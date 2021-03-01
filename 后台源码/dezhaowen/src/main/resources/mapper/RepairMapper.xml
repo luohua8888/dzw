@@ -225,7 +225,6 @@ WHERE ${type} like '%${content}%'
         LEFT JOIN `car` ON car.carnum=repair.`carinfoId`
         LEFT JOIN `customer` ON customer.`customernum`=car.`customernum`
         WHERE ${type} LIKE '%${content}%'
->>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     </select>
     <select id="selectRepairAndRescue" resultMap="BaseResultMap2">
   	SELECT *FROM (SELECT repair.status,repair.type,customer.customername clientname,car.platename,customer.phone,
