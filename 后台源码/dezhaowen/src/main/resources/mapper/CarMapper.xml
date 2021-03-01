@@ -82,17 +82,6 @@
         <result column="maintain" property="maintain" jdbcType="REAL" />
         <result column="maintaindate" property="maintaindate" jdbcType="DATE" />
         <result column="clientid" property="clientid" jdbcType="VARCHAR" />
-
-<<<<<<< HEAD
-    <resultMap type="com.accp.domain.Car" id="BaseResult2" extends="BaseResultMap">
-        <result column="brandname" property="brandname"/>
-        <result column="fname" property="fname"/>
-        <result column="customername" property="customername" />
-        <result column="jjdate" property="jjdate" />
-        <result column="ordertime" property="ordertime" />
-    </resultMap>
-
-=======
         <result column="insuredcar" property="insuredcar" jdbcType="VARCHAR" />
         <result column="otherone" property="otherone" jdbcType="VARCHAR" />
         <result column="othertwo" property="othertwo" jdbcType="VARCHAR" />
@@ -100,6 +89,7 @@
         <result column="otherfour" property="otherfour" jdbcType="VARCHAR" />
         <result column="otherfive" property="otherfive" jdbcType="VARCHAR" />
     </resultMap>
+
     <resultMap type="com.accp.domain.Carinfo" id="BaseResult2" extends="BaseResultMap5">
         <result column="name" property="name" jdbcType="VARCHAR" />
         <result column="carTypeName" property="carTypeName" jdbcType="VARCHAR" />
@@ -109,26 +99,10 @@
         <result column="jjdate" property="jjdate" jdbcType="DATE" />
         <result column="ordertime" property="ordertime" jdbcType="DATE" />
     </resultMap>
->>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         carnum, platename, carbrandid, driver, driverphone, birthday, caraffiliationid, driveraddress, drivingouttime, framnum, enginenum, engineid, carnyear, mileage, load, carseries, buytime, uptime, carouttime, mlicompanyid, mliouttime, cicompanyid, ciouttime, mytoucar, twotime, oiltypeid, nextmileage, nextupkeeptime, membernum, customernum, car1, car2, car3
     </sql>
-<<<<<<< HEAD
-
-    <select id="selectCar" resultMap="BaseResult2">
-  SELECT car.carnum,car.`platename`,car.`framnum`,carbrand.`brandname`
-,car.`enginenum`,`fadongjipinpaibiao`.`fname`,`customer`.`customername`,car.`driver`,car.`driverphone`
-,car.`mileage`,item.ordertime
- FROM `car`
-LEFT JOIN `carbrand` ON carbrand.`carcoding`=car.`carbrandid`
-LEFT JOIN `fadongjipinpaibiao` ON fadongjipinpaibiao.`fid`=car.`engineid`
-LEFT JOIN customer ON `customer`.`customernum`=car.`customernum`
-LEFT JOIN (SELECT carinfoid,ordertime FROM `repair` ORDER BY ordertime DESC LIMIT 0,1 ) item ON item.carinfoid=car.`carnum`
-WHERE car.`platename`='湘A12357'
-  </select>
-
-=======
     <select id="selectCarInfo" resultMap="BaseResult2">
  SELECT car.carnum id,car.`platename` carNumber,car.`framnum` carNumber1,
 `pinpaichexing`.`pname` carBrandName
@@ -156,5 +130,4 @@ LEFT JOIN `fadongjipinpaibiao`  ON `fadongjipinpaibiao`.fid=car.`engineid`
 LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
  WHERE platename =#{carNumber}
   </select>
->>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
 </mapper>

@@ -87,7 +87,6 @@
         <result column="lldate" property="lldate" jdbcType="TIMESTAMP" />
         <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
     </resultMap>
-<<<<<<< HEAD
     <resultMap type="com.accp.domain.Repair" id="BaseResultPlus" extends="BaseResultMap">
         <result column="platename" property="carnumber" jdbcType="VARCHAR" />
         <result column="totalnum" property="totalnum" jdbcType="REAL" />
@@ -124,7 +123,6 @@ rescue.overtime,rescue.`price`,rescue.`orderTime`
 LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item LEFT JOIN cashier ON item.number=cashier.`Number`
   WHERE item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
   </select>
-=======
     <resultMap id="QueryGetGoodsResultMap" type="com.accp.domain.QueryGetGoods">
         <result column="commodityno" jdbcType="VARCHAR" property="commodityno" />
         <result column="count" jdbcType="INTEGER" property="count" />
@@ -159,12 +157,10 @@ LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`)
     </resultMap>
 
 
->>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
-<<<<<<< HEAD
     <select id="queryRepair" resultMap="BaseResultMap" >
         SELECT * FROM `repair` WHERE number=#{number}
     </select>
@@ -189,7 +185,7 @@ rescue.overtime,rescue.`price`,rescue.`orderTime`
 LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item
 LEFT JOIN cashier ON item.number=cashier.`Number`
   WHERE item.number = #{number} OR item.platename = #{platename} OR item.orderTime BETWEEN #{startkd} AND #{endkd} AND item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
-=======
+</select>
     <select id="queryItemRepair" resultMap="QueryItemRepair">
    SELECT mi.`wid` id,mi.wname `itemsname`,ir.count,ir.`priceType`,mi.`bzj` qprice,
   ir.`otherone` hprice,ir.count*ir.otherone price,ac.`teamname` bzname,s.`yname` fwman,ac.teamid bzid  FROM
@@ -229,7 +225,6 @@ WHERE ${type} like '%${content}%'
         LEFT JOIN `car` ON car.carnum=repair.`carinfoId`
         LEFT JOIN `customer` ON customer.`customernum`=car.`customernum`
         WHERE ${type} LIKE '%${content}%'
->>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     </select>
     <select id="selectRepairAndRescue" resultMap="BaseResultMap2">
   	SELECT *FROM (SELECT repair.status,repair.type,customer.customername clientname,car.platename,customer.phone,

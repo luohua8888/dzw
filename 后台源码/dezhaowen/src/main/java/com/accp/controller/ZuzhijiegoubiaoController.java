@@ -86,5 +86,6 @@ public class ZuzhijiegoubiaoController {
     public List<Zuzhijiegoubiao> findId(){
         return o.find();
     }
+
 }
 

@@ -89,11 +89,13 @@ public class Repair extends Model<Repair> {
     @ApiModelProperty(value = "接车人")
     private String getman;
 
+
+
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工时间")
-    private LocalDateTime overworkdate;
-
+    private Date overworkdate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "实际完工时间")
@@ -128,7 +130,8 @@ public class Repair extends Model<Repair> {
     @ApiModelProperty(value = "维修状态")
     private String status;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd ")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")

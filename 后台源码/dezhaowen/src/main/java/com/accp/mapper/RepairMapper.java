@@ -20,4 +20,7 @@ public interface RepairMapper extends BaseMapper<Repair> {
     List<MaintainHistary> selectRepairItem(@Param("type") String type,@Param("content")String content);
     List<QueryGetGoods> queryGetGoods(@Param("tab") String tab, @Param("number")String number);
     List<QueryItemRepair> queryItemRepair(@Param("tab") String tab, @Param("number")String number);
+    List<Repair> selectSettleAccounts();
+    List<Repair> queryRepair(String number);
+    List<Repair> selectSettleAccounts2(@Param("number") String number,@Param("platename") String platename,@Param("startkd") String startkd,@Param("endkd") String endkd);
 }

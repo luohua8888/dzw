@@ -203,12 +203,6 @@ public class excelController {
             }else {
                 qwe16.setCellValue("");
             }
-
-            if(lastlist.get(i).getOverworkdate()!=null) {
-                qwe17.setCellValue(lastlist.get(i).getOverworkdate());
-            }else {
-                qwe17.setCellValue("");
-            }
             if(lastlist.get(i).getOtherone()!=null&&lastlist.get(i).getOtherone().length()>0) {
                 qwe18.setCellValue(lastlist.get(i).getOtherone());
             }else {

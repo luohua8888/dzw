@@ -20,7 +20,7 @@
 					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="zjcx">增加车型</span></p>
 					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="xgcx">修改</span></p>
 					<p class="fd1"><img src="img/未标题-2.jpg" /><span @click="cheremove">删除</span></p>
-					<p class="fd1"><img src="img/未标题-6.jpg" /><span>照片</span></p>
+					<p class="fd1"><img src="img/未标题-6.jpg" /><span @click="zp">照片</span></p>
 					<div class="form-group">
 						<div class="col-sm-10" style="
     position: relative;
@@ -244,7 +244,7 @@
 									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">*索赔产商</label>
 									<div class="col-sm-10" id="div8">
 										<!-- <input type="text" class="form-control" id="inputEmail3" v-model="cheadd.c2"> -->
-										<select class="form-control"  id="xlk" v-model="cheadd.c2">
+										<select class="form-control" id="xlk" v-model="cheadd.c2">
 											<option v-for="fdj in spcslist">{{fdj.firmname}}</option>
 										</select>
 									</div>
@@ -317,7 +317,7 @@
 											<option v-for="item in jlist">{{item.jname}}</option>
 										</select>
 									</div>
-									
+
 								</div>
 
 								<div class="form-group" id="ppbd">
@@ -360,7 +360,7 @@
 									<label for="inputEmail3" id="wz_08" class="col-sm-2 control-label">索赔厂商</label>
 									<div class="col-sm-10" id="div8">
 										<!-- <input type="text" class="form-control" id="inputEmail3" v-model="chexinglist.c2"> -->
-										<select class="form-control"  id="xlk" v-model="chexinglist.c2">
+										<select class="form-control" id="xlk" v-model="chexinglist.c2">
 											<option v-for="fdj in spcslist">{{fdj.firmname}}</option>
 										</select>
 									</div>
@@ -382,7 +382,7 @@
 											<input type="file" name="file" ref="fileupload1">
 										</span>
 									</div>
-								</form>
+							</form>
 							</form>
 						</div>
 						<div class="modal-footer">
@@ -392,6 +392,35 @@
 					</div>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+			<div class="modal fade" id="myModal7" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">照片</h4>
+						</div>
+						<div class="modal-body">
+							<img v-for="i in tpfind" :src="'http://localhost:8080/'+i.zhaopian">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
@@ -420,8 +449,9 @@
 						jlist: [],
 						flist: [],
 						cheadd: {},
-						chexinglist:{},
-						spcslist:[]
+						chexinglist: {},
+						spcslist: [],
+						tpfind:[]
 					}
 				},
 				methods: {
@@ -433,6 +463,10 @@
 					},
 					zjpp() {
 						$("#myModal1").modal("show");
+					},
+					zp() {
+						$("#myModal7").modal("show");
+						this.tpfind=this.car;
 					},
 					zjcx() {
 						$("#myModal2").modal("show");
@@ -449,7 +483,7 @@
 							url: BaseUrl + "/chexingdingyibiao/spcs",
 							success: function(result) {
 								console.log("11111")
-								that.spcslist= result;
+								that.spcslist = result;
 								console.log(that.list)
 							}
 						})
@@ -468,6 +502,7 @@
 						})
 					},
 					chefind(item) {
+						
 						let that = this;
 						this.pingupdert = JSON.parse(JSON.stringify(item));
 						$.ajax({
@@ -559,7 +594,7 @@
 							success: function(result) {
 								that.cheadd.cid = that.pingupdert.pid
 								that.cheadd.name = that.pingupdert.name
-								that.cheadd.zhaopian=result
+								that.cheadd.zhaopian = result
 								$.ajax({
 									url: BaseUrl + "/chexingdingyibiao/chexinadd",
 									data: that.cheadd,
@@ -572,18 +607,18 @@
 						});
 
 					},
-					chexing(item){
+					chexing(item) {
 						let that = this;
 						console.log("132132123")
 						$.ajax({
 							url: BaseUrl + "/chexingdingyibiao/chexingByid/" + item.cheid,
-							type:"get",
+							type: "get",
 							success: function(result) {
 								that.chexinglist = result;
 							}
 						})
 					},
-					updatechexin(){
+					updatechexin() {
 						let that = this;
 						let json = JSON.stringify(that.chexinglist);
 						console.log(json)
@@ -591,7 +626,7 @@
 							url: BaseUrl + "/chexingdingyibiao/chexinupdate",
 							data: json,
 							type: "post",
-							contentType:"application/json;charset=utf-8",
+							contentType: "application/json;charset=utf-8",
 							success: function(result) {
 								that.find();
 								console.log("修改成功")
@@ -600,9 +635,9 @@
 					},
 					cheremove() {
 						let that = this;
-						console.log("http://127.0.0.1:8080/chexingdingyibiao/chexinremove/"+that.chexinglist.cheid)
+						console.log("http://127.0.0.1:8080/chexingdingyibiao/chexinremove/" + that.chexinglist.cheid)
 						$.ajax({
-							url: BaseUrl+"/chexingdingyibiao/chexinremove/"+that.chexinglist.cheid,
+							url: BaseUrl + "/chexingdingyibiao/chexinremove/" + that.chexinglist.cheid,
 							type: "post",
 							success: function(result) {
 								console.log("123")
