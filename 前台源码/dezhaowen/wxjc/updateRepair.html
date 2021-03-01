@@ -2133,10 +2133,10 @@ $("#addCommodity").click(function(){
 				$("#jungong").click(function(){
 				$("[name=hege]").each(function(){
 					if($(this)[0].checked==true){
-						vm.com.yesorno=$(this).val();
+						vm.com.yesOrno=$(this).val();
 					}
 				})
-				if(vm.com.yesorno==0){
+				if(vm.com.yesOrno==0){
 					vm.com.count++
 				}
 				$.ajax({
@@ -2146,7 +2146,7 @@ $("#addCommodity").click(function(){
 					data:JSON.stringify(vm.com),
 					contentType:"application/json;charset=utf-8",
 					success:function(res){
-						if(vm.com.yesorno=="0"){
+						if(vm.com.yesOrno=="0"){
 							alert("返工成功")
 						}else{
 							alert("竣工成功")
