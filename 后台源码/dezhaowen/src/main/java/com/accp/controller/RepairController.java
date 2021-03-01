@@ -54,6 +54,30 @@ public class RepairController {
     CompletedMapper comMapper;
     //`item_repair`.wjid修改为varchar(20)
 
+//    @RequestMapping("/queryEwitem")
+//    @ResponseBody
+//    public List<Ewitem> queryEwitem(String number){
+//
+//        return ewitemService.
+//    }
+    @RequestMapping("/queryItemRepair")
+    @ResponseBody
+    public List<QueryItemRepair> queryItemRepair(String tab,String number){
+
+        return repairMapper.queryItemRepair(tab,number);
+    }
+    @RequestMapping("/queryGetGoods")
+    @ResponseBody
+    public List<QueryGetGoods> queryGetGoods(String tab,String number){
+
+        return repairMapper.queryGetGoods(tab,number);
+    }
+    @RequestMapping("/queryRepair")
+    @ResponseBody
+    public Repair queryRepair(String number){
+
+        return repairService.getById(number);
+    }
     @RequestMapping("/selectJunGong")
     @ResponseBody
     public List<JunGong> selectJunGong(String tj,String date1,String date2,String number,String carnumber,String carnumber1){

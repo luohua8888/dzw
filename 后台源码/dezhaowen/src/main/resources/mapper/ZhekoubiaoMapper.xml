@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.ZhekoubiaoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Zhekoubiao">
+        <id column="zid" property="zid" />
+        <result column="zname" property="zname" />
+        <result column="zhe" property="zhe" />
+        <result column="z1" property="z1" />
+        <result column="z2" property="z2" />
+        <result column="z3" property="z3" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        zid, zname, zhe, z1, z2, z3
+    </sql>
+
+</mapper>

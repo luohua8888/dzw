@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 
@@ -28,7 +29,8 @@ import lombok.experimental.Accessors;
 public class Car extends Model<Car> {
 
     private static final long serialVersionUID=1L;
-    @TableId
+    @TableId(value = "carnum",type = IdType.AUTO)
+
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 

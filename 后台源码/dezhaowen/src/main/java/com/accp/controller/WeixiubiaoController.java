@@ -118,7 +118,7 @@ public class WeixiubiaoController {
         if(chaxun!=null){
             query.lambda().like(Weixiubiao::getWid,chaxun);
         }
-       
+
         List<Weixiubiao> s=wservice.list(query);
 
         Workbook book=new XSSFWorkbook();

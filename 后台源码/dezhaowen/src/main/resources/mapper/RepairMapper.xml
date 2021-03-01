@@ -87,13 +87,62 @@
         <result column="lldate" property="lldate" jdbcType="TIMESTAMP" />
         <result column="stockDater" property="stockDater" jdbcType="TIMESTAMP" />
     </resultMap>
+    <resultMap id="QueryGetGoodsResultMap" type="com.accp.domain.QueryGetGoods">
+        <result column="commodityno" jdbcType="VARCHAR" property="commodityno" />
+        <result column="count" jdbcType="INTEGER" property="count" />
+        <result column="priceType" jdbcType="VARCHAR" property="pricetype" />
+        <result column="discountsPrice" jdbcType="REAL" property="discountsprice" />
+        <result column="qprice" jdbcType="REAL" property="qprice" />
+        <result column="NormalPrice" jdbcType="VARCHAR" property="normalprice" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="unit" jdbcType="VARCHAR" property="unit" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="cause" jdbcType="VARCHAR" property="cause" />
+        <result column="clname" jdbcType="VARCHAR" property="clname" />
+        <result column="sname" jdbcType="VARCHAR" property="sname" />
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="warehouse" jdbcType="VARCHAR" property="warehouse" />
+        <result column="item" jdbcType="VARCHAR" property="item" />
+        <result column="commodityNo" jdbcType="VARCHAR" property="commodityNo" />
+        <result column="brand" jdbcType="VARCHAR" property="brand" />
+        <result column="cartype" jdbcType="VARCHAR" property="cartype" />
+    </resultMap>
+    <resultMap id="QueryItemRepair" type="com.accp.domain.QueryItemRepair">
+        <result column="itemsname" jdbcType="VARCHAR" property="itemsname" />
+        <result column="count" jdbcType="INTEGER" property="count" />
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="bzid" jdbcType="INTEGER" property="bzid" />
+        <result column="priceType" jdbcType="VARCHAR" property="priceType" />
+        <result column="bzname" jdbcType="VARCHAR" property="bzname" />
+        <result column="fwman" jdbcType="VARCHAR" property="fwman" />
+        <result column="qprice" jdbcType="REAL" property="qprice" />
+        <result column="hprice" jdbcType="REAL" property="hprice" />
 
+    </resultMap>
 
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
+    <select id="queryItemRepair" resultMap="QueryItemRepair">
+   SELECT mi.`wid` id,mi.wname `itemsname`,ir.count,ir.`priceType`,mi.`bzj` qprice,
+  ir.`otherone` hprice,ir.count*ir.otherone price,ac.`teamname` bzname,s.`yname` fwman,ac.teamid bzid  FROM
+item_repair ir LEFT JOIN ${tab} r ON ir.wjid=r.number
+ LEFT JOIN weixiubiao mi ON ir.`itemid`=mi.`wid`
+   LEFT JOIN `maintenance_team` ac ON ir.`teamid`=ac.`teamid`
+    LEFT JOIN `yuangongziliaobiao` s ON s.`yid` = r.`staffno`
+WHERE ir.wjid ='${number}'
+  </select>
+    <select id="queryGetGoods" resultMap="QueryGetGoodsResultMap">
+  SELECT getg.`id`,getg.`type`,cl.`customername` clname,getg.`goodid` commodityno,
+  com.goodname `name`,com.numunitid `unit`,getg.`priceType`,getg.`count`,
+getg.`discountsPrice` qprice,getg.`discountsPrice`,getg.count*getg.`discountsPrice` price,
+s.`yname` sname,getg.`cause`,com.goodbrandid brand,com.fitcartype cartype
+FROM getgood getg,gooddata com,`${tab}` r,`yuangongziliaobiao` s,car,`customer` cl
+WHERE getg.`wjid`='${number}' AND com.`gooddataid` = getg.`goodid` AND r.`number`=getg.`wjid`
+ AND s.`yid` = r.`staffno` AND car.`carnum`=r.`carinfoId` AND car.`customernum`=cl.`customernum`   ORDER BY getg.`type`
+  </select>
     <select id="selectRepairItem" resultMap="BaseResultMap3">
 SELECT car.`platename` carNumber,`customer`.`customername` `name`, repair.`number`,
 repair.`orderTime`,repair.type,repair.`nowworkDate`,repair.`stockDater`,
