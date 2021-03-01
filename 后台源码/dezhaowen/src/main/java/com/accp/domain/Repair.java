@@ -29,8 +29,47 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ApiModel(value="Repair对象", description="")
 public class Repair extends Model<Repair> {
 
+    @TableField(exist = false)
+    private String startkd;
+    @TableField(exist = false)
+    private String endkd;
+
     private static final long serialVersionUID=1L;
+<<<<<<< HEAD
+
+    private String carnumber;
+
+    private Boolean check;
+
+    private Float totalnum;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date cashiertime;
+
+    private String staffname;
+
+    private String paymenttype;
+
+    private String wtype;
+
+    private String carbrandname;
+
+    private String clientname;
+
+    private String cartypename;
+
+    private String carnumber1;
+
+    private String carerphone;
+
+    private String jqinsurance;
+
+    private String staffpeople;
+
+=======
     @TableId
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @ApiModelProperty(value = "维修编号")
     private String number;
 
@@ -52,10 +91,19 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "接车人")
     private String getman;
+<<<<<<< HEAD
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @ApiModelProperty(value = "预计完工时间")
+    private LocalDateTime overworkdate;
+
+=======
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工时间")
     private Date overworkdate;
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "实际完工时间")
@@ -89,7 +137,12 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "维修状态")
     private String status;
+<<<<<<< HEAD
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd ")
+=======
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+>>>>>>> b9a6f13471ccbbab8dc125f68a565757fa56245f
     @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     @TableField("orderTime")
