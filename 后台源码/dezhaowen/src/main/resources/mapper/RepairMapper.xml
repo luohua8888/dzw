@@ -57,10 +57,71 @@
         <result column="orderTime" property="ordertime" jdbcType="TIMESTAMP" />
         <result column="stockDater" property="stockdater" jdbcType="TIMESTAMP" />
     </resultMap>
+    <resultMap type="com.accp.domain.Repair" id="BaseResultPlus" extends="BaseResultMap">
+        <result column="platename" property="carnumber" jdbcType="VARCHAR" />
+        <result column="totalnum" property="totalnum" jdbcType="REAL" />
+        <result column="cashiertime" property="cashiertime" jdbcType="TIMESTAMP" />
+        <result column="staffname" property="staffname" jdbcType="VARCHAR" />
+        <result column="paymenttype" property="paymenttype" jdbcType="VARCHAR" />
+        <result column="wtype" property="wtype" jdbcType="VARCHAR" />
+        <result column="carbrandname" property="carbrandname" jdbcType="VARCHAR" />
+        <result column="clientname" property="clientname" jdbcType="VARCHAR" />
+        <result column="cname" property="cartypename" jdbcType="VARCHAR" />
+        <result column="framnum" property="carnumber1" jdbcType="VARCHAR" />
+        <result column="driverphone" property="carerphone" jdbcType="VARCHAR" />
+        <result column="cicompanyid" property="jqinsurance" jdbcType="VARCHAR" />
+        <result column="staffpeople" property="staffpeople" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectSettleAccounts" resultMap="BaseResultPlus">
+  	SELECT item.*,cashier.totalNum,cashier.cashiertime,
+(SELECT yname FROM `yuangongziliaobiao` WHERE yid=staffid) staffpeople,cashier.paymentType FROM(SELECT repair.number,'维修' AS wtype,repair.setter,repair.status,
+(SELECT brandname FROM carbrand WHERE carbrand.carcoding=car.carbrandid)carbrandname,customer.customername clientname,
+car.platename,chexingdingyibiao.cname,car.framnum,car.driverphone,car.cicompanyid,(SELECT yname FROM yuangongziliaobiao WHERE yid=repair.`staffno` LIMIT 0,1) staffname,
+repair.overworkdate,repair.`price`,repair.`orderTime`
+ FROM REPAIR JOIN `car` ON car.carnum=repair.carinfoId
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+ LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
+ LEFT JOIN `chexingdingyibiao` ON chexingdingyibiao.`cid`=car.`carnum`
+ UNION ALL
+SELECT rescue.`number`,'救援' AS wtype,rescue.`setter`,rescue.status,(SELECT brandname FROM carbrand WHERE carbrand.`carcoding`=car.`carbrandid`)
+ carbrandname,customer.customername clientname,car.platename,chexingdingyibiao.`cname`,car.`framnum`,car.`driverphone`,car.`cicompanyid`,
+ (SELECT yname FROM yuangongziliaobiao WHERE yid=rescue.`staffno` LIMIT 0,1) staffname,
+rescue.overtime,rescue.`price`,rescue.`orderTime`
+ FROM rescue LEFT JOIN `car` ON car.carnum=rescue.carinfoId
+ LEFT JOIN `chexingdingyibiao` ON chexingdingyibiao.`cid`=car.`carnum`
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item LEFT JOIN cashier ON item.number=cashier.`Number`
+  WHERE item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
+  </select>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         number, carinfoId, staffno, oil, type, worktime, getman, overworkdate, nowworkDate, setter, company, befor, price, remark, state, fault, faultreasult, status, orderTime, stockDater, otherone, othertwo, otherthree, otherfour, otherfive
     </sql>
+    <select id="queryRepair" resultMap="BaseResultMap" >
+        SELECT * FROM `repair` WHERE number=#{number}
+    </select>
+    <select id="selectSettleAccounts2" resultMap="BaseResultPlus">
+SELECT item.*,cashier.totalNum,cashier.cashiertime,
+(SELECT yname FROM `yuangongziliaobiao` WHERE yid=staffid) staffpeople,cashier.paymentType FROM(SELECT repair.number,'维修' AS wtype,repair.setter,repair.status,
+(SELECT brandname FROM carbrand WHERE carbrand.carcoding=car.carbrandid)carbrandname,customer.customername clientname,
+car.platename,chexingdingyibiao.cname,car.framnum,car.driverphone,car.cicompanyid,(SELECT yname FROM yuangongziliaobiao WHERE staffno=repair.`staffno` LIMIT 0,1) staffname,
+repair.overworkdate,repair.`price`,repair.`orderTime`
+ FROM REPAIR JOIN `car` ON car.carnum=repair.carinfoId
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+ LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`
+ LEFT JOIN `chexingdingyibiao` ON chexingdingyibiao.`cid`=car.`carnum`
+ UNION ALL
+SELECT rescue.`number`,'救援' AS wtype,rescue.`setter`,rescue.status,(SELECT brandname FROM carbrand WHERE carbrand.`carcoding`=car.`carbrandid`)
+ carbrandname,customer.customername clientname,car.platename,chexingdingyibiao.`cname`,car.`framnum`,car.`driverphone`,car.`cicompanyid`,
+ (SELECT yname FROM yuangongziliaobiao WHERE yid=rescue.`staffno` LIMIT 0,1) staffname,
+rescue.overtime,rescue.`price`,rescue.`orderTime`
+ FROM rescue LEFT JOIN `car` ON car.carnum=rescue.carinfoId
+ LEFT JOIN `chexingdingyibiao` ON chexingdingyibiao.`cid`=car.`carnum`
+ LEFT JOIN `customer` ON customer.customernum=car.customernum
+LEFT JOIN `customertype` ON customertype.`customerid`=customer.`customertypeid`) item
+LEFT JOIN cashier ON item.number=cashier.`Number`
+  WHERE item.number = #{number} OR item.platename = #{platename} OR item.orderTime BETWEEN #{startkd} AND #{endkd} AND item.status LIKE '%完工%' ORDER BY item.overworkdate DESC
+    </select>
     <select id="selectRepairAndRescue" resultMap="BaseResultMap2">
   	select *from	(SELECT repair.status,repair.type,client.name clientname,carinfo.carNumber,client.phone,repair.number,'维修' AS tname,repair.orderTime,
 repair.overworkdate,repair.nowworkDate,repair.stockDater,repair.price,staff.name,repair.getman,clienttype.clienttype

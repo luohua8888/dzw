@@ -24,4 +24,11 @@
         menu_id, menu_name, parent_id, order_num, url, menu_type, visible, perms, create_time, remark, men1, men2, men3
     </sql>
 
+    <resultMap type="com.accp.domain.SysMenu" id="BaseResultMapExtends" extends="BaseResultMap">
+        <collection property="children" column="menu_id" ofType="com.accp.domain.SysMenu" select="findMenuByRoleId"></collection>
+    </resultMap>
+    <select id="findMenuByRoleId" resultMap="BaseResultMapExtends">
+  	select * from sys_menu where parent_id=#{parentId} and menu_type in ('F','M','C')
+    </select>
+
 </mapper>
