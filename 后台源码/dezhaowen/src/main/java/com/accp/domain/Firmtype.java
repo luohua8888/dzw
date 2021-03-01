@@ -1,7 +1,11 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,7 +14,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -24,7 +28,10 @@ public class Firmtype extends Model<Firmtype> {
 
     private static final long serialVersionUID=1L;
 
+    @TableField(exist = false)
+    private List<Firmtype> children;
     @ApiModelProperty(value = "厂商类别id")
+    @TableId()
     private Integer firmtypeid;
 
     @ApiModelProperty(value = "厂商类别")

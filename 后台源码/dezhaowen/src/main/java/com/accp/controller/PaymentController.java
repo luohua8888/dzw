@@ -1,9 +1,14 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Payment;
+import com.accp.service.IPaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,5 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/payment")
 public class PaymentController {
 
+    @Autowired
+    IPaymentService paymentService;
+
+    public Payment findById(int paymentid){
+        return paymentService.getById(paymentid);
+    }
+
+    @RequestMapping("find")
+    public List<Payment> find(){
+        return paymentService.list();
+    }
 }
 
