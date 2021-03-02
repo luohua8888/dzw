@@ -44,6 +44,7 @@ public class Repair extends Model<Repair> {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @TableField(exist = false)
     private Date cashiertime;
     @TableField(exist = false)
     private String staffname;
