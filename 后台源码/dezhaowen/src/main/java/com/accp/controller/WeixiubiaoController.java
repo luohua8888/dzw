@@ -49,26 +49,35 @@ public class WeixiubiaoController {
 
     @Autowired
     EarningServiceImpl eervice;
+
+    @Autowired
+    PbServiceImpl bservice;
     //查看所有发动机品牌
     @GetMapping("/findall")
     public Map<String, Object> findall(){
         List<Fadongjipinpaibiao> flist=fservice.list();
         List<Pinpaichexing> plist=pservice.list();
+        List<Pb> blist=bservice.list();
         Map<String,Object> map = new HashMap<>();
         map.put("flist",flist);
         map.put("plist",plist);
+        map.put("blist",blist);
         return  map;
     }
 
     //查看车型定义
     @GetMapping("/weixiufind/{cxun}")
-    public List<Weixiubiao> carfind(@PathVariable String cxun,Integer chaxun) {
-        System.out.print(cxun);
+    public List<Weixiubiao> carfind(@PathVariable String cxun,Integer chaxun,String ppname) {
+        System.out.print(cxun+"wwww");
+        System.out.print(chaxun+"pppppp");
+        System.out.print(ppname+"oooooo");
        QueryWrapper<Weixiubiao> query=new QueryWrapper<>();
+
         if(cxun!=null&&cxun.length()>0&&!cxun.equals("0")){
             query.lambda().eq(Weixiubiao::getXiangmuleibie,cxun);
         }
         if(chaxun!=null){
+            query.eq("xiangmuleibie",ppname);
             query.lambda().like(Weixiubiao::getWid,chaxun);
         }
        List<Weixiubiao> list=wservice.list(query);

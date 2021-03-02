@@ -3,6 +3,7 @@ package com.accp.controller;
 import com.accp.domain.Cashier;
 import com.accp.domain.Repair;
 import com.accp.service.impl.CashierServiceImpl;
+import com.accp.service.impl.RepairServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

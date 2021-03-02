@@ -4,8 +4,8 @@ package com.accp.controller;
 import com.accp.domain.Car;
 import com.accp.domain.Customer;
 import com.accp.domain.Ziduan;
-import com.accp.domain.Ziduana;
-import com.accp.mapper.ZiduanaMapper;
+import com.accp.domain.Ziduan;
+import com.accp.mapper.ZiduanMapper;
 import com.accp.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.poi.ss.usermodel.Cell;
@@ -61,9 +61,9 @@ public class CarController {
     @Autowired
     IYuangongziliaobiaoService yuangongziliaobiaoService;
     @Autowired
-    IZiduanaService ziduanaService;
+    IZiduanService ziduanaService;
     @Autowired
-    ZiduanaMapper ziduanaMapper;
+    ZiduanMapper ziduanaMapper;
 
     @RequestMapping("/find")
     public List<Car> find(){
@@ -355,12 +355,12 @@ public class CarController {
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
     @RequestMapping("/sada")
-    public List<Ziduana> findziduan(){
+    public List<Ziduan> findziduan(){
         return ziduanaService.list();
     }
     @RequestMapping("/cxzd")
-    public List<Ziduana> finaa(){
-        QueryWrapper<Ziduana> query=new QueryWrapper<>();
+    public List<Ziduan> finaa(){
+        QueryWrapper<Ziduan> query=new QueryWrapper<>();
         query.eq("display",1);
         return ziduanaService.list(query);
     }
