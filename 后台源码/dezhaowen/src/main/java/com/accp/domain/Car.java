@@ -34,18 +34,6 @@ public class Car extends Model<Car> {
 
     private static final long serialVersionUID=1L;
     @TableId(value = "carnum",type = IdType.AUTO)
-
-    private String brandname;
-    private String customername;
-    private String fname;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date ordertime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date jjdate;
-
-
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 
