@@ -158,6 +158,152 @@
 					</div>
 				</div>
 			</div>
+			<div id="jrtx" style="width: 1200px; height: 650px; background-color: white; box-shadow: 0px 0px 3px #000000; border-radius:5px 5px 5px 5px ;position:absolute; left: 170px; top: 50px; " >
+				<div  id="ctn" style=" position:absolute; left: 10px; top: 0px; width: 1030px;">
+					<div style="width: 1030px;line-height: 40px; background:#F7FFFF ; float: left;">
+						<span style="font-size: 22px;margin-left: 10px;">今日提醒</span>
+				
+						<span style=" font-size: 19px; margin-left: 830px; color: #000;width: 80px;">导出</span>
+						<button class="btn btn-default" style="background: #C6C6C6;color: white;" @click="jrtx()">关闭</button>
+					</div>		
+					<div class="ddiv2" style="float: left;background: white;width: 230px;height: 400px;">
+								<ul style="list-style: none;" class="ul1" style="margin-left: 0px;">
+									<li v-for="item in sp">
+										<span @click="xd">+</span><span style="font-size: 16px;">{{item.jname}}</span>
+										<ul style="list-style: none;" v-if="xsa">
+											<li  v-for="items in item.children">
+												<span style="margin-left: 0px;">+</span><span style="font-size: 16px;">{{items.jrname}}</span>
+											</li>
+										</ul>
+									</li>
+								</ul>
+					</div>
+				<div name="status" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>维修单号</td>
+							<td>领料日期</td>
+							<td>配件编码</td>
+							<td>配件名称</td>
+							<td>出库数量</td>
+							<td>回收数量</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+							<td>1</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none; ">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>维修单号</td>
+							<td>车主</td>
+							<td>车牌号</td>
+							<td>挂账时间</td>
+							<td>BalJE4</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>配件编码</td>
+							<td>配件名称</td>
+							<td>库存数量</td>
+							<td>入库日期</td>
+							<td>班组</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>车牌号</td>
+							<td>年审日期</td>
+							<td>车主</td>
+							<td>驾驶员</td>
+							<td>驾驶员电话</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>配件编码</td>
+							<td>配件名称</td>
+							<td>库存数量</td>
+							<td>入库日期</td>
+							<td>库龄(天)</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>车牌号</td>
+							<td>上牌日期</td>
+							<td>二维日期</td>
+							<td>车主</td>
+							<td>驾驶员电话</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;">
+					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+						<tr style="background: #39CEDE;">
+							<td>设置日期</td>
+							<td>主题</td>
+							<td>要求处里日期</td>
+						</tr>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			</div>
 		</div>
 		<script>
 			var baseUrl = "http://localhost:8080/";
@@ -166,7 +312,62 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
 		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
 		<script type="text/javascript" src="js/menu.js" ></script>
+		<script type="text/javascript" src="js/quan.js" ></script>
 		<script type="text/javascript">
+			var sp=[{
+				id:1,
+				jname:"提醒情况",
+				ename:'sys',
+				children:[
+					{
+						id:1,
+						jrname:"待入库旧件0个",
+						ename:"sys"
+					},{
+						id:1,
+						jrname:"账期超期0个",
+						ename:"ee"
+					},{
+						id:1,
+						jrname:"三包申报超期0个",
+						ename:"ss"
+					},{
+						id:1,
+						jrname:"班组备件超期0个",
+						ename:"syffs"
+					},{
+						id:1,
+						jrname:"需年审车辆0台",
+						ename:"sas"
+					},{
+						id:1,
+						jrname:"超龄库存配件0个",
+						ename:"syas"
+					},{
+						id:1,
+						jrname:"应做二维车辆0台",
+						ename:"sysss"
+					},{
+						id:1,
+						jrname:"个人事件0件",
+						ename:"syssss"
+					}
+				]
+				}
+			];
+			var sp1=[{
+				id:1,
+				jname:"10-北京",
+				ename:'sys',
+				children:[
+					{
+						id:4,
+						jrname:"1001-s",
+						ename:"sys"
+					}
+				]
+				}
+			];
 			var user=sessionStorage.getItem("user");
 			if(!user){
 				window.location.href="new_file.html"; 
@@ -186,13 +387,36 @@
 					return{
 						menu:[],
 						selectedMenu:[],
-						tabs:tabs
+						tabs:tabs,
+						sp:sp,
+						sp1:sp1,
+						xsa:false,
+						xsa1:false
 					}
 				},
 				methods:{
+					jrtx(){
+						$("#jrtx").css("display","none");
+					},
+					xd(){
+					if(this.xsa){
+						this.xsa=false;
+					}else{
+						this.xsa=true;
+					}
+					},
+					xd1(){
+							if(this.xsa1){
+								this.xsa1=false;
+							}else{
+								this.xsa1=true;
+							}
+					},
 					createTab(item){
-						if(item.children && item.children.length>0){
-							return;
+						if(item.children && item.children.length>0 ){
+							if(item.menuType!='C'){
+								return;
+							}
 						}
 						this.tabs.forEach(item=>item.active=false);
 						this.$set(item,"active",true);
@@ -218,7 +442,10 @@
 					console.log(result);
 					that.menu = result;
 					that.selectedMenu = that.menu[0];
-					console.log(that.selectedMenu);
+					});
+					menuApi.findPerms(u.roleId,function(result){
+						data.perms=result;
+						console.log(top.data.perms);
 					});
 				}
 			});

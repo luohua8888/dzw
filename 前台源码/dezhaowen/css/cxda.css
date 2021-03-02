@@ -1,0 +1,204 @@
+h2{
+				color:#545454;
+				margin-left: 30px;
+			}
+			#guan{
+				margin-left: 1400px;
+				margin-top: -80px;
+				color: #FFFFFF;
+				background-color:#c6c6c6 ;
+			}
+			.bj_1{
+				width: 100%;
+				height: 636px;
+				background-color: #f7f7f7;
+				margin-top:-15px;
+			}
+			.fd{
+				float: left;
+				margin-left: 20px;
+				margin-top: 7px;
+			}
+			.tp_01{
+				margin-left: 7px;
+			}
+			.bj_03{
+				width:280px;
+				height: 495px;
+				background-color: #FFFFFF;
+				margin-top: -565px;
+				margin-left:30px;
+			}
+			.fd1{
+				float: left;
+				margin-left:20px;
+				margin-top:5px;
+			}
+			.tp_02{
+				margin-left: 130px;
+			}
+			#inputEmail3{
+				width:222px;
+				margin-left: 13px;
+			}
+			#al1{
+				margin-top:-1165px;
+				margin-left:260px;
+			}
+			#inputEmail4{
+				width:222px;
+				margin-left: 400px;
+				margin-top:-35px;
+			}
+			#al2{
+				margin-top:-1165px;
+				margin-left:330px;
+			}
+			.bj_04{
+				width:1090px;
+				height: 495px;
+				background-color: #ffffff;
+				margin-top: -497px;
+				margin-left:420px;
+			}
+			#inlineCheckbox1{
+				margin-left: 25px;
+				margin-top:-6px;
+			}
+			.w{
+				margin-top:55px;
+			}
+			#myModal1{
+				margin-top: 190px;
+			}
+			#ppbd{
+				width: 1000px;
+				margin-left: 15px;
+			}
+			#myModal2{
+				
+				margin-top: 90px;
+			}
+			#wz_01{
+				width:95px;
+				margin-left: -0px;
+			}
+			#div1 input{
+				width:100px;
+				margin-left: -12px;
+			}
+			#div2 input{
+				width: 325px;
+				margin-left:-150px;
+			}
+			#wz_02{
+				margin-left:-70px;
+				margin-top:2px;
+			}
+			#div3 input{
+				width: 177px;
+				margin-left:-12px;
+			}
+			#wz_03{
+				margin-left:197px;
+				margin-top:-47px;
+			}
+			#div4 input{
+				width:178px;
+				margin-left:345px;
+				margin-top:-48px;
+			}
+			#wz_04{
+				margin-left:-68px;
+				margin-top: -15px;
+			}
+			#div5 select{
+				width:145px;
+				margin-left:-13px;
+				margin-top: -18px;
+			}
+			#wz_05{
+				margin-left:-70px;
+				margin-top:-17px;
+			}
+			#div5 input{
+				width:178px;
+				margin-left:-12px;
+				margin-top:-19px;
+			}
+			#wz_06{
+				margin-left:170px;
+				margin-top: -50px;
+			}
+			#wz_07{
+				margin-left: -55px;
+				margin-top:2px;
+			}
+			#div6{
+				width: 453px;
+				margin-left:-10px;
+				margin-top:-1px;
+			}
+			
+			#hd{
+				width:1000px;
+			}
+			
+		.fileinput-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .fileinput-button input{
+            position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+		
+		#div7{
+			width: 20px;
+			height: 340px;
+			margin-left:900px;
+			margin-top:-360px;
+			border: 1px solid #19b5cc;
+			background-color: #FFFFFF;
+		}
+		#wz_08{
+			margin-left: -70px;
+			margin-top:-15px;
+		}
+		#div8 input{
+			width: 200px;
+			margin-top:-15px;
+			margin-left: -15px;
+		}
+		.span1{
+			display: inline-block;
+			margin-left: -7px;
+			margin-top:110px;
+			color: #19b5cc;
+		}
+		.span2{
+			margin-left: -17px;
+			display: inline-block;
+			position: relative;
+			top:90px;
+			color: #19b5cc;
+		}
+		.abcd{
+			width:50px;
+			height: 40px;
+			margin-left:-0px;
+			margin-top:-22px;
+		}
+		#xlk{
+			width:200px;
+			margin-top:-10px;
+			margin-left:-10px;
+		}
+		
+		

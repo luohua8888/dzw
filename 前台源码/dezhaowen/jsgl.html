@@ -239,7 +239,7 @@
 						menuApi.findPerms(item.roleId,function(result){
 							console.log(result);
 							//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.map(item=>{if(item.menuType!="M"&&item.menuType!="D")return item.menuId});
+							let selecedSet = result.map(item=>{if(item.menuType=="B")return item.menuId});
 
 							//调用jstree的选中方法，可以传入集合
 							$('#myTree').jstree(true).select_node(selecedSet);
