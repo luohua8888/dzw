@@ -35,35 +35,35 @@ public class Repair extends Model<Repair> {
     private String endkd;
 
     private static final long serialVersionUID=1L;
-
+    @TableField(exist = false)
     private String carnumber;
-
+    @TableField(exist = false)
     private Boolean check;
-
+    @TableField(exist = false)
     private Float totalnum;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date cashiertime;
-
+    @TableField(exist = false)
     private String staffname;
-
+    @TableField(exist = false)
     private String paymenttype;
-
+    @TableField(exist = false)
     private String wtype;
-
+    @TableField(exist = false)
     private String carbrandname;
-
+    @TableField(exist = false)
     private String clientname;
-
+    @TableField(exist = false)
     private String cartypename;
-
+    @TableField(exist = false)
     private String carnumber1;
-
+    @TableField(exist = false)
     private String carerphone;
-
+    @TableField(exist = false)
     private String jqinsurance;
-
+    @TableField(exist = false)
     private String staffpeople;
 
     @TableId

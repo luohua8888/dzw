@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.accp.mapper.RepairMapper;
 import com.accp.service.impl.CashierServiceImpl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -28,7 +29,7 @@ import com.accp.domain.Repair;
 @RequestMapping("/excel")
 public class excelController {
     @Autowired
-    RepairServiceImpl rs;
+    RepairMapper rs;
     @Autowired
     CashierServiceImpl ccs;
 
