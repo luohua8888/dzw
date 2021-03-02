@@ -22,6 +22,9 @@ public class JszxController {
 
     @RequestMapping("/selectSettleAccounts")
     public List<Repair> selectSettleAccounts(String number,String platename,String startkd,String endkd){
+        if((number==null&&platename==null&&startkd==null&&endkd==null)||(platename==""&&number==null&&startkd==null&&endkd==null)||(platename==null&&number==""&&startkd==null&&endkd==null)){
+            return rs.selectSettleAccounts();
+        }
         List<Repair> list = rs.selectSettleAccounts2(number,platename,startkd,endkd);
         return list;
     }

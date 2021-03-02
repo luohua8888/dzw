@@ -291,14 +291,15 @@
 							<td>结算时间</td>
 							<td>消费金额</td>
 						</tr>
-						<tr>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
+						<tr v-for="item in ls">
+							<td>{{item.lx}}</td>
+							<td>{{item.dh}}</td>
+							<td>{{item.cph}}</td>
+							<td>{{item.wxyw}}</td>
+							<td>{{item.jcsj}}</td>
+							<td>{{item.wgsj}}</td>
+							<td>{{item.jssj}}</td>
+							<td>{{item.xfje}}</td>
 						</tr>
 					</table>
 			</div>
@@ -783,7 +784,20 @@
 					z1:false,
 					plate:{},
 					zd:[],
-					czd:{}
+					czd:{},
+					ls:[],
+					lswx:[
+						{
+							lx:"救援",
+							dh:"00RE",
+							cph:"辽cxzcxz",
+							wxyw:"中国重汽",
+							jcsj:"2020-11-16 09:36:20",
+							wgsj:"",
+							jssj:"",
+							xfje:"0.00"
+						}
+					],
 				},
 				methods: {
 					cxzd(){
@@ -975,8 +989,15 @@
 					},
 					xzz(item){
 						this.cs=item;
+						if(item.platename=="辽cxzcxz"){
+							alert("s");
+							this.ls=this.lswx;
+						}else{
+							this.ls=[];
+						}
 						let that=this;
 						var json=JSON.stringify(this.cs);
+						
 						$.ajax({
 							url:"http://127.0.0.1:8080/car/finc",
 							type:"post",

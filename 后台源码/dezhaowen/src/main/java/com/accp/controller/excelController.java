@@ -216,7 +216,7 @@ public class excelController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        String fileName = new String("导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        String fileName = new String("结算中心导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
