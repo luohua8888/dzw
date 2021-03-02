@@ -61,15 +61,9 @@ public class CarController {
     @Autowired
     IYuangongziliaobiaoService yuangongziliaobiaoService;
     @Autowired
-<<<<<<< HEAD
-    IZiduanService ziduanaService;
-    @Autowired
-    ZiduanMapper ziduanaMapper;
-=======
     IZiduanService ziduanService;
     @Autowired
     ZiduanMapper ziduanMapper;
->>>>>>> ad4d28723ffe4581adaa5de9cf250cc15fbf874a
 
     @RequestMapping("/find")
     public List<Car> find(){
@@ -362,11 +356,7 @@ public class CarController {
     }
     @RequestMapping("/sada")
     public List<Ziduan> findziduan(){
-<<<<<<< HEAD
-        return ziduanaService.list();
-=======
         return ziduanService.list();
->>>>>>> ad4d28723ffe4581adaa5de9cf250cc15fbf874a
     }
     @RequestMapping("/cxzd")
     public List<Ziduan> finaa(){
