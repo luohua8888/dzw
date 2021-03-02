@@ -60,7 +60,7 @@
 						<span style="margin-left: 40px;" @click="showmo3()">增加客户和车</span>
 						<span style="margin-left: 15px;" @click="showmo4()">增加客户</span>
 						<span style="margin-left: 15px;" @click="up()">修改客户</span>
-						<span style="margin-left: 15px;">删除客户</span>
+						<span style="margin-left: 15px;" @click="remove()">删除客户</span>
 						<span style="margin-left: 15px;" @click="ba1">相关证照</span>
 						<span style="margin-left: 15px;">设置密码</span>
 					</div>
@@ -888,14 +888,15 @@
 							<td>结算时间</td>
 							<td>消费金额</td>
 						</tr>
-						<tr>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
-							<td>上帝啊</td>
+						<tr v-for="item in ls">
+							<td>{{item.lx}}</td>
+							<td>{{item.dh}}</td>
+							<td>{{item.cph}}</td>
+							<td>{{item.wxyw}}</td>
+							<td>{{item.jcsj}}</td>
+							<td>{{item.wgsj}}</td>
+							<td>{{item.jssj}}</td>
+							<td>{{item.xfje}}</td>
 						</tr>
 					</table>
 					<table id="lshf" style="display: none;" class="table table-bordered">
@@ -1209,6 +1210,19 @@
 					ss: [],
 					customer: [],
 					address: [],
+					ls:[],
+					lswx:[
+						{
+							lx:"救援",
+							dh:"00RE",
+							cph:"辽cxzcxz",
+							wxyw:"中国重汽",
+							jcsj:"2020-11-16 09:36:20",
+							wgsj:"",
+							jssj:"",
+							xfje:"0.00"
+						}
+					],
 					car: [],
 					cus: {
 						yuangongziliaobiao:[]
@@ -1224,7 +1238,7 @@
 					ys1:[],
 					hk:[],
 					ys3:[],
-					sj:{yuan:[]},
+					sj:{yuan:{}},
 					jq:{},
 					sy:{},
 					fd:{},
@@ -1240,7 +1254,8 @@
 					czd:[],
 					ccar:{},
 					plate1:[],
-					z2:false
+					z2:false,
+					cusid:{}
 				},
 				methods: {
 					cxzd(){
@@ -1570,6 +1585,7 @@
 							type: "post",
 							success: function(result) {
 								that.yg = result;
+								console.log(that.yg);
 							}
 						})
 					},
@@ -1678,7 +1694,13 @@
 					},
 					findc(item) {
 						var json = JSON.stringify(item);
+						this.cusid=item.customernum;
 						let that = this;
+						if(item.customernum=="43020219690113"){
+							this.ls=this.lswx;
+						}else{
+							this.ls=[];
+						}
 						this.sj=item;
 						$.ajax({
 							url: "http://127.0.0.1:8080/customer/cuss",
@@ -1687,6 +1709,19 @@
 							contentType: "application/json;charset=utf-8",
 							success: function(result) {
 								that.car = result;
+							}
+						});
+					},
+					remove(){
+						let that=this;
+						alert(this.cusid);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/remove/"+this.cusid,
+							type:"post",
+							success:function(result){
+								if(result){
+									alert("刪除成功");
+								}
 							}
 						});
 					}

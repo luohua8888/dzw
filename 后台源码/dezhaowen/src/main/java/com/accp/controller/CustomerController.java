@@ -411,5 +411,10 @@ public class CustomerController {
         System.out.println(car);
         return cservice.save(car);
     }
+    @RequestMapping("/remove/{customernum}")
+    public  Boolean remove(@PathVariable("customernum") String customernum){
+
+        return service.removeById(customernum);
+    }
 }
 

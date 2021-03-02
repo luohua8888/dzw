@@ -90,14 +90,14 @@
 					<span style="font-size: 18px;">单号：<span class="number">12312312312312312</span></span>
 				</div>
 				<div class="col-xs-offset-6 col-xs-4 text-center car">
-					<div class="col-xs-3" id="check">
-						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/接车单.png);" class="icon">竣工检查</a>
+					<div class="col-xs-4" id="check">
+						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; " class="icon">竣工检查</a>
 					</div>
-					<div class="col-xs-3" id="rollback">
-						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/接车单.png);" class="icon">回滚</a>
+					<div class="col-xs-4" id="rollback">
+						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; " class="icon">回滚</a>
 					</div>
-					<div class="col-xs-3">
-						<a href="javascript:;" id="addRepair" style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/接车单.png);" class="icon">接车完成</a>
+					<div class="col-xs-4">
+						<a href="javascript:;" id="addRepair" style="text-indent: 1.5em; font-size: 20px; " class="icon">接车完成</a>
 					</div>
 					<!--<div class="col-xs-3">
 						<a href="javascript:;" style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/打印.png);" class="icon">委托书</a>
@@ -116,10 +116,7 @@
 					<p>
 						<input type="hidden" id="clientType" />
 						<span class="fontRed">车牌号码</span><input disabled="disabled" v-model="carInfo.carnumber" type="text" class="form-control"> &nbsp;&nbsp;&nbsp;<span class="fontRed">驾驶员</span>
-						<input disabled="disabled" v-model="carInfo.carer" type="text" class="form-control"> 
-						<!--车辆型号<input v-model="carInfo.carTypeName" disabled="disabled" type="text" class="form-control"> 车辆品牌
-						<input v-model="carInfo.carBrandName" disabled="disabled" type="text" class="form-control"> -->
-						发动机号
+						<input disabled="disabled" v-model="carInfo.carer" type="text" class="form-control"> 发动机号
 						<input v-model="carInfo.enginenumber" disabled="disabled" type="text" class="form-control"> 发动机品牌
 						<input v-model="carInfo.enginebrandname" disabled="disabled" type="text" class="form-control">
 					</p>
@@ -131,9 +128,11 @@
 						<button type="button" class="btn btn-success" style="margin-left: 0;" @click="openStaff">选择顾问</button> <span class="fontRed">车主姓名</span>
 						<input v-model="carInfo.name" disabled="disabled" type="text" class="form-control"> &nbsp;&nbsp;&nbsp; 车架号
 						<input v-model="carInfo.carnumber1" disabled="disabled" type="text" class="form-control">联系电话
-						<input v-model="carInfo.carerphone" disabled="disabled" type="text" class="form-control"> 进厂里程
-						<input v-model="carInfo.mileage" disabled="disabled" type="text" class="form-control"> &nbsp;&nbsp;&nbsp;进厂油量
-						<select v-model="repair.oil" class="form-control" style="width: 170px;">
+						<input v-model="carInfo.carerphone" disabled="disabled" type="text" class="form-control">  &nbsp;&nbsp;&nbsp;
+						
+					</p>
+					<p>
+						进厂油量<select v-model="repair.oil" class="form-control" style="width: 170px;">
 							<option>空</option>
 							<option>1/2</option>
 							<option>1/3</option>
@@ -142,8 +141,6 @@
 							<option>2/4</option>
 							<option>3/4</option>
 						</select>
-					</p>
-					<p>
 						<span class="fontRed">业务类别</span>
 						<select v-model="repair.type" class="form-control" style="width: 170px;">
 							<option>中国重汽</option>
@@ -157,21 +154,23 @@
 						<select v-model="repair.worktime" class="form-control" style="width: 170px;">
 							<option>白天</option>
 							<option>夜晚</option>
-						</select>上次里程<input disabled="disabled" type="text" class="form-control"> 进厂时间
-						<input id="nowdate" v-model="carInfo.jjdate"  disabled="disabled" type="datetime" class="form-control" style="width: 170px;"> &nbsp;&nbsp;&nbsp;接车人
+						</select>进厂时间
+						<input id="nowdate" v-model="carInfo.jjdate"  disabled="disabled" type="datetime" class="form-control" style="width: 170px;"> &nbsp;&nbsp;&nbsp;<br />接车人
 						<input v-model="repair.getman" disabled="disabled"  type="text" class="form-control"> &nbsp;&nbsp;&nbsp;预计完工
 						<input v-model="repair.overworkdate" type="date" class="form-control" style="width: 170px;">
-					</p>
-					<p>
 						<span class="fontRed">结算方式</span>
 						<select v-model="repair.setter" class="form-control" style="width: 170px;">
 							<option>现结</option>
 							<option>挂账</option>
 							<option>返修</option>
-						</select> <span class="fontRed">预估金额</span>
-						<input v-model="repair.price" disabled="disabled" type="text" class="form-control">赔款公司
+						</select>
+						<span class="fontRed">预估金额</span>
+						<input v-model="repair.price" disabled="disabled" type="text" class="form-control">
+					</p>
+					<p>
+						赔款公司
 						<input v-model="repair.company" type="text" class="form-control"> 完工时间
-						<input disabled="disabled" type="date" class="form-control" style="width: 170px;"> 上次进厂
+						<input  v-model="repair.nowworkDate"disabled="disabled" type="date" class="form-control" style="width: 170px;"> 上次进厂
 						<input disabled="disabled" v-model="carInfo.ordertime" type="date" class="form-control" style="width: 170px;"> &nbsp;&nbsp;&nbsp;接待备注
 						<input v-model="repair.remark" type="text" class="form-control">
 					</p>

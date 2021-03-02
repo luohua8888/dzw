@@ -58,6 +58,20 @@ public class RepairController {
     ICompletedService completedService;
     //`item_repair`.wjid修改为varchar(20)
 
+    @RequestMapping("/rollBackRepair")
+    @ResponseBody
+    public int rollBackRepair(String number){
+        Repair repair=new Repair();
+        repair.setStatus("进行中");
+        repair.setNumber(number);
+        int a;
+        if(repairService.updateById(repair)){
+            a=1;
+        }else{
+            a=0;
+        }
+        return a;
+    }
     @RequestMapping("/queryCom")
     @ResponseBody
     public int queryCom(String number){

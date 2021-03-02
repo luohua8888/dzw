@@ -3,6 +3,7 @@ package com.accp.controller;
 
 import com.accp.domain.SysMenu;
 import com.accp.service.impl.SysMenuServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,18 @@ public class SysMenuController {
     }
     @PostMapping
     public List<SysMenu> find(){
-        return service.list();
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("order_num");
+        return service.list(queryWrapper);
+    }
+
+    @PostMapping("/xg")
+    public int update(SysMenu sys){
+        boolean b= service.updateById(sys);
+        if(b){
+            return 1;
+        }
+        return 2;
     }
 }
 

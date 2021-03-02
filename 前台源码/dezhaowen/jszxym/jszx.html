@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../css/iconfont.css">
 		<style>
 			.container{
 				width: 100%;
@@ -18,17 +19,23 @@
 			.body{
 				height: 600px;
 			}
+			#img {
+				color: orange;
+			}
 			form span{
 				color: #39CFDE;
 			}
 			select{
-				width: 110px;height: 30px;
+				width: 110px;height: 32px;
 			}
-			input{
-				width: 110px;height: 30px;
+			.inputcph{
+				width: 110px;height: 32px;
+			}
+			.inputbz{
+				width: 110px;height: 32px;
 			}
 			form input:nth-of-type(3){
-				width: 157px;height: 30px;
+				width: 157px;height: 32px;
 			}
 			.divy{
 				float: right;
@@ -40,17 +47,12 @@
 			}
 			.kd div span{
 				font-size: 16px;
-				padding-right: 18px;
-			}
-			.divy span:nth-of-type(1){
-				padding-right: 80px;
 			}
 			.table-ss{
 				width: 100%;
 				overflow:auto;
 			}
 			#table{
-				margin-top: 5px;
 				width: 150%;
 			}
 			.ss-gz td{
@@ -71,7 +73,7 @@
 				border: none;
 				height: 1px;
 			}
-			table,table tr, table tr td { border:1px solid #ddd; }
+			.table-ss,.table-ss tr,.table-ss tr td { border:1px solid #ddd; }
 			#myModal{
 				margin-top: 40px;
 			}
@@ -127,15 +129,43 @@
 			/*覆盖完毕*/
 			#tabs{width: 98%; margin: auto;}
 			#tabs thead td{color: white; background-color: #31B0D5;}
-
+			.orange {
+			    background-color: #ffc514;
+			}
+			ul {
+				list-style-type: none;
+				margin-top: 13px;
+				margin-right: 40px;
+			}
+			
+			li {
+				display: inline-block;
+				margin-left: 20px;
+			}
+			table {
+			    border-spacing: 0;
+			    border-collapse: collapse;
+			}
+			input{
+				border-radius: 4px 4px 4px 4px;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				border: 1px solid #ccc;
+				height: 32px;
+			}
+			#table tr:nth-of-type(5){
+			    height: 100px;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container-fluid">
+			<form action="" method="POST" class="form-inline" role="form">
 			<div class="header">
 				<h3>结算中心</h3>
 				<div style="float: right; margin-top: -30px;">
-					<button type="button" @click="xiaoshoudanju" class="btn btn-success" style="width: 80px;">查询</button>
+					<button @click="selectSettleAccounts" type="button" class="btn btn-default" style="width: 80px;">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					查询</button>
 					<button type="button" class="btn btn-default">关闭</button>
 				</div>
 				
@@ -143,45 +173,63 @@
 			<div class="body">
 				<hr />
 				<div>
-					<form>
-						<span>开单日期</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" /><input type="date" />
-						<span>销售单号</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" />
-						<span>结算状态</span>&nbsp;&nbsp;&nbsp;&nbsp;<select>
-									<option>已结算</option>
-									<option>未结算</option>
-							   </select>
-						<span>车牌号</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /><br />
-						<span>客户名称</span>&nbsp;&nbsp;&nbsp;&nbsp;<select @click="khda"></select>
-						<span>服务顾问</span>&nbsp;&nbsp;&nbsp;&nbsp;<select data-toggle="modal" @click="fwgw"  data-target="#myModalfwgw"></select>
-						<span>业务类型</span>&nbsp;&nbsp;&nbsp;&nbsp;<select>
-									<option>中国重汽</option>
-									<option>峡汽重卡</option>
-									<option>中国一汽</option>
-									<option>上汽红岩</option>
-									<option>其他重型车</option>
-							   </select>
-						<span>单据类型</span>&nbsp;&nbsp;&nbsp;&nbsp;<select>
-									<option>维修</option>
-									<option>保险理赔</option>
-							   </select>
-						<span>备注</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" />
-					</form>
+						<span>开单日期：</span><input name="startDate" type="datetime" v-model="XiaoShouDanJu.startkd" /><input name="nowDate" type="datetime" v-model="XiaoShouDanJu.endkd" />
+						<span>销售单号：</span><input type="text" v-model="XiaoShouDanJu.number" />
+						<span>结算状态：</span>
+						<select name="status" @change="changeSelect()" class="form-control">
+								<option attrid="1">
+									未结算
+								</option>
+								<option attrid="2">
+									已结算
+								</option>
+						</select>
+						<span>车牌号：</span><input class="inputcph" type="text" v-model="XiaoShouDanJu.platename" /><br />
+						<span>业务类型：</span>
+						<select name="ywlx" @change="changeSelectywlx()" class="form-control">
+							<option attrid="1">中国重汽</option>
+							<option attrid="2">陕汽重卡</option>
+							<option attrid="3">中国一汽</option>
+							<option attrid="4">上汽红岩</option>
+							<option attrid="5">其它重型车</option>
+							<option attrid="6">中轻型车</option>
+							<option attrid="7">其他</option>
+						</select>
+						<span>单据类型：</span>
+						<select name="djlx"  @change="changeSelectdjlx()" class="form-control">
+							<option attrid="1">维修</option>
+							<option attrid="2">救援</option>
+						</select>
+						<span>备注：</span><input type="text" class="inputbz" v-model="XiaoShouDanJu.remark" />
 				</div>
 				<div class="dd">
 					<div class="kd">
-						<div class="divz">
-							<span  @click="mymengdian"><img src="../img/jsdd1.PNG" />门店选择</span>
-						</div>
-						<div class="divy">
-							<span data-toggle="modal" @click="myModal" data-target="#myModal"><img src="../img/jsdd2.PNG" />收银</span>
-							<span @click="myModaldj" data-toggle= "modal" data-target="#openMmodal"><img src="../img/jsdd3.PNG" />打开单据</span>
-							<span @click="xiaoshoudanjudaochu" ><img src="../img/jsdd4.PNG" />导出</span>
+						<div class="divy"  >
+							<ul>
+								<li name="cashdesk">
+									<span id="img" class="iconfont icon-lishibiaodan"></span>
+									<span @click="openCashier()" data-toggle="modal" data-target = "#myModal" id="font">收银</span>
+								</li>
+								<li name="rollback">
+									
+								</li>
+								<li>
+									<span id="img" class="iconfont icon-biaodan"></span>
+									<span @click="openRepairOrder()" id="font">打开单据</span>
+								</li>
+								<li>
+									<span id="img" class="glyphicon glyphicon-share"></span>
+									<span @click="exportExcel()" id="font">导出</span>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="table-ss">
 					<table id="table">
-						<tr class="ss-gz">
+						<thead>
+							<tr class="ss-gz">
+								<td style="background-color:#39CFDE; width: 150px;"></td>
 								<td>销售单号</td>
 								<td>单据类型</td>
 								<td>结算方式</td>
@@ -197,95 +245,168 @@
 								<td>车架号</td>
 								<td>联系电话</td>
 								<td>保险公司</td>
-								<td>赔款公司</td>
-								<td>对方车牌</td>
 								<td>服务顾问</td>
-								<td>完工时间</td>
+								<td>完成时间</td>
 								<td>备注</td>
 							</tr>
-							<tr v-for="item in list">
-								<td>{{item.xiaoshouno}}</td>
-								<td>{{item.xiaoshoudjlx}}</td>
-								<td>{{item.xiaoshoujsfs}}</td>
-								<td>{{item.xiaoshouzt}}</td>
-								<td>{{item.xiaoshoujszt}}</td>
-								<td>{{item.xiaoshoujssj}}</td>
-								<td>{{item.xiaoshoujsr}}</td>
-								<td>{{item.xiaoshoujsje}}</td>
-								<td>{{item.xiaoshouywlx}}</td>
-								<td>{{item.xiaoshoukhname}}</td>
-								<td>{{item.xiaoshoucph}}</td>
-								<td>{{item.xiaoshoucx}}</td>
-								<td>{{item.xiaoshoucjh}}</td>
-								<td>{{item.xiaoshoulxdh}}</td>
-								<td>{{item.xiaoshoubxgs}}</td>
-								<td>{{item.xiaoshoupkgs}}</td>
-								<td>{{item.xiaoshoudfcp}}</td>
-								<td>{{item.xiaoshoufwgw}}</td>
-								<td>{{item.xiaoshouwgsj}}</td>
-								<td>{{item.xiaoshoubz}}</td>
+						</thead>
+						<tbody>
+							<tr @click="switchTr(i)" v-for="i in list" id="ccc">
+								<td style="background-color:#cbcbcb; width: 150px;">
+									<span v-if="i.check==true" style="font-size: 10px; color: white;left: 10px;"  class="glyphicon glyphicon-stop"></span>
+								</td>
+								<td>{{i.number}}</td>
+								<td>{{i.wtype}}</td>
+								<td>{{i.setter}}</td>
+								<td>{{i.status}}</td>
+								<td>{{i.paymenttype}}</td>
+								<td>{{i.cashiertime}}</td>
+								<td>{{i.staffpeople}}</td>
+								<td>{{i.totalnum}}</td>
+								<td>{{i.carbrandname}}</td>
+								<td>{{i.clientname}}</td>
+								<td>{{i.carnumber}}</td>
+								<td>{{i.cartypename}}</td>
+								<td>{{i.carnumber1}}</td>
+								<td>{{i.carerphone}}</td>
+								<td>{{i.jqinsurance}}</td>
+								<td>{{i.staffname}}</td>
+								<td>{{i.overworkdate}}</td>
+								<td></td>
 							</tr>	
 							<tr>
-								<td colspan="20" rowspan="20"></td>
+								<td colspan="22" rowspan="22"></td>
 							</tr>
 							<tr>
-								<td colspan="20"></td>
+								<td colspan="22"></td>
 							</tr>
 							<tr>
-								<td colspan="20"></td>
+								<td colspan="22"></td>
 							</tr>
 							<tr>
-								<td colspan="20"></td>
+								<td colspan="22"></td>
 							</tr>
 							<tr>
-								<td colspan="20"></td>
+								<td colspan="22"></td>
 							</tr>
+						</tbody>	
+							
 					</table>	
 				</div>
+				<div>
+					<span style="color: #000000;" >合计：{{list.length}}条记录</span>
+				</div>
 			</div>
+			</form>
 			<div class="footer">
 				<!-- Modal -->
-				<div class="modal fade bs-example-modal-lg" id="myModal">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">前台收银</h4>
-				      </div>
-				      <div class="modal-body">
-				      	<form>
-				      		<div>
-				        		<span>客户总费用</span><br /><input class="control" type="text" placeholder="" readonly  style="margin-top: 15px;margin-bottom:20px;" /><br />
-				        		<span>会员类型&nbsp;&nbsp;&nbsp;</span><select  class="controldd"><option>普通会员</option><option>超级会员</option></select><br />
-				        		<p></p>
-				        		<span>结算状态&nbsp;&nbsp;&nbsp;</span><select  class="controldd"><option>正常结算</option><option>部分结算</option></select><br /><br />
-				        		<button class="btn btn-default">现金</button>
-				        		<button class="btn btn-default">支付宝</button>
-				        		<button class="btn btn-default">微信</button><br />
-				        		<div class="op">
-				        			<span>客户总费用组成：</span><br />
-				        			<p></p>
-					        		<span>工时费：</span><input  class="control" type="text" placeholder="" readonly style="margin-left: 25px; width: 110px;"  />
-					        		<p></p>
-					        		<span>材料费：</span><input  class="control" type="text" placeholder="" readonly style="margin-left: 25px; width: 110px;"  />
-					        		<p></p>
-					        		<span>技工费：</span><input  class="control" type="text" placeholder="" readonly style="margin-left: 25px; width: 110px;"  />
-					        		<p></p>
-					        		<span>材料费：</span><input  class="control" type="text" placeholder="" readonly style="margin-left: 25px; width: 110px;"  />
-					        		<p></p>
-					        		<span>材料费：</span><input  class="control" type="text" placeholder="" readonly style="margin-left: 25px; width: 110px;"  />
-					        		
-				        		</div>
-				        	</div>
-				      	</form>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				        <button type="button" class="btn btn-success">确定</button>
-				      </div>
-				    </div>
-				  </div>
+				<div  class="modal fade bs-example-modal-lg" id="myModal" >
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">收银中心</h4>
+						</div>
+						<div class="modal-body">
+							<table>
+								<tr>
+									<td>客总费</td>
+									<td style="padding-left: 25px;">税率（%）</td>
+									<td style="padding-left: 25px;">加税金</td>
+									<td style="padding-left: 25px;">抹尾数</td>
+									<td style="padding-left: 25px;">积分抵扣（元）</td>
+								</tr>
+								<tr>
+									<td><input readonly="readonly" name="customerPrice" type="text"></td>
+									<td style="padding-left: 25px;">
+										<input readonly="readonly" value="0.98" type="text"></td>
+									<td style="padding-left: 25px;">
+										<input  readonly="readonly" name="taxes" type="text"></td>
+									<td style="padding-left: 25px;">
+										<select name="moweishu" @change="moweishu">
+											<option attrid=0>请选择</option>
+											<option attrid=1>抹税金</option>
+										</select>
+									</td>
+									<td style="padding-left: 25px;"><input type="text" name="jfen" @change="moneyjfen()" oninput = "value=value.replace(/[^\d]/g,'')"></td>
+								</tr>
+							</table>
+							<div class="row">
+								<div class="col-md-6">
+									<p style="margin-top: 10px;">
+										<label>应收金额:</label><span style="color: red;font-size: 26px;" name="customerMoney"></span>
+									</p>
+									<p>
+										<span>结算状态：</span>
+										<select name="cashierstatic">
+											<option>正常结算</option>
+											<option>部分结算</option>
+											<option>挂账结算</option>
+										</select>
+									</p>
+								</div>
+								<div style="float: right;margin-top: 30px;margin-right: 50px;">
+									实收金额：<span name="money"></span>
+									<input type="text" name="moneynum" @change="setchange()" oninput = "value=value.replace(/[^\d]/g,'')"/>
+									<button class="btn btn-success" data-target="#myModaldd" data-toggle="modal" data-target=".bs-example-modal-sm">确认支付</button>
+								</div>
+							</div>
+							<div>
+								<form class=" ">
+									<table>
+										<tr>
+											<td></td>
+										</tr>
+										<tr>
+											<td><span style="font-size: 1.2em;font-weight: 500; color: #000000;">支付方式：</span></td>
+										</tr>
+										<tr>
+											<td>&nbsp;&nbsp;&nbsp;</td>
+											<td>现金</td>
+											<td><input checked name="zhifu" type="radio" id="" value="现金" /></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+
+							<div>
+								<span>找零：</span><span name="change" v-text="cashi.change"></span>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="margin-right: 35px;" class="btn btn-default"  data-dismiss="modal">取消</button>
+						</div>
+					</div>
 				</div>
+			</div>
+			
+			
+			
+			<div class="modal fade" tabindex="-1" role="dialog" id="myModaldd" >
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">支付</h4>
+						</div>
+						<div class="modal-body">
+							<p>已确认金额现在提交？</p>
+						</div>
+						<div class="modal-footer">
+							<a type="button" class="btn btn-default" data-dismiss="modal">取消</a>
+							<button type="button" class="btn btn-primary" data-dismiss="modal"  @click="addCashier()">确定</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+			<!-- /.modal-dialog -->
+			</div>
+			
+			
+			
+			
+			
 				<div class="modal fade" id="myModalfwgw">
 				  <div class="modal-dialog"  role="document">
 				    <div class="modal-content">
@@ -310,12 +431,12 @@
 						<div>
 							<table class="ta">
 								<tr class="ss-gz2">
-									<td>销售单号</td>
-									<td>单据类型</td>
-									<td>结算方式</td>
+									<td>部门名称</td>
+									<td>工号</td>
+									<td>姓名</td>
 								</tr>
 								<tr>
-									<td colspan="3"></td>
+									<td></td>
 								</tr>	
 							</table>	
 						</div>
@@ -326,280 +447,7 @@
 				    </div>
 				  </div>
 				</div>
-				<div id="openMmodal" class="modal fade" tabindex="-1" role="dialog">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content" style="width: 1000px;position: relative;left: -200px;">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">维修</h4>
-			        <div class="form-inline" style="float: right;">
-				        <button class="btn btn-success">接车</button>
-				        <button class="btn btn-warning">作业中</button>
-				        <button class="btn btn-danger">竣工检验</button>
-			        </div>
-			      </div>
-			      <div class="modal-body">
-			        	<table class="table">
-			        		<tr>
-			        			<td>单号</td>
-			        			<td><input type="text" readonly="readonly"/></td>
-			        			<td>车牌号码</td>
-			        			<td><input type="text" readonly="readonly"/></td>
-			        			<td>车辆型号</td>
-			        			<td><input type="text" readonly="readonly"/></td>
-			        		</tr>
-			        		<tr>
-			        			<td>车辆品牌</td>
-			        			<td><input type="text" readonly="readonly"/></td>
-			        			<td>车主姓名</td>
-			        			<td><input type="text" readonly="readonly"/></td>
-			        			<td>服务顾问</td>
-			        			<td><input type="text" /><button class="btn btn-success"data-toggle="modal" data-target="#myModal33">选择</button></td>
-			        		</tr>
-			        		<tr>
-			        			<td>驾驶员</td>
-			        			<td><input type="text" /></td>
-			        			<td>进驶里程</td>
-			        			<td><input type="text"></td>
-			        			<td>联系电话</td>
-			        			<td><input type="text"></td>
-			        		</tr>
-			        		<tr>
-			        			<td>进厂油量</td>
-			        			<td><select>
-			        					<option>1/4</option>
-			        					<option>1/6</option>
-			        					<option>1/8</option>
-			        				</select>
-			        			</td>
-			        			<td>上次里程</td>
-			        			<td><input type="text" readonly="readonly"></td>
-			        			<td>进厂时间</td>
-			        			<td><input type="text" readonly="readonly"></td>
-			        		</tr>
-			        		<tr>
-			        			<td>业务类别</td>
-			        			<td><select>
-			        					
-			        				</select>
-			        			</td>
-			        			<td>施工班次</td>
-			        			<td><select>
-			        					
-			        				</select>
-			        			</td>
-			        			<td>接车人</td>
-			        			<td><input type="text" readonly="readonly"></td>
-			        		</tr>
-			        		<tr>
-			        			<td>预计完工</td>
-			        			<td><input type="text"></td>
-			        			<td>结算方式</td>
-			        			<td><select>
-			        					
-			        				</select>
-			        			</td>
-			        			<td>赔款公司</td>
-			        			<td><select>
-			        					
-			        				</select>
-			        			</td>
-			        		</tr>
-			        		<tr>
-			        			<td>完工时间</td>
-			        			<td><input type="text"></td>
-			        			<td>上次进厂</td>
-			        			<td><input type="text" readonly="readonly"></td>
-			        			<td>预估金额</td>
-			        			<td><input type="text" readonly="readonly"></td>
-			        		</tr>
-			        		<tr>
-			        			<td>接待备注</td>
-			        			<td><input type="text"></td>
-			        			<td>报修陈述</td>
-			        			<td colspan="3"><textarea name="" rows="" cols=""></textarea>
-			        			</td>
-			        		</tr>
-			        	</table>
-			        	<ul class="nav nav-tabs" >
-							<li role="presentation" class="active"><a href="#wxls" data-toggle="tab">维修项目</a></li>
-							<li role="presentation"><a href="#llqk" data-toggle="tab">领料情况</a></li>
-							<li role="presentation"><a href="#fjxm" data-toggle="tab">附加项目</a></li>
-							<li role="presentation"><a href="#lshf" data-toggle="tab">历史回访</a></li>
-						</ul>
-						<div class="tab-content" style="padding: 5px;;">
-							<div id="wxls" class="active tab-pane bg-warning">
-								<nav class="navbar navbar-default">
-								  <div class="container-fluid">
-								    <div class="navbar-header">
-								      <a class="navbar-brand" href="#">
-									         维修项目
-								      </a>
-									</div>
-									    <ul class="nav navbar-nav">
-									       	<li><a href="#">单项项目</a></li>
-									       	<li><a href="#">多项项目</a></li>
-									        <li><a href="#">修改项目</a></li>
-									        <li><a href="#">删除项目</a></li>
-									        <li><a href="#">修改班组</a></li>
-									        <li><a href="#">重置价格</a></li>
-								        </ul>
-								  </div>
-								</nav>
-								<table class="table">
-									<tr>
-										<td>选择</td>
-										<td>项目编码</td>
-										<td>项目名称</td>
-										<td>数量</td>
-										<td>价类</td>
-										<td>优惠前单价</td>
-										<td>优惠后单价</td>
-										<td>优惠后金额</td>
-										<td>故障描述</td>
-										<td>故障原因</td>
-										<td>维修班组</td>
-										<td>作业人员</td>
-										<td>服务顾问</td>
-										<td>免单原因</td>
-									</tr>
-									<tr>
-										<td>选择</td>
-										<td>项目编码</td>
-										<td>项目名称</td>
-										<td>数量</td>
-										<td>价类</td>
-										<td>优惠前单价</td>
-										<td>优惠后单价</td>
-										<td>优惠后金额</td>
-										<td>故障描述</td>
-										<td>故障原因</td>
-										<td>维修班组</td>
-										<td>作业人员</td>
-										<td>服务顾问</td>
-										<td>免单原因</td>
-									</tr>
-								</table>
-							</div>
-							<div id="llqk" class="tab-pane bg-warning">
-								<nav class="navbar navbar-default">
-								  <div class="container-fluid">
-								    <div class="navbar-header">
-								      <a class="navbar-brand" href="#">
-									         领料情况
-								      </a>
-								    </div>
-								    <ul class="nav navbar-nav">
-									       	<li><a href="#">物料需求</a></li>
-									        <li><a href="#">领料</a></li>
-									        <li><a href="#">重置价格</a></li>
-								        </ul>
-								  </div>
-								</nav>
-								<table class="table">
-									<tr>
-										<td>类别</td>
-										<td>领料日期</td>
-										<td>领料人</td>
-										<td>物料编码</td>
-										<td>物料名称</td>
-										<td>单位</td>
-										<td>价类</td>
-										<td>数量</td>
-										<td>优惠前单价</td>
-										<td>优惠后单价</td>
-										<td>优惠后金额</td>
-										<td>服务顾问</td>
-										<td>免单原因</td>
-									</tr>
-									<tr>
-										<td>类别</td>
-										<td>领料日期</td>
-										<td>领料人</td>
-										<td>物料编码</td>
-										<td>物料名称</td>
-										<td>单位</td>
-										<td>价类</td>
-										<td>数量</td>
-										<td>优惠前单价</td>
-										<td>优惠后单价</td>
-										<td>优惠后金额</td>
-										<td>服务顾问</td>
-										<td>免单原因</td>
-									</tr>
-								</table>
-							</div>
-							<div id="fjxm" class="tab-pane bg-warning">
-								<nav class="navbar navbar-default">
-								  <div class="container-fluid">
-								    <div class="navbar-header">
-								      <a class="navbar-brand" href="#">
-									           附加项目
-								      </a>
-								    </div>
-								    <ul class="nav navbar-nav">
-									       	<li><a href="#">添加项目</a></li>
-									        <li><a href="#">修改项目</a></li>
-									        <li><a href="#">删除项目</a></li>
-								        </ul>
-								  </div>
-								</nav>
-								<table>
-									<tr>
-										<td>附加项目</td>
-										<td>价类</td>
-										<td>金额</td>
-										<td>备注</td>
-									</tr>
-								</table>
-							</div>
-							<div id="lshf" class="tab-pane bg-warning">
-								<nav class="navbar navbar-default">
-								  <div class="container-fluid">
-								    <div class="navbar-header">
-								      <a class="navbar-brand" href="#">
-									         结算信息
-								      </a>
-								    </div>
-								  </div>
-								</nav>
-								<table>
-									<tr>
-										<td>结算状态</td>
-										<td>优惠前金额</td>
-										<td>合计金额</td>
-										<td>材料费</td>
-										<td>工时费</td>
-										<td>附加费</td>
-										<td>结算时间</td>
-										<td>结算人</td>
-										<td>现金</td>
-										<td>银行卡</td>
-										<td>票据</td>
-										<td>挂账金额</td>
-										<td>冲储值卡</td>
-										<td>冲订金</td>
-										<td>收税金</td>
-										<td>抵用券</td>
-										<td>抹尾数</td>
-										<td>内部账</td>
-										<td>积分抵扣</td>
-										<td>到账盈亏</td>
-										<td>发票种类</td>
-										<td>发票号</td>
-										<td>发票金额</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-			      	<button type="button" class="btn btn-default">保存</button>
-			      </div>
-			    </div><!-- /.modal-content -->
-			  </div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+				
 <div class="modal" id="myModal33" style="margin-top: 80px;" data-backdrop>
 		    <div class="modal-dialog">
 		     <div class="modal-content" id="model2" style="width: 600px; height: 500px;">
@@ -664,44 +512,494 @@
 		<script src="../js/vue.js" type="text/javascript"></script>
 		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			new Vue({
+			//导出数据
+			function exportExcel() {
+				var id = $("[name=status]").find(":checked").attr("attrid");
+				var form = document.createElement("form");
+				form.style.display = 'none';
+				form.action = "http://localhost:8080/excel/settlementExcel";
+				form.method = "post";
+				document.body.appendChild(form);
+				if(id == 1) {
+					var input = document.createElement("input");
+					input.type = "hidden";
+					input.name = "attrid";
+					input.value = "1";
+					form.appendChild(input);
+				} else {
+					var input = document.createElement("input");
+					input.type = "hidden";
+					input.name = "attrid";
+					input.value = "2";
+					form.appendChild(input);
+				}
+				form.submit();
+				form.remove();
+			}
+			//查询未结账的账单
+			function selectUnfinished() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectUnfinished",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			
+			//查询结账的账单
+			function selectFinished() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectFinished",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+						}
+
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectdjlxwx() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectdjlxwx",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectdjlxjy() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectdjlxjy",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx2() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx2",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx3() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx3",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx4() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx4",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx5() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx5",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx6() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx6",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			function selectywlx7() {
+				$.ajax({
+					url: "http://localhost:8080/settlementCenter/selectywlx7",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.list = response;
+						for(var i = 0; i < vm.list.length; i++) {
+							if(vm.list[i].check == true) {
+								$("[name=startDate]").attr("value", vm.list[i].orderTime);
+							}
+							vm.setCashier();
+						}
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
+			var vm = new Vue({
 				el:".container-fluid",
 				data(){
 					return {
 						ss:[],
-						list:[]
+						list:[],
+						XiaoShouDanJu:{},
+						cashier: {},
+						cashi: {
+
+							totalNum: null, //总金额
+							cashierstatic: "已支付", //结算状态
+							paymentType: null, //支付方式
+							invoiceno: null, //发票表id
+							cashiertime: null, //结算时间
+							staffid: null, //员工表id检查该员工的角色是否有权限使用内部券
+							onCredit: null, //挂账金额
+							interior: null, //内部免单金额
+							clientId: null, //客户编号
+							change: null, //找零
+							Number: null, //销售单号
+							otherone: 1, //其他字段
+						}
 					}
 				},
 				methods:{
-					xiaoshoudanju(){
+					moweishu: function() {
+						var attrid = $("[name=moweishu]").find(":checked").attr("attrid");
+						if(attrid == 1) {
+							var taxes = $("[name=taxes]").val();
+							var price = $("[name=customerMoney]").text();
+							var money = $("[name=customerPrice]").val();
+							if($("[name=moweishu]").val()=="抹税金"){
+								
+								$("[name=customerMoney]").text(Number(money).toFixed(2));
+							}else if($("[name=moweishu]").val()=="请选择"){
+								$("[name=customerMoney]").text(money+taxes)
+							}
+						}
+					},
+					selectSettleAccounts(){
 						var that = this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/xiaoshoudanjubiao/find",
-							dataType:"json",
+							url: "http://localhost:8080/settlementCenter/selectSettleAccounts",
+							data:that.XiaoShouDanJu,
+							type: "post",
+							dataType: "json",
 							xhrFields: {
 								withCredentials: true
 							},
 							success:function(result){
 								that.list = result;
+							},
+							error: function(error) {
+								console.log(error);
 							}
 						});
 					},
-					xiaoshoudanjudaochu(){
-						window.location.href="http://127.0.0.1:8080/file/downloadExcel";
+					//打开收银
+					openCashier: function() {
+						var that = this;
+						for(var i = 0; i < that.list.length; i++) {
+
+							if(that.list[i].check == true) {
+								$("[name=customerPrice]").val(that.list[i].price);
+								var price = that.list[i].price;
+								var taxes = price * 0.0098;
+								$("[name=taxes]").val(taxes);
+								$("[name=customerMoney]").text(price + taxes);
+								return;
+							}
+							if(i == that.list.length - 1) {
+								alert("无未结账账单！");
+							}
+						}
 					},
-					myModal(){
-						$("#myModal").model("show");
+					//导出数据
+					exportExcel: function() {
+						exportExcel();
+					},
+					//打开单据
+					openRepairOrder: function() {
+						var that = this;
+						var number=that.cashier.number;
+						var status = that.cashier.status;
+						var carnumber = that.cashier.carnumber;
+						var clientType = 1;
+						if(carnumber == null) {
+								alert("没有要打开的记录！");
+						}else{
+					window.location.href="jszxdanju.html?carNumber="+encodeURI(carnumber)+"&&status="+status+""+"&&number="+number+""+"&&clientType="+clientType+"";
+						}
+
+						
+					},
+					switchTr: function(i) {
+						var that = this;
+						for(var j = 0; j < that.list.length; j++) {
+							that.list[j].check = false;
+						}
+						i.check = true;
+						that.cashier = i;
+						$("[name=startDate]").attr("value", i.orderTime);
+					},
+					//改变下拉框事件
+					changeSelect: function() {
+						var id = $("[name=status]").find(":checked").attr("attrid");
+						if(id == 1) {
+							selectUnfinished();
+							$("[name=cashdesk]").show();
+							$("[name=rollback]").hide();
+						} else {
+							selectFinished();
+							$("[name=rollback]").show();
+							$("[name=cashdesk]").hide();
+						}
+					},
+					//改变下拉框事件
+					changeSelectdjlx: function() {
+						var id = $("[name=djlx]").find(":checked").attr("attrid");
+						if(id == 1) {
+							selectdjlxwx();
+						} else {
+							selectdjlxjy();
+						}
+					},
+					//改变下拉框事件
+					changeSelectywlx: function() {
+						var id = $("[name=ywlx]").find(":checked").attr("attrid");
+						if(id == 1) {
+							selectywlx();
+						}
+						if(id == 2){
+							selectywlx2();
+						}
+						if(id == 3){
+							selectywlx3();
+						}
+						if(id == 4){
+							selectywlx4();
+						}
+						if(id == 5){
+							selectywlx5();
+						}
+						if(id == 6){
+							selectywlx6();
+						}
+						if(id == 7){
+							selectywlx7();
+						}
+					},
+					setCashier: function() {
+						var that = this;
+						for(var i = 0; i < that.list.length; i++) {
+							if(that.list[i].check == true) {
+								that.cashier = that.list[i];
+							}
+						}
+					},
+					addCashier: function() {
+						var that = this;
+						that.cashi.paymentType = $("[name=zhifu]").val();
+						that.cashi.cashierstatic = $("[name=cashierstatic]").val();
+						that.cashi.number = that.cashier.number;
+						that.cashi.clientId = that.cashier.clientname;
+						that.cashi.cashiertime = new Date();
+						that.cashi.totalNum = Number($("[name=customerMoney]").text());
+						that.cashi.clientId = that.cashier.clientname;
+						if($("[name=cashierstatic]").val() == "挂账结算") {
+							that.cashi.onCredit = Number($("[name=moneynum]").val()).toFixed(2);
+						}
+						console.log(that.cashi);
+						if($("[name=moneynum]").val() != ""&&that.cashi.change>=0) {
+							var record = JSON.stringify(that.cashi);
+							console.log(record);
+							$.ajax({
+								type:"post",
+								data:record,
+								contentType: "application/json;charset=utf-8",
+								url: "http://localhost:8080/settlementCenter/addCashier",
+								success: function(result) {
+									console.log(result);
+									alert("结算成功!");
+									$("#myModal").modal("hide");
+									selectUnfinished();
+								}
+							});
+						}else{
+							alert("请填写付款额度")
+						}
+					},
+					setchange: function() {
+						var that = this;
+						if($("[name=moneynum]").val() != "") {
+							that.cashi.change = Number(($("[name=moneynum]").val() - Number($(" [name=customerMoney]").text())).toFixed(2));
+							console.log(that.cashi.change)
+						} else if($("[name=moneynum]").val() == "") {
+							console.log("没填")
+						}
+
+					},moneyjfen:function(){
+						let that = this;
+						if($("[name=jfen]").val() != "") {
+							
+							$("[name=customerMoney]").text(Number(Number($("[name=taxes]").val())+Number($("[name=customerPrice]").val())-Number($("[name=jfen]").val())).toFixed(2))
+							
+							if($("[name=customerMoney]").text()<0){
+								
+								$("[name=customerMoney]").text(0)
+							}
+						}else if($("[name=jfen]").val() == ""){
+							
+							$("[name=customerMoney]").text(Number($("[name=taxes]").val())+Number($("[name=customerPrice]").val()))
+						}
 					},
 					fwgw(){
 						$("#myModalfwgw").model("show");
 					},
 					khda(){
-						window.location.href="../index.html";
-					},
-					myModaldj(){
-						$("#openMmodal").model("show");
-					},
-					mymengdian(){
 						window.location.href="../index.html";
 					},
 					khbj() {
@@ -775,7 +1073,18 @@
 					}
 				},
 				created(){
-					this.xiaoshoudanju();
+					var that = this;
+					selectUnfinished();
+					var now = new Date();
+					//格式化日，如果小于9，前面补0
+					var day = ("0" + now.getDate()).slice(-2);
+					//格式化月，如果小于9，前面补0
+					var month = ("0" + (now.getMonth() + 1)).slice(-2);
+					//拼装完整日期格式
+					var today = now.getFullYear() + "-" + (month) + "-" + (day);
+					//完成赋值				 
+					$("[name=nowDate]").attr("value", today);
+					$("[name=rollback]").hide();
 				}
 			});
 		</script>

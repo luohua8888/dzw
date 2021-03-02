@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.accp.mapper.RepairMapper;
 import com.accp.service.impl.CashierServiceImpl;
 import com.accp.service.impl.RepairServiceImpl;
 import org.apache.poi.ss.usermodel.Cell;
@@ -29,7 +30,7 @@ import com.accp.domain.Repair;
 @RequestMapping("/excel")
 public class excelController {
     @Autowired
-    RepairServiceImpl rs;
+    RepairMapper rs;
     @Autowired
     CashierServiceImpl ccs;
 
@@ -216,7 +217,7 @@ public class excelController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        String fileName = new String("导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        String fileName = new String("结算中心导出数据.xlsx".getBytes("utf-8"),"iso-8859-1");
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }

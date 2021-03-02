@@ -8,15 +8,17 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -54,7 +56,8 @@ public class SysMenu extends Model<SysMenu> {
 
     @ApiModelProperty(value = "权限标识")
     private String perms;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "创建时间")
     private LocalDate createTime;
 
@@ -79,7 +82,6 @@ public class SysMenu extends Model<SysMenu> {
 
     @TableField(exist = false)
     private Integer roleId;
-
 
 
     public static final String MENU_ID = "menu_id";
@@ -107,7 +109,7 @@ public class SysMenu extends Model<SysMenu> {
     public static final String MEN2 = "men2";
 
     public static final String MEN3 = "men3";
-    
+
 
     @Override
     protected Serializable pkVal() {

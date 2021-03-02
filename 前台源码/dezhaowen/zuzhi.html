@@ -326,7 +326,6 @@
 					<div class="col-md-1" @click="removeId()"><img src="img/3.png" class="c1">删除</div>
 					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="img/4.png" class="c1">查询</a></div>
 					<div class="col-md-1" @click="daochu"><img src="img/6.png" class="c1">导出</div>
-					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="img/7.png" class="c1">导入</a></div>
 					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="img/8.png" class="c1">员工角色</a></div>
 					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="img/9.png" class="c1">字段设置</a></div>
 				</div>
@@ -1359,6 +1358,7 @@
 					this.y.reserved5=this.dui.zid;
 					this.y.gid=11;
 					this.y.bid=this.dui.zid;
+					this.y.y1=1;
 					var that=this;
 					if(this.jia==0){
 						$.ajax({
@@ -1583,7 +1583,7 @@
 						type:"post",
 						data: {
 								name: that.names
-							},
+						},
 						success:function(result){
 							that.staff=result;
 						}
