@@ -125,7 +125,7 @@
 						<button class="btn btn-warning btn-xs" @click="addson">增加分类</button>
 						<button class="btn btn-warning btn-xs" @click="updatesame">修改分类</button>
 						<button class="btn btn-warning btn-xs">删除</button>
-					</div> -->
+					</div> --> 
 					<div class="aaaaa">
 						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
 						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
@@ -166,6 +166,20 @@
 											</a>
 										</li>
 									</ul>
+									
+									<li>
+										<img onclick="doAction2(3);" src="img/小房子.PNG" style="vertical-align: middle;" width="12%">
+										<span onclick="doAction(3);"><span><a href="javascript:void(0)">喷板</a></span></span>
+									</li>
+									<ul style="display:none;" id="u3">
+										<li v-for="item in list3">
+											<a href="#">
+												<img src="img/小房子2.PNG" style="vertical-align: middle;" width="15%">
+												<span @click="wxfind(item)">{{item.name}}</span>
+											</a>
+										</li>
+									</ul>
+									
 								</ul>
 							</div>
 						</div>
@@ -260,6 +274,9 @@
 										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxadd.xiangmuleibie">
 											<option v-for="item in chexin">{{item.pname}}</option>
 										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan2" v-model="wxadd.xiangmuleibie">
+											<option v-for="item in chexin">{{item.name}}</option>
+										</select>
 									</p>
 									<p>
 										<span class="must"></span>
@@ -346,6 +363,9 @@
 										</select>
 										<select style="width: 150px;height: 25px;" v-if="panduan" v-model="wxupdate.xiangmuleibie">
 											<option v-for="item in chexin">{{item.pname}}</option>
+										</select>
+										<select style="width: 150px;height: 25px;" v-if="panduan2" v-model="wxupdate.xiangmuleibie">
+											<option v-for="item in chexin">{{item.name}}</option>
 										</select>
 									</p>
 									<p>
@@ -558,6 +578,14 @@
 					obj.style.display = 'none';
 				}
 			}
+				function doAction3(index) {
+				var obj = document.getElementById('u' + index);
+				if (obj.style.display == 'none') {
+					obj.style.display = 'block';
+				} else {
+					obj.style.display = 'none';
+				}
+			}
 
 			function test() {
 				var obj = document.getElementById('d1');
@@ -571,19 +599,22 @@
 					return {
 						list: [],
 						list2: [],
+						list3:[],
 						car: [],
 						chaxun: "",
 						xiala:[],
 						chexin:[],
 						panduan:false,
 						panduan1:true,
+						panduan2:false,
 						wxadd:{},
 						shouru:[],
 						sjan:"",
 						wxupdate:{},
 						jg:"",
 						jiege:{},
-						jgsr:""
+						jgsr:"",
+						ppminc:""
 					}
 				},
 				methods: {
@@ -647,29 +678,45 @@
 						if (item) {
 							var js1 = item.pname;
 							var js2 = item.fname;
+							var bbb= item.name;
+							
 						}
 						var js3 = 0;
 						if (js1 != null) {
 							js3 = js1;
 							that.chexin= that.list2
+							that.ppminc=item.pname
+							console.log(js1+"uuuuuu")
 							that.panduan1=false;
 							that.panduan=true;
+							that.panduan2=false;
 							that.sjan="车型";
 						}
 						if (js2 != null) {
 							js3 = js2;
 							that.chexin= that.list
-							
+							that.ppminc=js2
 							that.panduan1=true;
 							that.panduan=false;
+							that.panduan2=false;
 							that.sjan="发动机";
 						}
-						console.log(js3)
+						if (bbb != null) {
+							js3 = bbb;
+							that.chexin= that.list3
+							that.ppminc=bbb
+							that.panduan2=true;
+							that.panduan1=false;
+							that.panduan=false;
+							that.sjan="喷板";
+						}
+						console.log(that.ppminc+"qwe")
 						$.ajax({
 							url: BaseUrl + "/weixiubiao/weixiufind/" + js3,
 							type: "get",
 							data: {
-								chaxun: that.chaxun
+								chaxun: that.chaxun,
+								ppname:that.ppminc
 							},
 							dataType: "json",
 							success: function(result) {
@@ -685,7 +732,8 @@
 							success: function(result) {
 								that.list = result.flist;
 								that.list2 = result.plist;
-								console.log(that.list)
+								that.list3 = result.blist;
+								console.log(that.list3)
 								that.wxfind(that.list[0])
 							}
 						})
