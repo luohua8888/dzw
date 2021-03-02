@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -25,6 +26,7 @@ public class Goodgrade extends Model<Goodgrade> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "商品等级id")
+    @TableId
     private Integer goodgradeid;
 
     @ApiModelProperty(value = "商品等级优或良")

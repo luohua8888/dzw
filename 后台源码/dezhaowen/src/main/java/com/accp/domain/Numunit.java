@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -10,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -25,6 +26,7 @@ public class Numunit extends Model<Numunit> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "单位id")
+    @TableId
     private Integer numunitid;
 
     @ApiModelProperty(value = "单位")

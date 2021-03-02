@@ -1,7 +1,11 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,6 +28,8 @@ public class Menu extends Model<Menu> {
 
     private static final long serialVersionUID=1L;
 
+    @TableField(exist = false)
+    private List<Menu> children;
     @ApiModelProperty(value = "菜单id")
     private Integer menuid;
 

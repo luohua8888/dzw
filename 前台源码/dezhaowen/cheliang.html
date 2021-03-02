@@ -151,197 +151,51 @@
 			</div>
 			<div id="xuan" >
 				<button @click="s">增加</button>
-				<button>修改</button>
+				<button @click="upche()">修改</button>
 				<button>删除</button>
-				<button>查询</button>
 				<button id="daochu" data-toggle="modal" data-target="#baoyang">保养</button>
-				<button>导出</button>
+				<button @click="dc">导出</button>
 				<button @click="ziduan">字段设置</button>
 			</div>
 			<div style="width:100%; height:250px; overflow:scroll;">
 			<table class="table table-bordered" style="width:2800px;max-width: 2820px; height:200px;max-height: 220px; text-align:center" id="chegg">
 				<thead>
 					<tr>
-						<td>车牌号码</td>
-						<td>车辆品牌</td>
-						<td>车辆型号</td>
-						<td>驾驶员</td>
-						<td>驾驶员电话</td>
-						<td>出生日期</td>
-						<td>车辆归属</td>
-						<td>驾证到期</td>
-						<td>车架号</td>
-						<td>发动机号</td>
-						<td>发动机品牌号</td>
-						<td>车辆年款</td>
-						<td>里程</td>
-						<td>载重</td>
-						<td>车系</td>
-						<td>购买日期</td>
-						<td>上牌日期</td>
-						<td>车检到期</td>
-						<td>交强险保险公司</td>
-						<td>交强险到期</td>
-						<td>商业险保险公司</td>
-						<td>商业险到期</td>
-						<td>在我投保车</td>
-						<td>二维日期</td>
-						<td>燃油类别</td>
-						<td>下次保养里程</td>
-						<td>下次保养日期</td>
-						<td>会员码</td>
+						<td v-for="item in czd">
+							{{item.dname}}
+						</td>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
+					<tr v-for="item in car" @click="xzz(item)" v-if="zd[0]">
+							<td v-if="zd[0].display==1">{{item.platename}}</td>
+							<td v-if="item.carbrand&&zd[1].display==1">{{item.carbrand.brandname}}</td><td v-else-if="zd[1].display==1"></td>
+							<td v-if="item.chexingdingyibiao&&zd[2].display==1">{{item.chexingdingyibiao.cname}}</td><td v-else-if="zd[2].display==1"></td>
+							<td v-if="zd[3].display==1">{{item.driver}}</td>
+							<td v-if="zd[4].display==1">{{item.driverphone}}</td>
+							<td v-if="zd[5].display==1">{{item.birthday}}</td>
+							<td v-if="item.caraffiliation&&zd[6].display==1">{{item.caraffiliation.caraffiliation}}</td><td v-else-if="zd[6].display==1">sss</td>
+							<td v-if="zd[7].display==1">{{item.drivingouttime}}</td>
+							<td v-if="zd[8].display==1">{{item.framnum}}</td>
+							<td v-if="zd[9].display==1">{{item.enginenum}}</td>
+							<td v-if="item.fadongjipinpaibiao&&zd[10].display==1">{{item.fadongjipinpaibiao.fname}}</td><td v-else-if="zd[10].display==1"></td>
+							<td v-if="zd[11].display==1">{{item.carnyear}}</td>
+							<td v-if="zd[12].display==1">{{item.mileage}}</td>
+							<td v-if="zd[13].display==1">{{item.load}}</td>
+							<td v-if="zd[14].display==1">{{item.carseries}}</td>
+							<td v-if="zd[15].display==1">{{item.buytime}}</td>
+							<td v-if="zd[16].display==1">{{item.uptime}}</td>
+							<td v-if="zd[17].display==1">{{item.carouttime}}</td>
+							<td v-if="item.mlicompany&&zd[18].display==1">{{item.mlicompany.mlicompany}}</td><td v-else-if="zd[19].display==1"></td>
+							<td v-if="zd[19].display==1">{{item.mliouttime}}</td>
+							<td v-if="item.cicompany&&zd[20].display==1">{{item.cicompany.cicompany}}</td><td v-else-if="zd[21].display==1"></td>
+							<td v-if="zd[21].display==1">{{item.ciouttime}}</td>
+							<td v-if="zd[22].display==1">{{item.mytoucar}}</td>
+							<td v-if="zd[23].display==1">{{item.twotime}}</td>
+							<td v-if="item.oiltype&&zd[24].display==1">{{item.oiltype.oiltype}}</td><td v-else-if="zd[25].display==1"></td>
+							<td v-if="zd[25].display==1">{{item.nextmileage}}</td>
+							<td v-if="zd[26].display==1">{{item.nextupkeeptime}}</td>
+							<td v-if="zd[27].display==1">{{item.membernum}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -390,170 +244,37 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
+					<tr style="height: 30px;" v-for="item in customer" @click="findc(item)">
+						<td class="wrap">{{item.customernum}}</td>
+						<td >{{item.customername}}</td>
+						<td >{{item.customeraddress}}</td>
+						<td >{{item.linkman}}</td>
+						<td>{{item.phone}}</td>
+						<td >{{item.birthday}}</td>
+						<td v-if="item.customertype">{{item.customertype.customertype}}</td><td v-else></td>
+						<td>{{item.customernumber}}</td>
+						<td>{{item.jointime}}</td>
+						<td>{{item.outtime}}</td>
+						<td>{{item.remark}}</td>
+						<td>{{item.filing}}</td>
+						<td v-if="item.yuan">{{item.yuan.yname}}</td><td v-else></td>
+						<td v-if="item.yuan">{{item.yuan.yphonenumber}}</td><td v-else></td>
+						<td>{{item.paytime}}</td>
+						<td>{{item.payment}}</td>
+						<td>{{item.integral}}</td>
+						<td>{{item.earnest}}</td>
+						<td>省</td>
+						<td>市</td>
+						<td>区</td>
+						<td>{{item.paytest}}</td>
+						<td>{{item.registerphone}}</td>
+						<td>{{item.desportbank}}</td>
+						<td>{{item.bankaccount}}</td>
+						<td>{{item.registeraddress}}</td>
+						<td>{{item.otherone}}</td>
+						<td>{{item.othertwo}}</td>
+						<td>{{item.otherthree}}</td>
+						<td>{{item.otherfour}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -588,68 +309,76 @@
 						<div class="modal-header">
 							<span class="close" data-dismiss="modal">&times;</span>
 							<h5 class="col-xs-10">车辆资料编辑</h5>
-							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;">保存</button>
+							<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="ddd()">保存</button>
 						</div>
 						<div class="modal-body" style="background-color: #F7F7F7;">
-							<table class="table table-hover">
-								<tr>
-									<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" /><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
-								</tr>
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="ccar.platename"/><img @click="mod9" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" ><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" >*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.driver"></td>
+									</tr>
 
-								<tr>
-									<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">驾驶员地址</label><input style="width: 310px;margin-left: 7px;margin-right: 10px;"></td>
-								</tr>
-								<tr>
-									<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;">
-								</tr>
-								<tr>
-									<td>*<label style="margin-left: 10px;">发动机品牌</label>
-										<select style="width: 280px;margin-left: 20px;">
-											<option>1-d2</option>
-											<option>阿达-d3</option>
-										</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"></td>
-								</tr>
-								<tr>
-									<td><label style="margin-left: 11px;">上牌日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车检到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">二维日期</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车系</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
-								</tr>
-								<tr>
-									<td>
-										<span style="color: red;">保险</span>
-										<label style="margin-left: 11px;">交强险保险公司</label>
-										<select style="margin-left: 10px;width: 105px;">
-											<option>阳光保险</option>
-											<option>中华联合保险公司</option>
-										</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><input type="checkbox"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>*<label style="margin-left: 10px;">车辆归属</label>
-										<select style="margin-left: 10px;width: 150px;height: 25px;">
-											<option>个人车</option>
-											<option>公司车</option>
-											<option>租赁车</option>
-										</select>
-										<img @click="mod2" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label style="margin-left: 43px;">商业险保险公司</label>
-										<select style="margin-left: 10px;width: 105px;">
-											<option>阳光保险</option>
-											<option>中华联合保险公司</option>
-										</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label>驾证到期</label><input style="width: 90px;margin-left:7px;margin-right: 10px;"><label>燃油类别</label>
-										<select style="margin-left: 10px;width: 103px;height: 25px;">
-											<option>个人车</option>
-											<option>公司车</option>
-											<option>租赁车</option>
-										</select>
-										<img @click="mod3" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label style="margin-left: 11px;">下次保养里程</label><input style="margin-left: 10px; width: 110px;"><label style="margin-left: 11px;">下次保养日期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label>客户名称</label><input disabled="disabled" style="width: 295px;margin-left:7px;"><img src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;" @click="luo">
-									</td>
-								</tr>
-							</table>
-						</div>
+									<tr>
+										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="ccar.driverphone"/><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="ccar.birthday"><label style="margin-left: 11px;">驾驶员地址</label><input style="width: 310px;margin-left: 7px;margin-right: 10px;" v-model="ccar.driveraddress"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="ccar.framnum"/><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="ccar.enginenum"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="ccar.carnyear"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="ccar.mileage">
+									</tr>
+									<tr>
+										<td>*<label style="margin-left: 10px;">发动机品牌</label>
+											<select style="width: 280px;margin-left: 20px;" v-model="ccar.engineid">
+												<option v-for="item in fd" :value="item.fid">
+													{{item.fname}}
+												</option>
+											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;" v-model="ccar.load"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.buytime"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">上牌日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.uptime"><label style="margin-left: 11px;">车检到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="ccar.carouttime"><label style="margin-left: 11px;">二维日期</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;" v-model="ccar.twotime"><label style="margin-left: 11px;">车系</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;" v-model="ccar.carseries"></td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color: red;">保险</span>
+											<label style="margin-left: 11px;">交强险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="ccar.mlicompanyid">
+												<option v-for="item in jq" :value="item.mlicompanyid">
+													{{item.mlicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="ccar.mliouttime"><input type="checkbox" @click="chezc2" v-model="z2"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>*<label style="margin-left: 10px;">车辆归属</label>
+											<select style="margin-left: 10px;width: 150px;height: 25px;" v-model="ccar.caraffiliationid">
+												<option v-for="item in gs" :value="item.caraffiliationid">
+													{{item.caraffiliation}}
+												</option>
+											</select>
+											<img @click="mod2" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 43px;">商业险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="ccar.cicompanyid">
+												<option v-for="item in sy" :value="item.cicompanyid">
+													{{item.cicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="ccar.ciouttime"><label>驾证到期</label><input style="width: 90px;margin-left:7px;margin-right: 10px;" v-model="ccar.drivingouttime"><label>燃油类别</label>
+											<select style="margin-left: 10px;width: 103px;height: 25px;" v-model="ccar.oiltypeid">
+												<option v-for="item in ry" :value="item.oiltypeid">
+													{{item.oiltype}}
+												</option>
+											</select>
+											<img @click="mod3" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">下次保养里程</label><input style="margin-left: 10px; width: 110px;" v-model="ccar.nextmileage"><label style="margin-left: 11px;">下次保养日期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="ccar.nextupkeeptime"><label>客户名称</label>
+											<select v-model="ccar.customernum">
+												<option v-for="item in cop" :value="item.customernum">
+													{{item.customername}}
+												</option>
+											</select>
+										</td>
+									</tr>
+								</table>
+							</div>
 					</div>
 				</div>
 			</div>
@@ -658,14 +387,14 @@
 					<div class="modal-content">
 						<div class="modal-header" style="">
 							<span class="close" data-dismiss="modal">&times;</span>
-							<h5 class="col-xs-10">车资料编辑</h5>
+							<h5 class="col-xs-10">字段设置1</h5>
 
 						</div>
 						<div class="modal-body" style="background-color: #F7F7F7;height: 380px;">
 							<div style="background: #F7FFDE;width: 760PX;line-height: 37px;">
-								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;">确定</button>
-								<img src="img/20210126141619.png" style="margin-left: 520px;">全部选择
-								<img src="img/20210126141636.png">全部取消
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="qdd">确定</button>
+								<img src="img/20210126141619.png" style="margin-left: 520px;" @click="qbzx()">全部选择
+								<img src="img/20210126141636.png" @click="qbqx">全部取消
 							</div>
 							<div style="width: 760px;height: 300px;overflow-y:scroll;">
 								<table class="table table-bordered" style="width: 760px;">
@@ -676,75 +405,12 @@
 										<td style="width:90px;">序号</td>
 										<td>显示宽度</td>
 									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" v-model="ss"></td>
-										<td>CustCode</td>
-										<td>客户编码</td>
-										<td>1</td>
-										<td>150</td>
+									<tr v-for="item in zd">
+										<td><input type="checkbox" v-model="ss" :value="item.id"></td>
+										<td>{{item.zname}}</td>
+										<td>{{item.dname}}</td>
+										<td>{{item.id}}</td>
+										<td>{{item.width}}</td>
 									</tr>
 								</table>
 							</div>
@@ -983,6 +649,115 @@
 			    </div>
 			  </div>
 			</div>
+			<div class="modal" id="mymodal45" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">车牌字</h5>
+							</div>
+							<div class="modal-body">
+								<div style="width: 380px;margin-left: 100px;height: 300px;  ">
+									<div @click="xcp4(item)" style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;" v-for="item in plate1">{{item.platename}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="modal" id="mymodal38" data-backdrop="static">
+					<div style="width: 900px;" class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">车辆资料编辑1</h5>
+								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;" @click="cbc()">保存</button>
+							</div>
+							<div class="modal-body" style="background-color: #F7F7F7;">
+								<table class="table table-hover">
+									<tr>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="cs.platename"/><img @click="mod4" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cs.driver"></td>
+									</tr>
+
+									<tr>
+										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="cs.driverphone"/><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cs.birthday"><label style="margin-left: 11px;">驾驶员地址</label><input style="width: 310px;margin-left: 7px;margin-right: 10px;" v-model="cs.driveraddress"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">车架号</label><input style="width: 170px;margin-left: 7px;margin-right: 10px;" v-model="cs.framnum"/><label style="margin-left: 11px;">发动机号</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cs.enginenum"><label style="margin-left: 11px;">车辆年款</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="cs.carnyear"><label style="margin-left: 11px;">里程</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="cs.mileage">
+									</tr>
+									<tr>
+										<td>*<label style="margin-left: 10px;">发动机品牌</label>
+											<select style="width: 280px;margin-left: 20px;" v-model="cs.engineid">
+												<option v-for="item in fd" :value="item.fid">
+													{{item.fname}}
+												</option>
+											</select><label style="margin-left: 11px;">载重</label><input style="width: 180px; margin-left: 10px;margin-right: 10px;" v-model="cs.load"><label style="margin-left: 11px;">购买日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cs.buytime"></td>
+									</tr>
+									<tr>
+										<td><label style="margin-left: 11px;">上牌日期</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车检到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 11px;">二维日期</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">车系</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
+									</tr>
+									<tr>
+										<td>
+											<span style="color: red;">保险</span>
+											<label style="margin-left: 11px;">交强险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="cs.mlicompanyid">
+												<option v-for="item in jq" :value="item.mlicompanyid">
+													{{item.mlicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">交强险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cs.mliouttime"><input type="checkbox" v-model="z1" @click="chezc1"><label style="margin-left: 3px;margin-right: ;">在我投保投车</label>*<label style="margin-left: 10px;">车辆归属</label>
+											<select style="margin-left: 10px;width: 150px;height: 25px;" v-model="cs.caraffiliationid">
+												<option v-for="item in gs" :value="item.caraffiliationid">
+													{{item.caraffiliation}}
+												</option>
+											</select>
+											<img @click="mod2" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 43px;">商业险保险公司</label>
+											<select style="margin-left: 10px;width: 105px;" v-model="cs.cicompanyid">
+												<option v-for="item in sy" :value="item.cicompanyid">
+													{{item.cicompany}}
+												</option>
+											</select><label style="margin-left: 11px;">商业险到期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;"><label>驾证到期</label><input style="width: 90px;margin-left:7px;margin-right: 10px;"><label>燃油类别</label>
+											<select style="margin-left: 10px;width: 103px;height: 25px;" v-model="cs.oiltypeid">
+												<option v-for="item in ry" :value="item.oiltypeid">
+													{{item.oiltype}}
+												</option>
+											</select>
+											<img @click="mod3" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: -3px;" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label style="margin-left: 11px;">下次保养里程</label><input style="margin-left: 10px; width: 110px;" v-model="cs.nextmileage"><label style="margin-left: 11px;">下次保养日期</label><input style="width: 130px; margin-left: 10px;margin-right: 10px;" v-model="cs.nextupkeeptime"><label>客户名称</label>
+											<select v-model="cs.customernum">
+												<option v-for="item in cop" :value="item.customernum">
+													{{item.customername}}
+												</option>
+											</select>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal" id="mymodal39" data-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-10">车牌字</h5>
+							</div>
+							<div class="modal-body">
+								<div style="width: 380px;margin-left: 100px;height: 300px;  ">
+									<div @click="xcp1(item)" style="width:46px;box-shadow:0.5px 1px 0px 1px; height: 36px;background-color:#F7F7F7;text-align: center;padding-top: 8px;float: left; margin-left:10px ; margin-top:9px;" v-for="item in plate">{{item.platename}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
 	</body>
 	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
@@ -992,9 +767,236 @@
 				new Vue({
 				el: "#lx",
 				data: {
-					ss: []
+					ss: [],
+					car:{},
+					customer:{},
+					ccar:{},
+					cop:{},
+					ry:{},
+					plate1:{},
+					sy:{},
+					gs:{},
+					jq:{},
+					z2:false,
+					fd:{},
+					cs:{},
+					z1:false,
+					plate:{},
+					zd:[],
+					czd:{}
 				},
 				methods: {
+					cxzd(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/car/cxzd",
+							type:"post",
+							success:function(result){
+								that.czd=result;
+							}
+						});
+					},
+					qdd(){
+						let that=this;
+						var jsonn=JSON.stringify(this.ss);
+						$.ajax({
+							url:"http://127.0.0.1:8080/car/qdd",
+							type:"post",
+							data:jsonn,
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								
+							}
+						});
+					},
+					qbzx(){
+						if(this.zd.length==this.ss.length){
+							this.ss=[];
+						}else{
+							this.ss=this.zd.map(item=>item.id);
+						}
+					},
+					qbqx(){
+						this.ss=[];
+					},
+					sada(){
+						let that=this;
+						$.ajax({
+							aysnc:false,
+							url:"http://127.0.0.1:8080/car/sada",
+							type:"post",
+							success:function(result){
+								that.zd=result;
+							}
+						});
+					},
+					dc(){
+						window.location.href="http://127.0.0.1:8080/car/downloadExcel"
+					},
+					cbc(){
+						let that=this;
+						var jjjx=JSON.stringify(this.cs);
+						$.ajax({
+							url:"http://127.0.0.1:8080/car/cbc",
+							data:jjjx,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								if(result){
+									alert("修改成功");
+								}
+							}
+						});
+					},
+					xcp1(item){
+						this.$set(this.cs,'platename',item.platename);
+						$("#mymodal39").modal("hide");						
+					},
+					mod4() {
+						$("#mymodal39").modal("show");
+					},
+					chezc1(){
+						if(this.z1){
+							this.cs.mytoucar="是";
+						}else{
+							this.cs.mytoucar="否";
+						}
+					},
+					upche(){
+						$("#mymodal38").modal("show");
+						if(this.cs.mytoucar="是"){
+							this.z1=true;
+						}else{
+							this.z1=false;
+						}
+					},
+					jqx(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/jqx",
+							type:"post",
+							success:function(result){
+								that.jq=result;
+							}
+						});
+					},
+					syx(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/syx",
+							type:"post",
+							success:function(result){
+								that.sy=result;
+							}
+						});
+					},
+					fdj(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/fdj",
+							type:"post",
+							success:function(result){
+								that.fd=result;
+							}
+						});
+					},
+					clgs(){
+						let that=this;
+						$.ajax({
+							
+							url:"http://127.0.0.1:8080/customer/clgs",
+							type:"post",
+							success:function(result){
+								that.gs=result;
+							}
+						});
+					},
+					ryl(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/ryl",
+							type:"post",
+							success:function(result){
+								that.ry=result;
+							}
+						})
+					},
+					op(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/op",
+							type:"post",
+							success:function(result){
+								that.cop=result;
+							}
+						});
+					},
+					xcp4(item){
+						this.$set(this.ccar,'platename',item.platename);
+						$("#mymodal45").modal("hide");						
+					},
+					chezc2(){
+						if(this.z2){
+							this.ccar.mytoucar="是";
+							console.log("s");
+						}else{
+							this.ccar.mytoucar="否";
+							console.log("s");
+						}
+					},
+					p1(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/p",
+							type:"post",
+							success:function(result){
+								that.plate1=result;
+							}
+						});
+					},
+					mod9() {
+						$("#mymodal45").modal("show");
+					},
+					ddd(){
+						let that=this;
+						console.log("dd"+this.ccar);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/ddd",
+							type:"post",
+							data:that.ccar,
+							success:function(result){
+								if(result){
+									alert("成功");
+								}else{
+									alert("失败");
+								}
+							}
+						});
+					},
+					xzz(item){
+						this.cs=item;
+						let that=this;
+						var json=JSON.stringify(this.cs);
+						$.ajax({
+							url:"http://127.0.0.1:8080/car/finc",
+							type:"post",
+							data:json,
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								that.customer=result;
+							}
+						});
+					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/car/find",
+							type:"post",
+							success:function(result){
+								that.car=result;
+							}
+						})
+					},
 					khbj() {
 						$("#kh").show();
 					},
@@ -1055,19 +1057,25 @@
 					ba1() {
 						$("#mymodal11").modal("show");
 					},
-					xz() {
-						ss = 1;
-					},
-					qx() {
-						ss = [];
-					},
+					
 					ziduan(){
 						$("#mymodal12").modal("show");
 					},sc(){
 						$("#lsxf").show();
 					}
 				},
-				created() {}
+				created() {
+					this.find();
+					this.p1();
+					this.op();
+					this.ryl();
+					this.clgs();
+					this.fdj();
+					this.syx();
+					this.jqx();
+					this.sada();
+					this.cxzd();
+				}
 			});
 				var buttonArr = document.getElementsByClassName("xx");
 				var divArr = document.getElementsByClassName("div");

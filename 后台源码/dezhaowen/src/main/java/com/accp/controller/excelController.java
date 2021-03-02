@@ -2,15 +2,11 @@ package com.accp.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.accp.service.impl.CashierServiceImpl;
-import com.accp.service.impl.RepairServiceImpl;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -26,10 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.domain.Cashier;
 import com.accp.domain.Repair;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 
 @RestController

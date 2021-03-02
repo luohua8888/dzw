@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -7,6 +8,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import javax.xml.ws.BindingType;
 
 /**
  * <p>
@@ -25,6 +28,7 @@ public class Cicompany extends Model<Cicompany> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "商业保险公司id")
+    @TableId
     private Integer cicompanyid;
 
     @ApiModelProperty(value = "商业保险公司")

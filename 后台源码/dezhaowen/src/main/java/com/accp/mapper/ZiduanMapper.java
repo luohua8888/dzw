@@ -12,5 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-02-26
  */
 public interface ZiduanMapper extends BaseMapper<Ziduan> {
-
+    int upda();
+    int upto(Integer id);
 }

@@ -66,7 +66,6 @@ public class Repair extends Model<Repair> {
 
     private String staffpeople;
 
-
     @TableId
     @ApiModelProperty(value = "维修编号")
     private String number;
@@ -89,6 +88,7 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "接车人")
     private String getman;
+
 
 
 
@@ -129,6 +129,7 @@ public class Repair extends Model<Repair> {
 
     @ApiModelProperty(value = "维修状态")
     private String status;
+
 
     @DateTimeFormat(pattern = "yyyy-MM-dd ")
     @JsonFormat(pattern = "yyyy-MM-dd")

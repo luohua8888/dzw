@@ -2,6 +2,7 @@ package com.accp.controller;
 
 
 import com.accp.domain.*;
+import com.accp.mapper.ZiduanMapper;
 import com.accp.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.poi.ss.usermodel.Cell;
@@ -68,6 +69,10 @@ public class CustomerController {
     ICicompanyService cicservice;
     @Autowired
     IPlatenumberService plservice;
+    @Autowired
+    IZiduanService ziduanService;
+    @Autowired
+    ZiduanMapper ziduanMapper;
 
     @RequestMapping("/cus")
     public List<Customer> find(){
@@ -99,6 +104,7 @@ public class CustomerController {
             car.setMlicompany(mlservice.getById(car.getMlicompanyid()));
             car.setOiltype(oservice.getById(car.getOiltypeid()));
         }
+
         return list;
     }
     @RequestMapping("/cud")
@@ -203,9 +209,9 @@ public class CustomerController {
         customerOtherthree.setCellValue("其他三");
         customerOtherfour.setCellValue("其他四");
         if(list!=null){
-            for (int i=1;i<list.size();i++){
-                Customer c=list.get(i);
-                Row rowValue=sheet.createRow(i-1);
+            for (int i=1;i<=list.size();i++){
+                Customer c=list.get(i-1);
+                Row rowValue=sheet.createRow(i);
                 Cell customerValue=rowValue.createCell(0);
                 Cell customerValueValue=rowValue.createCell(1);
                 Cell customerAddressValue=rowValue.createCell(2);
@@ -380,6 +386,29 @@ public class CustomerController {
     }
     @RequestMapping("/cbc")
     public  Boolean insertCar(@RequestBody Car car){
+        return cservice.updateById(car);
+    }
+    @RequestMapping("/sada")
+    public List<Ziduan> findziduan(){
+        return ziduanService.list();
+    }
+    @RequestMapping("/cxzd")
+    public  List<Ziduan> findzid(){
+        QueryWrapper<Ziduan> query=new QueryWrapper<>();
+        query.eq("display",1);
+        return ziduanService.list(query);
+    }
+    @RequestMapping("/qdd")
+    public Boolean upto(@RequestBody List<Integer> list){
+        ziduanMapper.upda();
+        for (Integer i:list) {
+            ziduanMapper.upto(i);
+        }
+        return true;
+    }
+    @RequestMapping("/ddd")
+    public  Boolean uzzz( Car car){
+        System.out.println(car);
         return cservice.save(car);
     }
 }
