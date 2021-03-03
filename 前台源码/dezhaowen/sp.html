@@ -114,10 +114,10 @@
 				<div class="row">
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button class="btn btn-warning btn-xs" @click="addgoods">增加</button>
-						<button class="btn btn-warning btn-xs" @click="updategoods">修改</button>
-						<button class="btn btn-warning btn-xs" @click="del">删除</button>
-						<button class="btn btn-warning btn-xs" @click="findgoods">查询</button>
+						<button class="btn btn-warning btn-xs" @click="addgoods" v-perms="'gooddata/add'">增加</button>
+						<button class="btn btn-warning btn-xs" @click="updategoods" v-perms="'gooddata/update'">修改</button>
+						<button class="btn btn-warning btn-xs" @click="del" v-perms="'gooddata/remove'" >删除</button>
+						<button class="btn btn-warning btn-xs" @click="findgoods" v-perms="'gooddata/query'">查询</button>
 					</div>
 					<div class="col-sm-9">
 						<form style="display: inline-block;" action="http://localhost:8080/gooddata/down" method="post">
@@ -969,18 +969,12 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-
-
-
-
 		</div>
-
-		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/vue.js"></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 			Vue.component("tree", {
 				template: `
