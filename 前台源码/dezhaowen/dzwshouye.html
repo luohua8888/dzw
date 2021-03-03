@@ -24,7 +24,6 @@
 				height: 12%;
 				background-color: #18416b;	
 				width: 102.3%;		
-				color: white;
 			}
 			.container{
 				margin: 0px;
@@ -58,9 +57,22 @@
 				top: 0px;
 				right: 0px;
 			}
-			li{
-				list-style: none;
-				float: left;
+			.dropdown{
+				text-align: center;
+			}
+			nav ul {
+			    float:left;
+			    list-style: none;
+			}
+			nav ul li {
+			    display: inline;
+			}
+			nav ul li span {
+			    float: left;
+			    padding: 11px 20px; 
+			    font-size: 14px;
+			    color: #ddd;
+			    text-align: center;    
 			}
 			.img{
 				position: absolute;
@@ -76,14 +88,14 @@
 	        #sidebar ul{
 	        	list-style: none;
 	        }
-	        #sidebar ul li a{
+	        #sidebar ul li a,ul{
 	        	text-align: center;
 	        }
 	        .header div span{
 	        	color: white;
 				position: relative;
 				top: 0px;
-				left: 250px;
+				left: 130px;
 	        	margin-left: 40px;
 	        }
 			.dropdown li{
@@ -95,9 +107,6 @@
 				top: 15px;
 				left: 940px;
 			}
-			.tou li{
-				margin-left: 50px;
-			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	</head>
@@ -106,8 +115,8 @@
 			<div class="header">
 				<nav>
 					<div class="img"><img src="img/dzwlog.png" width="150px" height="40px" /></div>
-				    <ul class="tou">
-				      <li v-for="item in menu" @click="selectedMenu=item"><span :title="item.name">{{item.menuName}}</span></li>
+				    <ul>
+				      <li v-for="item in menu" @click="selectedMenu=item"><span :title="item.menuName">{{item.menuName}}</span></li>
 				    </ul>
 				 </nav>
 				 <div class="header-div">
@@ -117,13 +126,14 @@
 				 </div>
 			</div>
 			<div class="row">
-				<div class="col-sm-1">
+				<div class="col-sm-1" >
 					<div class="dropdown">
 					  	<div>
+						    
 						    <ul>
 						    	<li @click="createTab(item)" v-for="item in selectedMenu.children">
 						    		{{item.menuName}}
-						    		<ul style="margin-left:25px" v-if="item.children">
+						    		<ul style="margin-left:20px" v-if="item.children">
 								    	<li  @click="createTab(c)" v-for="c in item.children">
 								    		{{c.menuName}}
 								    	</li>
@@ -136,10 +146,10 @@
 				</div>
 				<div class="col-sm-11">
 					<ul class="nav nav-tabs">
-						<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.ename"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.menuName}}</a></li>
+						<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.perms"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.menuName}}</a></li>
 					</ul>
 					<div class="tab-content">
-						<div v-for="item in tabs" :id="item.ename" :class="['tab-pane',item.active?'active':'false']">
+						<div v-for="item in tabs" :id="item.perms" :class="['tab-pane',item.active?'active':'false']">
 							<iframe :src="item.url"></iframe>
 						</div>
 					</div>
@@ -150,40 +160,22 @@
 					<div style="width: 1030px;line-height: 40px; background:#F7FFFF ; float: left;">
 						<span style="font-size: 22px;margin-left: 10px;">今日提醒</span>
 				
-<!--						<span style=" font-size: 19px;  color: #000;width: 80px;">导出</span>-->
-						<button class="btn btn-default" style="margin-left: 873px;background: #C6C6C6;color: white;" @click="jrtx()">关闭</button>
+						<span style=" font-size: 19px; margin-left: 830px; color: #000;width: 80px;">导出</span>
+						<button class="btn btn-default" style="background: #C6C6C6;color: white;" @click="jrtx()">关闭</button>
 					</div>		
 					<div class="ddiv2" style="float: left;background: white;width: 230px;height: 400px;">
-								<ul class="ul1" style="margin-left: 20px;">
-									<li>
-										<span @click="xd">+</span><span style="font-size: 16px;">提醒内容</span>
-										<ul id="cuttab" v-if="xsa">
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh1()"  name="statusd1" style="font-size: 16px;">待入库旧件0个</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh2()"  name="statusd2" style="font-size: 16px;">账期超期0个</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh3()"  name="statusd3" style="font-size: 16px;">三包申报超期0个</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh4()"  name="statusd4" style="font-size: 16px;">班组备件超期{{carInfo.length}}个</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh5()"  name="statusd5" style="font-size: 16px;">需年审车辆0台</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh6()"  name="statusd6" style="font-size: 16px;">超龄库存配件0个</span>
-											</li>
-											<li>
-												<span style="margin-left: 10px;">+</span><span @click="jrtxjh7()"  name="statusd7" style="font-size: 16px;">应做二维车辆0台</span>
+								<ul style="list-style: none;" class="ul1" style="margin-left: 0px;">
+									<li v-for="item in sp">
+										<span @click="xd">+</span><span style="font-size: 16px;">{{item.jname}}</span>
+										<ul style="list-style: none;" v-if="xsa">
+											<li  v-for="items in item.children">
+												<span style="margin-left: 0px;">+</span><span style="font-size: 16px;">{{items.jrname}}</span>
 											</li>
 										</ul>
 									</li>
 								</ul>
 					</div>
-				<div id="table1" name="status" style="float: left;width: 800px;height:400px; overflow-x:scroll;">
+				<div name="status" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>维修单号</td>
@@ -194,16 +186,16 @@
 							<td>回收数量</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
+							<td>1</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table2" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none; ">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none; ">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>维修单号</td>
@@ -213,15 +205,15 @@
 							<td>BalJE4</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table3" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>配件编码</td>
@@ -231,15 +223,15 @@
 							<td>班组</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table4" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>车牌号</td>
@@ -248,16 +240,16 @@
 							<td>驾驶员</td>
 							<td>驾驶员电话</td>
 						</tr>
-						<tr v-for="item in carInfo">
-							<td>{{item.carnumber}}</td>
-							<td>{{item.ordertime}}</td>
-							<td>{{item.name}}</td>
-							<td>{{item.carer}}</td>
-							<td>{{item.carerphone}}</td>
+						<tr>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table5" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>配件编码</td>
@@ -267,15 +259,15 @@
 							<td>库龄(天)</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table6" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>车牌号</td>
@@ -285,15 +277,15 @@
 							<td>驾驶员电话</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
+							<td>1</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
-				<div id="table7" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+				<div style="float: left;width: 800px;height:400px; overflow-x:scroll;">
 					<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
 						<tr style="background: #39CEDE;">
 							<td>设置日期</td>
@@ -301,122 +293,112 @@
 							<td>要求处里日期</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>00000PO210100</td>
+							<td>的的</td>
+							<td>的</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 			</div>
 		</div>
+		<script>
+			var baseUrl = "http://localhost:8080/";
+		</script>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
 		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/menu.js" ></script>
+		<script type="text/javascript" src="js/quan.js" ></script>
 		<script type="text/javascript">
-			function weixiu() {
-						$.ajax({
-				 	     	type:"post",
-				 	     	url:"http://127.0.0.1:8080/settlementCenter/selectCarInfo2",
-				 	     	type: "post",
-				 	     	dataType: "json",
-				 	     	xhrFields: {
-								withCredentials:true
-							},
-				 	     	success:function(result){
-				 	     		vm.carInfo=result							     
-						 	}
-						});
+			var sp=[{
+				id:1,
+				jname:"提醒情况",
+				ename:'sys',
+				children:[
+					{
+						id:1,
+						jrname:"待入库旧件0个",
+						ename:"sys"
+					},{
+						id:1,
+						jrname:"账期超期0个",
+						ename:"ee"
+					},{
+						id:1,
+						jrname:"三包申报超期0个",
+						ename:"ss"
+					},{
+						id:1,
+						jrname:"班组备件超期0个",
+						ename:"syffs"
+					},{
+						id:1,
+						jrname:"需年审车辆0台",
+						ename:"sas"
+					},{
+						id:1,
+						jrname:"超龄库存配件0个",
+						ename:"syas"
+					},{
+						id:1,
+						jrname:"应做二维车辆0台",
+						ename:"sysss"
+					},{
+						id:1,
+						jrname:"个人事件0件",
+						ename:"syssss"
+					}
+				]
+				}
+			];
+			var sp1=[{
+				id:1,
+				jname:"10-北京",
+				ename:'sys',
+				children:[
+					{
+						id:4,
+						jrname:"1001-s",
+						ename:"sys"
+					}
+				]
+				}
+			];
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
 			}
-			
-			
-			var vm = new Vue({
+			var tabs=[
+			{
+				id:0,
+				menuName:"首页",
+				perms:"index",
+				active:true,
+				url:"jszxsy/dzwindex.html"
+			}
+			];
+			new Vue({
 				el:"#ctn",
 				data(){
 					return{
 						menu:[],
 						selectedMenu:[],
-						tabs:[{menuId:0,menuName:"首页",ename:"index",active:true,url:"jszxsy/dzwindex.html"}],
+						tabs:tabs,
+						sp:sp,
+						sp1:sp1,
 						xsa:false,
-						xsa1:false,
-						carInfo:[],
-						com:{}
+						xsa1:false
 					}
 				},
 				methods:{
 					jrtx(){
 						$("#jrtx").css("display","none");
 					},
-					jrtxjh1(){
-						$("#table1").show()
-						$("#table2").hide()
-						$("#table3").hide()
-						$("#table4").hide()	
-						$("#table5").hide()
-						$("#table6").hide()
-						$("#table7").hide()
-					},
-					jrtxjh2(){
-						$("#table1").hide()
-						$("#table2").show()
-						$("#table3").hide()
-						$("#table4").hide()	
-						$("#table5").hide()
-						$("#table6").hide()
-						$("#table7").hide()						
-					},
-					jrtxjh3(){
-						$("#table1").hide()
-						$("#table2").hide()
-						$("#table3").show()
-						$("#table4").hide()	
-						$("#table5").hide()
-						$("#table6").hide()
-						$("#table7").hide()	
-					},
-					jrtxjh4(){
-						weixiu();
-						$("#table1").hide()
-						$("#table2").hide()
-						$("#table3").hide()
-						$("#table4").show()	
-						$("#table5").hide()
-						$("#table6").hide()
-						$("#table7").hide()	
-				
-					},
-					jrtxjh5(){
-						$("#table1").hide()
-						$("#table2").hide()
-						$("#table3").hide()
-						$("#table4").hide()	
-						$("#table5").show()
-						$("#table6").hide()
-						$("#table7").hide()	
-					},
-					jrtxjh6(){
-						$("#table1").hide()
-						$("#table2").hide()
-						$("#table3").hide()
-						$("#table4").hide()	
-						$("#table5").hide()
-						$("#table6").show()
-						$("#table7").hide()	
-					},
-					jrtxjh7(){
-						$("#table1").hide()
-						$("#table2").hide()
-						$("#table3").hide()
-						$("#table4").hide()	
-						$("#table5").hide()
-						$("#table6").hide()
-						$("#table7").show()	
-					},
 					xd(){
 					if(this.xsa){
 						this.xsa=false;
 					}else{
-						weixiu();
 						this.xsa=true;
 					}
 					},
@@ -428,12 +410,14 @@
 							}
 					},
 					createTab(item){
-						if(item.children && item.children.length>0){
-							return;
+						if(item.children && item.children.length>0 ){
+							if(item.menuType!='C'){
+								return;
+							}
 						}
 						this.tabs.forEach(item=>item.active=false);
 						this.$set(item,"active",true);
-						var flag = this.tabs.some(sitem=>sitem.ename==item.ename)
+						var flag = this.tabs.some(sitem=>sitem.perms==item.perms)
 						if(!flag){
 							this.tabs.push(item);
 						}
@@ -444,26 +428,22 @@
 							this.tabs[index-1].active= true;
 						}
 					}
-//					findMenuByUserId(){
-//						var that = this;
-//						$.ajax({
-//							url:"http://127.0.0.1:8080/sysMenu/findmenu/"+0,
-//							type:"post",
-//							xhrFields: {
-//								withCredentials: true
-//							},
-//							dataType:"json",
-//							success:function(result){
-//								that.menu = result;
-//								console.log(result);
-//								that.selectedMenu = that.menu[0];
-//							}
-//						});
-//					}
 				},
 				created(){
-//					this.findMenuByUserId();
-					
+					var ss=sessionStorage.getItem("user");
+					var u=JSON.parse(ss);
+					console.log(u);
+					this.user=u;
+					let that=this;
+					menuApi.findMenuByUserId(u.roleId,function(result){
+					console.log(result);
+					that.menu = result;
+					that.selectedMenu = that.menu[0];
+					});
+					menuApi.findPerms(u.roleId,function(result){
+						data.perms=result;
+						console.log(top.data.perms);
+					});
 				}
 			});
 		</script>
