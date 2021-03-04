@@ -35,9 +35,9 @@
 			<div class="caozuo">
 				<div class="clearfix">
 					<div class="pull-right">
-						<button @click="toadd" class="btn btn-default"><span></span>增加</button>
-						<button @click="del" class="btn btn-default"><span></span>删除</button>
-						<button @click="save" class="btn btn-default"><span></span>保存</button>
+						<button v-perms="'technicianLevel/add'" @click="toadd" class="btn btn-default"><span></span>增加</button>
+						<button v-perms="'technicianLevel/del'" @click="del" class="btn btn-default"><span></span>删除</button>
+						<button v-perms="'technicianLevel/update'" @click="save" class="btn btn-default"><span></span>保存</button>
 					</div>
 				</div>
 				<div class="form-inline">
