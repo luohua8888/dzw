@@ -127,11 +127,11 @@
 						<button class="btn btn-warning btn-xs">删除</button>
 					</div> --> 
 					<div class="aaaaa">
-						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
-						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
-						<button class="btn btn-warning btn-xs" @click="wxremove">删除</button>
-						<button class="btn btn-warning btn-xs" @click="pricechange">调价</button>
-						<button class="btn btn-warning btn-xs" @click="downloadEcxel">导出</button>
+						<button class="btn btn-warning btn-xs" @click="wxxmaddservice">增加</button>
+						<button class="btn btn-warning btn-xs" @click="wxxmupdateservice">修改</button>
+						<button class="btn btn-warning btn-xs" @click="wxxmwxremove">删除</button>
+						<button class="btn btn-warning btn-xs" @click="wxxmpricechange">调价</button>
+						<button class="btn btn-warning btn-xs" @click="wxxmdownloadEcxel">导出</button>
 					</div>
 				</div>
 				<br />
@@ -618,11 +618,11 @@
 					}
 				},
 				methods: {
-					downloadEcxel(){
+					wxxmdownloadEcxel(){
 						alert(this.chaxun);
 						window.location.href="http://127.0.0.1:8080/weixiubiao/downloadEcxel/"+this.chaxun
 					},
-					wxremove(){
+					wxxmwxremove(){
 							let that=this;
 							$.ajax({
 								url:BaseUrl+"/weixiubiao/wxremove/"+that.wxupdate.wid,
@@ -747,10 +747,10 @@
 							}
 						})
 					},
-					addservice() {
+					wxxmaddservice() {
 						$("#addservicemodal").modal("show");
 					},
-					updateservice() {
+					wxxmupdateservice() {
 						$("#updateservicemodal").modal("show");
 					},
 					addson() {
@@ -759,7 +759,7 @@
 					updatesame() {
 						$("#updatesamemodal").modal("show");
 					},
-					pricechange() {
+					wxxmpricechange() {
 						$("#pricechangemodal").modal("show");
 					},
 					a(){

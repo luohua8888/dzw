@@ -63,10 +63,10 @@
 				<hr />
 				<div>
 					<div style="margin-left: 80%;">
-						<span @click="toadd"><img src="img/未标题-1.jpg" width="6%"><a href="javascript:void(0)">增加</a></span>
-						<span><img src="img/未标题-2.jpg" width="6%"><a href="javascript:void(0)" @click="remove()">删除</a> </span>
-						<span><img src="img/未标题-3.jpg" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
-						<span><img src="img/未标题-4.jpg" width="6%"><a href="javascript:void(0)" @click="downloadEcxel">导出</a> </span>
+						<span @click="fdjtoadd"><img src="img/未标题-1.jpg" width="6%"><a href="javascript:void(0)">增加</a></span>
+						<span><img src="img/未标题-2.jpg" width="6%"><a href="javascript:void(0)" @click="fdjremove()">删除</a> </span>
+						<span><img src="img/未标题-3.jpg" width="6%"><a href="javascript:void(0)" @click="fdjcarry">保存</a> </span>
+						<span><img src="img/未标题-4.jpg" width="6%"><a href="javascript:void(0)" @click="fdjdownloadEcxel">导出</a> </span>
 					</div>
 					<br />
 					<span style="margin-left: 50px;" v-if="addtext">
@@ -115,7 +115,7 @@
 					}
 				},
 				methods:{
-					downloadEcxel(){
+					fdjdownloadEcxel(){
 						window.location.href="http://127.0.0.1:8080/fadongjipinpaibiao/downloadEcxel"
 					},
 					//显示所有
@@ -131,7 +131,7 @@
 						})
 					},
 					
-					toadd(){
+					fdjtoadd(){
 						console.log("88888")
 						this.updatetext=false;
 						this.addtext=true;
@@ -173,7 +173,7 @@
 						}
 					})
 				},
-				remove(){
+				fdjremove(){
 					let that=this;
 					$.ajax({
 						url:BaseUrl+"/fadongjipinpaibiao/remove/"+that.application1.fid,
@@ -200,7 +200,7 @@
 						})
 					},
 					//执行新增修改
-					carry(){
+					fdjcarry(){
 						if(this.addtext){
 							alert("enen")
 							this.add();
