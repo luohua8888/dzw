@@ -27,7 +27,7 @@
 						<td>{{item.visible}}</td>
 						<td>{{item.createTime}}</td>
 						<td>
-							<button class="btn btn-primary" @click="xg(item)" >修改</button>
+							<button class="btn btn-primary" @click="xg(item)" v-perms="'mokuai/update'">修改</button>
 						</td>
 					</tr>
 				</tbody>
@@ -65,7 +65,7 @@
 							<input type="hidden" v-model="xglist.menuId"/>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="xgcd">修改</button>
+							<button class="btn btn-primary" @click="xgcd" v-perms="'mokuai/updatee'">修改</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -77,6 +77,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/api/menu.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 			new Vue({
 				el:"#ctn",

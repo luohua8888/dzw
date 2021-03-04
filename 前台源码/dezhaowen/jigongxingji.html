@@ -35,9 +35,9 @@
 			<div class="caozuo">
 				<div class="clearfix">
 					<div class="pull-right">
-						<button @click="toadd" class="btn btn-default"><span></span>增加</button>
-						<button @click="del" class="btn btn-default"><span></span>删除</button>
-						<button @click="save" class="btn btn-default"><span></span>保存</button>
+						<button v-perms="'technicianLevel/add'" @click="toadd" class="btn btn-default"><span></span>增加</button>
+						<button v-perms="'technicianLevel/del'" @click="del" class="btn btn-default"><span></span>删除</button>
+						<button v-perms="'technicianLevel/update'" @click="save" class="btn btn-default"><span></span>保存</button>
 					</div>
 				</div>
 				<div class="form-inline">
@@ -79,6 +79,7 @@
 		<script src="js/jquery-1.12.4.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/vue.js"></script>
+		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			new Vue({
 				el: ".container-fluid",

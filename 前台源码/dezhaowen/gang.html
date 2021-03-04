@@ -62,10 +62,10 @@
 			<div class="row1">
 				<div style="color: #686868;font-size: 18px;">
 					<div class="col-md-8"></div>
-					<div class="col-md-1" @click="add()"><img src="img/26d502752909327e0126dd1795f6cba.png" />增加</div>
-					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1" @click="update()"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />保存</div>
-					<div class="col-md-1" @click="daochu()"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />导出</div>
+					<div class="col-md-1" @click="add()" v-perms="'gang/add'"><img src="img/26d502752909327e0126dd1795f6cba.png" />增加</div>
+					<div class="col-md-1" v-perms="'gang/delete'"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal" data-toggle="modal">删除</span></div>
+					<div class="col-md-1" @click="update()" v-perms="'gang/update'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />保存</div>
+					<div class="col-md-1" @click="daochu()" v-perms="'gang/daochu'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />导出</div>
 				</div>
 				<form class="form-inline">
 					<div class="form-group">
@@ -113,6 +113,7 @@
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			new Vue({
 				el: "#ctn",

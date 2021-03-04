@@ -14,13 +14,13 @@
 					关闭
 				</button>
 				<div class="bj_1">
-					<p class="fd"><img src="img/未标题-1.jpg" class="tp_01" /><span @click="zjpp">增加品牌</span></p>
-					<p class="fd"><img src="img/未标题-5.jpg" /><span @click="xgpp">修改</span></p>
-					<p class="fd"><img src="img/未标题-2.jpg" /><span @click="remove">删除</span></p>
-					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="zjcx">增加车型</span></p>
-					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="xgcx">修改</span></p>
-					<p class="fd1"><img src="img/未标题-2.jpg" /><span @click="cheremove">删除</span></p>
-					<p class="fd1"><img src="img/未标题-6.jpg" /><span @click="zp">照片</span></p>
+					<p class="fd"><img src="img/未标题-1.jpg" class="tp_01" /><span @click="cxdazjpp">增加品牌</span></p>
+					<p class="fd"><img src="img/未标题-5.jpg" /><span @click="cxaxgpp">修改</span></p>
+					<p class="fd"><img src="img/未标题-2.jpg" /><span @click="cxdaremove">删除</span></p>
+					<p class="fd1"><img src="img/未标题-1.jpg" class="tp_02" /><span @click="cxdazjcx">增加车型</span></p>
+					<p class="fd1"><img src="img/未标题-5.jpg" /><span class="dj1" @click="cxdaxgcx">修改</span></p>
+					<p class="fd1"><img src="img/未标题-2.jpg" /><span @click="cxdacheremove">删除</span></p>
+					<p class="fd1"><img src="img/未标题-6.jpg" /><span @click="cxdazp">照片</span></p>
 					<div class="form-group">
 						<div class="col-sm-10" style="
     position: relative;
@@ -457,20 +457,20 @@
 					update1() {
 
 					},
-					zjpp() {
+					cxdazjpp() {
 						$("#myModal1").modal("show");
 					},
-					zp() {
+					cxdazp() {
 						$("#myModal7").modal("show");
 						this.tpfind=this.car;
 					},
-					zjcx() {
+					cxdazjcx() {
 						$("#myModal2").modal("show");
 					},
-					xgcx() {
+					cxdaxgcx() {
 						$("#myModal3").modal("show");
 					},
-					xgpp() {
+					cxaxgpp() {
 						$("#myModal4").modal("show");
 					},
 					spcs() {
@@ -545,7 +545,7 @@
 							}
 						})
 					},
-					remove() {
+					cxdaremove() {
 						let that = this;
 						console.log("444444")
 						$.ajax({
@@ -629,7 +629,7 @@
 							}
 						})
 					},
-					cheremove() {
+					cxdacheremove() {
 						let that = this;
 						console.log("http://127.0.0.1:8080/chexingdingyibiao/chexinremove/" + that.chexinglist.cheid)
 						$.ajax({

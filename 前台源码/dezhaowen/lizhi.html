@@ -6,6 +6,10 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<style type="text/css">
+			#ctn{
+				width: 100%;
+				height: 100%;
+			}
 			#row1 {
 				background-color: #F7FFFF;
 				height: 55px;
@@ -241,12 +245,12 @@
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
-					<div class="col-md-5" @click="show"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
-					<div class="col-md-1" @click="show"><img src="img/26d502752909327e0126dd1795f6cba.png" /><span id="yes2">离职</span></div>
-					<div class="col-md-1"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" /><span data-target="#myModal2" data-toggle="modal">回滚</span></div>
-					<div class="col-md-1"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal1" data-toggle="modal">删除</span></div>
-					<div class="col-md-1" @click="show"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
+					<div class="col-md-5" @click="show" v-perms="'lizhi/show'"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
+					<div class="col-md-1" @click="show" v-perms="'lizhi/showl'"><img src="img/26d502752909327e0126dd1795f6cba.png" /><span id="yes2">离职</span></div>
+					<div class="col-md-1" v-perms="'lizhi/hui'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" /><span data-target="#myModal2" data-toggle="modal">回滚</span></div>
+					<div class="col-md-1" v-perms="'lizhi/delete'"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal1" data-toggle="modal">删除</span></div>
+					<div class="col-md-1" @click="show" v-perms="'lizhi/showc'"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
+					<div class="col-md-1" @click="daochu()" v-perms="'lizhi/daochu'"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
@@ -316,7 +320,7 @@
 			<div id="yuan">
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
-					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
+					<div class="col-md-1"><button class="btn btn-success" @click="findId()">确定</button></div>
 					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
@@ -547,8 +551,8 @@
 			<div id="lizhi">
 				<div class="row" id="row">
 					<div class="col-md-8" style="font-size: 25px;color: #1A2846;">离职登记</div>
-					<div class="col-md-2"><button class="btn btn-success" id="no2" @click="lizhixz()">确定</button></div>
-					<div class="col-md-1"><button class="btn" @click="guan()">关闭</button></div>
+					<div class="col-md-2"><button class="btn btn-success" @click="lizhixz()">确定</button></div>
+					<div class="col-md-1"><button class="btn" id="no2">关闭</button></div>
 				</div>
 				<div class="row1s">
 					<form class="form-inline" style="height: 110px;padding-top: 10px;">
@@ -580,6 +584,7 @@
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			function my(id) {
 				return document.getElementById(id);
@@ -668,6 +673,7 @@
 								withCredentials: true
 							},
 							success: function(result) {
+								$("#lizhi").css("display", "none");
 								that.lizhiFind();
 							}
 						});
@@ -839,6 +845,7 @@
 							data: that.taff,
 							type: "post",
 							success: function(result) {
+								$("#yuan").css("display", "none");
 								that.list = result;
 							}
 						});
