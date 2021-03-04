@@ -131,7 +131,7 @@
 					<div class="groupcaozuo clearfix">
 						<button v-perms="'maintenanceTeam/add'" @click="toaddteam" class="btn btn-default" :class="{disabled:!g.isinsert}">增加班组</button>
 						<button v-perms="'maintenanceTeam/update'" @click="toupteam" class="btn btn-default" :class="{disabled:g.isinsert}">修改班组</button>
-						<button v-perms="'maintenanceTeam/update'" @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
+						<button v-perms="'maintenanceTeam/del'" @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
 					</div>
 					<div class="sroll">
 						<tree @changejigong="changejigong" :group="group"@changeg="changeg" @findjigong="findjigong"></tree>
