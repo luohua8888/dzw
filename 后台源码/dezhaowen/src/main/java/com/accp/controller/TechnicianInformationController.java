@@ -48,7 +48,7 @@ public class TechnicianInformationController {
         List<TechnicianInformation> technicianInformations = new ArrayList<TechnicianInformation>();
         QueryWrapper<TechnicianInformation> wrapper = new QueryWrapper<TechnicianInformation>();
         if (teamid != null) {
-            wrapper.lambda().in(TechnicianInformation::getTeamid, teamid).and(wq -> wq.like(TechnicianInformation::getResidencebank, where).or().like(TechnicianInformation::getTechnicianname, where).or().like(TechnicianInformation::getPhone, where));
+            wrapper.lambda().in(TechnicianInformation::getTeamid, teamid).and(wq -> wq.like(TechnicianInformation::getTechnicianid, where).or().like(TechnicianInformation::getTechnicianname, where).or().like(TechnicianInformation::getPhone, where));
             technicianInformations = service.list(wrapper);
         }
         for (TechnicianInformation i :
