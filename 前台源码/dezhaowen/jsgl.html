@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div id="ntc">
-			<button class="btn btn-primary" @click="xz">新增</button>
+			<button class="btn btn-primary" @click="xz" v-perms="'shouquan/add'">新增</button>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -26,9 +26,9 @@
 						<td>{{item.roleName}}</td>
 						<td>{{item.remark}}</td>
 						<td>
-							<button @click="auth(item)" class="btn btn-success">授权</button>
-							<button class="btn btn-primary" @click="xg(item)">修改</button>
-							<button class="btn btn-danger" @click="sc(item.roleId)">删除</button>
+							<button @click="auth(item)" class="btn btn-success" v-perms="'shouquan/shouquan'">授权</button>
+							<button class="btn btn-primary" @click="xg(item)" v-perms="'shouquan/update'">修改</button>
+							<button class="btn btn-danger" @click="sc(item.roleId)" v-perms="'shouquan/remove'">删除</button>
 						</td>
 					</tr>
 				</tbody>
@@ -44,7 +44,7 @@
 							<div id="myTree"></div>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="primaryAuth">授权</button>
+							<button class="btn btn-primary" @click="primaryAuth" v-perms="'shouquan/shouquane'">授权</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -93,7 +93,7 @@
 							<input type="hidden" v-model="xgrole.roleId"/>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="xgjs">修改</button>
+							<button class="btn btn-primary" @click="xgjs" v-perms="'shouquan/updatee'">修改</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -147,7 +147,7 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="xzjs">新增</button>
+							<button class="btn btn-primary" @click="xzjs" v-perms="'shouquan/adde'">新增</button>
 							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -159,6 +159,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/api/menu.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			var menuList = [];
 			function findMenu(){
