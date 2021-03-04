@@ -118,7 +118,7 @@
 						<button class="btn btn-default"><span></span>查询</button>
 						<button class="btn btn-default"><span></span>置空密码</button>
 						<button class="btn btn-default"><span></span>班组权重</button>
-						<form action="http://localhost:8080/technicianInformation/downloadExcel" method="post" style="display: inline-block;">
+						<form v-perms="'technicianInformation/down'"  action="http://localhost:8080/technicianInformation/downloadExcel" method="post" style="display: inline-block;">
 							<input type="hidden" name="teamid" v-model="id"/>
 							<input type="hidden" name="where" v-model="where"/>
 							<button :disabled="jigongs.length==0" class="btn btn-default"><span></span>导出</button>
