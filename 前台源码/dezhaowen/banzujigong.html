@@ -112,9 +112,9 @@
 			<div class="caozuo">
 				<div class="clearfix">
 					<div class="pull-left">
-						<button @click="toadd" class="btn btn-default"><span></span>增加员工</button>
-						<button :disabled="JSON.stringify(jigong)=='{}'" @click="toup" class="btn btn-default"><span></span>修改</button>
-						<button :disabled="JSON.stringify(jigong)=='{}'" @click="del" class="btn btn-default"><span></span>删除</button>
+						<button v-perms="'technicianInformation/add'" @click="toadd" class="btn btn-default"><span></span>增加员工</button>
+						<button v-perms="'technicianInformation/update'" :disabled="JSON.stringify(jigong)=='{}'" @click="toup" class="btn btn-default"><span></span>修改</button>
+						<button v-perms="'technicianInformation/del'" :disabled="JSON.stringify(jigong)=='{}'" @click="del" class="btn btn-default"><span></span>删除</button>
 						<button class="btn btn-default"><span></span>查询</button>
 						<button class="btn btn-default"><span></span>置空密码</button>
 						<button class="btn btn-default"><span></span>班组权重</button>
@@ -129,9 +129,9 @@
 			<div class="body clearfix">
 				<div class="col-xs-4" style="height: 100%;">
 					<div class="groupcaozuo clearfix">
-						<button @click="toaddteam" class="btn btn-default" :class="{disabled:!g.isinsert}">增加班组</button>
-						<button @click="toupteam" class="btn btn-default" :class="{disabled:g.isinsert}">修改班组</button>
-						<button @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
+						<button v-perms="'maintenanceTeam/add'" @click="toaddteam" class="btn btn-default" :class="{disabled:!g.isinsert}">增加班组</button>
+						<button v-perms="'maintenanceTeam/update'" @click="toupteam" class="btn btn-default" :class="{disabled:g.isinsert}">修改班组</button>
+						<button v-perms="'maintenanceTeam/update'" @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
 					</div>
 					<div class="sroll">
 						<tree @changejigong="changejigong" :group="group"@changeg="changeg" @findjigong="findjigong"></tree>
