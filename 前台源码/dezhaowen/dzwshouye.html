@@ -134,7 +134,7 @@
 						    <ul>
 						    	<li @click="createTab(item)" v-for="item in selectedMenu.children">
 						    		{{item.menuName}}
-						    		<ul style="margin-left:20px" v-if="item.children">
+						    		<ul style="margin-left:30px" v-if="item.children">
 								    	<li  @click="createTab(c)" v-for="c in item.children">
 								    		{{c.menuName}}
 								    	</li>
@@ -344,10 +344,10 @@
 						 	}
 						});
 			}
-//			var user=sessionStorage.getItem("user");
-//			if(!user){
-//				window.location.href="new_file.html"; 
-//			}
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			var tabs=[
 			{
 				id:0,
