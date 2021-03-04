@@ -318,16 +318,16 @@
 			</div>
 			<div class="row aa2">
 				<div class="z1">
-					<div class="col-md-1"><a href="#myModal8" @click="remove9()"><img src="img/1.png" class="c1">删除门店</a></div>
-					<div class="col-md-1"><a href="#myModal8" @click="show2()"><img src="img/1.png" class="c1">使用门店</a></div>
-					<div class="col-md-1"><a href="#myModal19" data-toggle="modal"><img src="img/2.png" class="c1">门店编辑</a></div>
-					<div class="col-md-1"><a href="#myModal2" @click="show()"><img src="img/1.png" class="c1">增加员工</a></div>
-					<div class="col-md-1" @click="jia1()"><a href="#myModal2" data-toggle="modal"><img src="img/2.png" class="c1">修改员工</a></div>
-					<div class="col-md-1" @click="removeId()"><img src="img/3.png" class="c1">删除</div>
-					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="img/4.png" class="c1">查询</a></div>
-					<div class="col-md-1" @click="daochu"><img src="img/6.png" class="c1">导出</div>
-					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="img/8.png" class="c1">员工角色</a></div>
-					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="img/9.png" class="c1">字段设置</a></div>
+					<div class="col-md-1"><a href="#myModal8" @click="remove9()" v-perms="'zuzhi/remove9'"><img src="img/1.png" class="c1">删除门店</a></div>
+					<div class="col-md-1"><a href="#myModal8" @click="show2()" v-perms="'zuzhi/show2'"><img src="img/1.png" class="c1">使用门店</a></div>
+					<div class="col-md-1"><a href="#myModal19" data-toggle="modal" v-perms="'zuzhi/menb'"><img src="img/2.png" class="c1">门店编辑</a></div>
+					<div class="col-md-1"><a href="#myModal2" @click="show()" v-perms="'zuzhi/showz'"><img src="img/1.png" class="c1">增加员工</a></div>
+					<div class="col-md-1" @click="jia1()"><a href="#myModal2" data-toggle="modal" v-perms="'zuzhi/jia1'"><img src="img/2.png" class="c1">修改员工</a></div>
+					<div class="col-md-1" @click="removeId()" v-perms="'zuzhi/removeid'"><img src="img/3.png" class="c1">删除</div>
+					<div class="col-md-1"><a href="#myModal7" data-toggle="modal" v-perms="'zuzhi/cha'"><img src="img/4.png" class="c1">查询</a></div>
+					<div class="col-md-1" @click="daochu" v-perms="'zuzhi/daochu'"><img src="img/6.png" class="c1">导出</div>
+					<div class="col-md-1"><a href="#myModal4" data-toggle="modal" v-perms="'zuzhi/yuan'"><img src="img/8.png" class="c1">员工角色</a></div>
+					<div class="col-md-1"><a href="#myModal5" data-toggle="modal" v-perms="'zuzhi/ziduan'"><img src="img/9.png" class="c1">字段设置</a></div>
 				</div>
 				<div class="z2">
 					<div class="col-xs-2" style="height: 300px;">
@@ -1290,6 +1290,7 @@
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/vue-perms.js" ></script>
 	<script type="text/javascript">
 		Vue.component("tree",{
 			props:["menu"],

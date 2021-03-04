@@ -208,10 +208,10 @@
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
-					<div class="col-md-8" @click="show"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
-					<div class="col-md-1" @click="update()"><img src="img/26d502752909327e0126dd1795f6cba.png" />保存</div>
-					<div class="col-md-1" @click="show"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
+					<div class="col-md-8" @click="show" v-perms="'phone/show'"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
+					<div class="col-md-1" @click="update()" v-perms="'phone/update'"><img src="img/26d502752909327e0126dd1795f6cba.png" />保存</div>
+					<div class="col-md-1" @click="show" v-perms="'phone/showc'"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
+					<div class="col-md-1" @click="daochu()" v-perms="'phone/daochu'"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
@@ -280,7 +280,7 @@
 			<div id="yuan">
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
-					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
+					<div class="col-md-1"><button class="btn btn-success" @click="findId()">确定</button></div>
 					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
@@ -478,6 +478,7 @@
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			function my(id) {
 				return document.getElementById(id);
@@ -599,8 +600,8 @@
 							data: that.taff,
 							type: "post",
 							success: function(result) {
-								that.taffsdata = result;
 								$("#yuan").css("display", "none");
+								that.taffsdata = result;
 							}
 						});
 					},
