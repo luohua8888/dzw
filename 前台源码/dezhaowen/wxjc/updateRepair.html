@@ -91,13 +91,13 @@
 				</div>
 				<div class="col-xs-offset-6 col-xs-4 text-center car">
 					<div class="col-xs-4" id="check">
-						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; " class="icon">竣工检查</a>
+						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; "v-perms="'jungongjiancha'" class="icon">竣工检查</a>
 					</div>
 					<div class="col-xs-4" id="rollback">
-						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; " class="icon">回滚</a>
+						<a href="javascript:;"  style="text-indent: 1.5em; font-size: 20px; "v-perms="'huigun'"  class="icon">回滚</a>
 					</div>
 					<div class="col-xs-4">
-						<a href="javascript:;" id="addRepair" style="text-indent: 1.5em; font-size: 20px; " class="icon">接车完成</a>
+						<a href="javascript:;" id="addRepair"v-perms="'jcwc'" style="text-indent: 1.5em; font-size: 20px; " class="icon">接车完成</a>
 					</div>
 					<!--<div class="col-xs-3">
 						<a href="javascript:;" style="text-indent: 1.5em; font-size: 20px; background-image: url(static/images/打印.png);" class="icon">委托书</a>
@@ -200,25 +200,21 @@
 					<div class="col-xs-12 btns" style="padding: 0;">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default">维修项目</button>
-							<button type="button" class="btn btn-default" @click="openMaintenanceItems">单个增加</button>
-							<button id="adds" type="button" class="btn btn-default">多个增加</button>
-							<button @click="update" type="button" class="btn btn-default">修改</button>
-							<button @click="delete1" type="button" class="btn btn-default">删除</button>
-							<button type="button" class="btn btn-default">维修班组</button>
-							<button type="button" class="btn btn-default">重置价格</button>
+							<button type="button" class="btn btn-default"v-perms="'dgzj'" @click="openMaintenanceItems">单个增加</button>
+							<button @click="update" type="button" class="btn btn-default"v-perms="'xg'">修改</button>
+							<button @click="delete1" type="button" class="btn btn-default"v-perms="'wxxmsc'">删除</button>
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">领料情况</button>
 							<!--<button type="button" class="btn btn-default" @click="materialRequirement">物料需求</button>-->
-							<button type="button" class="btn btn-default" @click="receiveMaterial">领料</button>
-							<button type="button" class="btn btn-default" @click="resetPrice">重置价格</button>
+							<button type="button" class="btn btn-default" @click="receiveMaterial"v-perms="'xlxl'">领料</button>
 							<!--<button type="button" class="btn btn-default">库房领料</button>-->
 						</div>
 						<div class="btn-group" style="display: none;">
 							<button type="button" class="btn btn-default">附加项目</button>
-							<button type="button" class="btn btn-default" @click="appendItems">增加</button>
-							<button type="button" class="btn btn-default" @click="updateewitem">修改</button>
-							<button type="button" class="btn btn-default" @click="deleteewitem">删除</button>
+							<button type="button" class="btn btn-default" @click="appendItems"v-perms="'fjzj'">增加</button>
+							<button type="button" class="btn btn-default" @click="updateewitem"v-perms="'fjxg'">修改</button>
+							<button type="button" class="btn btn-default" @click="deleteewitem"v-perms="'fjsc'">删除</button>
 						</div>
 					</div>
 					<table id="table1" class="table table-striped table-bordered">
@@ -1068,6 +1064,7 @@
 		<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="static/js/vue-2.6.js" ></script>
 		<script src="static/js/Myip.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			Vue.component("mybtn", {
 				props: ["btns"],
