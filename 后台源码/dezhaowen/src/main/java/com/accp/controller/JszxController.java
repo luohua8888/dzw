@@ -1,7 +1,9 @@
 package com.accp.controller;
 
+import com.accp.domain.Carinfo;
 import com.accp.domain.Cashier;
 import com.accp.domain.Repair;
+import com.accp.mapper.CarMapper;
 import com.accp.mapper.RepairMapper;
 import com.accp.service.impl.CashierServiceImpl;
 import com.accp.service.impl.RepairServiceImpl;
@@ -19,7 +21,14 @@ public class JszxController {
     @Autowired
     CashierServiceImpl cs;
 
+    @Autowired
+    CarMapper carMapper;
 
+    @RequestMapping("/selectCarInfo2")
+    @ResponseBody
+    public List<Carinfo> selectCarinfo2(){
+        return carMapper.selectCarInfo2();
+    }
 
     @RequestMapping("/selectSettleAccounts")
     public List<Repair> selectSettleAccounts(String number,String platename,String startkd,String endkd){

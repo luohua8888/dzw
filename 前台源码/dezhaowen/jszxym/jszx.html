@@ -163,7 +163,7 @@
 			<div class="header">
 				<h3>结算中心</h3>
 				<div style="float: right; margin-top: -30px;">
-					<button @click="selectSettleAccounts" type="button" class="btn btn-default" style="width: 80px;">
+					<button @click="selectSettleAccounts" type="button" class="btn btn-default" style="width: 80px;" v-perms="'settlementCenter/query'">
 						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					查询</button>
 					<button type="button" class="btn btn-default">关闭</button>
@@ -208,18 +208,18 @@
 							<ul>
 								<li name="cashdesk">
 									<span id="img" class="iconfont icon-lishibiaodan"></span>
-									<span @click="openCashier()" data-toggle="modal" data-target = "#myModal" id="font">收银</span>
+									<span @click="openCashier()" data-toggle="modal" data-target = "#myModal" id="font" v-perms="'settlementCenter/shouying'">收银</span>
 								</li>
 								<li name="rollback">
 									
 								</li>
 								<li>
 									<span id="img" class="iconfont icon-biaodan"></span>
-									<span @click="openRepairOrder()" id="font">打开单据</span>
+									<span @click="openRepairOrder()" id="font" v-perms="'settlementCenter/dakai'">打开单据</span>
 								</li>
 								<li>
 									<span id="img" class="glyphicon glyphicon-share"></span>
-									<span @click="exportExcel()" id="font">导出</span>
+									<span @click="exportExcel()" id="font" v-perms="'settlementCenter/daochu'">导出</span>
 								</li>
 							</ul>
 						</div>
@@ -511,6 +511,7 @@
 		<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/vue.js" type="text/javascript"></script>
 		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../js/vue-perms.js" ></script>
 		<script type="text/javascript">
 			//导出数据
 			function exportExcel() {

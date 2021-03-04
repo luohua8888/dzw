@@ -116,6 +116,9 @@ LEFT JOIN customer ON customer.`customernum`=car.`customernum`
 LEFT JOIN (SELECT carinfoid,orderTime FROM `repair` WHERE `carinfoId`=(SELECT `carnum` FROM `car` WHERE `platename`=#{carNumber}) ORDER BY orderTime DESC LIMIT 0,1 ) item ON item.carinfoid=car.`carnum`
 WHERE car.`platename`=#{carNumber}
   </select>
+    <select id="selectCarInfo2" resultMap="BaseResult2">
+        SELECT car.carnum id,car.`platename` carNumber,car.`framnum` carNumber1, `pinpaichexing`.`pname` carBrandName ,car.`enginenum` engineNumber,`fadongjipinpaibiao`.`fname` engineBrandName, customer.`customername` `name`,car.`driver` carer,car.`driverphone` carerPhone ,car.`mileage` mileage,item.orderTime orderTime FROM `car` LEFT JOIN `pinpaichexing` ON `pinpaichexing`.`pid`=car.`carbrandid` LEFT JOIN `fadongjipinpaibiao` ON `fadongjipinpaibiao`.`fid`=car.`engineid` LEFT JOIN customer ON customer.`customernum`=car.`customernum` LEFT JOIN (SELECT carinfoid,orderTime FROM `repair`,car WHERE `carinfoId`=car.carnum ORDER BY orderTime DESC LIMIT 0,1 ) item ON item.carinfoid=car.`carnum`
+    </select>
     <select id="selectClientAndCar" resultMap="BaseResult1">
 SELECT car.platename carnumber,customer.customername name,customer.`customeraddress` address,
 car.`driver` carer,car.`driverphone` carerphone,

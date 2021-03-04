@@ -4,9 +4,7 @@ Vue.directive("perms",{
 		var perms = top.data.perms;
 		console.log(perms);
 		var verfiy = binding.value;//当前验证的权限
-		console.log(verfiy);
 		var flag = perms.some(item=>item.men2==verfiy);
-		alert(flag);
 		if(!flag){
 			el.remove();
 		}

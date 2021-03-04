@@ -35,7 +35,7 @@ public class Pb extends Model<Pb> {
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return null;
     }
 
 }
