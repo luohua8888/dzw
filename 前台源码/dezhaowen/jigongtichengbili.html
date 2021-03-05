@@ -93,6 +93,21 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="modal" id="MessageModal">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5>系统提示</h5>
+						</div>
+						<div class="modal-body">
+							<p>{{mes.context}}</p>
+						</div>
+						<div class="modal-footer">
+							<button v-for="m in mes.btn" class="btn" :class="m.cla" @click="m.fun">{{m.name}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="js/jquery-1.12.4.js"></script>
 		<script src="js/bootstrap.min.js"></script>
@@ -104,7 +119,10 @@
 				data(){
 					return{
 						tcs:[],
-						tc:{}
+						tc:{},
+						mes: {
+							btn: []
+						}
 					}
 				},
 				methods:{
@@ -139,24 +157,63 @@
 								v.find();
 								v.tc.reteamid = v.tc.teamid;
 								if (data == -1) {
-									alert("等級编码已存在，不能重复");
+									v.message({
+										context: "等級编码已存在，不能重复!",
+										btn: [{
+											cla: "btn-primary",
+											name: "确定",
+											fun: function() {
+												$("#MessageModal").modal("hide");
+											}
+										}]
+									});
 								}
 							}
 						})
 					},
 					del() {
-						if (confirm("确定要删除该记录？")) {
-							let v = this;
-							$.ajax({
-								url: "http://localhost:8080/teamWeight/del",
-								data: v.tc,
-								type: "post",
-								success(data) {
-									v.find();
-									v.tc = {};
+						let v = this;
+						this.message({
+							context: "确定要删除该记录？",
+							btn: [{
+								cla: "btn-primary",
+								name: "取消",
+								fun: function() {
+									$("#MessageModal").modal("hide");
 								}
-							})
-						}
+							},{
+								cla: "btn-primary",
+								name: "确定",
+								fun: function() {
+									$.ajax({
+										url: "http://localhost:8080/teamWeight/del",
+										data: v.tc,
+										type: "post",
+										success(data) {
+											v.find();
+											v.tc = {};
+											if(JSON.stringify(data)==false){
+												v.message({
+													context: "删除失败!",
+													btn: [{
+														cla: "btn-primary",
+														name: "确定",
+														fun: function() {
+															$("#MessageModal").modal("hide");
+														}
+													}]
+												});
+											}
+											$("#MessageModal").modal("hide");
+										}
+									})
+								}
+							}]
+						});
+					},
+					message(item) {
+						this.mes = item;
+						$("#MessageModal").modal("show");
 					}
 				},
 				created() {

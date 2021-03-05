@@ -103,7 +103,7 @@
 				<span>班组技工</span>
 				<div class="pull-right">
 					<div class="pull-left">
-						<input class="form-control" v-model="where" placeholder="匹配工号/姓名/手机"/>
+						<input class="form-control" v-model="where" placeholder="匹配工号/姓名/手机" />
 					</div>
 					<button class="btn search btn-default pull-left" @click="findjigong(id)">搜索</button>
 					<button style="background-color: lightgray;" class="btn btn-default pull-left">关闭</button>
@@ -118,9 +118,10 @@
 						<button class="btn btn-default"><span></span>查询</button>
 						<button class="btn btn-default"><span></span>置空密码</button>
 						<button class="btn btn-default"><span></span>班组权重</button>
-						<form action="http://localhost:8080/technicianInformation/downloadExcel" method="post" style="display: inline-block;">
-							<input type="hidden" name="teamid" v-model="id"/>
-							<input type="hidden" name="where" v-model="where"/>
+						<form v-perms="'technicianInformation/down'" action="http://localhost:8080/technicianInformation/downloadExcel"
+						 method="post" style="display: inline-block;">
+							<input type="hidden" name="teamid" v-model="id" />
+							<input type="hidden" name="where" v-model="where" />
 							<button :disabled="jigongs.length==0" class="btn btn-default"><span></span>导出</button>
 						</form>
 					</div>
@@ -134,7 +135,7 @@
 						<button v-perms="'maintenanceTeam/del'" @click="delteam" class="btn btn-default" :class="{disabled:g.isinsert}">删除班组</button>
 					</div>
 					<div class="sroll">
-						<tree @changejigong="changejigong" :group="group"@changeg="changeg" @findjigong="findjigong"></tree>
+						<tree @changejigong="changejigong" :group="group" @changeg="changeg" @findjigong="findjigong"></tree>
 					</div>
 				</div>
 				<div class="col-xs-8 sroll">
@@ -162,7 +163,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr @click="changejigong(i)" :class="{orange:i.orange&&i.orange=='all'}"  v-for="i in jigongs">
+							<tr @click="changejigong(i)" :class="{orange:i.orange&&i.orange=='all'}" v-for="i in jigongs">
 								<td @click="addorange(i,'all')"><span class="glyphicon glyphicon-triangle-right" v-show="i.orange"></span></td>
 								<td @click="addorange(i,'teamid')" :class="{orange:i.orange&&i.orange=='teamid'}">{{i.maintenanceTeam.teamid}}</td>
 								<td @click="addorange(i,'teamname')" :class="{orange:i.orange&&i.orange=='teamname'}">{{i.maintenanceTeam.teamname}}</td>
@@ -178,7 +179,7 @@
 								<td @click="addorange(i,'residenceaddress')" :class="{orange:i.orange&&i.orange=='residenceaddress'}">{{i.residenceaddress}}</td>
 								<td @click="addorange(i,'residencebank')" :class="{orange:i.orange&&i.orange=='residencebank'}">{{i.residencebank}}</td>
 								<td @click="addorange(i,'bankaccount')" :class="{orange:i.orange&&i.orange=='bankaccount'}">{{i.bankaccount}}</td>
-								<td @click="addorange(i,'levelname')" :class="{orange:i.orange&&i.orange=='levelname'}">{{i.technicianLevel.levelname}}</td>
+								<td @click="addorange(i,'levelname')" :class="{orange:i.orange&&i.orange=='levelname'}">{{i.technicianLevel?i.technicianLevel.levelname:""}}</td>
 								<td @click="addorange(i,'maintenancetype')" :class="{orange:i.orange&&i.orange=='maintenancetype'}">{{i.maintenancetype}}</td>
 								<td @click="addorange(i,'maintenancetype')" :class="{orange:i.orange&&i.orange=='maintenancetype'}">{{i.maintenancebrand}}</td>
 							</tr>
@@ -325,6 +326,21 @@
 						</div>
 					</div>
 				</div>
+				<div class="modal" id="MessageModal">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5>系统提示</h5>
+							</div>
+							<div class="modal-body">
+								<p>{{mes.context}}</p>
+							</div>
+							<div class="modal-footer">
+								<button v-for="m in mes.btn" class="btn" :class="m.cla" @click="m.fun">{{m.name}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script src="js/jquery-1.12.4.js"></script>
@@ -353,10 +369,10 @@
 						this.$set(i, "visable", !i.visable);
 					},
 					select(i) {
-						if(i.cs){
+						if (i.cs) {
 							return;
 						}
-						this.$emit("changejigong",{});
+						this.$emit("changejigong", {});
 						this.group.forEach(i => {
 							this.$set(i, "cs", false);
 							i.list.forEach(g => this.$set(g, "cs", false))
@@ -365,17 +381,17 @@
 						id = [];
 						if (i.list) {
 							id = i.list.map(j => j.teamid);
-							g1=JSON.parse(JSON.stringify(i));
-							g1.isinsert=true;
-							this.$emit("changeg",g1);
+							g1 = JSON.parse(JSON.stringify(i));
+							g1.isinsert = true;
+							this.$emit("changeg", g1);
 						} else {
 							id.push(i.teamid);
-							g1=JSON.parse(JSON.stringify(i));
-							g1.reteamid=g1.teamid;
-							g1.isinsert=false;
-							this.$emit("changeg",g1);
+							g1 = JSON.parse(JSON.stringify(i));
+							g1.reteamid = g1.teamid;
+							g1.isinsert = false;
+							this.$emit("changeg", g1);
 						}
-						this.$emit("findjigong",id);
+						this.$emit("findjigong", id);
 					}
 				}
 			})
@@ -414,16 +430,21 @@
 				data() {
 					return {
 						group: {},
-						group1:{},
+						group1: {},
 						jigongs: [],
-						g:{isinsert:true},
-						where:"",
-						id:[],
-						jigong:{},
-						showjigong:{},
-						levels:[],
-						team:{},
-						temp:{}
+						g: {
+							isinsert: true
+						},
+						where: "",
+						id: [],
+						jigong: {},
+						showjigong: {},
+						levels: [],
+						team: {},
+						temp: {},
+						mes: {
+							btn: []
+						}
 					}
 				},
 				methods: {
@@ -438,11 +459,11 @@
 							dataType: "json",
 							success(data) {
 								v.group = data;
-								v.group1=JSON.parse(JSON.stringify(data));
+								v.group1 = JSON.parse(JSON.stringify(data));
 							}
 						})
 					},
-					findlevel(){
+					findlevel() {
 						let v = this;
 						$.ajax({
 							url: "http://localhost:8080/technicianLevel/find",
@@ -452,7 +473,7 @@
 							}
 						})
 					},
-					findalljigon(){
+					findalljigon() {
 						let v = this;
 						$.ajax({
 							url: "http://localhost:8080/technicianInformation/find",
@@ -466,7 +487,7 @@
 					},
 					findjigong(id) {
 						let v = this;
-						this.id=id;
+						this.id = id;
 						$.ajax({
 							url: "http://localhost:8080/technicianInformation/findbyteamid",
 							dataType: "json",
@@ -474,168 +495,318 @@
 							type: "post",
 							data: {
 								teamid: id,
-								where:v.where
+								where: v.where
 							},
 							success(data) {
 								v.jigongs = data;
 							}
 						})
 					},
-					changeg(i){
-						this.g=i;
+					changeg(i) {
+						this.g = i;
 					},
-					changejigong(i){
-						this.jigong=JSON.parse(JSON.stringify(i));
-						this.jigong.technicianLevel=undefined;
+					changejigong(i) {
+						this.jigong = JSON.parse(JSON.stringify(i));
+						this.jigong.technicianLevel = undefined;
 					},
-					toadd(){
-						if(this.g.list||JSON.stringify(this.g)==JSON.stringify({isinsert:true})){
-							alert("请选择要增加员工的班组!");
-							return;
-						}
-						this.findlevel();
-						this.showjigong={};
-						this.showjigong.teamid=this.id;
-						this.$set(this.showjigong,"maintenanceTeam",this.g);
-						$("#jigongModal").modal("show");
-					},
-					toup(){
-						if(JSON.stringify(this.jigong)=="{}"){
-							alert("请选中一条技工信息!");
-							return;
-						}
-						this.findlevel();
-						this.showjigong=this.jigong;
-						this.showjigong.retechnicianid=this.showjigong.technicianid;
-						$("#jigongModal").modal("show");
-					},
-					del(){
-						if(!this.jigong.technicianid){
-							return;
-						}
-						if(!confirm("确定要删除选中的技工信息吗?")){
-							return;
-						}
-						let v=this;
-						$.ajax({
-							url: "http://localhost:8080/technicianInformation/del",
-							data:{retechnicianid:v.jigong.technicianid},
-							type: "post",
-							success(data) {
-								if(data>0){
-									if(v.id.length>0||v.where.trim()!=""){
-										v.findjigong(v.id);
-									}else{
-										v.findalljigon();
+					toadd() {
+						if (this.g.list || JSON.stringify(this.g) == JSON.stringify({
+								isinsert: true
+							})) {
+							this.message({
+								context: "请选中班组!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide")
 									}
-									alert("删除成功!");
-								}else{
-									alert("删除失败")
-								}
-							}
-						})
+								}]
+							});
+							return;
+						}
+						this.findlevel();
+						this.showjigong = {};
+						this.showjigong.teamid = this.g.teamid;
+						this.$set(this.showjigong, "maintenanceTeam", this.g);
+						$("#jigongModal").modal("show");
 					},
-					save(){
-						this.showjigong.maintenanceTeam=undefined;
-						this.showjigong.isteamleader=this.showjigong.isteamleader?1:0;
-						let v=this;
+					toup() {
+						if (JSON.stringify(this.jigong) == "{}") {
+							this.message({
+								context: "请选中一条技工信息!"
+							});
+							return;
+						}
+						this.findlevel();
+						this.showjigong = this.jigong;
+						this.showjigong.retechnicianid = this.showjigong.technicianid;
+						$("#jigongModal").modal("show");
+					},
+					del() {
+						if (!this.jigong.technicianid) {
+							return;
+						}
+						let v = this;
+						this.message({
+							context: "确定要删除选中的技工信息吗?",
+							btn: [{
+									cla: "btn-default",
+									name: "取消",
+									fun: function() {
+										$("#MessageModal").modal("hide")
+									},
+								},
+								{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$.ajax({
+											url: "http://localhost:8080/technicianInformation/del",
+											data: {
+												retechnicianid: v.jigong.technicianid
+											},
+											type: "post",
+											success(data) {
+												if (data > 0) {
+													if (v.id.length > 0 || v.where.trim() != "") {
+														v.findjigong(v.id);
+													} else {
+														v.findalljigon();
+													}
+													v.message({
+														context: "删除成功",
+														btn: [{
+															cla: "btn-primary",
+															name: "确定",
+															fun: function() {
+																$("#MessageModal").modal("hide")
+															}
+														}]
+													});
+												} else {
+													v.message({
+														context: "删除失败",
+														btn: [{
+															cla: "btn-primary",
+															name: "确定",
+															fun: function() {
+																$("#MessageModal").modal("hide")
+															}
+														}]
+													});
+												}
+											}
+										})
+									}
+								}
+							]
+						});
+					},
+					save() {
+						this.showjigong.maintenanceTeam = undefined;
+						this.showjigong.isteamleader = this.showjigong.isteamleader ? 1 : 0;
+						let v = this;
 						$.ajax({
 							url: "http://localhost:8080/technicianInformation/save",
-							data:v.showjigong,
+							data: v.showjigong,
 							type: "post",
 							success(data) {
-								if(data>0){
-									if(v.id.length>0||v.where.trim()!=""){
+								if (data > 0) {
+									if (v.id.length > 0 || v.where.trim() != "") {
 										v.findjigong(v.id);
-									}else{
+									} else {
 										v.findalljigon();
 									}
-									alert("保存成功!");
-									$("#jigongModal").modal("hide");
+									v.message({
+										context: "保存成功!",
+										btn: [{
+											cla: "btn-primary",
+											name: "确定",
+											fun: function() {
+												$("#MessageModal").modal("hide");
+												$("#jigongModal").modal("hide");
+											}
+										}]
+									});
 								}
-								if(data==-1){
-									alert("技工编号已存在,不能重复!");
+								if (data == -1) {
+									v.message({
+										context: "技工编号已存在,不能重复!",
+										btn: [{
+											cla: "btn-primary",
+											name: "确定",
+											fun: function() {
+												$("#MessageModal").modal("hide");
+											}
+										}]
+									});
 								}
 							}
 						})
 					},
-					toaddteam(){
-						if(!this.g.isinsert){
+					toaddteam() {
+						if (!this.g.isinsert) {
 							return;
 						}
-						if(!this.g.list){
-							alert("请选中一个分组!");
+						if (!this.g.list) {
+							this.message({
+								context: "请选中一个分组!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
 							return;
 						}
-						this.team={classificationid:this.g.classificationid},
+						this.team = {
+								classificationid: this.g.classificationid
+							},
+							$("#groupModal").modal("show");
+					},
+					toupteam() {
+						if (this.g.isinsert) {
+							return;
+						}
+						if (this.g.list) {
+							this.message({
+								context: "请选中一个班组!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
+							return;
+						}
+						this.team = JSON.parse(JSON.stringify(this.g)),
+							this.team.reteamid = this.team.teamid;
 						$("#groupModal").modal("show");
 					},
-					toupteam(){
-						if(this.g.isinsert){
-							return;
-						}
-						if(this.g.list){
-							alert("请选中一个班组!");
-							return;
-						}
-						this.team=JSON.parse(JSON.stringify(this.g)),
-						this.team.reteamid=this.team.teamid;
-						$("#groupModal").modal("show");
-					},
-					saveteam(){
-						let v=this;
+					saveteam() {
+						let v = this;
 						$.ajax({
 							url: "http://localhost:8080/maintenanceTeam/save",
-							data:v.team,
+							data: v.team,
 							type: "post",
 							success(data) {
-								if(data>0){
+								if (data > 0) {
 									v.find();
-									alert("保存成功!");
-									$("#groupModal").modal("hide");
+									v.message({
+										context: "保存成功!",
+										btn: [{
+											cla: "btn-primary",
+											name: "确定",
+											fun: function() {
+												$("#MessageModal").modal("hide");
+												$("#groupModal").modal("hide");
+											}
+										}]
+									});
 								}
-								if(data==-1){
-									alert("班组编号已存在,不能重复!");
+								if (data == -1) {
+									v.message({
+										context: "班组编号已存在,不能重复!",
+										btn: [{
+											cla: "btn-primary",
+											name: "确定",
+											fun: function() {
+												$("#MessageModal").modal("hide");
+											}
+										}]
+									});
 								}
 							}
 						})
 					},
-					delteam(){
-						if(this.g.list||JSON.stringify(this.g)==JSON.stringify({isinsert:true})){
+					delteam() {
+						if (this.g.list || JSON.stringify(this.g) == JSON.stringify({
+								isinsert: true
+							})) {
 							return;
 						}
-						if(!confirm("确定要删除选中的班组信息吗?")){
-							return;
-						}
-						let v=this;
-						$.ajax({
-							url: "http://localhost:8080/maintenanceTeam/del",
-							data:{reteamid:v.g.teamid},
-							type: "post",
-							success(data) {
-								if(data>0){
-									v.find();
-									alert("删除成功!");
-								}else{
-									alert("删除失败")
+						let v = this;
+						v.message({
+							context: "确定要删除选中的班组信息吗?",
+							btn: [{
+								cla: "btn-default",
+								name: "取消",
+								fun: function() {
+									$("#MessageModal").modal("hide");
 								}
-							}
-						})
+							},{
+								cla: "btn-primary",
+								name: "确定",
+								fun: function() {
+									$.ajax({
+										url: "http://localhost:8080/maintenanceTeam/del",
+										data: {
+											reteamid: v.g.teamid
+										},
+										type: "post",
+										success(data) {
+											if (data > 0) {
+												v.find();
+												v.message({
+													context: "删除成功!",
+													btn: [{
+														cla: "btn-primary",
+														name: "确定",
+														fun: function() {
+															$("#MessageModal").modal("hide");
+														}
+													}]
+												});
+											} else {
+												v.message({
+													context: "删除失败!",
+													btn: [{
+														cla: "btn-primary",
+														name: "确定",
+														fun: function() {
+															$("#MessageModal").modal("hide");
+														}
+													}]
+												});
+											}
+										}
+									})
+								}
+							}]
+						});
 					},
 					btn() {
 						if (this.temp.list) {
-							alert("请选中分类中的组!");
+							this.message({
+								context: "请选中分类中的组!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
 						} else {
 							this.$set(this.showjigong, "maintenanceTeam", this.temp);
 							this.showjigong.teamid = this.temp.teamid;
 							$("#gModal").modal("hide");
 						}
 					},
-					showg(){
+					showg() {
 						$("#gModal").modal("show");
 					},
-					changetemp(i){
+					changetemp(i) {
 						this.temp = i;
+					},
+					message(item) {
+						this.mes = item;
+						$("#MessageModal").modal("show");
 					}
 				},
 				created() {
