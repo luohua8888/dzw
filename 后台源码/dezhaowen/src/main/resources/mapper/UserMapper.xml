@@ -11,10 +11,15 @@
         <result column="u2" property="u2" />
         <result column="u3" property="u3" />
     </resultMap>
+    <resultMap type="com.accp.domain.User" id="BaseResultMaptt" >
+        <result property="roleid" column="roleid"/>
+    </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         user, pwd, miaoshu, u1, u2, u3
     </sql>
-
+    <select id="select" resultMap="BaseResultMaptt">
+        SELECT * FROM `user` AS u,user_role AS ur WHERE u.`u1`=ur.`userid` AND u.`u1`=#{u1}
+    </select>
 </mapper>

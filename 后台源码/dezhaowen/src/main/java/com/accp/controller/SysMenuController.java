@@ -32,6 +32,12 @@ public class SysMenuController {
     public List<SysMenu> findlo(@PathVariable Integer roleid){
         return service.select1(roleid);
     }
+
+    @GetMapping("sss/{roleid}")
+    public List<SysMenu> findlos(@PathVariable Integer roleid){
+        return service.select2(roleid);
+    }
+
     @PostMapping
     public List<SysMenu> find(){
         QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();

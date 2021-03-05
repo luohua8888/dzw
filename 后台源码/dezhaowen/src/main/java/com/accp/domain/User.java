@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -41,7 +42,8 @@ public class User extends Model<User> {
 
     @ApiModelProperty(value = "备用字段")
     private String u3;
-
+    @TableField(exist = false)
+    private String roleid;
 
     public static final String USER = "user";
 

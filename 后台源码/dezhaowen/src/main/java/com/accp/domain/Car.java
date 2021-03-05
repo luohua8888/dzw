@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author yy
@@ -33,6 +33,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Car extends Model<Car> {
 
     private static final long serialVersionUID=1L;
+
+
+
     @TableId(value = "carnum",type = IdType.AUTO)
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
@@ -57,6 +60,9 @@ public class Car extends Model<Car> {
 
     @TableField(exist = false)
     private Fadongjipinpaibiao fadongjipinpaibiao;
+
+    @TableField(exist = false)
+    private Pinpaichexing pinpaichexing;
 
     @ApiModelProperty(value = "车牌号")
     private String platename;

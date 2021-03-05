@@ -8,7 +8,7 @@
 	<style type="text/css">
 		html,
 		body {
-			width: 99%;
+			width: 100%;
 			height: 100%;
 		}
 
@@ -114,10 +114,10 @@
 				<div class="row">
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button class="btn btn-warning btn-xs" @click="addgoods" v-perms="'gooddata/add'">增加</button>
-						<button class="btn btn-warning btn-xs" @click="updategoods" v-perms="'gooddata/update'">修改</button>
-						<button class="btn btn-warning btn-xs" @click="del" v-perms="'gooddata/remove'" >删除</button>
-						<button class="btn btn-warning btn-xs" @click="findgoods" v-perms="'gooddata/query'">查询</button>
+						<button class="btn btn-warning btn-xs" @click="addgoods" v-perms="'firm/add'">增加</button>
+						<button class="btn btn-warning btn-xs" @click="updategoods" v-perms="'firm/update'">修改</button>
+						<button class="btn btn-warning btn-xs" @click="del" v-perms="'firm/remove'">删除</button>
+						<button class="btn btn-warning btn-xs" @click="findgoods" v-perms="'firm/find'">查询</button>
 					</div>
 					<div class="col-sm-9">
 						<form style="display: inline-block;" action="http://localhost:8080/gooddata/down" method="post">
@@ -126,7 +126,7 @@
 						<button class="btn btn-warning btn-xs">照片</button>
 						<button class="btn btn-warning btn-xs">条码</button>
 						<button class="btn btn-warning btn-xs">分类设置</button>
-						<button class="btn btn-warning btn-xs" @click="addfield">字段设置</button>
+						<button class="btn btn-warning btn-xs" @click="addfield" v-perms="'firm/zdsz'">字段设置</button>
 
 					</div>
 				</div>
@@ -144,7 +144,7 @@
 					</div>
 				</div>
 
-				<div style="margin-left: 150px;margin-top: -400px; border: 0px solid #000000;background: #ffffff;height: 90%;overflow: scroll;">
+				<div style="margin-left: 350px;margin-top: -400px; border: 0px solid #000000;background: #ffffff;height: 90%;overflow: auto;">
 					<table id="ctable" class="table table-bordered table-striped table-hover" style="white-space: nowrap">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;padding-left: 25px;"></td>
@@ -233,7 +233,7 @@
 									<p>
 										<span class="must">*</span>
 										<span class="va">商品编码</span>
-										<input type="text" name="" id="" v-model="addgooddata.gooddataid" />
+										<input type="text" name="" id="" v-model="addgooddata.goodnum" />
 										<span class="must">*</span>
 										<span class="va">商品名称</span>
 										<input type="text" name="" id="" v-model="addgooddata.goodname"/>
@@ -969,12 +969,19 @@
 						</div>
 					</div>
 				</div>
+
+
 			</div>
+
+
+
+
 		</div>
-		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
-		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
-		<script type="text/javascript" src="js/vue-perms.js" ></script>
+
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+			<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 			Vue.component("tree", {
 				template: `

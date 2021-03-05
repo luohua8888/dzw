@@ -150,12 +150,12 @@
 				<label style="margin-top: 8px;">车架号</label><input type="text" style="margin-top: 8px;"/>
 			</div>
 			<div id="xuan" >
-				<button @click="s">增加</button>
-				<button @click="upche()">修改</button>
-				<button>删除</button>
-				<button id="daochu" data-toggle="modal" data-target="#baoyang">保养</button>
-				<button @click="dc">导出</button>
-				<button @click="ziduan">字段设置</button>
+				<button @click="s" v-perms="'car/add'">增加</button>
+				<button @click="upche()" v-perms="'car/update'">修改</button>
+				<button @click="remove" v-perms="'car/remove'">删除</button>
+				<button id="daochu" data-toggle="modal" data-target="#baoyang" v-perms="'car/by'">保养</button>
+				<button @click="dc" v-perms="'car/dc'">导出</button>
+				<button @click="ziduan" v-perms="'car/ziduan'">字段设置</button>
 			</div>
 			<div style="width:100%; height:250px; overflow:scroll;">
 			<table class="table table-bordered" style="width:2800px;max-width: 2820px; height:200px;max-height: 220px; text-align:center" id="chegg">
@@ -764,6 +764,7 @@
 	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 				new Vue({
 				el: "#lx",
@@ -800,6 +801,8 @@
 					],
 				},
 				methods: {
+					remove(){},
+					by(){},
 					cxzd(){
 						let that=this;
 						$.ajax({

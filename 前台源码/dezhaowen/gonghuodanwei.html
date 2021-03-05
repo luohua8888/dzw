@@ -20,18 +20,18 @@
 			<div style="width: 1533px;line-height: 40px; background:#F7FFFF ; float: left;">
 				<span style="font-size: 22px;margin-left: 10px;">供货单位</span>
 				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;" v-model="text" />
-				<button @click="search" class="btn btn-default" style="background: #F8A621;color: white;width: 80px;">搜索</button>
+				<button @click="search" class="btn btn-default" style="background: #F8A621;color: white;width: 80px;" v-perms="'good/search'">搜索</button>
 				<button class="btn btn-default" style="background: #C6C6C6;color: white;">关闭</button>
 			</div>
 			<div style="float: left;width: 1533px;background: #F7F7F7;line-height: 30px;">
-				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span>
-				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span>
-				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="delfirm">删除</span>
-				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span>
-				<img src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span @click="down">导出</span>
+				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()" v-perms="'good/add'">增加</span>
+				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1" v-perms="'good/update'">修改</span>
+				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="delfirm" v-perms="'good/remove'">删除</span>
+				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2" v-perms="'good/find'">查询</span>
+				<img src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span @click="down" v-perms="'good/dc'">导出</span>
 				<img src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span>
 				<img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span>
-				<img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span>
+				<img src="img/QQ图片20210121164909.png" width="14"><span @click="en4" v-perms="'good/zdsz'">字段设置</span>
 			</div>
 			<div class="modal" id="mymodal" data-backdrop="static">
 				<div style="width: 900px;" class="modal-dialog">
@@ -559,6 +559,7 @@
 	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="js/vue.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/vue-perms.js" ></script>
 	<script type="text/javascript">
 		var sp = [{
 			id: 1,

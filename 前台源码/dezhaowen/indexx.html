@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+			body,
+			html {
+				margin: 0px;
+				padding: 0px;
+				height: 100%;
+				width: 100%;
+			}
+			iframe{
+				border: 0px;
+				height: 100%;
+				width: 100%;
+			}
+			.tabclose{
+				position: absolute;
+				top: 0px;
+				right: 0px;
+			}
+			.el-header {
+				background-color: rgb(84, 92, 100);
+			}
+			.el-main{
+				border: 0px;
+				height: 100%;
+				width: 100%;
+			}
+			li{
+				list-style: none;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<el-container id="app" style="height: 100%; width: 100%;">
+			<el-header style="height: 10%; ">
+				<el-row>
+					<el-col :span="4">
+						<div class="grid-content bg-purple">
+							<h1 style="line-height: 20px; color:#FFFFFF">卡修智慧系统</h1>
+						</div>
+					</el-col>
+					<el-col :span="20">
+						<div class="grid-content bg-purple-light">
+							<span v-for="item in menuss"   @click="selectedMenu=item" style="line-height: 60px; margin-right: 10px; color: white;"><span :title="item.menuName">{{item.menuName}}</span></span>
+							<span style="float: right; margin-top: 20px; color: white;" @click="tuichu">退出</span>
+						</div>	
+					</el-col>
+				</el-row>
+
+			</el-header>
+			<el-container style="height:90%;">
+				<el-aside style="width: 14%;height:100%;">
+					<el-col :span="24" style="height:100%;">
+						<el-menu default-active="2" style="height:100%;" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+							<el-submenu :index="item.menuId+'-'+item.menuId" v-for="item in selectedMenu.children">
+								<template slot="title">
+									<i class="el-icon-location"></i>
+									<span @click="createTab(item)" >{{item.menuName}}</span>
+								</template>
+								<el-menu-item-group >
+									<el-menu-item :index="c.menuId+'-'+c.menuId" @click="createTab(c)"  v-for="c in item.children" >
+										<span  :title="item.menuName">
+											{{c.menuName}}
+										</span>
+									</el-menu-item>
+								</el-menu-item-group>
+								
+							</el-submenu>
+						</el-menu>
+					</el-col>
+					</el-row>
+
+				</el-aside>
+				<el-main style="width: 86%;height:100%;">
+					<div class="col-sm-11" style="width: 86%;height:100%;">
+						<ul class="nav nav-tabs" >
+							<li :class="{active:item.active}" v-for="item,index in tabs" ><a href="javascript:void(0)" :data-target="'#'+item.perms"  data-toggle="tab"><span @click="removetab(index)" class="close tabclose">&times;</span>{{item.menuName}}</a></li>
+						</ul>
+						<div class="tab-content">
+							<div v-for="item in tabs" class="tab-content" :id="item.perms" :class="['tab-pane',item.active?'active':'false']">
+								<iframe style="width: 1286px; height: 700px;" :src="item.url"></iframe>
+							</div>
+						</div>
+					</div>
+					
+					<div id="jrtx" style="width: 1200px; height: 650px; background-color: white; box-shadow: 0px 0px 3px #000000; border-radius:5px 5px 5px 5px ;position:absolute; left: 170px; top: 50px; " >
+						<div  id="ctn" style=" position:absolute; left: 10px; top: 0px; width: 1030px;">
+							<div style="width: 1030px;line-height: 40px; background:#F7FFFF ; float: left;">
+								<span style="font-size: 22px;margin-left: 10px;">今日提醒</span>
+						
+								<!--<span style=" font-size: 19px; margin-left: 830px; color: #000;width: 80px;">导出</span>-->
+								<button class="btn btn-default" style="margin-left: 873px;background: #C6C6C6;color: white;" @click="jrtx()">关闭</button>
+							</div>		
+							<div class="ddiv2" style="float: left;background: white;width: 230px;height: 400px;">
+								<ul class="ul1" style="margin-left: -20px;">
+									<li>
+										<span @click="xd">+</span><span style="font-size: 16px;">提醒内容</span>
+										<ul id="cuttab" v-if="xsa">
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh1()"  name="statusd1" style="font-size: 16px;">待入库旧件0个</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh2()"  name="statusd2" style="font-size: 16px;">账期超期0个</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh3()"  name="statusd3" style="font-size: 16px;">三包申报超期0个</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh4()"  name="statusd4" style="font-size: 16px;">班组备件超期{{carInfo.length}}个</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh5()"  name="statusd5" style="font-size: 16px;">需年审车辆0台</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh6()"  name="statusd6" style="font-size: 16px;">超龄库存配件0个</span>
+											</li>
+											<li>
+												<span style="margin-left: -10px;">+</span><span @click="jrtxjh7()"  name="statusd7" style="font-size: 16px;">应做二维车辆0台</span>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div id="table1" style="float: left;width: 800px;height:400px; overflow-x:scroll;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>维修单号</td>
+										<td>领料日期</td>
+										<td>配件编码</td>
+										<td>配件名称</td>
+										<td>出库数量</td>
+										<td>回收数量</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="table2" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none; ">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>维修单号</td>
+										<td>车主</td>
+										<td>车牌号</td>
+										<td>挂账时间</td>
+										<td>BalJE4</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="table3" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>配件编码</td>
+										<td>配件名称</td>
+										<td>库存数量</td>
+										<td>入库日期</td>
+										<td>班组</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="table4" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>车牌号</td>
+										<td>年审日期</td>
+										<td>车主</td>
+										<td>驾驶员</td>
+										<td>驾驶员电话</td>
+									</tr>
+									<tr v-for="item in carInfo">
+										<td>{{item.carnumber}}</td>
+										<td>{{item.ordertime}}</td>
+										<td>{{item.name}}</td>
+										<td>{{item.carer}}</td>
+										<td>{{item.carerphone}}</td>
+									</tr>
+								</table>
+							</div>
+							<div id="table5" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>配件编码</td>
+										<td>配件名称</td>
+										<td>库存数量</td>
+										<td>入库日期</td>
+										<td>库龄(天)</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="table6" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>车牌号</td>
+										<td>上牌日期</td>
+										<td>二维日期</td>
+										<td>车主</td>
+										<td>驾驶员电话</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div id="table7" style="float: left;width: 800px;height:400px; overflow-x:scroll;display: none;">
+								<table class="table table-bordered" style="width: 1000px;max-width: 1803px;">
+									<tr style="background: #39CEDE;">
+										<td>设置日期</td>
+										<td>主题</td>
+										<td>要求处里日期</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</el-main>
+			</el-container>
+		</el-container>
+<!-- 引入组件库 -->
+		<!-- import Vue before Element -->
+		<script>
+			var baseUrl = "http://localhost:8080/";
+		</script>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" charset="UTF-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="UTF-8" ></script>
+		<script type="text/javascript" src="js/menu.js" ></script>
+		<script type="text/javascript" src="js/quan.js" ></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script>
+			function weixiu() {
+						$.ajax({
+				 	     	type:"post",
+				 	     	url:"http://127.0.0.1:8080/settlementCenter/selectCarInfo2",
+				 	     	type: "post",
+				 	     	dataType: "json",
+				 	     	xhrFields: {
+								withCredentials:true
+							},
+				 	     	success:function(result){
+				 	     		Vue.carInfo=result							     
+						 	}
+						});
+			}
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
+			var tabs=[
+			{
+				id:0,
+				menuName:"首页",
+				perms:"index",
+				active:true,
+				url:"jszxsy/dzwindex.html"
+			}
+			];
+			var Vue = new Vue({
+				el: '#app',
+				data: function() {
+					return { 
+						visible: false,
+						menuss:[],
+						selectedMenu:[],
+						tabs:tabs,
+						xsa:false,
+						xsa1:false,
+						carInfo:[],
+						com:{},
+					
+					}
+				},
+
+				methods: {
+					handleOpen(key, keyPath) {
+						console.log(key, keyPath);
+					},
+					handleClose(key, keyPath) {
+						console.log(key, keyPath);
+					},
+					jrtx(){
+						$("#jrtx").css("display","none");
+					},
+					jrtxjh1(){
+						$("#table1").show()
+						$("#table2").hide()
+						$("#table3").hide()
+						$("#table4").hide()	
+						$("#table5").hide()
+						$("#table6").hide()
+						$("#table7").hide()
+					},
+					jrtxjh2(){
+						$("#table1").hide()
+						$("#table2").show()
+						$("#table3").hide()
+						$("#table4").hide()	
+						$("#table5").hide()
+						$("#table6").hide()
+						$("#table7").hide()						
+					},
+					jrtxjh3(){
+						$("#table1").hide()
+						$("#table2").hide()
+						$("#table3").show()
+						$("#table4").hide()	
+						$("#table5").hide()
+						$("#table6").hide()
+						$("#table7").hide()	
+					},
+					jrtxjh4(){
+						weixiu();
+						$("#table1").hide()
+						$("#table2").hide()
+						$("#table3").hide()
+						$("#table4").show()	
+						$("#table5").hide()
+						$("#table6").hide()
+						$("#table7").hide()	
+				
+					},
+					jrtxjh5(){
+						$("#table1").hide()
+						$("#table2").hide()
+						$("#table3").hide()
+						$("#table4").hide()	
+						$("#table5").show()
+						$("#table6").hide()
+						$("#table7").hide()	
+					},
+					jrtxjh6(){
+						$("#table1").hide()
+						$("#table2").hide()
+						$("#table3").hide()
+						$("#table4").hide()	
+						$("#table5").hide()
+						$("#table6").show()
+						$("#table7").hide()	
+					},
+					jrtxjh7(){
+						$("#table1").hide()
+						$("#table2").hide()
+						$("#table3").hide()
+						$("#table4").hide()	
+						$("#table5").hide()
+						$("#table6").hide()
+						$("#table7").show()	
+					},
+					xd(){
+					if(this.xsa){
+						this.xsa=false;
+					}else{
+						weixiu();
+						this.xsa=true;
+					}
+					},
+					xd1(){
+							if(this.xsa1){
+								this.xsa1=false;
+							}else{
+								this.xsa1=true;
+							}
+					},
+					createTab(item){
+						if(item.children && item.children.length>0 ){
+							if(item.menuType!='C'){
+								return;
+							}
+						}
+						
+						this.tabs.forEach(item=>item.active=false);
+						this.$set(item,"active",true);
+						var flag = this.tabs.some(sitem=>sitem.perms==item.perms)
+						if(!flag){
+							this.tabs.push(item);
+						}
+					},
+					removetab(index){
+						this.tabs.splice(index,1);
+						if(index==this.tabs.length-1){
+							this.tabs[index-1].active= true;
+						}
+					},
+					handleOpen(key, keyPath) {
+						console.log(key, keyPath);
+					},
+					handleClose(key, keyPath) {
+						console.log(key, keyPath);
+					},
+					tuichu(){
+						window.location.href="new_file.html"; 
+					}
+				},
+				created(){
+					var ss=sessionStorage.getItem("user");
+					var u=JSON.parse(ss);
+					console.log(u);
+					this.user=u;
+					let that=this;
+					menuApi.findMenuByUserId(u.u1,function(result){
+					console.log(result);
+					that.menuss = result;
+					that.selectedMenu = that.menuss[0];
+					});
+					menuApi.findPerms(u.u1,function(result){
+						data.perms=result;
+						console.log(top.data.perms);
+					});
+				}
+
+			})
+	
+		</script>
+	</body>
+
+</html>

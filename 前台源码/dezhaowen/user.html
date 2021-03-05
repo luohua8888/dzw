@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="js/jstree/themes/default/style.min.css" />
+		<link rel="stylesheet" href="js/jstree/themes/default/style.min.css" />
+	</head>
+	<body>
+		<div id="ctn">
+			<div>
+				<h2>用户管理</h2>
+			</div>
+			<button class="btn btn-primary" v-perms="'users/add'" @click="xz">新增</button>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>账户</th>
+						<th>密码</th>
+						<th>管理员姓名</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="item in list">
+						<td>{{item.u1}}</td>
+						<td>{{item.user}}</td>
+						<td>{{item.pwd}}</td>
+						<td>{{item.miaoshu}}</td>
+						<td>
+							<button  class="btn btn-success" v-perms="'users/sq'" @click="auth(item)" >授权</button>
+							<button class="btn btn-primary" @click="xg(item)" v-perms="'users/update'" >修改</button>
+							<button class="btn btn-danger" @click="sc(item.u1)" v-perms="'users/delete'" >删除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="modal" id="xgmodal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">修改用户</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">账户</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xglist.user" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xglist.pwd" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label  for="inputEmail3" class="col-sm-2 control-label">用户名称</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="xglist.miaoshu" />
+									</div>
+								</div>
+								<input type="hidden" v-model="xglist.u1" />
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="xgss" v-perms="'users/update'">修改</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--新增-->
+			<div class="modal" id="xzmodal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">新增用户</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">编号</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="addlist.u1"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">账户</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="addlist.user"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="addlist.pwd"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+									<div class="col-sm-10">
+										<input  class="form-control" v-model="addlist.miaoshu"/>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="xzjs" v-perms="'users/add'">新增</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--授权-->
+			<div class="modal" id="authModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">用户授权</h3>
+						</div>
+						<div class="modal-body">
+							<div id="myTree"></div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="primaryAuth" v-perms="'users/sq'">授权</button>
+							<button class="btn btn-danger" data-toggle="modal" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/jstree/jstree.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/menu.js" ></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
+		<script>
+			var menuList = [];
+			function findMenu(){
+				var that = this;
+				$.ajax({
+					url:top.baseUrl+"sysRole",
+					type:"get",
+					dataType:"json",
+					async:false,
+					success:function(result){
+						console.log(result);
+						menuList=result.map(item=>{
+							return {
+								id:item.roleId+"",
+								parent:"#",
+								text:item.remark,
+								state:{
+									selected:false
+								}
+							}
+						});
+					}
+				})
+			}
+			//初始化当前系统中所有权限数据，数据变量为menuList
+			findMenu();
+			new Vue({
+				el:"#ctn",
+				data(){
+					return {
+						list:{},
+						xglist:{},
+						addlist:{},
+						authRole:{},
+						menuList:[],
+					}
+				},
+				methods:{
+					primaryAuth(){
+						var that = this;
+						//获取选中元素
+						var selected = $("#myTree").jstree(true).get_selected();
+						//获取半选状态
+						var undetermined = $("#myTree").jstree(true).get_undetermined();
+						//将选中的和半选的元素进行和并到一个数组
+						selected.push(...undetermined);
+						$.ajax({
+							url:top.baseUrl+"userRole/"+that.authRole.u1,
+							data:{
+								array:selected.join(",")
+							},
+							type:"post",
+							success:function(result){
+								if(result==1){
+									alert("授权成功");
+								}else{
+									alert("授权失败");
+								}
+								$("#authModal").modal("hide");
+							}
+						});
+					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl+"user",
+							type:"get",
+							dataType:"json",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					},
+					sc(id){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl+"user/sc",
+							type:"post",
+							data:{
+								id:id
+							},
+							dataType:"json",
+							success:function(result){
+								if(result==1){
+									alert("删除成功");
+								}
+								if(result==2){
+									alert("id未发过去");
+								}
+								if(result==3){
+									alert("删除失败");
+								}
+								that.find();
+							}
+						});
+					},
+					xg(item){
+						this.xglist=item;
+						$("#xgmodal").modal("show");
+					},
+					xgss(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl+"user/xg",
+							type:"post",
+							data:that.xglist,
+							dataType:"json",
+							success:function(result){
+								if(result==1){
+									alert("修改成功");
+								}
+								if(result==2){
+									alert("修改失败");
+								}
+								if(result==3){
+									alert("传值失败");
+								}
+								$("#xgmodal").modal("hide");
+								that.find();
+							}
+						});
+					},
+					xz(){
+						$("#xzmodal").modal("show");
+					},
+					xzjs(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl+"user/xz",
+							type:"post",
+							data:that.addlist,
+							dataType:"json",
+							success:function(result){
+								if(result==1){
+									alert("新增成功");
+								}
+								if(result==2){
+									alert("新增失败");
+								}
+								if(result==3){
+									alert("传值失败");
+								}
+								$("#xzmodal").modal("hide");
+								that.find();
+							}
+						});
+					},
+					auth(item){
+						this.authRole=item;
+						
+						//取消全部被选中的节点
+						$('#myTree').jstree(true).deselect_all();
+						//根据角色获取到对应的权限列表
+						menuApi.findpap(item.u1,function(result){
+							
+							//只要集合中的编号作为选中的唯一表示
+							let selecedSet = result.map(item=>item.roleid);
+
+							//调用jstree的选中方法，可以传入集合
+							$('#myTree').jstree(true).select_node(selecedSet);
+						});
+						//打开模态框
+						$("#authModal").modal("show");
+					}
+				},
+				created() {
+					this.find();
+				}
+			});
+				//加载jstree，不能放到vue中使用，与vue冲突
+			function loadTree(){
+				$('#myTree').jstree({
+					core:{
+						data:menuList,
+					},
+					"plugins" : ["checkbox" ]
+				});
+			}
+			loadTree();
+		</script>
+	</body>
+</html>

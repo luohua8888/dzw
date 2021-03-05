@@ -42,25 +42,25 @@
 				<img src="img/QQ图片20210121164604.png" width="14"><span @click="czl">车资料</span>
 				<img src="img/QQ图片20210121164610.png" width="14"><span @click="showmo5">客户分类</span>
 				<img src="img/QQ图片20210121164614.png" width="14"><span>查询</span>
-				<img style="margin-left: 80px;" src="img/QQ图片20210121164913.png" width="14"><span @click="dc">导出</span>
-				<img style="margin-left: 20px;" src="img/QQ图片20210121164909.png" width="14"><span @click="zid">字段设置</span>
+				<img style="margin-left: 80px;" src="img/QQ图片20210121164913.png" width="14"><span @click="dc" v-perms="'customer/dc'">导出</span>
+				<img style="margin-left: 20px;" src="img/QQ图片20210121164909.png" width="14"><span @click="zid" v-perms="'customer/zdsz'">字段设置</span>
 			</div>
 			<div style="float: left;width:1490px ;height: 100px;">
 				<div style="float: left;width: 1200px;height: 40px;">
 					<div id="che" style="background-color: #EFF7FF; float: left;width: 1500px;height: 25px; margin-top: 10px;display: none;">
 						<span style="font-weight: bolder;">车&nbsp;&nbsp;资&nbsp;&nbsp;料</span>
-						<span style="margin-left: 40px;" @click="s">增加车资料</span>
-						<span style="margin-left: 100px;" @click="upche()">修改车资料</span>
-						<span style="margin-left: 100px;">删除车资料</span>
+						<span style="margin-left: 40px;" @click="s" v-perms="'customer/addcar'">增加车资料</span>
+						<span style="margin-left: 100px;" @click="upche()" v-perms="'customer/updatecar'">修改车资料</span>
+						<span style="margin-left: 100px;" @click="remocar" v-perms="'customer/remocar'">删除车资料</span>
 					</div>
 				</div>
 				<div style="float: left;width: 1490px;height: 40px;margin-top: -5px;">
 					<div id="kh" style="background-color: #EFF7FF; float: left;width: 1500px;height: 25px; display: none;">
 						<span style="font-weight: bolder;">客户编辑</span>
-						<span style="margin-left: 40px;" @click="showmo3()">增加客户和车</span>
-						<span style="margin-left: 15px;" @click="showmo4()">增加客户</span>
-						<span style="margin-left: 15px;" @click="up()">修改客户</span>
-						<span style="margin-left: 15px;" @click="remove()">删除客户</span>
+						<span style="margin-left: 40px;" @click="showmo3()" v-perms="'customer/addcuscar'">增加客户和车</span>
+						<span style="margin-left: 15px;" @click="showmo4()" v-perms="'customer/addcus'">增加客户</span>
+						<span style="margin-left: 15px;" @click="up()" v-perms="'customer/upcus'">修改客户</span>
+						<span style="margin-left: 15px;" @click="remove()" v-perms="'customer/remove'">删除客户</span>
 						<span style="margin-left: 15px;" @click="ba1">相关证照</span>
 						<span style="margin-left: 15px;">设置密码</span>
 					</div>
@@ -93,9 +93,9 @@
 						<td v-if="zd[15].display==1">{{item.payment}}</td>
 						<td v-if="zd[16].display==1">{{item.integral}}</td>
 						<td v-if="zd[17].display==1">{{item.earnest}}</td>
-						<td v-if="zd[18].display==1">省</td>
-						<td v-if="zd[19].display==1">市</td>
-						<td v-if="zd[20].display==1">区</td>
+						<td v-if="zd[18].display==1">{{item.cs1}}</td>
+						<td v-if="zd[19].display==1">{{item.cs2}}</td>
+						<td v-if="zd[20].display==1">{{item.cs2}}</td>
 						<td v-if="zd[21].display==1">{{item.paytest}}</td>
 						<td v-if="zd[22].display==1">{{item.registerphone}}</td>
 						<td v-if="zd[23].display==1">{{item.desportbank}}</td>
@@ -131,7 +131,7 @@
 							<div class="modal-body" style="background-color: #F7F7F7;">
 								<table class="table table-hover">
 									<tr>
-										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="ccar.platename"/><img @click="mod9" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" ><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" >*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.driver"></td>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="ccar.platename"/><img @click="mod9" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" v-model="ccar.pname"><img @click="mod11" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.cname">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="ccar.driver"></td>
 									</tr>
 
 									<tr>
@@ -220,20 +220,19 @@
 										<td><label style="margin-left: 11px;">账期</label><input type="number" style="width: 50px;margin-left: 7px;margin-right: 10px;" v-model="cus.paytime" /><label style="margin-left: 11px;">挂账额度</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cus.payment"><label style="margin-left: 11px;">专属顾问</label><input style="width: 80px;margin-left: 7px;margin-right: 10px;" v-model="cus.yname"><img @click="sds5" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: -10px;" /><label style="margin-left: 11px;">顾问电话</label><input style="width: 155px;margin-left: 7px;margin-right: 10px;" v-model="cus.yuangongziliaobiao.yphonenumber">
 									</tr>
 									<tr>
-										<td>
-											<label>省</label>
-											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
-											<label>市</label>
-											<input /><img @click="showmo1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
-											<label>区</label>
-											<input><img @click="showmo2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
-										</td>
+										<td><region
+											:selected.sync="address" 
+            								:province="'120000'" 
+            								:city="'120200'" 
+            								:area="'120225'"
+											>
+        								</region></td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">备注</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cus.remark"></td>
+										<td><label style="margin-left: 11px;">备注</label><input style="width: 400px;margin-left: 7px;margin-right: 10px;" v-model="cus.remark"></td>
 									</tr>
 									<tr>
-										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="cas.platename"/><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" v-model="cas.pinpaichexing.pname"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.vehiclename">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.driver"></td>
+										<td>*<label style="margin-left: 10px;">车牌号码</label><input style="width: 120px;margin-left: 7px;" v-model="cas.platename"/><img @click="mod" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px;">*<label style="margin-left: 10px;">车辆品牌</label><input style="width: 120px; margin-left: 10px;" v-model="cas.pname"><img @click="mod1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-2.5px; margin-right: 4px;">*<label style="margin-left: 10px;">车辆型号</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.cname">*<label style="margin-left: 10px;">驾驶员</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="cas.driver"></td>
 									</tr>
 									<tr>
 										<td>*<label style="margin-left: 10px;">驾驶员电话</label><input style="width: 105px;margin-left: 7px;margin-right: 10px;" v-model="cas.driverphone"/><label style="margin-left: 11px;">出生日期</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="cas.birthday">*<label style="margin-left: 10px;">车辆归属</label>
@@ -697,17 +696,12 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
-								<h5 class="col-xs-7">品牌车型</h5>
-								<button class="btn btn-default" style="background-color:#82D921; width: 70px;margin-left: 80px;">保存</button>
+								<h5 class="col-xs-7">品牌车型sd</h5>
+								<button class="btn btn-default" style="background-color:#82D921; width: 70px;margin-left: 80px;" @click="okbc()">保存</button>
 								<button class="btn btn-default " style="background-color:#F7F7F7 ;">关闭</button>
 							</div>
 							<div class="modal-body" style="height: 500px;background-color: #F7F7F7;">
-								<div>
-									<input placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;width: 200px;" />
-									<button class="btn btn-default" style="background-color: #FAAC23;margin-top: -2px; width: 90px;line-height: 20px;">搜索</button>
-									<input placeholder="匹配 车型编码/车型名称" style="height: 30px;width: 200px;margin-left: 70px;" />
-									<button class="btn btn-default" style="background-color: #FAAC23;margin-top: -2px; width: 90px;line-height: 20px;">搜索</button>
-								</div>
+								
 								<div style="width: 300px;height:400px;float: left;background-color:white; ">
 									<table class="table table-bordered">
 										<tr>
@@ -715,10 +709,10 @@
 											<td>品牌名称</td>
 											<td style="width: 60px;">首字母</td>
 										</tr>
-										<tr>
-											<td>113</td>
-											<td>中国重汽</td>
-											<td>A</td>
+										<tr v-for="item in brand" @click="fichex(item)">
+											<td>{{item.pid}}</td>
+											<td>{{item.pname}}</td>
+											<td>{{item.shouzimu}}</td>
 										</tr>
 									</table>
 								</div>
@@ -734,15 +728,15 @@
 											<td>燃油标号</td>
 											<td>四驱类型</td>
 										</tr>
-										<tr>
-											<td>50001</td>
-											<td>重汽汕德卡</td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>进口s</td>
-											<td></td>
-											<td></td>
+										<tr v-for="item in chex" @click="omg(item)">
+											<td>{{item.cheid}}</td>
+											<td>{{item.cname}}</td>
+											<td>{{item.chankaojiage}}</td>
+											<td>{{item.cheliangniankuan}}</td>
+											<td>{{item.gonglv}}</td>
+											<td>{{item.jingkoumingchang}}</td>
+											<td>{{item.ranyoubianhao}}</td>
+											<td>{{item.c1}}</td>
 										</tr>
 									</table>
 								</div>
@@ -847,7 +841,7 @@
 						</tr>
 						<tr v-for="item in car" @click="ztc(item)">
 							<td>{{item.platename}}</td>
-							<td v-if="item.carbrand">{{item.carbrand.brandname}}</td><td v-else></td>
+							<td v-if="item.pinpaichexing">{{item.pinpaichexing.pname}}</td><td v-else></td>
 							<td v-if="item.chexingdingyibiao">{{item.chexingdingyibiao.cname}}</td><td v-else></td>
 							<td>{{item.driver}}</td>
 							<td>{{item.driverphone}}</td>
@@ -977,12 +971,14 @@
 									</tr>
 									<tr>
 										<td>
-											<label>省</label>
-											<input><img @click="showmo" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
-											<label>市</label>
-											<input /><img @click="showmo1" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
-											<label>区</label>
-											<input><img @click="showmo2" src="img/20210125084610.png" height="23" width="16px" style="margin-top:-4.5px;margin-left: 0px;" />
+											<region
+											:selected.sync="address1" 
+            								:province="hk.cs1" 
+            								:city="hk.cs2" 
+            								:area="hk.cs3"
+            								ref="a"
+											>
+        								</region>
 										</td>
 									</tr>
 									<tr>
@@ -1197,12 +1193,66 @@
 						</div>
 					</div>
 				</div>
+				<div class="modal" id="mymodal50" data-backdrop="static">
+					<div class="modal-dialog" style="width: 850px;height: 800px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="close" data-dismiss="modal">&times;</span>
+								<h5 class="col-xs-7">品牌车型</h5>
+								<button class="btn btn-default" style="background-color:#82D921; width: 70px;margin-left: 80px;" @click="okbc1()">保存</button>
+								<button class="btn btn-default " style="background-color:#F7F7F7 ;">关闭</button>
+							</div>
+							<div class="modal-body" style="height: 500px;background-color: #F7F7F7;">
+								
+								<div style="width: 300px;height:400px;float: left;background-color:white; ">
+									<table class="table table-bordered">
+										<tr>
+											<td style="width: 50px;">编码</td>
+											<td>品牌名称</td>
+											<td style="width: 60px;">首字母</td>
+										</tr>
+										<tr v-for="item in brand" @click="fichex(item)">
+											<td>{{item.pid}}</td>
+											<td>{{item.pname}}</td>
+											<td>{{item.shouzimu}}</td>
+										</tr>
+									</table>
+								</div>
+								<div style="width: 500px;height:400px;float: left;background-color:white;margin-left: 15px;overflow: scroll;">
+									<table class="table table-bordered" style="width:800px; max-width: 820px;">
+										<tr>
+											<td>车型ID</td>
+											<td style="width: 150px;">车型名称</td>
+											<td>参考价格</td>
+											<td>车辆年款</td>
+											<td>排气量</td>
+											<td>进口国产</td>
+											<td>燃油标号</td>
+											<td>四驱类型</td>
+										</tr>
+										<tr v-for="item in chex" @click="omg1(item)">
+											<td>{{item.cheid}}</td>
+											<td>{{item.cname}}</td>
+											<td>{{item.chankaojiage}}</td>
+											<td>{{item.cheliangniankuan}}</td>
+											<td>{{item.gonglv}}</td>
+											<td>{{item.jingkoumingchang}}</td>
+											<td>{{item.ranyoubianhao}}</td>
+											<td>{{item.c1}}</td>
+										</tr>
+									</table>
+								</div>
+								<span style="line-height: 50px;">记录条数:</span>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vue.js"></script>
-		<script type="text/javascript" src="js/region.js"></script>
-		
+		<script type="text/javascript" src="css/region.js"></script>
+		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 			new Vue({
 				el: "#lx",
@@ -1210,6 +1260,7 @@
 					ss: [],
 					customer: [],
 					address: [],
+					address1:[],
 					ls:[],
 					lswx:[
 						{
@@ -1255,11 +1306,59 @@
 					ccar:{},
 					plate1:[],
 					z2:false,
-					cusid:{}
+					cusid:{},
+					brand:[],
+					chex:[],
+					dt:{},
+					okc:{},
+					rng:{}
 				},
 				methods: {
+					remocar(){
+						
+					},
+					okbc(){
+						this.$set(this.cas,'carbrandid',this.okc.cid);
+						this.$set(this.cas,'cname',this.okc.cname);
+						this.$set(this.cas,'pname',this.dt.pname);
+						$("#mymodal2").modal("hide");
+					},
+					okbc1(){
+						this.$set(this.ccar,'carbrandid',this.rng.cid);
+						this.$set(this.ccar,'cname',this.rng.cname);
+						this.$set(this.ccar,'pname',this.dt.pname);
+						$("#mymodal50").modal("hide");
+					},
+					omg(item){
+						this.okc=item;
+					},
+					omg1(item){
+						this.rng=item;
+					},
+					fibrand(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/brand",
+							type:"post",
+							success:function(result){
+								that.brand=result;
+							}
+						});
+					},
+					fichex(item){
+						let that=this;
+						this.dt=item;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/chex/"+that.dt.pid,
+							type:"post",
+							success:function(result){
+								that.chex=result;
+							}
+						});
+					},
 					cxzd(){
 						let that=this;
+						
 						$.ajax({
 							url:"http://127.0.0.1:8080/customer/cxzd",
 							type:"post",
@@ -1270,7 +1369,6 @@
 					},
 					ddd(){
 						let that=this;
-						console.log("dd"+this.ccar);
 						$.ajax({
 							url:"http://127.0.0.1:8080/customer/ddd",
 							type:"post",
@@ -1519,7 +1617,15 @@
 					up(){
 						this.hk=this.sj;
 						this.$set(this.hk,'yname',this.sj.yuan.yname);
-						alert(this.hk.yname);
+						this.$set(this.hk,'cs1',this.sj.cs1);
+						this.$set(this.hk,'cs2',this.sj.cs2);
+						this.$set(this.hk,'cs3',this.sj.cs3);
+						this.$set(this.address1[0],'provinceCode',this.sj.cs1);
+						this.$set(this.address1[1],'cityCode',this.sj.cs2);
+						this.$set(this.address1[2],'areaCode',this.sj.cs3);
+						this.$refs.a.ds(this.sj.cs1);
+						this.$refs.a.gs(this.sj.cs2);
+						this.$refs.a.hs(this.sj.cs3);
 						$("#mymodal32").modal("show");
 					},
 					onl1() {
@@ -1585,7 +1691,6 @@
 							type: "post",
 							success: function(result) {
 								that.yg = result;
-								console.log(that.yg);
 							}
 						})
 					},
@@ -1639,6 +1744,9 @@
 					mod1() {
 						$("#mymodal2").modal("show");
 					},
+					mod11() {
+						$("#mymodal50").modal("show");
+					},
 					mod2() {
 						$("#mymodal3").modal("show");
 					},
@@ -1665,7 +1773,6 @@
 					},
 					showmo3() {
 						$("#mymodal6").modal("show");
-
 					},
 					showmo4() {
 						$("#mymodal10").modal("show");
@@ -1709,6 +1816,7 @@
 							contentType: "application/json;charset=utf-8",
 							success: function(result) {
 								that.car = result;
+								console.log(that.car);
 							}
 						});
 					},
@@ -1739,10 +1847,18 @@
 					this.sada();
 					this.cxzd();
 					this.p1();
+					this.fibrand();
 				},
 				watch: {
-					address(val) {
-						console.log(val);
+					address(val){
+						this.cus.cs1=val[0].provinceCode;
+						this.cus.cs2=val[1].cityCode;
+						this.cus.cs3=val[2].areaCode;
+                },
+					address1(val){
+						this.hk.cs1=val[0].provinceCode;
+						this.hk.cs2=val[1].cityCode;
+						this.hk.cs3=val[2].areaCode;
 					}
 				}
 			});

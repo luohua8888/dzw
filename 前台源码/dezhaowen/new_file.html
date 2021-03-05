@@ -30,13 +30,13 @@
 					<div class="form-group">
 						<label class="col-xs-2">账户：</label>
 						<div class="col-xs-10">
-							<input class="form-control" v-model="SysRole.role2"/>
+							<input class="form-control" v-model="SysRole.user"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2">密码：</label>
 						<div class="col-xs-10">
-							<input type="password"class="form-control" v-model="SysRole.role1"/>
+							<input type="password"class="form-control" v-model="SysRole.pwd"/>
 						</div>
 					</div>
 				</div>
@@ -63,14 +63,14 @@
 					tofind(){
 						let that=this;
 						$.ajax({
-							url:userurl+"sysRole",
+							url:userurl+"user",
 							data:that.SysRole,
 							type:"post",
 							success:function(result){
 								if(result!=null){
 									sessionStorage.setItem("user",JSON.stringify(result));
 									console.log(result);
-									window.location.href="dzwshouye.html";
+									window.location.href="indexx.html";
 								}else{
 									alert("请先登录");
 								}

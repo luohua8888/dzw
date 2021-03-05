@@ -73,6 +73,8 @@ public class CustomerController {
     IZiduanService ziduanService;
     @Autowired
     ZiduanMapper ziduanMapper;
+    @Autowired
+    IPinpaichexingService pinpaichexingService;
 
     @RequestMapping("/cus")
     public List<Customer> find(){
@@ -96,8 +98,10 @@ public class CustomerController {
         query.eq("customernum",customer.getCustomernum());
         List<Car> list=cservice.list(query);
         for (Car car:list) {
-            car.setCarbrand(carservice.getById(car.getCarbrandid()));
             car.setChexingdingyibiao(chservice.getById(car.getCarbrandid()));
+            if(car.getChexingdingyibiao()!=null){
+                car.setPinpaichexing(pinpaichexingService.getById(car.getChexingdingyibiao().getCid()));
+            }
             car.setCaraffiliation(cservic.getById(car.getCaraffiliationid()));
             car.setFadongjipinpaibiao(fservice.getById(car.getEngineid()));
             car.setCicompany(ciservice.getById(car.getCicompanyid()));
@@ -415,6 +419,16 @@ public class CustomerController {
     public  Boolean remove(@PathVariable("customernum") String customernum){
 
         return service.removeById(customernum);
+    }
+    @RequestMapping("/brand")
+    public List<Pinpaichexing> ficzx(){
+        return pinpaichexingService.list();
+    }
+    @RequestMapping("/chex/{id}")
+    public List<Chexingdingyibiao> findcex(@PathVariable("id") Integer id){
+        QueryWrapper<Chexingdingyibiao> query=new QueryWrapper<>();
+        query.eq("cid",id);
+        return chservice.list(query);
     }
 }
 

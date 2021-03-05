@@ -24,22 +24,27 @@
         menu_id, menu_name, parent_id, order_num, url, menu_type, visible, perms, create_time, remark, men1, men2, men3
     </sql>
     <resultMap type="com.accp.domain.SysMenu" id="BaseResultMapss" extends="BaseResultMap">
-        <collection property="children" column="{id=menu_id,roleid=role_id}" ofType="com.accp.domain.SysMenu" select="select"  >
+        <collection property="children" column="{id=menu_id,roleid=u1}" ofType="com.accp.domain.SysMenu" select="select"  >
             <result property="menuId" column="menu_id"/>
-            <result property="roleId" column="role_id"/>
+            <result property="roleId" column="u1"/>
         </collection>
     </resultMap>
 
     <resultMap type="com.accp.domain.SysMenu" id="BaseResultMaptt" >
+        <result property="roleId" column="u1"/>
+    </resultMap>
+    <resultMap id="BaseResultMapp" type="com.accp.domain.SysMenu">
         <result property="roleId" column="role_id"/>
     </resultMap>
 
     <select id="select" resultMap="BaseResultMapss" >
-  	SELECT * FROM sys_menu AS sys,sys_role_menu AS role WHERE sys.`menu_id`=role.`menu_id` AND role.`role_id`= #{roleid}  AND sys.`parent_id`=#{id} AND sys.visible=0 order by order_num asc
+    SELECT  DISTINCT u.`u1`, sm.*  FROM `user` AS u,user_role AS ur,sys_role AS sr,sys_menu AS sm,sys_role_menu AS srm  WHERE u.`u1`=ur.`userid` AND ur.`roleid`=sr.`role_id` AND sr.`role_id`=srm.`role_id` AND srm.`menu_id`=sm.`menu_id` AND u.`u1`= #{roleid}  AND sm.`parent_id`=#{id} AND sm.`visible`=0 ORDER BY order_num ASC
     </select>
 
     <select id="select1" resultMap="BaseResultMaptt">
-       SELECT sys.*,role.role_id FROM sys_menu AS sys,sys_role_menu AS role WHERE sys.`menu_id`=role.`menu_id` AND role.`role_id`= #{roleid} order by order_num asc
+    SELECT DISTINCT sm.* FROM `user` AS u,user_role AS ur,sys_role AS sr,sys_menu AS sm,sys_role_menu AS srm  WHERE u.`u1`=ur.`userid` AND ur.`roleid`=sr.`role_id` AND sr.`role_id`=srm.`role_id` AND srm.`menu_id`=sm.`menu_id` AND u.`u1`=#{roleid}  AND sm.`visible`=0 ORDER BY order_num ASC
     </select>
-
+    <select id="select2" resultMap="BaseResultMapp">
+        SELECT * FROM sys_menu AS m,sys_role_menu AS rm WHERE m.`menu_id`=rm.`menu_id` AND rm.`role_id`=#{roleid}
+    </select>
 </mapper>
