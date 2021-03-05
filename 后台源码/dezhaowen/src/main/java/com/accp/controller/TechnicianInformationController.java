@@ -47,10 +47,13 @@ public class TechnicianInformationController {
     public List<TechnicianInformation> findByTeamid(String[] teamid, String where) {
         List<TechnicianInformation> technicianInformations = new ArrayList<TechnicianInformation>();
         QueryWrapper<TechnicianInformation> wrapper = new QueryWrapper<TechnicianInformation>();
-        if (teamid != null) {
-            wrapper.lambda().in(TechnicianInformation::getTeamid, teamid).and(wq -> wq.like(TechnicianInformation::getTechnicianid, where).or().like(TechnicianInformation::getTechnicianname, where).or().like(TechnicianInformation::getPhone, where));
-            technicianInformations = service.list(wrapper);
+        if (teamid != null&&teamid.length>0) {
+            wrapper.lambda().in(TechnicianInformation::getTeamid, teamid);
         }
+        if(where!=null){
+            wrapper.lambda().and(wq -> wq.like(TechnicianInformation::getTechnicianid, where).or().like(TechnicianInformation::getTechnicianname, where).or().like(TechnicianInformation::getPhone, where));
+        }
+        technicianInformations = service.list(wrapper);
         for (TechnicianInformation i :
                 technicianInformations) {
             i.setMaintenanceTeam(teamController.findByTid(i.getTeamid()));
