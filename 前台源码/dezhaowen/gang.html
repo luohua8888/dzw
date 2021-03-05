@@ -9,7 +9,7 @@
 			.row {
 				background-color: #F7FFFF;
 				height: 55px;
-				width: 1536px;
+				width: 100%;
 			}
 			
 			.row div:nth-of-type(1) {
@@ -41,7 +41,7 @@
 			
 			.show1 {
 				margin-top: 25px;
-				width: 1400px;
+				width: 95%;
 				height: 550px;
 				background-color: white;
 				margin-left: 60px;
@@ -62,9 +62,9 @@
 			<div class="row1">
 				<div style="color: #686868;font-size: 18px;">
 					<div class="col-md-8"></div>
-					<div class="col-md-1" @click="add()" v-perms="'gang/add'"><img src="img/26d502752909327e0126dd1795f6cba.png" />增加</div>
+					<div class="col-md-1" v-perms="'gang/add'"><img src="img/26d502752909327e0126dd1795f6cba.png" /><span data-target="#myModal1" data-toggle="modal">增加</span></div>
 					<div class="col-md-1" v-perms="'gang/delete'"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" /><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1" @click="update()" v-perms="'gang/update'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />保存</div>
+					<div class="col-md-1" v-perms="'gang/update'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" /><span data-target="#myModal2" data-toggle="modal">保存</span></div>
 					<div class="col-md-1" @click="daochu()" v-perms="'gang/daochu'"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />导出</div>
 				</div>
 				<form class="form-inline">
@@ -109,6 +109,40 @@
 					</div>
 				</div>
 			</div>
+			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">新增确认</h4>
+						</div>
+						<div class="modal-body">
+							是否确认新增该记录？
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal"  @click="add()">是(Y)</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">修改确认</h4>
+						</div>
+						<div class="modal-body">
+							是否确认修改该记录？
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal"  @click="update()">是(Y)</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -148,12 +182,7 @@
 								withCredentials: true
 							},
 							success: function(result) {
-								if(result) {
-									alert("添加成功!");
-									that.query();
-								} else {
-									alert("添加失败!");
-								}
+								that.query();
 							}
 						});
 					},
@@ -173,6 +202,8 @@
 					},
 					remove() {
 						var that = this;
+						that.post.gid="";
+						that.post.gname="";
 						$.ajax({
 							url: "http://127.0.0.1:8080/gangweibiao/delete/" + that.id,
 							type: "post",
@@ -194,12 +225,7 @@
 								withCredentials: true
 							},
 							success: function(result) {
-								if(result) {
-									alert("修改成功!");
-									that.query();
-								} else {
-									alert("修改失败!");
-								}
+								that.query();
 							}
 						});
 					},

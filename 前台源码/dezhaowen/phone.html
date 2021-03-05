@@ -6,10 +6,14 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<style type="text/css">
+			#ctn{
+				width: 100%;
+				height: 100%;
+			}
 			.row {
 				background-color: #F7FFFF;
 				height: 55px;
-				width: 1536px;
+				width: 100%;
 			}
 			
 			.row div:nth-of-type(1) {
@@ -52,7 +56,7 @@
 			
 			.show1 {
 				margin-top: 25px;
-				width: 1400px;
+				width: 95%;
 				height: 600px;
 				background-color: white;
 				margin-left: 60px;
@@ -68,7 +72,7 @@
 				background-color: #F7F7F7;
 				position: absolute;
 				top: 100px;
-				left: 300px;
+				left: 220px;
 				border: 2px solid;
 				border-radius: 15px;
 				-moz-box-shadow: 2px 2px 10px #CCC;
@@ -108,7 +112,7 @@
 				background-color: #F7F7F7;
 				position: absolute;
 				top: 100px;
-				left: 300px;
+				left: 220px;
 				border: 2px solid;
 				border-radius: 15px;
 				-moz-box-shadow: 2px 2px 10px #CCC;
@@ -193,6 +197,9 @@
 				height: 330px;
 				margin-left: 4px;
 			}
+			.show1 table tr td {
+				text-align: center;
+			}
 		</style>
 	</head>
 
@@ -209,7 +216,7 @@
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
 					<div class="col-md-8" @click="show" v-perms="'phone/show'"><img src="img/9dcd1eef368f83dd8cb13a42b965190.png" /><span id="yes">门店选择</span></div>
-					<div class="col-md-1" @click="update()" v-perms="'phone/update'"><img src="img/26d502752909327e0126dd1795f6cba.png" />保存</div>
+					<div class="col-md-1" v-perms="'phone/update'"><img src="img/26d502752909327e0126dd1795f6cba.png" /><span data-target="#myModal123" data-toggle="modal">保存</span></div>
 					<div class="col-md-1" @click="show" v-perms="'phone/showc'"><img src="img/f6464aac40b2db7a48c2a7d0b6d9fdb.png" /><span id="yes1">查询</span></div>
 					<div class="col-md-1" @click="daochu()" v-perms="'phone/daochu'"><img src="img/bf85271b165061da46d9b136dc0a4d2.png" />导出</div>
 				</div>
@@ -217,24 +224,26 @@
 					<table class="table table-bordered">
 						<tr style="background-color:#39CEDE;">
 							<td width="70px"></td>
-							<td>部门</td>
-							<td>员工编号</td>
-							<td>姓名</td>
-							<td>分机/短号</td>
-							<td>直机</td>
-							<td>手机</td>
-							<td>邮箱</td>
+							<td width="140px">员工职位</td>
+							<td width="140px">部门</td>
+							<td width="140px">员工编号</td>
+							<td width="140px">姓名</td>
+							<td width="140px">分机/短号</td>
+							<td width="140px">直机</td>
+							<td width="140px">手机</td>
+							<td width="140px">邮箱</td>
 						</tr>
 						<tr v-for="list in taffsdata" class="koko">
 							<td style="background-color: #D6D6CE;"></td>
+							<td>{{list.yposition}}</td>
 							<td v-if="list.bu">{{list.bu.bname}}</td>
 							<td v-else></td>
 							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
 							<td><input type="text" style="border:0px;" v-model="list.yname"></td>
+							<td><input type="text" style="border:0px;" v-model="list.yjphone"></td>
+							<td><input type="text" style="border:0px;width: 100px;" v-model="list.ybankphone"></td>
 							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.reserved1"></td>
+							<td><input type="text" style="border:0px;" v-model="list.email"></td>
 						</tr>
 					</table>
 				</div>
@@ -350,7 +359,7 @@
 							</div>
 							<div class="form-group" style="margin-left: 39px;">
 								<label for="exampleInputName12">专业</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.yspecialtyid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option>计算机科学与技术</option>
 									<option>网络工程</option>
@@ -366,7 +375,7 @@
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName14">生日</label>
-								<input type="date" class="form-control" id="exampleInputName14" style="width: 200px;">
+								<input type="date" class="form-control" id="exampleInputName14" style="width: 200px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName15">学位</label>
@@ -377,7 +386,7 @@
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName16">编制</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.yspecialtyid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option>管理人员</option>
 									<option>销售人员</option>
@@ -386,27 +395,27 @@
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName17">入职日期从</label>
-								<input type="date" class="form-control" id="exampleInputName17" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName17" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName18">至</label>
-								<input type="date" class="form-control" id="exampleInputName18" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName18" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputName19">身份证号</label>
-								<input type="text" class="form-control" id="exampleInputName19">
+								<input type="text" class="form-control" id="exampleInputName19" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName20">试用到期从</label>
-								<input type="date" class="form-control" id="exampleInputName20" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName20" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName21">至</label>
-								<input type="date" class="form-control" id="exampleInputName21" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName21" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName22">属性</label>
-								<select style="width: 200px;height: 30px;">
+								<select style="width: 200px;height: 30px;" v-model="taff.yspecialtyid">
 									<option selected="selected" disabled="disabled" style="display: none;" value=""></option>
 									<option>记考勤不计薪</option>
 									<option>不计考勤计薪</option>
@@ -415,15 +424,15 @@
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName23">合同开始从</label>
-								<input type="date" class="form-control" id="exampleInputName23" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName23" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 10px;">
 								<label for="exampleInputName24">至</label>
-								<input type="date" class="form-control" id="exampleInputName24" style="width: 215px;">
+								<input type="date" class="form-control" id="exampleInputName24" style="width: 215px;" v-model="taff.yspecialtyid">
 							</div>
 							<div class="form-group" style="margin-left: 38px;">
 								<label for="exampleInputName25">身高</label>
-								<input type="text" class="form-control" id="exampleInputName25">
+								<input type="text" class="form-control" id="exampleInputName25" v-model="taff.yspecialtyid">
 							</div>
 						</form>
 					</div>
@@ -470,6 +479,23 @@
 							<div style="background-color: #f7f7f7;text-align: right;width: 600;height: 50px;line-height: 50px;padding-right: 505px;">
 								合计:3条记录
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal123" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">修改确认</h4>
+						</div>
+						<div class="modal-body">
+							是否确认修改该记录？
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal"  @click="update()">是(Y)</button>
 						</div>
 					</div>
 				</div>
@@ -522,7 +548,8 @@
 						id: 0,
 						shu: [],
 						names: "",
-						namess:""
+						namess:"",
+						selected:""
 					}
 				},
 				methods: {
@@ -553,12 +580,7 @@
 							type: "post",
 							contentType: "application/json;charset=utf-8",
 							success: function(result) {
-								if(result) {
-									alert("修改成功!");
-									that.find();
-								} else {
-									alert("修改失败!");
-								}
+								that.find();
 							}
 						});
 					},
