@@ -247,8 +247,9 @@
 							type: "post",
 							contentType: "application/json;charset=utf-8",
 							success(data) {
-								v.cars = data;
-								v.car.recarnumber = v.car.carnumber;
+								if(data>0){
+									v.car.recarnumber = v.car.carnumber;
+								}
 								v.findcar();
 								if (data == -1) {
 									v.message({
@@ -266,6 +267,23 @@
 						})
 					},
 					del() {
+						let v=this;
+						if (JSON.stringify(this.car) == JSON.stringify({
+								group: {},
+								maintenanceTeam: {},
+							})) {
+							this.message({
+								context: "请选择一条要删除的记录!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
+							return;
+						}
 						this.message({
 							context: "确定要删除该记录？",
 							btn: [{
@@ -274,8 +292,8 @@
 								fun: function() {
 									$("#MessageModal").modal("hide");
 								}
-							},{
-								cla: "btn-default",
+							}, {
+								cla: "btn-primary",
 								name: "确定",
 								fun: function() {
 									$.ajax({
@@ -288,7 +306,7 @@
 												group: {},
 												maintenanceTeam: {},
 											}
-											if(JSON.stringify(data)==false){
+											if (JSON.stringify(data) == false) {
 												v.message({
 													context: "删除失败!",
 													btn: [{

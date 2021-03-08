@@ -155,7 +155,9 @@
 							type: "post",
 							success(data) {
 								v.find();
-								v.tc.reteamid = v.tc.teamid;
+								if(data>0){
+									v.tc.reteamid = v.tc.teamid;
+								}
 								if (data == -1) {
 									v.message({
 										context: "等級编码已存在，不能重复!",
@@ -173,10 +175,23 @@
 					},
 					del() {
 						let v = this;
+						if(JSON.stringify(this.tc)=="{}"){
+							this.message({
+								context: "请选择一条要删除的记录!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
+							return;
+						}
 						this.message({
 							context: "确定要删除该记录？",
 							btn: [{
-								cla: "btn-primary",
+								cla: "btn-default",
 								name: "取消",
 								fun: function() {
 									$("#MessageModal").modal("hide");
