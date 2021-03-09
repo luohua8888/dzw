@@ -137,7 +137,9 @@
 							type: "post",
 							success(data) {
 								v.find();
+								if(data>0){
 								v.level.relevelid = v.level.levelid;
+								}
 								if (data == -1) {
 									v.message({
 										context: "等級编码已存在，不能重复!",
@@ -154,6 +156,20 @@
 						})
 					},
 					del() {
+						let v=this;
+						if(JSON.stringify(this.level)=="{}"){
+							this.message({
+								context: "请选择一条要删除的记录!",
+								btn: [{
+									cla: "btn-primary",
+									name: "确定",
+									fun: function() {
+										$("#MessageModal").modal("hide");
+									}
+								}]
+							});
+							return;
+						}
 						this.message({
 							context: "确定要删除该记录？",
 							btn: [{
@@ -163,7 +179,7 @@
 									$("#MessageModal").modal("hide");
 								}
 							},{
-								cla: "btn-default",
+								cla: "btn-primary",
 								name: "确定",
 								fun: function() {
 									$.ajax({
