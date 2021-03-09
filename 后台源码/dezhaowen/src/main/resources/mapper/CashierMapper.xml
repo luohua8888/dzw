@@ -23,6 +23,13 @@
         <result column="otherfive" property="otherfive" />
     </resultMap>
 
+    <resultMap type="com.accp.domain.Cashier" id="BaseResult2" extends="BaseResultMap">
+        <result column="num" property="num" jdbcType="VARCHAR" />
+        <result column="sumtotalNum" property="sumtotalNum" jdbcType="VARCHAR" />
+        <result column="kucunsl" property="kucunsl" jdbcType="VARCHAR" />
+    </resultMap>
+
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, totalNum, cashierstatic, paymentType, invoiceNo, cashiertime, staffId, onCredit, interior, clientId, change, Number, otherone, othertwo, otherthree, otherfour, otherfive
@@ -30,6 +37,26 @@
     <select id="selectByExample" resultMap="BaseResultMap">
         SELECT id, totalNum, cashierstatic, paymentType, invoiceNo, cashiertime, staffId, onCredit,
         interior, clientId, Number, otherone, othertwo, otherthree, otherfour, otherfive FROM `cashier`
+    </select>
+
+    <select id="selectByxianjin" resultMap="BaseResult2" >
+        SELECT COUNT(`paymentType`) AS num,CAST(SUM(totalNum) AS DECIMAL(15,2)) AS sumtotalNum FROM `cashier` WHERE paymentType='现金'
+    </select>
+
+    <select id="selectByguazhang" resultMap="BaseResult2" >
+        SELECT COUNT(`paymentType`) AS num,CAST(SUM(totalNum) AS DECIMAL(15,2)) AS sumtotalNum FROM `cashier` WHERE paymentType='现金' AND `cashierstatic`='正常结算'
+    </select>
+
+    <select id="selectBykucun" resultMap="BaseResult2" >
+        SELECT CAST(SUM(totalNum) AS DECIMAL(15,2)) AS sumtotalNum,COUNT(id) AS kucunsl FROM `cashier`
+    </select>
+
+    <select id="selectByjrjs" resultMap="BaseResult2">
+        SELECT CAST(SUM(totalNum) AS DECIMAL(15,2)) AS sumtotalNum FROM `cashier` WHERE TO_DAYS(cashiertime) = TO_DAYS(NOW())
+    </select>
+
+    <select id="selectByjrkc" resultMap="BaseResult2">
+        SELECT CAST(SUM(totalNum) AS DECIMAL(15,2)) AS sumtotalNum FROM `cashier` WHERE TO_DAYS(cashiertime) = TO_DAYS(NOW())
     </select>
 
     <insert id="insertjz" parameterType="com.accp.domain.Cashier" >

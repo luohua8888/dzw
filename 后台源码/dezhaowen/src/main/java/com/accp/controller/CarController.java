@@ -1,11 +1,10 @@
 package com.accp.controller;
 
 
-import com.accp.domain.Car;
-import com.accp.domain.Customer;
-import com.accp.domain.Ziduan;
+import com.accp.domain.*;
 import com.accp.domain.Ziduan;
 import com.accp.mapper.ZiduanMapper;
+import com.accp.mapper.ZiduanaMapper;
 import com.accp.service.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.poi.ss.usermodel.Cell;
@@ -64,6 +63,10 @@ public class CarController {
     IZiduanService ziduanService;
     @Autowired
     ZiduanMapper ziduanMapper;
+    @Autowired
+    ZiduanaMapper ziduanaMapper;
+    @Autowired
+    IZiduanaService ziduanaService;
 
     @RequestMapping("/find")
     public List<Car> find(){
@@ -359,16 +362,16 @@ public class CarController {
         return ziduanService.list();
     }
     @RequestMapping("/cxzd")
-    public List<Ziduan> finaa(){
-        QueryWrapper<Ziduan> query=new QueryWrapper<>();
+    public List<Ziduana> finaa(){
+        QueryWrapper<Ziduana> query=new QueryWrapper<>();
         query.eq("display",1);
-        return ziduanService.list(query);
+        return ziduanaService.list(query);
     }
     @RequestMapping("/qdd")
     public Boolean upto(@RequestBody List<Integer> list){
-        ziduanMapper.upda();
+        ziduanaMapper.upda();
         for (Integer i:list) {
-            ziduanMapper.upto(i);
+            ziduanaMapper.upto(i);
         }
         return true;
     }

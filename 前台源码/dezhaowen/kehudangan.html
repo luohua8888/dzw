@@ -12,8 +12,8 @@
 			}
 			
 			#lx {
-				width: 100%;
-				height: 100%;
+				width: 1268px;
+				height: 580px;
 			}
 			
 			.wrap {
@@ -33,11 +33,11 @@
 		<div id="lx" class="container-fluid" style="float: left;">
 			<div style="float: left;">
 				<span style="font-size: 23px;font-weight: bold;">客户档案</span>
-				<input style="width: 300px; margin-left: 970px;height: 30px;" />
+				<input style="width: 300px; margin-left: 720px;height: 30px;" />
 				<button style="width: 50px;height: 30px;background-color: #FEAC26;color: white;">搜索</button>
 				<button style="width: 50px;height: 30px;">关闭</button>
 			</div>
-			<div style="float: left;margin-left: 990px; margin-top: 10px;">
+			<div style="float: left;margin-left: 750px; margin-top: 10px;">
 				<img src="img/QQ图片20210121164522.png" width="14"><span @click="khbj">客户编辑</span>
 				<img src="img/QQ图片20210121164604.png" width="14"><span @click="czl">车资料</span>
 				<img src="img/QQ图片20210121164610.png" width="14"><span @click="showmo5">客户分类</span>
@@ -45,7 +45,7 @@
 				<img style="margin-left: 80px;" src="img/QQ图片20210121164913.png" width="14"><span @click="dc" v-perms="'customer/dc'">导出</span>
 				<img style="margin-left: 20px;" src="img/QQ图片20210121164909.png" width="14"><span @click="zid" v-perms="'customer/zdsz'">字段设置</span>
 			</div>
-			<div style="float: left;width:1490px ;height: 100px;">
+			<div style="float: left;width:1280px ;height: 100px;">
 				<div style="float: left;width: 1200px;height: 40px;">
 					<div id="che" style="background-color: #EFF7FF; float: left;width: 1500px;height: 25px; margin-top: 10px;display: none;">
 						<span style="font-weight: bolder;">车&nbsp;&nbsp;资&nbsp;&nbsp;料</span>
@@ -54,7 +54,7 @@
 						<span style="margin-left: 100px;" @click="remocar" v-perms="'customer/remocar'">删除车资料</span>
 					</div>
 				</div>
-				<div style="float: left;width: 1490px;height: 40px;margin-top: -5px;">
+				<div style="float: left;width: 1280px;height: 40px;margin-top: -5px;">
 					<div id="kh" style="background-color: #EFF7FF; float: left;width: 1500px;height: 25px; display: none;">
 						<span style="font-weight: bolder;">客户编辑</span>
 						<span style="margin-left: 40px;" @click="showmo3()" v-perms="'customer/addcuscar'">增加客户和车</span>
@@ -66,45 +66,45 @@
 					</div>
 				</div>
 			</div>
-			<div style="width: 1500px;height:300px; float: left;overflow: scroll;">
-				<table style=" width: 2910px; max-width: 2920px;height: 300px;max-height: 380px;" class="table table-bordered">
-					<tr style="height: 20px;background-color: #39CEDE;color: white;">
+			<div style="width: 1250px;height:230px; float: left;overflow: scroll;margin-top:-20px;">
+				<table style=" width: 2910px; max-width: 2920px;max-height: 380px;" class="table table-bordered">
+					<tr style="height: 20px;background-color: #39CEDE;color: white;" >
 						<td style="width: 120px;" v-for="item in czd">
 							{{item.dname}}
 						</td>
 						
 					</tr>
-					<tr style="height: 30px;" v-for="item in customer" @click="findc(item)">
-						<td class="wrap" v-if="zd[0].display==1">{{item.customernum}}</td>
-						<td v-if="zd[1].display==1">{{item.customername}}</td>
-						<td v-if="zd[2].display==1">{{item.customeraddress}}</td>
-						<td v-if="zd[3].display==1">{{item.linkman}}</td>
-						<td v-if="zd[4].display==1">{{item.phone}}</td>
-						<td v-if="zd[5].display==1">{{item.birthday}}</td>
-						<td v-if="zd[6].display==1&&item.customertype">{{item.customertype.customertype}}</td><td v-else-if="zd[6].display==1"></td>
-						<td v-if="zd[7].display==1">{{item.customernumber}}</td>
-						<td v-if="zd[8].display==1">{{item.jointime}}</td>
-						<td v-if="zd[9].display==1">{{item.outtime}}</td>
-						<td v-if="zd[10].display==1">{{item.remark}}</td>
-						<td v-if="zd[11].display==1">{{item.filing}}</td>
-						<td v-if="zd[12].display==1&&item.yuan">{{item.yuan.yname}}</td><td v-else-if="zd[12].display==1"></td>
-						<td v-if="zd[13].display==1&&item.yuan">{{item.yuan.yphonenumber}}</td><td v-else-if="zd[13].display==1"></td>
-						<td v-if="zd[14].display==1">{{item.paytime}}</td>
-						<td v-if="zd[15].display==1">{{item.payment}}</td>
-						<td v-if="zd[16].display==1">{{item.integral}}</td>
-						<td v-if="zd[17].display==1">{{item.earnest}}</td>
-						<td v-if="zd[18].display==1">{{item.cs1}}</td>
-						<td v-if="zd[19].display==1">{{item.cs2}}</td>
-						<td v-if="zd[20].display==1">{{item.cs2}}</td>
-						<td v-if="zd[21].display==1">{{item.paytest}}</td>
-						<td v-if="zd[22].display==1">{{item.registerphone}}</td>
-						<td v-if="zd[23].display==1">{{item.desportbank}}</td>
-						<td v-if="zd[24].display==1">{{item.bankaccount}}</td>
-						<td v-if="zd[25].display==1">{{item.registeraddress}}</td>
-						<td v-if="zd[26].display==1">{{item.otherone}}</td>
-						<td v-if="zd[27].display==1">{{item.othertwo}}</td>
-						<td v-if="zd[28].display==1">{{item.otherthree}}</td>
-						<td v-if="zd[29].display==1">{{item.otherfour}}</td>
+					<tr style="height: 30px;" v-for="item in customer" @click="findc(item)" class="pintr">
+						<td class="pintr1" v-if="zd[0].display==1">{{item.customernum}}</td>
+						<td class="pintr1" v-if="zd[1].display==1">{{item.customername}}</td>
+						<td class="pintr1" v-if="zd[2].display==1">{{item.customeraddress}}</td>
+						<td class="pintr1" v-if="zd[3].display==1">{{item.linkman}}</td>
+						<td class="pintr1" v-if="zd[4].display==1">{{item.phone}}</td>
+						<td class="pintr1" v-if="zd[5].display==1">{{item.birthday}}</td>
+						<td class="pintr1" v-if="zd[6].display==1&&item.customertype">{{item.customertype.customertype}}</td><td class="pintr1" v-else-if="zd[6].display==1"></td>
+						<td class="pintr1" v-if="zd[7].display==1">{{item.customernumber}}</td>
+						<td class="pintr1" v-if="zd[8].display==1">{{item.jointime}}</td>
+						<td class="pintr1" v-if="zd[9].display==1">{{item.outtime}}</td>
+						<td class="pintr1" v-if="zd[10].display==1">{{item.remark}}</td>
+						<td class="pintr1" v-if="zd[11].display==1">{{item.filing}}</td>
+						<td class="pintr1" v-if="zd[12].display==1&&item.yuan">{{item.yuan.yname}}</td><td class="pintr1" v-else-if="zd[12].display==1"></td>
+						<td class="pintr1" v-if="zd[13].display==1&&item.yuan">{{item.yuan.yphonenumber}}</td><td class="pintr1" v-else-if="zd[13].display==1"></td>
+						<td class="pintr1" v-if="zd[14].display==1">{{item.paytime}}</td>
+						<td class="pintr1" v-if="zd[15].display==1">{{item.payment}}</td>
+						<td class="pintr1" v-if="zd[16].display==1">{{item.integral}}</td>
+						<td class="pintr1" v-if="zd[17].display==1">{{item.earnest}}</td>
+						<td class="pintr1" v-if="zd[18].display==1">{{item.cs1}}</td>
+						<td class="pintr1" v-if="zd[19].display==1">{{item.cs2}}</td>
+						<td class="pintr1" v-if="zd[20].display==1">{{item.cs2}}</td>
+						<td class="pintr1" v-if="zd[21].display==1">{{item.paytest}}</td>
+						<td class="pintr1" v-if="zd[22].display==1">{{item.registerphone}}</td>
+						<td class="pintr1" v-if="zd[23].display==1">{{item.desportbank}}</td>
+						<td class="pintr1" v-if="zd[24].display==1">{{item.bankaccount}}</td>
+						<td class="pintr1" v-if="zd[25].display==1">{{item.registeraddress}}</td>
+						<td class="pintr1" v-if="zd[26].display==1">{{item.otherone}}</td>
+						<td class="pintr1" v-if="zd[27].display==1">{{item.othertwo}}</td>
+						<td class="pintr1" v-if="zd[28].display==1">{{item.otherthree}}</td>
+						<td class="pintr1" v-if="zd[29].display==1">{{item.otherfour}}</td>
 					</tr>
 				</table>
 			</div>
@@ -348,7 +348,7 @@
 				</div>
 				
 				<div class="modal" id="mymodal11" data-backdrop="static">
-					<div style="width: 1510px;" class="modal-dialog">
+					<div style="width: 1300px;" class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
@@ -807,8 +807,8 @@
 				</div>
 				
 				
-				<div style="width: 1500px;height:235px; float: left;margin-top: -10px;overflow: scroll;">
-					<table id="clxx" style=" width: 2910px; max-width: 2920px;height: 300px;max-height: 380px;" class="table table-bordered">
+				<div style="width: 1250px;height:180px; float: left;margin-top: -10px;overflow: scroll;">
+					<table id="clxx" style=" width: 2910px; max-width: 2920px;" class="table table-bordered">
 						<tr style="background-color: #39CEDE;height: 30px;">
 							<td>车牌号码</td>
 							<td>车辆品牌</td>
@@ -840,35 +840,35 @@
 							<td>会员码</td>
 						</tr>
 						<tr v-for="item in car" @click="ztc(item)">
-							<td>{{item.platename}}</td>
-							<td v-if="item.pinpaichexing">{{item.pinpaichexing.pname}}</td><td v-else></td>
-							<td v-if="item.chexingdingyibiao">{{item.chexingdingyibiao.cname}}</td><td v-else></td>
-							<td>{{item.driver}}</td>
-							<td>{{item.driverphone}}</td>
-							<td>{{item.birthday}}</td>
-							<td>{{item.driveraddress}}</td>
-							<td v-if="item.caraffiliation">{{item.caraffiliation.caraffiliation}}</td><td v-else></td>
-							<td>{{item.drivingouttime}}</td>
-							<td>{{item.framnum}}</td>
-							<td>{{item.enginenum}}</td>
-							<td v-if="item.fadongjipinpaibiao">{{item.fadongjipinpaibiao.fadingjipingpai}}</td><td v-else></td>
-							<td>{{item.carnyear}}</td>
-							<td>{{item.mileage}}</td>
-							<td>{{item.load}}</td>
-							<td>{{item.carseries}}</td>
-							<td>{{item.buytime}}</td>
-							<td>{{item.uptime}}</td>
-							<td>{{item.carouttime}}</td>
-							<td v-if="item.mlicompany">{{item.mlicompany.mlicompany}}</td><td v-else></td>
-							<td>{{item.mliouttime}}</td>
-							<td v-if="item.cicompany">{{item.cicompany.cicompany}}</td><td v-else></td>
-							<td>{{item.ciouttime}}</td>
-							<td>{{item.mytoucar}}</td>
-							<td>{{item.twotime}}</td>
-							<td v-if="item.oiltype">{{item.oiltype.oiltype}}</td><td v-else></td>
-							<td>{{item.nextmileage}}</td>
-							<td>{{item.nextupkeeptime}}</td>
-							<td>{{item.membernum}}</td>
+							<td class="pintr1">{{item.platename}}</td>
+							<td class="pintr1" v-if="item.pinpaichexing">{{item.pinpaichexing.pname}}</td><td v-else></td>
+							<td class="pintr1" v-if="item.chexingdingyibiao">{{item.chexingdingyibiao.cname}}</td><td v-else></td>
+							<td class="pintr1">{{item.driver}}</td>
+							<td class="pintr1">{{item.driverphone}}</td>
+							<td class="pintr1">{{item.birthday}}</td>
+							<td class="pintr1">{{item.driveraddress}}</td>
+							<td class="pintr1" v-if="item.caraffiliation">{{item.caraffiliation.caraffiliation}}</td><td v-else></td>
+							<td class="pintr1">{{item.drivingouttime}}</td>
+							<td class="pintr1">{{item.framnum}}</td>
+							<td class="pintr1">{{item.enginenum}}</td>
+							<td class="pintr1" v-if="item.fadongjipinpaibiao">{{item.fadongjipinpaibiao.fadingjipingpai}}</td><td v-else></td>
+							<td class="pintr1">{{item.carnyear}}</td>
+							<td class="pintr1">{{item.mileage}}</td>
+							<td class="pintr1">{{item.load}}</td>
+							<td class="pintr1">{{item.carseries}}</td>
+							<td class="pintr1">{{item.buytime}}</td>
+							<td class="pintr1">{{item.uptime}}</td>
+							<td class="pintr1">{{item.carouttime}}</td>
+							<td class="pintr1" v-if="item.mlicompany">{{item.mlicompany.mlicompany}}</td><td v-else></td>
+							<td class="pintr1">{{item.mliouttime}}</td>
+							<td class="pintr1" v-if="item.cicompany">{{item.cicompany.cicompany}}</td><td v-else></td>
+							<td class="pintr1">{{item.ciouttime}}</td>
+							<td class="pintr1">{{item.mytoucar}}</td>
+							<td class="pintr1">{{item.twotime}}</td>
+							<td class="pintr1" v-if="item.oiltype">{{item.oiltype.oiltype}}</td><td v-else></td>
+							<td class="pintr1">{{item.nextmileage}}</td>
+							<td class="pintr1">{{item.nextupkeeptime}}</td>
+							<td class="pintr1">{{item.membernum}}</td>
 						</tr>
 					</table>
 					<table id="lsxf" class="table table-bordered" style="display: none;">
@@ -1247,6 +1247,40 @@
 						</div>
 					</div>
 				</div>
+				<div class="modal" id="mymodal60" data-backdrop="static">
+					<div class="modal-dialog" style="width: 300px;">
+						<div class="modal-content">
+							<div class="modal-body" style="background-color: white;height: 70px;">
+								<div style="text-align: center;">
+									新增成功
+								</div>
+							</div>
+							<div class="modal-footer" style="height: 53px;">
+							<button class="btn btn-primary" @click="xdm()">
+								确定
+							</button>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="modal" id="mymodal61" data-backdrop="static">
+					<div class="modal-dialog" style="width: 300px;">
+						<div class="modal-content">
+							<div class="modal-body" style="background-color: white;height: 70px;">
+								<div style="text-align: center;">
+									新增失败
+								</div>
+							</div>
+							<div class="modal-footer" style="height: 53px;">
+							<button class="btn btn-primary" @click="xdm()">
+								确定
+							</button>
+						</div>
+						</div>
+						
+					</div>
+				</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -1314,6 +1348,10 @@
 					rng:{}
 				},
 				methods: {
+					xdm(){
+						$("#mymodal60").hide();
+						$("#mymodal61").hide();
+					},
 					remocar(){
 						
 					},
@@ -1375,9 +1413,9 @@
 							data:that.ccar,
 							success:function(result){
 								if(result){
-									alert("成功");
+									$("#mymodal60").show();
 								}else{
-									alert("失败");
+									$("#mymodal61").show();
 								}
 							}
 						});
@@ -1623,9 +1661,9 @@
 						this.$set(this.address1[0],'provinceCode',this.sj.cs1);
 						this.$set(this.address1[1],'cityCode',this.sj.cs2);
 						this.$set(this.address1[2],'areaCode',this.sj.cs3);
-						this.$refs.a.ds(this.sj.cs1);
-						this.$refs.a.gs(this.sj.cs2);
-						this.$refs.a.hs(this.sj.cs3);
+//						this.$refs.a.ds(this.sj.cs1);
+//						this.$refs.a.gs(this.sj.cs2);
+//						this.$refs.a.hs(this.sj.cs3);
 						$("#mymodal32").modal("show");
 					},
 					onl1() {
@@ -1862,6 +1900,14 @@
 					}
 				}
 			});
+			$(document).on('click', '.pintr', function() {
+				$(".pintr").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			})
+			$(document).on('click', '.pintr1', function() {
+				$(".pintr1").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+			})
 		</script>
 	</body>
 

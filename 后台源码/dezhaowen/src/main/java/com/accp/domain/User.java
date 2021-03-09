@@ -42,6 +42,7 @@ public class User extends Model<User> {
 
     @ApiModelProperty(value = "备用字段")
     private String u3;
+
     @TableField(exist = false)
     private String roleid;
 

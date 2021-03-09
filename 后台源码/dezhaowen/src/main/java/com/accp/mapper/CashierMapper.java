@@ -17,4 +17,9 @@ public interface CashierMapper extends BaseMapper<Cashier> {
     List<Cashier> selectByExample();
 
     int insertjz(Cashier record);
+    List<Cashier> selectByxianjin();
+    List<Cashier> selectByguazhang();
+    List<Cashier> selectBykucun();
+    List<Cashier> selectByjrjs();
+    List<Cashier> selectByjrkc();
 }

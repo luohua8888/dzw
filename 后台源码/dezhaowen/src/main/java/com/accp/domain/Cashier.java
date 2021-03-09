@@ -28,6 +28,10 @@ public class Cashier extends Model<Cashier> {
 
     private static final long serialVersionUID=1L;
 
+    private int num;
+    private Float sumtotalNum;
+    private int kucunsl;
+
     @ApiModelProperty(value = "收银id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;

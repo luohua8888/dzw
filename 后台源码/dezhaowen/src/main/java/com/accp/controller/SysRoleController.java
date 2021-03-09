@@ -3,6 +3,7 @@ package com.accp.controller;
 
 import com.accp.domain.SysRole;
 import com.accp.domain.SysRoleMenu;
+import com.accp.domain.User;
 import com.accp.service.impl.SysRoleMenuServiceImpl;
 import com.accp.service.impl.SysRoleServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -60,6 +61,14 @@ public class SysRoleController {
                     return 1;
               }
               return 2;
+        }
+
+        @PostMapping("/like")//模块查询
+        public List<SysRole> likelist(String name){
+                QueryWrapper<SysRole> queryWrapper = new QueryWrapper<>();
+                queryWrapper.like("remark", name);
+                List<SysRole> list = service.list(queryWrapper);
+                return list;
         }
         @PostMapping("/sc")//删除
         public int sc(Integer id){ boolean b=service.removeById(id);

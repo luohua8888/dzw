@@ -16,15 +16,15 @@
 		</style>
 	</head>
 	<body>
-		<div id="ctn" style="width: 1533px;margin-left:-14px;" class="container-fluid">
-			<div style="width: 1533px;line-height: 40px; background:#F7FFFF ; float: left;">
+		<div id="ctn" style="width: 1245px;margin-left:-14px;" class="container-fluid">
+			<div style="width: 1245px;line-height: 40px; background:#F7FFFF ; float: left;">
 				<span style="font-size: 22px;margin-left: 10px;">供货单位</span>
-				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;" v-model="text" />
+				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 700px;" v-model="text" />
 				<button @click="search" class="btn btn-default" style="background: #F8A621;color: white;width: 80px;" v-perms="'good/search'">搜索</button>
 				<button class="btn btn-default" style="background: #C6C6C6;color: white;">关闭</button>
 			</div>
-			<div style="float: left;width: 1533px;background: #F7F7F7;line-height: 30px;">
-				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()" v-perms="'good/add'">增加</span>
+			<div style="float: left;width: 1245px;background: #F7F7F7;line-height: 30px;">
+				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 770px;"><span @click="en()" v-perms="'good/add'">增加</span>
 				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1" v-perms="'good/update'">修改</span>
 				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="delfirm" v-perms="'good/remove'">删除</span>
 				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2" v-perms="'good/find'">查询</span>
@@ -214,7 +214,7 @@
 				</div>
 			</div>
 			<div class="modal" id="mymodal3" data-backdrop="static">
-				<div style="width: 1510px;" class="modal-dialog">
+				<div style="width: 1240px;" class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<span class="close" data-dismiss="modal">&times;</span>
@@ -491,7 +491,7 @@
 					</li>
 				</ul>
 			</div>
-			<div style="float: left;width: 1273px;height:400px; overflow-x:scroll;">
+			<div style="float: left;width: 980px;height:300px; overflow-x:scroll;">
 				<table class="table table-bordered" style="width: 1800px;max-width: 1803px;">
 					<tr style="background: #39CEDE;">
 						<td>厂商代码</td>
@@ -533,8 +533,8 @@
 					</tr>
 				</table>
 			</div>
-			<div style="float: left;width: 1273px;height:259px; ">
-				<div style="float: left;width: 1273px;line-height: 30px;background: #F7F7F7;">
+			<div style="float: left;width: 1240px;height:120px;margin-top: -340px;">
+				<div style="float: left;width: 1240px;line-height: 30px;background: #F7F7F7;">
 					<div style="float: left; width: 80px;line-height: 30px; border-top: solid 3px #39CEDE;text-align: center;">联系人</div>
 				</div>
 				<table class="table table-bordered" style="width: 700px;">

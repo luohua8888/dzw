@@ -10,6 +10,10 @@
 				padding: 0px;
 				margin: 0px;
 			}
+			#lx{
+				width: 99%;
+				height: 99%;
+			}
 			#tou{
 				background-color: #F7FFFF;
 				height: 52px;
@@ -103,7 +107,6 @@
 			table{
 				border: 1px red solid;
 				width: 100%;
-				height: 300px;
 				
 			}
 			#111{
@@ -140,24 +143,24 @@
 		<div id="lx">
 		<div id="tou">
 			<p>车资料</p>
-			<input type="text" placeholder="匹配驾驶员姓名/简码/手机/车牌号"/>
+			<input type="text" style="margin-left: -220px;" placeholder="匹配驾驶员姓名/简码/手机/车牌号"/>
 			<button id="sou">搜索</button>
 			<button>关闭</button>
 		</div>
 		<div id="body">
 			<div style="background-color: #F7F7F7;">
-				<label style="margin-top: 8px;">车牌号</label><input type="text" style="margin-top: 8px;"/>
+				<label style="margin-top: 8px;margin-left: -90px;">车牌号</label><input type="text" style="margin-top: 8px;"/>
 				<label style="margin-top: 8px;">车架号</label><input type="text" style="margin-top: 8px;"/>
 			</div>
 			<div id="xuan" >
-				<button @click="s" v-perms="'car/add'">增加</button>
-				<button @click="upche()" v-perms="'car/update'">修改</button>
-				<button @click="remove" v-perms="'car/remove'">删除</button>
-				<button id="daochu" data-toggle="modal" data-target="#baoyang" v-perms="'car/by'">保养</button>
-				<button @click="dc" v-perms="'car/dc'">导出</button>
-				<button @click="ziduan" v-perms="'car/ziduan'">字段设置</button>
+				<button @click="s">增加</button>
+				<button @click="upche()">修改</button>
+				<button>删除</button>
+				<button id="daochu" data-toggle="modal" data-target="#baoyang">保养</button>
+				<button @click="dc">导出</button>
+				<button @click="ziduan">字段设置</button>
 			</div>
-			<div style="width:100%; height:250px; overflow:scroll;">
+			<div style="width:1270px; height:250px; overflow:scroll;">
 			<table class="table table-bordered" style="width:2800px;max-width: 2820px; height:200px;max-height: 220px; text-align:center" id="chegg">
 				<thead>
 					<tr>
@@ -168,34 +171,34 @@
 				</thead>
 				<tbody>
 					<tr v-for="item in car" @click="xzz(item)" v-if="zd[0]">
-							<td v-if="zd[0].display==1">{{item.platename}}</td>
-							<td v-if="item.carbrand&&zd[1].display==1">{{item.carbrand.brandname}}</td><td v-else-if="zd[1].display==1"></td>
-							<td v-if="item.chexingdingyibiao&&zd[2].display==1">{{item.chexingdingyibiao.cname}}</td><td v-else-if="zd[2].display==1"></td>
-							<td v-if="zd[3].display==1">{{item.driver}}</td>
-							<td v-if="zd[4].display==1">{{item.driverphone}}</td>
-							<td v-if="zd[5].display==1">{{item.birthday}}</td>
-							<td v-if="item.caraffiliation&&zd[6].display==1">{{item.caraffiliation.caraffiliation}}</td><td v-else-if="zd[6].display==1">sss</td>
-							<td v-if="zd[7].display==1">{{item.drivingouttime}}</td>
-							<td v-if="zd[8].display==1">{{item.framnum}}</td>
-							<td v-if="zd[9].display==1">{{item.enginenum}}</td>
-							<td v-if="item.fadongjipinpaibiao&&zd[10].display==1">{{item.fadongjipinpaibiao.fname}}</td><td v-else-if="zd[10].display==1"></td>
-							<td v-if="zd[11].display==1">{{item.carnyear}}</td>
-							<td v-if="zd[12].display==1">{{item.mileage}}</td>
-							<td v-if="zd[13].display==1">{{item.load}}</td>
-							<td v-if="zd[14].display==1">{{item.carseries}}</td>
-							<td v-if="zd[15].display==1">{{item.buytime}}</td>
-							<td v-if="zd[16].display==1">{{item.uptime}}</td>
-							<td v-if="zd[17].display==1">{{item.carouttime}}</td>
-							<td v-if="item.mlicompany&&zd[18].display==1">{{item.mlicompany.mlicompany}}</td><td v-else-if="zd[19].display==1"></td>
-							<td v-if="zd[19].display==1">{{item.mliouttime}}</td>
-							<td v-if="item.cicompany&&zd[20].display==1">{{item.cicompany.cicompany}}</td><td v-else-if="zd[21].display==1"></td>
-							<td v-if="zd[21].display==1">{{item.ciouttime}}</td>
-							<td v-if="zd[22].display==1">{{item.mytoucar}}</td>
-							<td v-if="zd[23].display==1">{{item.twotime}}</td>
-							<td v-if="item.oiltype&&zd[24].display==1">{{item.oiltype.oiltype}}</td><td v-else-if="zd[25].display==1"></td>
-							<td v-if="zd[25].display==1">{{item.nextmileage}}</td>
-							<td v-if="zd[26].display==1">{{item.nextupkeeptime}}</td>
-							<td v-if="zd[27].display==1">{{item.membernum}}</td>
+							<td class="pintr1" v-if="zd[0].display==1">{{item.platename}}</td>
+							<td class="pintr1" v-if="item.carbrand&&zd[1].display==1">{{item.carbrand.brandname}}</td><td v-else-if="zd[1].display==1"></td>
+							<td class="pintr1" v-if="item.chexingdingyibiao&&zd[2].display==1">{{item.chexingdingyibiao.cname}}</td><td v-else-if="zd[2].display==1"></td>
+							<td class="pintr1" v-if="zd[3].display==1">{{item.driver}}</td>
+							<td class="pintr1" v-if="zd[4].display==1">{{item.driverphone}}</td>
+							<td class="pintr1" v-if="zd[5].display==1">{{item.birthday}}</td>
+							<td class="pintr1" v-if="item.caraffiliation&&zd[6].display==1">{{item.caraffiliation.caraffiliation}}</td><td v-else-if="zd[6].display==1">sss</td>
+							<td class="pintr1" v-if="zd[7].display==1">{{item.drivingouttime}}</td>
+							<td class="pintr1" v-if="zd[8].display==1">{{item.framnum}}</td>
+							<td class="pintr1" v-if="zd[9].display==1">{{item.enginenum}}</td>
+							<td class="pintr1" v-if="item.fadongjipinpaibiao&&zd[10].display==1">{{item.fadongjipinpaibiao.fname}}</td><td v-else-if="zd[10].display==1"></td>
+							<td class="pintr1" v-if="zd[11].display==1">{{item.carnyear}}</td>
+							<td class="pintr1" v-if="zd[12].display==1">{{item.mileage}}</td>
+							<td class="pintr1" v-if="zd[13].display==1">{{item.load}}</td>
+							<td class="pintr1" v-if="zd[14].display==1">{{item.carseries}}</td>
+							<td class="pintr1" v-if="zd[15].display==1">{{item.buytime}}</td>
+							<td class="pintr1" v-if="zd[16].display==1">{{item.uptime}}</td>
+							<td class="pintr1" v-if="zd[17].display==1">{{item.carouttime}}</td>
+							<td class="pintr1" v-if="item.mlicompany&&zd[18].display==1">{{item.mlicompany.mlicompany}}</td><td v-else-if="zd[19].display==1"></td>
+							<td class="pintr1" v-if="zd[19].display==1">{{item.mliouttime}}</td>
+							<td class="pintr1" v-if="item.cicompany&&zd[20].display==1">{{item.cicompany.cicompany}}</td><td v-else-if="zd[21].display==1"></td>
+							<td class="pintr1" v-if="zd[21].display==1">{{item.ciouttime}}</td>
+							<td class="pintr1" v-if="zd[22].display==1">{{item.mytoucar}}</td>
+							<td class="pintr1" v-if="zd[23].display==1">{{item.twotime}}</td>
+							<td class="pintr1" v-if="item.oiltype&&zd[24].display==1">{{item.oiltype.oiltype}}</td><td v-else-if="zd[25].display==1"></td>
+							<td class="pintr1" v-if="zd[25].display==1">{{item.nextmileage}}</td>
+							<td class="pintr1" v-if="zd[26].display==1">{{item.nextupkeeptime}}</td>
+							<td class="pintr1" v-if="zd[27].display==1">{{item.membernum}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -206,10 +209,10 @@
 				<button class="xx" style="border: 2px black solid;">车辆信息</button>
 				<button class="xx" @click="sc">历史维修</button>
 			</div>
-			<div style="width:100%; height:250px; overflow:scroll;" class="div">
-			<table class="table table-bordered" style="width:2800px;max-width: 2820px; height:200px;max-height: 220px; text-align:center" id="chexian">
+			<div style="width:1280px; height:200px; overflow:scroll;" class="div">
+			<table class="table table-bordered" style="width:2800px;max-width: 2820px; text-align:center" id="chexian">
 				<thead>
-					<tr>
+					<tr style="height: 30px;">
 						<td>客户编号</td>
 						<td>客户名称</td>
 						<td>详细地址</td>
@@ -245,36 +248,36 @@
 				</thead>
 				<tbody>
 					<tr style="height: 30px;" v-for="item in customer" @click="findc(item)">
-						<td class="wrap">{{item.customernum}}</td>
-						<td >{{item.customername}}</td>
-						<td >{{item.customeraddress}}</td>
-						<td >{{item.linkman}}</td>
-						<td>{{item.phone}}</td>
-						<td >{{item.birthday}}</td>
-						<td v-if="item.customertype">{{item.customertype.customertype}}</td><td v-else></td>
-						<td>{{item.customernumber}}</td>
-						<td>{{item.jointime}}</td>
-						<td>{{item.outtime}}</td>
-						<td>{{item.remark}}</td>
-						<td>{{item.filing}}</td>
-						<td v-if="item.yuan">{{item.yuan.yname}}</td><td v-else></td>
-						<td v-if="item.yuan">{{item.yuan.yphonenumber}}</td><td v-else></td>
-						<td>{{item.paytime}}</td>
-						<td>{{item.payment}}</td>
-						<td>{{item.integral}}</td>
-						<td>{{item.earnest}}</td>
-						<td>省</td>
-						<td>市</td>
-						<td>区</td>
-						<td>{{item.paytest}}</td>
-						<td>{{item.registerphone}}</td>
-						<td>{{item.desportbank}}</td>
-						<td>{{item.bankaccount}}</td>
-						<td>{{item.registeraddress}}</td>
-						<td>{{item.otherone}}</td>
-						<td>{{item.othertwo}}</td>
-						<td>{{item.otherthree}}</td>
-						<td>{{item.otherfour}}</td>
+						<td class="pintr1">{{item.customernum}}</td>
+						<td class="pintr1" >{{item.customername}}</td>
+						<td class="pintr1" >{{item.customeraddress}}</td>
+						<td class="pintr1" >{{item.linkman}}</td>
+						<td class="pintr1">{{item.phone}}</td>
+						<td class="pintr1" >{{item.birthday}}</td>
+						<td class="pintr1" v-if="item.customertype">{{item.customertype.customertype}}</td><td v-else></td>
+						<td class="pintr1">{{item.customernumber}}</td>
+						<td class="pintr1">{{item.jointime}}</td>
+						<td class="pintr1">{{item.outtime}}</td>
+						<td class="pintr1">{{item.remark}}</td>
+						<td class="pintr1">{{item.filing}}</td>
+						<td class="pintr1" v-if="item.yuan">{{item.yuan.yname}}</td><td v-else></td>
+						<td class="pintr1" v-if="item.yuan">{{item.yuan.yphonenumber}}</td><td v-else></td>
+						<td class="pintr1">{{item.paytime}}</td>
+						<td class="pintr1">{{item.payment}}</td>
+						<td class="pintr1">{{item.integral}}</td>
+						<td class="pintr1">{{item.earnest}}</td>
+						<td class="pintr1">省</td>
+						<td class="pintr1">市</td>
+						<td class="pintr1">区</td>
+						<td class="pintr1">{{item.paytest}}</td>
+						<td class="pintr1">{{item.registerphone}}</td>
+						<td class="pintr1">{{item.desportbank}}</td>
+						<td class="pintr1">{{item.bankaccount}}</td>
+						<td class="pintr1">{{item.registeraddress}}</td>
+						<td class="pintr1">{{item.otherone}}</td>
+						<td class="pintr1">{{item.othertwo}}</td>
+						<td class="pintr1">{{item.otherthree}}</td>
+						<td class="pintr1">{{item.otherfour}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -764,7 +767,6 @@
 	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
-		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
 				new Vue({
 				el: "#lx",
@@ -801,8 +803,6 @@
 					],
 				},
 				methods: {
-					remove(){},
-					by(){},
 					cxzd(){
 						let that=this;
 						$.ajax({
@@ -993,7 +993,6 @@
 					xzz(item){
 						this.cs=item;
 						if(item.platename=="辽cxzcxz"){
-							alert("s");
 							this.ls=this.lswx;
 						}else{
 							this.ls=[];
@@ -1101,6 +1100,7 @@
 					this.cxzd();
 				}
 			});
+			
 				var buttonArr = document.getElementsByClassName("xx");
 				var divArr = document.getElementsByClassName("div");
 				for(var i = 0; i < buttonArr.length;i++) {
@@ -1124,6 +1124,14 @@
             		}
             	
         		}
+        		$(document).on('click', '.pintr', function() {
+					$(".pintr").css("background", "#ffffff")
+				$(this).css("background", "sandybrown")
+				})
+				$(document).on('click', '.pintr1', function() {
+					$(".pintr1").css("background", "#ffffff")
+					$(this).css("background", "sandybrown")
+				})
 			}
 			
 	</script>

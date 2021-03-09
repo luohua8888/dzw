@@ -37,17 +37,17 @@
 			.body div div:nth-of-type(4) img:nth-of-type(1){
 				position: absolute;
 				top: 15px;
-				left: 130px;
+				left: 150px;
 			}
 			.body div div:nth-of-type(4) img:nth-of-type(2){
 				position: absolute;
 				top: 15px;
-				left: 480px;
+				left: 500px;
 			}
 			.body div div:nth-of-type(4) img:nth-of-type(3){
 				position: absolute;
 				top: 15px;
-				left: 835px;
+				left: 855px;
 			}
 			.body div div:nth-of-type(5) div{
 				position: absolute;
@@ -65,10 +65,10 @@
 	</head>
 	<body>
 		<div id="ctn" class="container">
-			<div class="header">
-				<button type="button" class="btn btn-lg">￥57,891.04<br />今日前台></button>
-				<button type="button" class="btn btn-lg">￥53,331.36<br />今日库房></button>
-				<button type="button" class="btn btn-lg">￥0,00<br />今日结算></button>
+			<div class="header" >
+				<button type="button" class="btn btn-lg" v-for="itemss in jrjs" >￥<span name="customerMoney1" >{{itemss.sumtotalNum}}</span><br />今日前台</button>
+				<button type="button" class="btn btn-lg" v-for="items in jrkc" >￥<span name="customerMoney2" >{{items.sumtotalNum}}</span><br />今日库房</button>
+				<button type="button" class="btn btn-lg"  v-for="itemj in jrjs" >￥<span name="customerMoney3" >{{itemj.sumtotalNum}}</span><br />今日结算</button>
 			</div>
 			<div class="body">
 				<div>
@@ -99,15 +99,15 @@
 					</div>
 					<div>
 						<div>
-							<span>现金入库数量:0金额:￥0.00元</span><br />
-							<span>挂账入库数量:0金额:￥0.00元</span><br />
+							<span v-for="item in xianjin" >现金入库数量:<span>{{item.num}}</span>金额:￥<span>{{item.sumtotalNum}}</span>元</span><br />
+							<span v-for="itemg in guazhang" >挂账入库数量:<span>{{itemg.num}}</span>金额:￥<span>{{itemg.sumtotalNum}}元</span><br />
 							<span>配件销售数量:0金额:￥0.00元</span><br />
 							<span>自费出库数量:0</span><br />
 							<span>自费出库金额:￥0.00元</span><br /><br /><br />
 							<span>三包出库数量:0</span><br />
 							<span>三包出库金额:￥0.00元</span><br />
-							<span>当前库存数量:1141</span><br />
-							<span>当前库存金额:￥53,331.36元</span><br />
+							<span v-for="itemk in kucun" >当前库存数量:<span>{{itemk.kucunsl}}</span></span><br />
+							<span v-for="iteme in kucun" >当前库存金额:￥<span>{{iteme.sumtotalNum}}</span>元</span><br />
 						</div>
 					</div>
 					<div>
@@ -120,5 +120,115 @@
 				</div>
 			</div>
 		</div>
+		<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue.js" type="text/javascript"></script>
+		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#ctn",
+				data(){
+					return {
+						xianjin:[],
+						guazhang:[],
+						cashier: {},
+						kucun:[],
+						jrjs:[],
+						jrkc:[]
+					}
+				},
+				methods:{
+					selectByxianjin(){
+						var that = this;
+						$.ajax({
+							url: "http://localhost:8080/cashier/selectByxianjin",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success:function(result){
+								that.xianjin = result;
+							}
+						});
+					},
+					selectByguazhang(){
+						var that = this;
+						$.ajax({
+							url: "http://localhost:8080/cashier/selectByguazhang",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success:function(result){
+								that.guazhang = result;
+							}
+						});
+					},
+					selectBykucun(){
+						var that = this;
+						$.ajax({
+							url: "http://localhost:8080/cashier/selectBykucun",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success:function(result){
+								that.kucun = result;
+							}
+						});
+					},
+					selectByjrjs(){
+						var that = this;
+						for(var i = 0; i < that.jrjs.length; i++) {
+							if(that.jrjs[i]==null){
+								var taxes = "0.00";
+								$("[name=customerMoney1]").text(taxes);
+								$("[name=customerMoney3]").text(taxes);
+							}
+						}
+						$.ajax({
+							url: "http://localhost:8080/cashier/selectByjrjs",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success:function(result){
+								that.jrjs = result;
+							}
+						});
+					},
+					selectByjrkc(){
+						var that = this;
+						for(var i = 0; i < that.jrkc.length; i++) {
+							if(that.jrkc[i]==null){
+								var taxes = "0.00";
+								$("[name=customerMoney2]").text(taxes);
+							}
+						}
+						$.ajax({
+							url: "http://localhost:8080/cashier/selectByjrkc",
+							type: "post",
+							dataType: "json",
+							xhrFields: {
+								withCredentials: true
+							},
+							success:function(result){
+								that.jrkc = result;
+							}
+						});
+					}
+				},
+				created(){
+					this.selectByxianjin();
+					this.selectByguazhang();
+					this.selectBykucun();
+					this.selectByjrjs();
+					this.selectByjrkc();
+				}				
+			});
+		</script>
 	</body>
 </html>

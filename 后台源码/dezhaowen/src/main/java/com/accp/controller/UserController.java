@@ -44,6 +44,15 @@ public class UserController<list> {
     public List<User> query(){
         return service.list();
     }
+
+    @PostMapping("/like")//模块查询
+    public List<User> likelist(String name){
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            queryWrapper.like("miaoshu", name);
+            List<User> list = service.list(queryWrapper);
+        return list;
+    }
+
     @PostMapping("/xz")//新增
     public int add(User u){
         if(u!=null){

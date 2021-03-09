@@ -2,6 +2,8 @@ package com.accp.controller;
 
 
 import com.accp.domain.SysMenu;
+import com.accp.domain.SysRole;
+import com.accp.domain.User;
 import com.accp.service.impl.SysMenuServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,15 @@ public class SysMenuController {
         QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByAsc("order_num");
         return service.list(queryWrapper);
+    }
+
+    @PostMapping("/like")//模块查询
+    public List<SysMenu> likelist(String name){
+        QueryWrapper<SysMenu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("menu_name", name);
+        queryWrapper.orderByAsc("order_num");
+        List<SysMenu> list = service.list(queryWrapper);
+        return list;
     }
 
     @PostMapping("/xg")

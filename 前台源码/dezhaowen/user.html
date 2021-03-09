@@ -13,6 +13,14 @@
 				<h2>用户管理</h2>
 			</div>
 			<button class="btn btn-primary" v-perms="'users/add'" @click="xz">新增</button>
+			<div style="float: right; margin-right: 50px;">
+				<form class="form-inline">
+				  <div class="form-group">
+				    <input type="email" v-model="name" class="form-control" id="exampleInputEmail3">
+				    <button type="button" class="btn btn-warning" style="position: relative; z-index: 99;" @click="cha">搜索</button>
+				  </div>
+				</form>
+			</div>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -177,9 +185,24 @@
 						addlist:{},
 						authRole:{},
 						menuList:[],
+						name:"",
 					}
 				},
 				methods:{
+					cha(){
+						let that=this;
+						$.ajax({
+							url:top.baseUrl+"user/like",
+							data:{
+								name:that.name,
+							},
+							type:"post",
+							dataType:"json",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					},
 					primaryAuth(){
 						var that = this;
 						//获取选中元素
