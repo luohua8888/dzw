@@ -99,6 +99,10 @@
 		<script type="text/javascript" src="js/vue.js"></script>
 		<script src="js/bootstrap.min.js"></script>	
 		<script type="text/javascript">
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			var BaseUrl="http://127.0.0.1:8080";
 			new Vue({
 				el:"#ctn",

@@ -98,6 +98,10 @@
 		<script type="text/javascript" src="js/vue.js" ></script>
 		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			new Vue({
 				el:"#ctn",
 				data(){
@@ -153,6 +157,7 @@
 									alert("修改失败");
 								}
 								$("#xgmodal").modal("hide");
+								top.window.location.reload();
 							}
 						});
 					}

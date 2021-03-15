@@ -224,26 +224,26 @@
 					<table class="table table-bordered">
 						<tr style="background-color:#39CEDE;">
 							<td width="70px"></td>
-							<td width="140px">员工职位</td>
-							<td width="140px">部门</td>
-							<td width="140px">员工编号</td>
-							<td width="140px">姓名</td>
-							<td width="140px">分机/短号</td>
-							<td width="140px">直机</td>
-							<td width="140px">手机</td>
-							<td width="140px">邮箱</td>
+							<td style="width: 180px;">员工职位</td>
+							<td style="width: 180px;">部门</td>
+							<td width="130px">员工编号</td>
+							<td width="130px">姓名</td>
+							<td width="130px">分机/短号</td>
+							<td width="130px">直机</td>
+							<td width="130px">手机</td>
+							<td width="130px">邮箱</td>
 						</tr>
 						<tr v-for="list in taffsdata" class="koko">
 							<td style="background-color: #D6D6CE;"></td>
 							<td>{{list.yposition}}</td>
 							<td v-if="list.bu">{{list.bu.bname}}</td>
 							<td v-else></td>
-							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
-							<td><input type="text" style="border:0px;" v-model="list.yname"></td>
-							<td><input type="text" style="border:0px;" v-model="list.yjphone"></td>
-							<td><input type="text" style="border:0px;width: 100px;" v-model="list.ybankphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.email"></td>
+							<td><input type="text" style="border:0px;width: 100px; text-align: center;" v-model="list.yid"></td>
+							<td><input type="text" style="border:0px; text-align: center;" v-model="list.yname"></td>
+							<td><input type="text" style="border:0px; text-align: center;" v-model="list.yjphone"></td>
+							<td><input type="text" style="border:0px;width: 100px; text-align: center;" v-model="list.ybankphone"></td>
+							<td><input type="text" style="border:0px; text-align: center;" v-model="list.yphone"></td>
+							<td><input type="text" style="border:0px; text-align: center;" v-model="list.email"></td>
 						</tr>
 					</table>
 				</div>
@@ -506,6 +506,10 @@
 		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script type="text/javascript">
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			function my(id) {
 				return document.getElementById(id);
 			}

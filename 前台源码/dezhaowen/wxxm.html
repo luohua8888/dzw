@@ -554,6 +554,10 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/vue.js"></script>
 		<script>
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			var BaseUrl = "http://127.0.0.1:8080";
 			// 	 function doAction(index){
 			// 	    var obj = document.getElementById('u' + index);

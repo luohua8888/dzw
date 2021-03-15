@@ -33,6 +33,7 @@ public class UserController<list> {
             User user= list.get(0);
             if(user!=null){
                 session.setAttribute("User", user);
+                user.setU2(session.getId());
                 System.out.println(user);
                 return user;
             }

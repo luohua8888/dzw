@@ -124,6 +124,10 @@
 		<script src="../js/vue.js" type="text/javascript"></script>
 		<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			new Vue({
 				el:"#ctn",
 				data(){

@@ -348,6 +348,10 @@
 		<script src="js/vue.js"></script>
 		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 		<script>
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			Vue.component("tree", {
 				template: `
 					<ul class="group">

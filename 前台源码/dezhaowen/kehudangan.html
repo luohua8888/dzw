@@ -1288,6 +1288,10 @@
 		<script type="text/javascript" src="css/region.js"></script>
 		<script type="text/javascript" src="js/vue-perms.js" ></script>
 		<script>
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 			new Vue({
 				el: "#lx",
 				data: {

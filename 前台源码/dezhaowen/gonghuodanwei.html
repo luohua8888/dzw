@@ -561,6 +561,10 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/vue-perms.js" ></script>
 	<script type="text/javascript">
+			var user=sessionStorage.getItem("user");
+			if(!user){
+				window.location.href="new_file.html"; 
+			}
 		var sp = [{
 			id: 1,
 			name: "10-北京",
